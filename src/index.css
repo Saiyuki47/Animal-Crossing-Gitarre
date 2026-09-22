@@ -1,0 +1,214 @@
+/* SQL BLOCK */
+.tipp-block {
+  margin-top: 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-left: 3px solid #f59e0b;
+  border-radius: var(--radius);
+  padding: .75rem 1rem;
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.6;
+}
+
+/* CHEATSHEET */
+.cheat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+.cheat-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+}
+.cheat-card h3 {
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+.cheat-code {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text);
+  line-height: 2;
+  white-space: pre-wrap;
+}
+
+/* THEMEN */
+.thema-detail { margin-top: 0.75rem; }
+.thema-punkte { padding-left: 1.25rem; display: flex; flex-direction: column; gap: 4px; }
+.thema-punkte li { font-size: 13px; color: var(--text2); line-height: 1.7; margin: 0; }
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  header { padding: 1rem; }
+  .container { padding: 1.25rem 1rem; }
+  .tab { font-size: 12px; padding: 7px 10px; }
+}
+
+/* SQL TIPS */
+.toggle-btn--tips {
+  border-color: var(--green);
+  color: var(--green);
+}
+.toggle-btn--tips:hover {
+  background: var(--green-dim);
+  color: var(--green);
+}
+
+/* ===== Referenz-Untertabs (Themen / Begriffe lernen) ===== */
+.ref-switch {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.9rem;
+}
+.ref-switch-tab {
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--bg2);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.ref-switch-tab:hover {
+  border-color: var(--blue);
+}
+.ref-switch-tab.active {
+  background: var(--blue);
+  color: #fff;
+  border-color: var(--blue);
+}
+
+/* ===== Begriffe lernen (Glossar mit Lernmodus) ===== */
+.beg-intro {
+  color: var(--text2);
+  font-size: 13.5px;
+  line-height: 1.7;
+  margin-bottom: 0.9rem;
+}
+.beg-toolbar {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1.1rem;
+}
+.beg-filter {
+  flex: 1 1 220px;
+  max-width: 340px;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--bg2);
+  color: var(--text);
+  font-size: 0.9rem;
+}
+.beg-filter:focus {
+  outline: none;
+  border-color: var(--blue);
+}
+.beg-lern-btn {
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--bg2);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.beg-lern-btn:hover {
+  border-color: var(--blue);
+}
+.beg-lern-btn.active {
+  background: var(--amber, #d97706);
+  border-color: var(--amber, #d97706);
+  color: #fff;
+}
+.beg-leer {
+  color: var(--text2);
+  font-style: italic;
+}
+.beg-gruppe {
+  margin-bottom: 1.4rem;
+}
+.beg-gruppe-titel {
+  font-size: 1rem;
+  color: var(--blue);
+  border-left: 3px solid var(--blue);
+  padding-left: 0.65rem;
+  margin: 1.2rem 0 0.6rem;
+}
+.beg-liste {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.beg-item {
+  display: grid;
+  grid-template-columns: minmax(150px, 220px) 1fr;
+  gap: 0.35rem 1rem;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg2);
+}
+@media (max-width: 640px) {
+  .beg-item {
+    grid-template-columns: 1fr;
+  }
+}
+.beg-begriff {
+  font-weight: 700;
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.55;
+}
+.beg-definition {
+  margin: 0;
+  position: relative;
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.65;
+}
+.beg-merke {
+  margin: 0.3rem 0 0;
+  font-size: 12.5px;
+  color: var(--green, #16a34a);
+}
+.beg-merke-label {
+  font-weight: 700;
+}
+/* Lernmodus: Definition verdeckt, per Klick aufdecken */
+.beg-item--verdeckt {
+  cursor: pointer;
+}
+.beg-item--verdeckt .beg-definition-inhalt {
+  filter: blur(7px);
+  opacity: 0.55;
+  user-select: none;
+  pointer-events: none;
+}
+.beg-item--verdeckt:hover {
+  border-color: var(--blue);
+}
+.beg-aufdecken-hinweis {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text2);
+}

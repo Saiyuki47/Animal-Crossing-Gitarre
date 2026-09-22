@@ -1,0 +1,17 @@
+# Zeilenenden vereinheitlichen: LF im Repository, plattform-nativ im Working Tree.
+* text=auto
+
+# Binärdateien – niemals Zeilenenden anfassen.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.mp4 binary
+*.woff binary
+*.woff2 binary
+*.rtf binary
+*.docx binary
+*.pptx binary
+*.xlsx binary
