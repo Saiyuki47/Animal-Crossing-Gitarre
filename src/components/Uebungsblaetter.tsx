@@ -2,6 +2,8 @@ import { useState, type CSSProperties } from 'react'
 import { useDoneTracker, useTaskDeepLink, getHashDetail } from 'lernseiten-ui'
 import { uebungsblaetter } from '../data/uebungsblaetter'
 import { aufgaben } from '../data/aufgaben'
+import { akkordNach } from '../data/akkorde'
+import Griffbild from './Griffbild'
 
 export default function Uebungsblaetter() {
   const [selectedId, setSelectedId] = useState(() => {
@@ -40,8 +42,8 @@ export default function Uebungsblaetter() {
   return (
     <div>
       <div className="section-header">
-        <h2>Übungsblätter</h2>
-        <p>Aufgaben und Musterlösungen nach Übungsblatt geordnet.</p>
+        <h2>Lernschritte</h2>
+        <p>In fünf Schritten vom Stimmen bis zu Go K.K. Rider. Hak ab, was sitzt – dein Fortschritt wird gespeichert.</p>
       </div>
 
       {uebungsblaetter.length > 1 && (
@@ -53,7 +55,7 @@ export default function Uebungsblaetter() {
               className={`filter-btn${selectedId === b.id ? ' on' : ''}`}
               onClick={() => setSelectedId(b.id)}
             >
-              Blatt {b.nr}
+              {b.nr}. {b.titel}
             </button>
           ))}
         </div>
@@ -64,8 +66,9 @@ export default function Uebungsblaetter() {
           <div className="ub-header card">
             <div className="ub-meta-row">
               <span className="ub-badge">{blatt.typ}</span>
+              {blatt.dauer && <span className="ub-badge">⏱ {blatt.dauer}</span>}
             </div>
-            <h3 className="ub-title">Übungsblatt {blatt.nr}</h3>
+            <h3 className="ub-title">Schritt {blatt.nr}: {blatt.titel}</h3>
             {blatt.beschreibung && <p className="ub-desc">{blatt.beschreibung}</p>}
             {taskKeys.length > 0 && (
               <>
@@ -73,7 +76,7 @@ export default function Uebungsblaetter() {
                   <div className="progress-bar" style={{ '--bar-w': `${pct}%` } as CSSProperties} />
                 </div>
                 <p className="ub-desc" style={{ marginTop: '0.4rem' }}>
-                  {verstanden} / {taskKeys.length} Aufgaben verstanden ({pct}%)
+                  {verstanden} / {taskKeys.length} Übungen sitzen ({pct}%)
                 </p>
               </>
             )}
@@ -89,10 +92,19 @@ export default function Uebungsblaetter() {
 
               return (
                 <div key={key} className="card" data-aufgabe={String(task.nr)}>
-                  <p className="ub-task-nr">Aufgabe {task.nr}</p>
+                  <p className="ub-task-nr">Übung {task.nr}</p>
                   <p className="q-title">{task.text}</p>
                   {aufgabe && (
                     <>
+                      <p className="ub-desc">{aufgabe.aufgabeText}</p>
+                      {aufgabe.akkorde && (
+                        <div className="griffbild-reihe">
+                          {aufgabe.akkorde.map(id => {
+                            const a = akkordNach(id)
+                            return a ? <Griffbild key={id} akkord={a} breite={84} /> : null
+                          })}
+                        </div>
+                      )}
                       {aufgabe.tipp && (
                         <>
                           <button type="button" className="toggle-btn toggle-btn--tips" onClick={() => toggleTipp(key)}>
@@ -104,9 +116,9 @@ export default function Uebungsblaetter() {
                       {aufgabe.loesung && (
                         <>
                           <button type="button" className="toggle-btn" onClick={() => toggleSolution(key)}>
-                            {isOpen ? '▼ Lösung verbergen' : '▶ Lösung anzeigen'}
+                            {isOpen ? '▼ Ziel verbergen' : '▶ Woran merke ich, dass es sitzt?'}
                           </button>
-                          {isOpen && <pre className="sql-block visible">{aufgabe.loesung}</pre>}
+                          {isOpen && <p className="tipp-block ziel-block">{aufgabe.loesung}</p>}
                         </>
                       )}
                     </>
@@ -117,7 +129,7 @@ export default function Uebungsblaetter() {
                     onClick={() => toggleDone(key)}
                     style={isDone ? { color: 'var(--green, #2ea043)', borderColor: 'var(--green, #2ea043)' } : undefined}
                   >
-                    {isDone ? '✓ Verstanden' : '○ Als verstanden markieren'}
+                    {isDone ? '✓ Sitzt!' : '○ Als geschafft markieren'}
                   </button>
                 </div>
               )

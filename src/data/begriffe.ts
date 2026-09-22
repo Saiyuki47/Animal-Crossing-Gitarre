@@ -1,6 +1,5 @@
 // Begriffe zum Auswendiglernen — kompakte Definitionen, die für sich allein
-// „abfragbar" sind: Begriff lesen → Definition aufsagen können. Reiner Text
-// (kein LaTeX); ersetze die Platzhalter durch deine eigenen Begriffe.
+// „abfragbar" sind: Begriff lesen → Definition aufsagen können. Reiner Text.
 
 export interface Begriff {
   begriff: string
@@ -14,40 +13,132 @@ export interface BegriffGruppe {
   begriffe: Begriff[]
 }
 
-// TODO: Ersetze die Platzhalter-Begriffe durch deine eigenen.
 export const begriffGruppen: BegriffGruppe[] = [
   {
-    titel: 'Gruppe 1: Grundbegriffe',
+    titel: 'Die Gitarre',
     begriffe: [
       {
-        begriff: 'Beispielbegriff A',
-        definition:
-          'Kurze, präzise Definition von A – so, dass du sie im Lernmodus aus dem Kopf aufsagen kannst.',
-        merke: 'Eselsbrücke oder Kurzform zum Einprägen.',
+        begriff: 'Saitennummerierung',
+        definition: 'Die Saiten werden von der dünnsten (1, hohes e) zur dicksten (6, tiefes E) gezählt.',
+        merke: 'Saite 1 ist die, die beim Halten am nächsten zum Boden liegt.',
       },
       {
-        begriff: 'Beispielbegriff B',
-        definition:
-          'Definition von B. Grenze B klar von A ab, damit die beiden nicht verwechselt werden.',
+        begriff: 'Bund',
+        definition: 'Abschnitt des Griffbretts zwischen zwei Bundstäbchen. Jeder Bund erhöht den Ton um einen Halbton.',
       },
       {
-        begriff: 'Beispielbegriff C',
-        definition:
-          'Definition von C mit einem konkreten Beispiel, das den Begriff greifbar macht.',
+        begriff: 'Sattel',
+        definition: 'Die Kerbleiste am Ende des Griffbretts (Richtung Kopf), über die die Saiten laufen. Im Griffbild die dicke Linie oben.',
+      },
+      {
+        begriff: 'Leersaite',
+        definition: 'Eine Saite, die angeschlagen wird, ohne dass ein Finger sie greift. Im Griffbild mit ○ markiert.',
+      },
+      {
+        begriff: 'Kapodaster',
+        definition: 'Klemme, die alle Saiten in einem Bund herunterdrückt. Jeder gegriffene Akkord klingt dadurch pro Bund einen Halbton höher.',
+        merke: 'Klingender Akkord = Griff + Kapo-Bund.',
+      },
+      {
+        begriff: 'Plektrum',
+        definition: 'Kleines Plättchen zum Anschlagen der Saiten. Dünne Plektren (ca. 0,5–0,7 mm) sind für Akkordbegleitung angenehm.',
       },
     ],
   },
   {
-    titel: 'Gruppe 2: Weiterführende Begriffe',
+    titel: 'Akkorde',
     begriffe: [
       {
-        begriff: 'Beispielbegriff D',
-        definition: 'Definition von D. Baut auf den Grundbegriffen auf.',
-        merke: 'Kurzmerksatz für D.',
+        begriff: 'Akkord',
+        definition: 'Mindestens drei verschiedene Töne, die gleichzeitig erklingen.',
       },
       {
-        begriff: 'Beispielbegriff E',
-        definition: 'Definition von E.',
+        begriff: 'Dur / Moll',
+        definition: 'Dur-Akkorde klingen hell und fröhlich, Moll-Akkorde dunkler und trauriger. Sie unterscheiden sich nur in der Terz (einem Ton).',
+        merke: 'Moll wird mit kleinem „m" geschrieben: Am, Em, Dm.',
+      },
+      {
+        begriff: 'Septakkord',
+        definition: 'Dreiklang plus kleine Septime (z.B. G7). Klingt spannungsreich und löst sich gern in den Akkord eine Quinte tiefer auf (G7 → C).',
+      },
+      {
+        begriff: 'Offener Akkord',
+        definition: 'Akkord in den ersten Bünden, der Leersaiten enthält – z.B. C, G, D, Am, Em.',
+      },
+      {
+        begriff: 'Barré',
+        definition: 'Griff, bei dem ein Finger (meist der Zeigefinger) mehrere Saiten in einem Bund gleichzeitig herunterdrückt, z.B. beim F-Dur.',
+      },
+      {
+        begriff: 'Ankerfinger',
+        definition: 'Finger, der bei einem Akkordwechsel an derselben Stelle liegen bleibt, weil er in beiden Griffen gleich ist.',
+      },
+      {
+        begriff: 'Griffbild',
+        definition: 'Diagramm, das zeigt, welche Saite in welchem Bund mit welchem Finger gegriffen wird.',
+      },
+    ],
+  },
+  {
+    titel: 'Rhythmus',
+    begriffe: [
+      {
+        begriff: 'BPM',
+        definition: 'Beats per Minute – Schläge pro Minute, das Maß für das Tempo. 60 BPM = ein Schlag pro Sekunde.',
+      },
+      {
+        begriff: 'Takt',
+        definition: 'Gruppe von Schlägen, die sich wiederholt. Im 4/4-Takt zählt man „1 2 3 4".',
+      },
+      {
+        begriff: 'Abschlag / Aufschlag',
+        definition: 'Abschlag (↓) = Plektrum bewegt sich Richtung Boden; Aufschlag (↑) = Richtung Decke.',
+      },
+      {
+        begriff: 'Schlagmuster',
+        definition: 'Feste Abfolge von Ab-, Auf- und Luftschlägen, die pro Takt wiederholt wird, z.B. ↓ – ↓ ↑ – ↑ ↓ ↑.',
+      },
+      {
+        begriff: 'Luftschlag',
+        definition: 'Die Schlaghand macht die Bewegung, verfehlt aber absichtlich die Saiten – so bleibt das Pendel im Takt.',
+      },
+      {
+        begriff: 'Swing / Shuffle',
+        definition: 'Achtel werden ungleich gespielt: die erste lang, die zweite kurz (ca. 2 : 1). Klingt hüpfend.',
+        merke: '„Dum-da Dum-da" statt „ta-ta ta-ta".',
+      },
+      {
+        begriff: 'Backbeat',
+        definition: 'Betonung der Schläge 2 und 4 im 4/4-Takt – typisch für Pop und Rock.',
+      },
+      {
+        begriff: 'Palm Muting',
+        definition: 'Der Handballen der Schlaghand liegt leicht auf den Saiten am Steg und dämpft sie – der Klang wird kurz und gedämpft.',
+      },
+    ],
+  },
+  {
+    titel: 'Songaufbau',
+    begriffe: [
+      {
+        begriff: 'Intro',
+        definition: 'Einleitung eines Songs, bevor die eigentliche Melodie bzw. der Gesang beginnt.',
+      },
+      {
+        begriff: 'Strophe (Verse)',
+        definition: 'Abschnitt, der sich musikalisch wiederholt, meist mit wechselndem Text.',
+      },
+      {
+        begriff: 'Refrain (Chorus)',
+        definition: 'Der wiederkehrende, eingängigste Teil eines Songs.',
+      },
+      {
+        begriff: 'Bridge',
+        definition: 'Kontrastierender Zwischenteil, der meist nur einmal vorkommt und zurück zum Refrain führt.',
+      },
+      {
+        begriff: 'Transponieren',
+        definition: 'Einen Song in eine andere Tonart verschieben – alle Akkorde wandern um dieselbe Anzahl Halbtöne.',
       },
     ],
   },

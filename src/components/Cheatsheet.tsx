@@ -3,18 +3,17 @@ import { referenzKarten } from '../data/referenz'
 import Begriffe from './Begriffe'
 
 // Referenz-Tab mit zwei Untertabs (wie in den anderen Lernseiten):
-//   📚 Themen         – die Referenz-/Nachschlagekarten (data/referenz.ts)
+//   🎸 Griffe & Technik – Nachschlagekarten mit Griffbildern (data/referenz.tsx)
 //   🧠 Begriffe lernen – Glossar mit Lernmodus (components/Begriffe.tsx)
 // useHashSubTab hält den offenen Untertab im zweiten Hash-Segment
 // (#referenz/begriffe) – teilbar, per replaceState (kein History-Eintrag),
 // Tab bleibt erhalten. Der Fallback „themen" steht anfangs nicht in der URL.
 
-// Karten-Inhalt als vorformatierter Text (Template ohne KaTeX). Für Mathe-Fächer
-// hier stattdessen z.B. `text => <MathText block>{text}</MathText>` verwenden.
+// Text-Karten als vorformatierter Text (Griffbild-Karten bringen ein fertiges inhaltNode mit).
 const renderBlock = (t: string) => <div style={{ whiteSpace: 'pre-wrap' }}>{t}</div>
 
 const ANSICHTEN = [
-  { id: 'themen', label: '📚 Themen' },
+  { id: 'themen', label: '🎸 Griffe & Technik' },
   { id: 'begriffe', label: '🧠 Begriffe lernen' },
 ] as const
 
@@ -37,7 +36,7 @@ export default function Cheatsheet() {
           </button>
         ))}
       </div>
-      {ansicht === 'themen' && <Referenz karten={referenzKarten} render={renderBlock} tab="referenz" />}
+      {ansicht === 'themen' && <Referenz karten={referenzKarten} render={renderBlock} intro="Griffbilder, Schlagmuster und Techniken zum Nachschlagen." tab="referenz" />}
       {ansicht === 'begriffe' && <Begriffe />}
     </div>
   )

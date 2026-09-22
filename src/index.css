@@ -212,3 +212,50 @@
   font-weight: 600;
   color: var(--text2);
 }
+
+/* GRIFFBILDER */
+.griffbild { color: var(--text); flex-shrink: 0; }
+.griffbild-name { font: 600 13px var(--font-sans); fill: currentColor; }
+.griffbild-marke { font: 12px var(--font-sans); fill: var(--text2); }
+.griffbild-punkt { fill: var(--blue); }
+.griffbild-finger { font: 700 9px var(--font-sans); fill: #fff; }
+.griffbild-reihe { display: flex; flex-wrap: wrap; gap: .25rem .75rem; margin: .5rem 0 .75rem; }
+.akkord-raster { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
+.akkord-zelle { margin: 0; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .35rem; }
+.akkord-zelle figcaption { display: flex; flex-direction: column; gap: .25rem; font-size: 12px; color: var(--text2); line-height: 1.45; }
+.akkord-zelle code { font-family: var(--font-mono); color: var(--text); font-size: 12px; }
+.griffbild-erklaerung { display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-start; }
+.griffbild-erklaerung ul { flex: 1 1 240px; margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: .3rem; font-size: 14px; color: var(--text2); line-height: 1.55; }
+.ref-absatz { font-size: 14px; color: var(--text2); line-height: 1.6; margin: 0 0 1rem; }
+.ziel-block { border-left-color: var(--green); white-space: pre-wrap; }
+
+/* WERKZEUGE */
+.wz-titel { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: .35rem; }
+.wz-bpm { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 1rem 0 .5rem; }
+.wz-bpm-zahl { font: 700 36px var(--font-mono); color: var(--text); min-width: 5ch; text-align: center; }
+.wz-bpm-zahl span { font-size: 13px; font-weight: 500; color: var(--text2); }
+.wz-slider { width: 100%; margin-bottom: 1rem; accent-color: var(--blue); }
+.wz-muster { display: grid; grid-template-columns: repeat(8, 1fr); gap: 4px; margin: .75rem 0; }
+.wz-slot { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: .5rem 0; border-radius: var(--radius); background: var(--bg3); border: 1px solid var(--border); transition: background .06s, transform .06s; }
+.wz-slot.leer .wz-slot-symbol { color: var(--text3); }
+.wz-slot.aktiv { background: var(--blue-dim); border-color: var(--blue); transform: scale(1.06); }
+.wz-slot-symbol { font: 700 20px var(--font-sans); color: var(--text); line-height: 1.2; }
+.wz-slot-zaehl { font: 500 11px var(--font-mono); color: var(--text2); }
+.wz-optionen { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; font-size: 14px; color: var(--text2); margin-bottom: 1rem; }
+.wz-optionen label { display: inline-flex; align-items: center; gap: .4rem; cursor: pointer; }
+.wz-start, .wz-tap { font: 600 16px var(--font-sans); padding: .7rem 1.5rem; border-radius: var(--radius); border: 1px solid var(--green); background: var(--green-dim); color: var(--green); cursor: pointer; }
+.wz-start { width: 100%; }
+.wz-start.stop { border-color: var(--red); background: var(--red-dim); color: var(--red); }
+.wz-tap { border-color: var(--blue); background: var(--blue-dim); color: var(--blue); min-width: 8rem; min-height: 4rem; user-select: none; }
+.wz-tap:active { transform: scale(.96); }
+.wz-tap-reihe { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-top: .75rem; }
+.wz-tap-ergebnis { display: flex; flex-direction: column; }
+.wz-saiten { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: .5rem; margin-top: .75rem; }
+.wz-saite { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: .7rem .25rem; border-radius: var(--radius); border: 1px solid var(--border2); background: var(--bg3); color: var(--text); cursor: pointer; }
+.wz-saite:hover { border-color: var(--blue); }
+.wz-saite-name { font: 700 22px var(--font-sans); }
+.wz-saite-info { font-size: 11px; color: var(--text2); }
+@media (max-width: 480px) {
+  .wz-slot-symbol { font-size: 15px; }
+  .wz-bpm-zahl { font-size: 28px; }
+}

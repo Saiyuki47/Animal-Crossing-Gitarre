@@ -1,14 +1,16 @@
 import { useEffect } from 'react'
+import { akkorde } from '../data/akkorde'
+import Griffbild from './Griffbild'
 
-// Hilfsmittel-Tab: eine druckbare A4-Seite (Spickzettel/Formelblatt) – wie die
-// Hilfsmittel-Tabs der anderen Lernseiten. Fülle die Boxen mit deinen eigenen
-// Kurzregeln/Formeln. „🖨️ Drucken" öffnet den Druckdialog; per @media print
-// werden Header/Tabs ausgeblendet und die Boxen A4-tauglich gesetzt.
+// Hilfsmittel-Tab: eine druckbare A4-Seite (Spickzettel) – wie die Hilfsmittel-Tabs
+// der anderen Lernseiten: alle Griffbilder plus Stimmung, Schlagmuster, Kapo, Üben.
+// „🖨️ Drucken" öffnet den Druckdialog; per @media print werden Header/Tabs
+// ausgeblendet und die Boxen A4-tauglich gesetzt.
 
 interface Zeile {
   /** Optionales Label vor dem Inhalt. */
   l?: string
-  /** Inhalt (Formel/Regel), in Monospace. */
+  /** Inhalt (Regel/Muster), in Monospace. */
   f: string
 }
 
@@ -17,46 +19,61 @@ interface Box {
   r: Zeile[]
 }
 
-// TODO: Ersetze die Beispiel-Boxen durch deinen eigenen Spickzettel-Inhalt.
 const SEITE1: Box[] = [
   {
-    t: 'Grundregeln',
+    t: 'Stimmung (tief → hoch)',
     r: [
-      { l: 'Regel 1', f: 'Kurze, prägnante Merkregel oder Formel.' },
-      { l: 'Regel 2', f: 'Noch eine Regel – so knapp wie möglich.' },
-      { f: 'Freitext ohne Label ist auch möglich.' },
+      { l: 'Saiten', f: 'E  A  D  G  H  e   (6 → 1)' },
+      { l: 'Merksatz', f: 'Eine Alte Dame Geht Heute Einkaufen' },
+      { l: 'Nach Gehör', f: '5. Bund = nächste Leersaite, G → H: 4. Bund' },
     ],
   },
   {
-    t: 'Formeln',
+    t: 'Schlagmuster (1 + 2 + 3 + 4 +)',
     r: [
-      { l: 'Fläche', f: 'A = a · b' },
-      { l: 'Umfang', f: 'U = 2 · (a + b)' },
-      { l: 'Mittelwert', f: 'x̄ = (x₁ + … + xₙ) / n' },
+      { l: 'Viertel', f: '↓   ↓   ↓   ↓' },
+      { l: 'Achtel', f: '↓ ↑ ↓ ↑ ↓ ↑ ↓ ↑' },
+      { l: 'Standard', f: '↓ – ↓ ↑ – ↑ ↓ ↑' },
+      { l: 'Swing', f: 'Achtel lang-kurz (≈ 2 : 1)' },
     ],
   },
   {
-    t: 'Vorgehen (Schritt für Schritt)',
+    t: 'Kapodaster',
     r: [
-      { f: '1) Gegebenes und Gesuchtes notieren.' },
-      { f: '2) Passende Formel/Regel wählen.' },
-      { f: '3) Einsetzen, umstellen, ausrechnen.' },
-      { f: '4) Ergebnis auf Plausibilität prüfen.' },
+      { l: 'Formel', f: 'klingt = Griff + Kapo-Bund (Halbtöne)' },
+      { l: 'Halbtöne', f: 'C C♯ D D♯ E F F♯ G G♯ A A♯ H' },
+      { l: 'F ohne Barré', f: 'Kapo 1 + E  oder  Kapo 3 + D' },
     ],
   },
   {
-    t: 'Häufige Fehler',
+    t: 'Üben',
     r: [
-      { l: 'Fehler', f: 'Typische Stolperfalle kurz benennen …' },
-      { l: 'Besser', f: '… und wie man sie vermeidet.' },
+      { l: 'Start', f: '≈ 60 % des Originaltempos' },
+      { l: 'Steigern', f: '3× fehlerfrei → +5 BPM' },
+      { l: 'Fehler', f: '−10 BPM, schwierigste Stelle isolieren' },
+      { l: 'Wechsel', f: 'Ankerfinger liegen lassen, auf Schlag 4 vorbereiten' },
     ],
   },
 ]
 
+function Griffuebersicht() {
+  return (
+    <section className="hm-box hm-griffe">
+      <h4>Griffe</h4>
+      <div className="hm-griffe-raster">
+        {akkorde.map(a => (
+          <Griffbild key={a.id} akkord={a} breite={70} />
+        ))}
+      </div>
+    </section>
+  )
+}
+
 function SpickzettelSeite({ boxen, nr }: { boxen: Box[]; nr: number }) {
   return (
     <div className="hm-page">
-      <p className="hm-page-head">Spickzettel · Seite {nr}</p>
+      <p className="hm-page-head">Go K.K. Rider · Gitarren-Spickzettel · Seite {nr}</p>
+      <Griffuebersicht />
       <div className="hm-grid">
         {boxen.map(box => (
           <section key={box.t} className="hm-box">
@@ -81,10 +98,10 @@ export default function Hilfsmittel() {
   return (
     <div>
       <div className="section-header no-print">
-        <h2>Hilfsmittel</h2>
+        <h2>Spickzettel</h2>
         <p>
-          Ein druckbarer Spickzettel auf einer A4-Seite. Fülle die Boxen mit deinen eigenen
-          Formeln und Kurzregeln – „🖨️ Drucken" erzeugt ein sauberes Blatt ohne Menü und Tabs.
+          Alle Griffe und Kurzregeln auf einer A4-Seite – zum Ausdrucken und neben den Notenständer
+          legen. „🖨️ Drucken" erzeugt ein sauberes Blatt ohne Menü und Tabs.
         </p>
       </div>
       <div className="filter-row no-print" style={{ marginBottom: '0.9rem' }}>
@@ -102,6 +119,8 @@ export default function Hilfsmittel() {
 const HM_CSS = `
 .hm-page{margin:0 0 1.2rem}
 .hm-page-head{margin:0 0 .5rem;font-size:.8rem;font-weight:600;color:var(--text2)}
+.hm-griffe{margin-bottom:.7rem}
+.hm-griffe-raster{display:flex;flex-wrap:wrap;gap:.25rem .5rem;color:var(--text)}
 .hm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:.7rem}
 .hm-box{border:1px solid var(--border2,var(--border));border-radius:8px;background:var(--bg2);padding:.55rem .7rem;break-inside:avoid}
 .hm-box h4{margin:0 0 .35rem;font-size:.85rem;color:var(--text)}
@@ -122,6 +141,8 @@ const HM_CSS = `
   .hm-label{background:#eee;color:#333}
   .hm-code{color:#000}
   .hm-page-head{color:#333}
+  .hm-griffe-raster{color:#000}
+  .hm-griffe-raster svg{width:62px}
 }
 `
 
