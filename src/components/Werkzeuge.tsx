@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { ORIGINAL_BPM, UEBE_BPM } from '../data/song'
 
 // Werkzeuge-Tab (ersetzt „Moodle" der Vorlesungs-Lernseiten):
 //   • Metronom mit Schlagmuster-Anzeige und Swing (Web Audio, präzises Scheduling)
@@ -20,7 +21,7 @@ interface Muster {
 const MUSTER: Muster[] = [
   { id: 'viertel', name: 'Viertel', slots: ['D', '', 'D', '', 'D', '', 'D', ''] },
   { id: 'achtel', name: 'Achtel', slots: ['D', 'U', 'D', 'U', 'D', 'U', 'D', 'U'] },
-  { id: 'standard', name: 'Standard (Pop)', slots: ['D', '', 'D', 'U', '', 'U', 'D', 'U'] },
+  { id: 'standard', name: 'Song-Muster', slots: ['D', '', 'D', 'U', '', 'U', 'D', 'U'] },
   { id: 'boom-chuck', name: 'Boom-Chuck', slots: ['B', '', 'D', '', 'B', '', 'D', 'U'] },
 ]
 
@@ -164,6 +165,14 @@ function Metronom({ bpm, setBpm }: { bpm: number; setBpm: (n: number) => void })
         onChange={e => setBpm(Number(e.target.value))}
         aria-label="Tempo in BPM"
       />
+      <div className="filter-row">
+        <button type="button" className={`filter-btn${bpm === UEBE_BPM ? ' on' : ''}`} onClick={() => setBpm(UEBE_BPM)}>
+          Übetempo {UEBE_BPM}
+        </button>
+        <button type="button" className={`filter-btn${bpm === ORIGINAL_BPM ? ' on' : ''}`} onClick={() => setBpm(ORIGINAL_BPM)}>
+          Go K.K. Rider {ORIGINAL_BPM}
+        </button>
+      </div>
 
       <div className="filter-row">
         {MUSTER.map(m => (
@@ -303,7 +312,7 @@ function Stimmtoene() {
 }
 
 export default function Werkzeuge() {
-  const [bpm, setBpm] = useState(70)
+  const [bpm, setBpm] = useState(UEBE_BPM)
   return (
     <div>
       <div className="section-header">

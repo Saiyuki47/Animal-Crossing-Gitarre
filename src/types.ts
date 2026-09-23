@@ -29,9 +29,11 @@ export interface Uebungsblatt {
   id: string
   nr: string
   titel: string
-  typ: 'Grundlagen' | 'Technik' | 'Rhythmus' | 'Song'
+  typ: 'Grundlagen' | 'Technik' | 'Rhythmus' | 'Song' | 'Bonus'
   /** Grobe Übezeit pro Tag, z.B. „10–15 Min.". */
   dauer?: string
   beschreibung?: string
+  /** Optionaler externer Link, z.B. zum Akkordblatt. */
+  link?: { text: string; url: string }
   aufgaben: UebungsblattAufgabe[]
 }

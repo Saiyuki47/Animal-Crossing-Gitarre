@@ -74,6 +74,15 @@ export const begriffGruppen: BegriffGruppe[] = [
         definition: 'Finger, der bei einem Akkordwechsel an derselben Stelle liegen bleibt, weil er in beiden Griffen gleich ist.',
       },
       {
+        begriff: 'Barré-Form',
+        definition: 'Ein offener Griff (E, Em, A, Am), den man mit dem Zeigefinger als Barré den Hals hinaufschiebt. Die Form bestimmt Dur/Moll, der Bund den Grundton.',
+        merke: 'Em-Form im 4. Bund = G♯m.',
+      },
+      {
+        begriff: 'Halbton',
+        definition: 'Kleinster Tonschritt auf der Gitarre – genau ein Bund. Zwölf Halbtöne ergeben eine Oktave.',
+      },
+      {
         begriff: 'Griffbild',
         definition: 'Diagramm, das zeigt, welche Saite in welchem Bund mit welchem Finger gegriffen wird.',
       },
@@ -139,6 +148,15 @@ export const begriffGruppen: BegriffGruppe[] = [
       {
         begriff: 'Transponieren',
         definition: 'Einen Song in eine andere Tonart verschieben – alle Akkorde wandern um dieselbe Anzahl Halbtöne.',
+      },
+      {
+        begriff: 'Tonartwechsel (Modulation)',
+        definition: 'Der Song wechselt mitten drin in eine andere Tonart. Bei Go K.K. Rider geht es gegen Ende einen Halbton höher (G♯-Moll → A-Moll).',
+        merke: 'Mit Kapo: einen Bund höher setzen, gleiche Griffe.',
+      },
+      {
+        begriff: 'Andalusische Kadenz',
+        definition: 'Absteigende Akkordfolge Moll – eine Stufe tiefer – noch eine tiefer – Dur/Sept, z.B. Em – D – C – B7. Bildet das Intro von Go K.K. Rider.',
       },
     ],
   },

@@ -43,7 +43,7 @@ export default function Uebungsblaetter() {
     <div>
       <div className="section-header">
         <h2>Lernschritte</h2>
-        <p>In fünf Schritten vom Stimmen bis zu Go K.K. Rider. Hak ab, was sitzt – dein Fortschritt wird gespeichert.</p>
+        <p>In fünf Schritten mit Kapodaster vom Stimmen bis zu Go K.K. Rider – plus ein Bonus-Schritt für die Original-Griffe. Hak ab, was sitzt – dein Fortschritt wird gespeichert.</p>
       </div>
 
       {uebungsblaetter.length > 1 && (
@@ -70,6 +70,13 @@ export default function Uebungsblaetter() {
             </div>
             <h3 className="ub-title">Schritt {blatt.nr}: {blatt.titel}</h3>
             {blatt.beschreibung && <p className="ub-desc">{blatt.beschreibung}</p>}
+            {blatt.link && (
+              <p style={{ marginTop: '0.6rem' }}>
+                <a className="filter-btn" href={blatt.link.url} target="_blank" rel="noopener noreferrer">
+                  {blatt.link.text} ↗
+                </a>
+              </p>
+            )}
             {taskKeys.length > 0 && (
               <>
                 <div className="progress-wrap" style={{ marginTop: '0.75rem' }}>

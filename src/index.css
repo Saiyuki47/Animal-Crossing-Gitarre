@@ -259,3 +259,11 @@
   .wz-slot-symbol { font-size: 15px; }
   .wz-bpm-zahl { font-size: 28px; }
 }
+
+/* REFERENZ-TABELLEN */
+.ref-tabelle { border-collapse: collapse; font-size: 14px; color: var(--text); min-width: 220px; }
+.ref-tabelle th, .ref-tabelle td { text-align: left; padding: .4rem .75rem .4rem 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+.ref-tabelle th { font-size: 12px; font-weight: 600; color: var(--text2); }
+.ref-hinweis { display: block; font-size: 12px; color: var(--text2); margin-top: 2px; }
+.ref-tabellen-reihe { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+.griffbild-bundnr { font: 600 9px var(--font-sans); fill: var(--text2); }
