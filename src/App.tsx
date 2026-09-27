@@ -55,7 +55,7 @@ function App() {
 
   return (
     <>
-      <Header logo={<>KK<span>.</span>Gitarre</>} subtitle="Go K.K. Rider auf der Akustikgitarre lernen" theme={theme} onToggleTheme={toggle} />
+      <Header logo={<>KK<span>.</span>Gitarre</>} subtitle="Go K.K. Rider auf der Akustikgitarre lernen" current="gitarre" theme={theme} onToggleTheme={toggle} />
       <div className="container">
         <Tabs tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
         <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '0.75rem' }}>
