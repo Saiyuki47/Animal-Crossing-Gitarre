@@ -170,10 +170,10 @@ export const aufgaben: Aufgabe[] = [
   // ── Schritt 5: Go K.K. Rider mit Kapo ───────────────────────────────────
   {
     id: 'song-blatt',
-    titel: 'Akkordblatt in Kapo-Griffe übersetzen',
-    aufgabeText: 'Öffne das Akkordblatt (Link oben im Schritt) und schreib dir eine eigene Version mit den Kapo-Griffen: jeden Original-Akkord mit der Kapo-Tabelle übersetzen (G♯m → Em, F♯ → D, E → C, D♯7 → B7, B → G, A → F, C♯m → Am).',
-    tipp: 'Die Kapo-Tabelle steht auch unter „Griffe & Technik" und auf dem Spickzettel. Den Teil nach „UP HALF A STEP" übersetzt du mit der zweiten Tabelle (Kapo 5) – es kommen wieder dieselben Griffe heraus.',
-    loesung: 'Dein Blatt enthält nur noch Em, D, C, B7, G, F, Am (und einmal E7 am Schluss).',
+    titel: 'Das Songblatt kennenlernen',
+    aufgabeText: 'Öffne „🎵 Das ganze Lied" (letzter Knopf in der Schrittleiste). Dort steht der komplette Song Takt für Takt in Kapo-Griffen. Schalte einmal auf „Original" um und vergleiche ein paar Takte mit der Kapo-Tabelle (G♯m → Em, F♯ → D, E → C, D♯7 → B7, B → G, A → F, C♯m → Am).',
+    tipp: 'Unter jedem Kapo-Takt steht klein der Original-Akkord. Die Kapo-Tabelle findest du auch unter „Griffe & Technik" und auf dem Spickzettel. Nach dem Tonartwechsel gilt Kapo 5 – es kommen wieder dieselben Griffe heraus.',
+    loesung: 'Du verstehst, warum im Songblatt mit Kapo nur Em, D, C, B7, G, F, Am (und einmal E7) vorkommen: jeder Original-Akkord liegt 4 (bzw. nach dem Tonartwechsel 5) Halbtöne höher als der Griff.',
     schwierigkeit: 'einfach',
     kategorie: 'Song',
   },

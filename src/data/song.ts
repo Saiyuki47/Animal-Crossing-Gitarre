@@ -1,6 +1,6 @@
-// Eckdaten zu Go K.K. Rider (© Nintendo). Bewusst ohne komplette Akkordfolge:
-// Die Seite zeigt Aufbau, Tempo und welche Akkorde vorkommen – das vollständige
-// Akkordblatt liegt bei Ultimate Guitar (AKKORDBLATT_URL).
+// Eckdaten zu Go K.K. Rider (© Nintendo): Tempo, Aufbau, Kapo-Tabellen und die
+// Quelle der Akkorde (AKKORDBLATT_URL). Das komplette Songblatt Takt für Takt
+// steht in data/songblatt.ts.
 
 export const AKKORDBLATT_URL =
   'https://tabs.ultimate-guitar.com/tab/misc-computer-games/animal-crossing-go-kk-rider-chords-1452035'

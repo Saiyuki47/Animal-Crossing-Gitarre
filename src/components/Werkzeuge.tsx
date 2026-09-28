@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ORIGINAL_BPM, UEBE_BPM } from '../data/song'
+import { klick, starteTakt, useAudioContext } from '../lib/takt'
 import Stimmgeraet from './Stimmgeraet'
 
 // Werkzeuge-Tab (ersetzt „Moodle" der Vorlesungs-Lernseiten):
@@ -41,46 +42,6 @@ const SAITEN = [
 
 const MIN_BPM = 40
 const MAX_BPM = 220
-
-function useAudioContext() {
-  const ref = useRef<AudioContext | null>(null)
-  const get = useCallback(() => {
-    if (!ref.current) ref.current = new AudioContext()
-    if (ref.current.state === 'suspended') void ref.current.resume()
-    return ref.current
-  }, [])
-  useEffect(() => () => void ref.current?.close(), [])
-  return get
-}
-
-function klick(ctx: AudioContext, zeit: number, frequenz: number, lautstaerke: number) {
-  const osc = ctx.createOscillator()
-  const gain = ctx.createGain()
-  osc.frequency.value = frequenz
-  gain.gain.setValueAtTime(lautstaerke, zeit)
-  gain.gain.exponentialRampToValueAtTime(0.0001, zeit + 0.05)
-  osc.connect(gain).connect(ctx.destination)
-  osc.start(zeit)
-  osc.stop(zeit + 0.06)
-}
-
-// Ruft `fn` alle 25 ms auf. Läuft über einen kleinen Inline-Worker, weil Browser
-// setInterval in Hintergrund-Tabs auf ≥ 1 s drosseln – dann würde das Metronom
-// stottern. Fallback auf setInterval, falls Worker nicht verfügbar sind.
-function starteTakt(fn: () => void): () => void {
-  try {
-    const url = URL.createObjectURL(new Blob(['setInterval(() => postMessage(0), 25)'], { type: 'text/javascript' }))
-    const worker = new Worker(url)
-    worker.onmessage = fn
-    return () => {
-      worker.terminate()
-      URL.revokeObjectURL(url)
-    }
-  } catch {
-    const id = window.setInterval(fn, 25)
-    return () => window.clearInterval(id)
-  }
-}
 
 function Metronom({ bpm, setBpm }: { bpm: number; setBpm: (n: number) => void }) {
   const getCtx = useAudioContext()

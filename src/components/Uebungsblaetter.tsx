@@ -1,14 +1,18 @@
-import { useState, type CSSProperties } from 'react'
-import { useDoneTracker, useTaskDeepLink, getHashDetail } from 'lernseiten-ui'
+import { lazy, Suspense, useState, type CSSProperties } from 'react'
+import { useDoneTracker, useTaskDeepLink, getHashDetail, setHashDetail } from 'lernseiten-ui'
 import { uebungsblaetter } from '../data/uebungsblaetter'
 import { aufgaben } from '../data/aufgaben'
 import { akkordNach } from '../data/akkorde'
 import Griffbild from './Griffbild'
 
+const Songblatt = lazy(() => import('./Songblatt'))
+/** Pseudo-Blatt-ID für „Das ganze Lied" (Deep-Link #uebung/lied). */
+const LIED = 'lied'
+
 export default function Uebungsblaetter() {
   const [selectedId, setSelectedId] = useState(() => {
     const b = getHashDetail().blatt
-    return b && uebungsblaetter.some(x => x.id === b) ? b : (uebungsblaetter[0]?.id ?? '')
+    return b && (b === LIED || uebungsblaetter.some(x => x.id === b)) ? b : (uebungsblaetter[0]?.id ?? '')
   })
   const [openIds, setOpenIds] = useState<Set<string>>(new Set())
   const [openTipps, setOpenTipps] = useState<Set<string>>(new Set())
@@ -16,6 +20,11 @@ export default function Uebungsblaetter() {
   const listRef = useTaskDeepLink<HTMLDivElement>(selectedId)
 
   const blatt = uebungsblaetter.find(b => b.id === selectedId)
+
+  const waehle = (id: string) => {
+    setSelectedId(id)
+    setHashDetail(id)
+  }
 
   const toggleTipp = (key: string) => {
     setOpenTipps(prev => {
@@ -53,12 +62,21 @@ export default function Uebungsblaetter() {
               type="button"
               key={b.id}
               className={`filter-btn${selectedId === b.id ? ' on' : ''}`}
-              onClick={() => setSelectedId(b.id)}
+              onClick={() => waehle(b.id)}
             >
               {b.nr}. {b.titel}
             </button>
           ))}
+          <button type="button" className={`filter-btn sb-lied-btn${selectedId === LIED ? ' on' : ''}`} onClick={() => waehle(LIED)}>
+            🎵 Das ganze Lied
+          </button>
         </div>
+      )}
+
+      {selectedId === LIED && (
+        <Suspense fallback={<div className="card"><p className="quiz-hint">Lädt …</p></div>}>
+          <Songblatt />
+        </Suspense>
       )}
 
       {blatt && (

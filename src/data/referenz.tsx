@@ -95,7 +95,8 @@ ${AUFBAU.map(a => `${a.name}${a.takte ? ` (${a.takte} Takte)` : ''}: ${a.griffe.
           </tbody>
         </table>
         <p className="ref-absatz" style={{ marginTop: '0.75rem' }}>
-          Die genaue Akkordfolge steht im{' '}
+          Das komplette Lied Takt für Takt – mit Kapo-Griffen, Tipps und Mitspiel-Modus – steht unter{' '}
+          <a href="#uebung/lied">Lernschritte → 🎵 Das ganze Lied</a>. Quelle der Akkorde:{' '}
           <a href={AKKORDBLATT_URL} target="_blank" rel="noopener noreferrer">
             Akkordblatt bei Ultimate Guitar ↗
           </a>

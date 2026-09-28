@@ -70,7 +70,7 @@ export const uebungsblaetter: Uebungsblatt[] = [
     beschreibung: 'Jetzt kommt alles zusammen: Akkordblatt in Kapo-Griffe übersetzen, Aufbau mitzählen, abschnittweise üben, Tonartwechsel meistern und zum Original mitspielen.',
     link: { text: '🎼 Akkordblatt bei Ultimate Guitar öffnen', url: AKKORDBLATT_URL },
     aufgaben: [
-      { nr: 1, text: 'Übersetze das Akkordblatt in Kapo-Griffe.', aufgabeId: 'song-blatt' },
+      { nr: 1, text: 'Lerne das Songblatt „🎵 Das ganze Lied" kennen.', aufgabeId: 'song-blatt' },
       { nr: 2, text: 'Prüfe den Aufbau und zähl die Takte mit.', aufgabeId: 'song-aufbau' },
       { nr: 3, text: 'Übe Intro, Strophe und Refrain einzeln.', aufgabeId: 'song-abschnitte' },
       { nr: 4, text: 'Übe die Übergänge und die Bridge.', aufgabeId: 'song-uebergaenge' },

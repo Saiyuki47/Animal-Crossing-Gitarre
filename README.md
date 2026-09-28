@@ -2,13 +2,13 @@
 
 Interaktive Lernseite, um **„Go K.K. Rider"** aus Animal Crossing auf der Akustikgitarre zu lernen: mit Kapodaster im 4. Bund in fünf Lernschritten vom Stimmen bis zum Mitspielen, plus Bonus-Schritt mit den Barré-Griffen des Originals. Erstellt aus dem [`lernseite-template`](https://github.com/Saiyuki47/lernseite-template); Aufbau und Styling sind identisch zu den übrigen Lernseiten.
 
-> Das Lied ist urheberrechtlich geschützt (© Nintendo). Die Seite zeigt Aufbau, Tempo und die vorkommenden Akkorde, aber nicht die komplette Akkordfolge – dafür verlinkt sie das [Akkordblatt bei Ultimate Guitar](https://tabs.ultimate-guitar.com/tab/misc-computer-games/animal-crossing-go-kk-rider-chords-1452035).
+> Song © Nintendo. Die Akkorde im Songblatt („🎵 Das ganze Lied") stammen aus der Transkription von „HerNameIsRain" auf [Ultimate Guitar](https://tabs.ultimate-guitar.com/tab/misc-computer-games/animal-crossing-go-kk-rider-chords-1452035); Taktaufteilung, Kapo-Griffe und Tipps sind von dieser Lernseite. Keine Melodie-Noten, kein Text.
 
 ## Tabs
 
 | Tab | Inhalt |
 |-----|--------|
-| **Lernschritte** | 5 Schritte mit Kapo (Vorbereitung → Song-Akkorde → Akkordwechsel aus dem Song → Rhythmus → Song) + Bonus-Schritt Barré, mit Übungen, Tipps, Griffbildern und „Woran merke ich, dass es sitzt?" – Fortschritt wird gespeichert |
+| **Lernschritte** | 5 Schritte mit Kapo (Vorbereitung → Song-Akkorde → Akkordwechsel aus dem Song → Rhythmus → Song) + Bonus-Schritt Barré + **🎵 Das ganze Lied** (komplettes Songblatt Takt für Takt, Kapo/Original umschaltbar, Tipps je Abschnitt, Mitspiel-Modus mit Einzählen und mitlaufendem Takt), mit Übungen, Tipps, Griffbildern und „Woran merke ich, dass es sitzt?" – Fortschritt wird gespeichert |
 | **Griffe & Technik** | Untertab **🎸 Griffe & Technik** (Songüberblick, Kapo-Tabelle, Song-Griffe, Barré-Griffe, Schlagmuster, Übe-Tipps) und **🧠 Begriffe lernen** (Glossar mit Lernmodus) |
 | **Spickzettel** | Druckbar: Seite 1 Song mit Kapo, Seite 2 Barré-Bonus |
 | **Werkzeuge** | Metronom mit mitlaufender Schlagmuster-Anzeige und Swing, „Tempo tippen" zum BPM-Bestimmen, Stimmgerät über das Mikrofon (erkennt die Saite, zeigt die Abweichung in Cent), Stimmtöne pro Saite |
@@ -29,6 +29,7 @@ npm run dev
 | Datei | Inhalt |
 |-------|--------|
 | `src/data/akkorde.ts` | Griffe (Bund + Finger pro Saite, tiefes E → hohes e, optional `startBund` und `barre`) – daraus entstehen alle Griffbilder |
+| `src/data/songblatt.ts` | Das komplette Lied: Abschnitte mit Takten (Original-Akkorde), Tipps je Abschnitt; Kapo-Griffe werden berechnet |
 | `src/data/song.ts` | Songdaten: Tempo, Aufbau, Kapo-Tabellen, Link zum Akkordblatt |
 | `src/data/uebungsblaetter.ts` | Die Lernschritte; verweisen per `aufgabeId` auf Übungen |
 | `src/data/aufgaben.ts` | Übungen mit Text, Tipp, Ziel (`loesung`) und optionalen `akkorde` für Griffbilder |

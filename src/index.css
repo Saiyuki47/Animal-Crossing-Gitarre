@@ -287,3 +287,33 @@
 .sg-details { font: 12px var(--font-mono); color: var(--text2); margin: .25rem 0 0; }
 .sg-fehler { border-left-color: var(--red); }
 .wz-start:disabled { opacity: .6; cursor: wait; }
+
+/* SONGBLATT („Das ganze Lied") */
+.sb-lied-btn { border-color: var(--amber); color: var(--amber); }
+.sb-lied-btn.on { background: var(--amber-dim); color: var(--amber); border-color: var(--amber); }
+.sb-steuerung { position: relative; }
+.sb-kopf { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-bottom: .6rem; }
+.sb-titel { font-size: 17px; font-weight: 600; color: var(--text); margin: 0 .25rem 0 0; }
+.sb-option { display: inline-flex; align-items: center; gap: .4rem; font-size: 14px; color: var(--text2); margin: .25rem 0 .75rem; cursor: pointer; }
+.sb-status { min-height: 1.5em; font-size: 14px; color: var(--text2); margin-bottom: .6rem; }
+.sb-status b { color: var(--text); }
+.sb-link { background: none; border: none; padding: 0; color: var(--blue); cursor: pointer; font: inherit; text-decoration: underline; }
+.sb-vorher { margin: 0 0 .75rem; padding: .6rem .8rem; border-radius: var(--radius); background: var(--amber-dim); color: var(--amber); font-weight: 600; font-size: 14px; }
+.sb-unsicher { font-size: 13px; color: var(--text2); margin: .5rem 0 0; }
+.sb-takte { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: .5rem; }
+.sb-takt { position: relative; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: .55rem .25rem .4rem; border-radius: var(--radius); border: 1px solid var(--border2); background: var(--bg3); color: var(--text); cursor: pointer; font: inherit; transition: background .08s, border-color .08s, transform .08s; }
+.sb-takt:hover { border-color: var(--blue); }
+.sb-takt.start { border-color: var(--blue); border-style: dashed; }
+.sb-takt.aktiv { background: var(--blue-dim); border-color: var(--blue); transform: scale(1.04); }
+.sb-taktnr { position: absolute; top: 3px; left: 6px; font: 500 10px var(--font-mono); color: var(--text3); }
+.sb-akkorde { display: flex; gap: .6rem; justify-content: center; }
+.sb-akkord { font: 700 18px var(--font-sans); }
+.sb-akkorde .sb-akkord + .sb-akkord { padding-left: .6rem; border-left: 1px solid var(--border2); }
+.sb-original { font: 500 10px var(--font-mono); color: var(--text3); }
+.sb-schlaege { display: flex; gap: 4px; margin-top: 2px; }
+.sb-schlaege i { width: 6px; height: 6px; border-radius: 50%; background: var(--border2); }
+.sb-schlaege i.an { background: var(--blue); }
+.sb-quelle { font-size: 12px; color: var(--text3); text-align: center; margin: .5rem 0 1rem; }
+@media (max-width: 520px) {
+  .sb-takte { grid-template-columns: repeat(2, 1fr); }
+}
