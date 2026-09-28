@@ -10,7 +10,7 @@ export const aufgaben: Aufgabe[] = [
     id: 'stimmen',
     titel: 'Gitarre stimmen',
     aufgabeText: 'Stimme alle sechs Saiten auf E – A – D – G – H – e (von der dicksten zur dünnsten Saite) – ohne Kapodaster.',
-    tipp: 'Im Tab „Werkzeuge" gibt es Referenztöne zum Vergleichen. Eine Stimm-App oder ein Clip-Stimmgerät ist genauer. Immer von unten an den Ton heranstimmen.',
+    tipp: 'Im Tab „Werkzeuge" gibt es ein Stimmgerät über das Mikrofon (erkennt die Saite automatisch) und Referenztöne zum Vergleichen nach Gehör. Immer von unten an den Ton heranstimmen – dann hält die Saite die Stimmung besser.',
     loesung: 'Jede Saite trifft ihren Ton (Stimmgerät zeigt mittig / keine Schwebung mehr zum Referenzton).\nMerksatz: „Eine Alte Dame Geht Heute Einkaufen".',
     schwierigkeit: 'einfach',
     kategorie: 'Vorbereitung',

@@ -49,8 +49,9 @@ export const searchIndex: SearchItem[] = [
   ...[
     { label: 'Metronom', snippet: 'Metronom mit Schlagmuster-Anzeige und Swing' },
     { label: 'Tempo tippen', snippet: 'BPM eines Songs beim Hören bestimmen' },
+    { label: 'Stimmgerät', snippet: 'Gitarre über das Mikrofon stimmen – mit Nadel und Cent-Anzeige' },
     { label: 'Stimmtöne', snippet: 'Referenzton pro Saite zum Stimmen nach Gehör' },
-  ].map(w => ({ ...w, tab: 'werkzeuge', keywords: 'werkzeuge bpm stimmen tuner' })),
+  ].map(w => ({ ...w, tab: 'werkzeuge', keywords: 'werkzeuge bpm stimmen tuner stimmgerät mikrofon' })),
   ...quizFragen.map(q => ({
     label: q.frage,
     snippet: 'Quizfrage',

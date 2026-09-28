@@ -11,7 +11,7 @@ Interaktive Lernseite, um **„Go K.K. Rider"** aus Animal Crossing auf der Akus
 | **Lernschritte** | 5 Schritte mit Kapo (Vorbereitung → Song-Akkorde → Akkordwechsel aus dem Song → Rhythmus → Song) + Bonus-Schritt Barré, mit Übungen, Tipps, Griffbildern und „Woran merke ich, dass es sitzt?" – Fortschritt wird gespeichert |
 | **Griffe & Technik** | Untertab **🎸 Griffe & Technik** (Songüberblick, Kapo-Tabelle, Song-Griffe, Barré-Griffe, Schlagmuster, Übe-Tipps) und **🧠 Begriffe lernen** (Glossar mit Lernmodus) |
 | **Spickzettel** | Druckbar: Seite 1 Song mit Kapo, Seite 2 Barré-Bonus |
-| **Werkzeuge** | Metronom mit mitlaufender Schlagmuster-Anzeige und Swing, „Tempo tippen" zum BPM-Bestimmen, Stimmtöne pro Saite |
+| **Werkzeuge** | Metronom mit mitlaufender Schlagmuster-Anzeige und Swing, „Tempo tippen" zum BPM-Bestimmen, Stimmgerät über das Mikrofon (erkennt die Saite, zeigt die Abweichung in Cent), Stimmtöne pro Saite |
 | **Karteikarten** | Spaced Repetition (SM-2), automatisch aus Übungen + Quiz abgeleitet |
 | **Quiz** | 16 Fragen in 7 Fragetypen, filterbar nach Lernschritt |
 
@@ -52,5 +52,5 @@ Karteikarten (`data/karteikarten.ts`) und Suchindex (`data/searchIndex.ts`) baue
 ## Tech Stack
 
 - [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/), [Vite](https://vite.dev/)
-- Web Audio API für Metronom und Stimmtöne (keine Audio-Dateien nötig)
+- Web Audio API für Metronom, Stimmgerät (Tonhöhen-Erkennung per YIN-Verfahren in `src/lib/tonhoehe.ts`, läuft komplett lokal) und Stimmtöne
 - gemeinsame UI/Logik aus [`lernseiten-ui`](https://github.com/Saiyuki47/lernseiten-ui)

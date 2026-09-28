@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { ORIGINAL_BPM, UEBE_BPM } from '../data/song'
+import Stimmgeraet from './Stimmgeraet'
 
 // Werkzeuge-Tab (ersetzt „Moodle" der Vorlesungs-Lernseiten):
 //   • Metronom mit Schlagmuster-Anzeige und Swing (Web Audio, präzises Scheduling)
 //   • Tempo tippen – BPM eines Songs beim Hören bestimmen
+//   • Stimmgerät – Tonhöhe über das Mikrofon (components/Stimmgeraet.tsx)
 //   • Stimmtöne – Referenzton pro Saite zum Stimmen nach Gehör
 //
 // Das Metronom plant Klicks mit ~100 ms Vorlauf direkt in der AudioContext-Zeit
@@ -292,7 +294,7 @@ function Stimmtoene() {
 
   return (
     <div className="card">
-      <h3 className="wz-titel">🎵 Stimmtöne</h3>
+      <h3 className="wz-titel">🎵 Stimmtöne (ohne Mikrofon)</h3>
       <p className="ub-desc">
         Tipp auf eine Saite, schlag dieselbe Saite auf der Gitarre an und dreh am Wirbel, bis kein
         „Wabern" (Schwebung) mehr zu hören ist. Für mehr Genauigkeit: Stimmgerät oder Stimm-App.
@@ -321,6 +323,7 @@ export default function Werkzeuge() {
       </div>
       <Metronom bpm={bpm} setBpm={setBpm} />
       <TempoTippen onUebernehmen={setBpm} />
+      <Stimmgeraet />
       <Stimmtoene />
     </div>
   )

@@ -267,3 +267,23 @@
 .ref-hinweis { display: block; font-size: 12px; color: var(--text2); margin-top: 2px; }
 .ref-tabellen-reihe { display: flex; flex-wrap: wrap; gap: 1.5rem; }
 .griffbild-bundnr { font: 600 9px var(--font-sans); fill: var(--text2); }
+
+/* STIMMGERÄT */
+.sg-anzeige { display: flex; flex-direction: column; align-items: center; margin: 1rem 0; padding: 1rem; border-radius: var(--radius-lg); background: var(--bg3); border: 1px solid var(--border); transition: border-color .2s, background .2s; }
+.sg-anzeige.gestimmt { border-color: var(--green); background: var(--green-dim); }
+.sg-note { font: 700 44px var(--font-sans); color: var(--text); line-height: 1.1; display: flex; flex-direction: column; align-items: center; }
+.sg-saite { font: 500 12px var(--font-sans); color: var(--text2); min-height: 1.2em; }
+.sg-skala { width: 100%; max-width: 320px; margin-top: .5rem; }
+.sg-bogen { stroke: var(--border2); }
+.sg-bogen-ok { stroke: var(--green); }
+.sg-marke { font: 500 8px var(--font-mono); fill: var(--text3); }
+.sg-nadel { stroke: var(--amber); }
+.sg-nadel.leer { stroke: var(--text3); }
+.gestimmt .sg-nadel { stroke: var(--green); }
+.sg-nadel-gruppe { transition: transform .12s ease-out; }
+.sg-achse { fill: var(--text); }
+.sg-hinweis { font-size: 16px; font-weight: 600; color: var(--text); margin: .25rem 0 0; text-align: center; }
+.gestimmt .sg-hinweis { color: var(--green); }
+.sg-details { font: 12px var(--font-mono); color: var(--text2); margin: .25rem 0 0; }
+.sg-fehler { border-left-color: var(--red); }
+.wz-start:disabled { opacity: .6; cursor: wait; }
