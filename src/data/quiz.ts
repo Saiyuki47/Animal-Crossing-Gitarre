@@ -135,7 +135,7 @@ export const quizFragen: QuizFrage[] = [
     aussagen: [
       { text: 'Bei einem Luftschlag bewegt sich die Schlaghand weiter, trifft aber die Saiten nicht.', wahr: true },
       { text: 'Bei geswingten Achteln sind beide Achtel gleich lang.', wahr: false, warum: 'Beim Swing ist die erste Achtel lang, die zweite kurz (ca. 2 : 1).' },
-      { text: 'Go K.K. Rider läuft mit 120 BPM – das sind zwei Schläge pro Sekunde.', wahr: true },
+      { text: 'Bei 120 BPM kommen zwei Schläge pro Sekunde.', wahr: true },
       { text: 'Der Song steht im 3/4-Takt.', wahr: false, warum: 'Es ist ein 4/4-Takt: „1 2 3 4".' },
     ],
     erklaerung: 'Luftschläge halten das Pendel im Takt, Swing ist „lang-kurz", 120 BPM = 2 Schläge/Sekunde, 4/4-Takt.',
@@ -145,11 +145,11 @@ export const quizFragen: QuizFrage[] = [
   // ── Schritt 5: Song ─────────────────────────────────────────────────────
   {
     art: 'eingabe',
-    frage: 'Das Originaltempo ist 120 BPM. Mit welchem Tempo beginnst du nach der 60-%-Regel?',
-    loesungen: ['72'],
+    frage: 'Das Originaltempo liegt bei etwa 150 BPM. Welches Tempo sind 60 % davon?',
+    loesungen: ['90'],
     toleranz: 2,
     platzhalter: 'BPM',
-    erklaerung: '120 × 0,6 = 72 BPM (die Seite schlägt gerundet 70 vor). Klappt es 3× fehlerfrei, steigerst du um 5 BPM.',
+    erklaerung: '150 × 0,6 = 90 BPM. Ganz am Anfang darfst du noch langsamer starten (die Seite schlägt 70 vor); klappt es 3× fehlerfrei, steigerst du um 5 BPM.',
     quelle: 'Schritt 5: Song',
   },
   {
@@ -162,7 +162,7 @@ export const quizFragen: QuizFrage[] = [
       { text: 'Nichts – der Kapo gleicht das automatisch aus', warumFalsch: 'Der Kapo sitzt fest; höher klingt es nur, wenn er einen Bund weiter wandert.' },
     ],
     richtige: 0,
-    erklaerung: 'Ein Bund = ein Halbton. Kapo 5 + dieselben Griffe = alles einen Halbton höher. Im letzten Refrain kommt einmal E7 dazu.',
+    erklaerung: 'Ein Bund = ein Halbton. Kapo 5 + dieselben Griffe = alles einen Halbton höher.',
     quelle: 'Schritt 5: Song',
   },
   {
@@ -174,7 +174,7 @@ export const quizFragen: QuizFrage[] = [
       'Intro, Strophe und Refrain einzeln bei 70 BPM üben',
       'Übergänge und Bridge üben',
       'Tonartwechsel (Kapo 4 → 5) üben',
-      'Mit 120 BPM zum Original mitspielen',
+      'Mit ca. 150 BPM zum Original mitspielen',
     ],
     erklaerung: 'Erst verstehen (Blatt, Aufbau), dann in kleinen Teilen üben, dann zusammensetzen und zum Schluss das Tempo steigern.',
     quelle: 'Schritt 5: Song',

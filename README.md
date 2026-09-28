@@ -3,6 +3,8 @@
 Interaktive Lernseite, um **„Go K.K. Rider"** aus Animal Crossing auf der Akustikgitarre zu lernen: mit Kapodaster im 4. Bund in fünf Lernschritten vom Stimmen bis zum Mitspielen, plus Bonus-Schritt mit den Barré-Griffen des Originals. Erstellt aus dem [`lernseite-template`](https://github.com/Saiyuki47/lernseite-template); Aufbau und Styling sind identisch zu den übrigen Lernseiten.
 
 > Song © Nintendo. Die Akkorde im Songblatt („🎵 Das ganze Lied") stammen aus der Transkription von „HerNameIsRain" auf [Ultimate Guitar](https://tabs.ultimate-guitar.com/tab/misc-computer-games/animal-crossing-go-kk-rider-chords-1452035); Taktaufteilung, Kapo-Griffe und Tipps sind von dieser Lernseite. Keine Melodie-Noten, kein Text.
+>
+> Abgleich mit weiteren Quellen: Die Akkordfolge der Strophe bestätigt [Hooktheory](https://www.hooktheory.com/theorytab/view/kazumi-totaka/go-kk-rider) (i–VII–VI–VII–III). Refrain-Takt 5 (G♯m → G♯7) ist nach [Gametabs](https://gametabs.net/tabs/animal-crossing/go-kk-rider) und [Ukulele-Tabs](https://www.ukulele-tabs.com/uke-songs/animal-crossing/go-kk-rider-uke-tab-34542.html) ergänzt. Tempo ca. 150 BPM (Hooktheory: 152). Die Tonart ist je nach Aufnahme G♯-Moll (Kapo 4) oder F-Moll (Kapo 1) – die Griffe bleiben gleich.
 
 ## Tabs
 

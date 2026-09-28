@@ -33,10 +33,11 @@ export const akkorde: Akkord[] = [
   { id: 'Am', name: 'Am', gruppe: 'Kapo', bund: [null, 0, 2, 2, 1, 0], finger: [null, null, 2, 3, 1, null], tipp: 'Zeige- und Mittelfinger wie beim C – nur der Ringfinger wandert.' },
   { id: 'F-klein', name: 'F (klein)', gruppe: 'Kapo', bund: [null, null, 3, 2, 1, 1], finger: [null, null, 3, 2, 1, 1], barre: { bund: 1, von: 4, bis: 5 }, tipp: 'Mini-Barré: Der Zeigefinger drückt nur die zwei hohen Saiten. Nur die vier hohen Saiten anschlagen.' },
   { id: 'Fmaj7', name: 'Fmaj7', gruppe: 'Kapo', bund: [null, null, 3, 2, 1, 0], finger: [null, null, 3, 2, 1, null], tipp: 'Notlösung, solange das kleine F noch nicht klingt – hohe e-Saite bleibt offen.' },
-  { id: 'E7', name: 'E7', gruppe: 'Kapo', bund: [0, 2, 0, 1, 0, 0], finger: [null, 2, null, 1, null, null], tipp: 'Kommt nur im letzten Refrain nach dem Tonartwechsel vor.' },
+  { id: 'E7', name: 'E7', gruppe: 'Kapo', bund: [0, 2, 0, 1, 0, 0], finger: [null, 2, null, 1, null, null], tipp: 'Kommt in jedem Refrain einmal vor (Takt 5, nach Em) und führt nach Am.' },
 
   // ── Original ohne Kapodaster (Bonus: Barré) ─────────────────────────────
   { id: 'Gism', name: 'G♯m', gruppe: 'Barré', bund: [4, 6, 6, 4, 4, 4], finger: [1, 3, 4, 1, 1, 1], startBund: 4, barre: { bund: 4, von: 0, bis: 5 }, tipp: 'Em-Form: der Em-Griff mit Ring- und kleinem Finger, der Zeigefinger ersetzt den Sattel im 4. Bund.' },
+  { id: 'Gis7', name: 'G♯7', gruppe: 'Barré', bund: [4, 6, 4, 5, 4, 4], finger: [1, 3, 1, 2, 1, 1], startBund: 4, barre: { bund: 4, von: 0, bis: 5 }, tipp: 'E7-Form im 4. Bund – aus G♯m: kleinen Finger weg, Mittelfinger auf die G-Saite.' },
   { id: 'Fis', name: 'F♯', gruppe: 'Barré', bund: [2, 4, 4, 3, 2, 2], finger: [1, 3, 4, 2, 1, 1], startBund: 2, barre: { bund: 2, von: 0, bis: 5 }, tipp: 'E-Form im 2. Bund – gleiche Form wie F, nur einen Bund höher.' },
   { id: 'E', name: 'E', gruppe: 'Barré', bund: [0, 2, 2, 1, 0, 0], finger: [null, 2, 3, 1, null, null], tipp: 'Offener Griff – die Vorlage für alle E-Form-Barrés.' },
   { id: 'Dis7', name: 'D♯7', gruppe: 'Barré', bund: [null, null, 1, 3, 2, 3], finger: [null, null, 1, 3, 2, 4], tipp: 'Kein Barré, aber vier Finger: nur die vier hohen Saiten anschlagen.' },

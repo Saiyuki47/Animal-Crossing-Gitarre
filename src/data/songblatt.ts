@@ -24,7 +24,9 @@ export interface SongAbschnitt {
 
 const INTRO: Takt[] = [['G#m'], ['F#'], ['E'], ['D#7']]
 const STROPHE_1: Takt[] = [['G#m'], ['F#'], ['E', 'F#'], ['B'], ['A'], ['G#m'], ['C#m', 'D#7'], ['G#m']]
-const REFRAIN_1: Takt[] = [['F#', 'F#'], ['B', 'B'], ['C#m'], ['D#7'], ['G#m'], ['C#m'], ['F#', 'D#7'], ['G#m']]
+// Takt 5: G#m G#7 – fehlt im UG-Blatt in Teil 1, steht dort aber im höheren Refrain (Am A7)
+// und in zwei unabhängigen Transkriptionen (Gametabs, Ukulele-Tabs).
+const REFRAIN_1: Takt[] = [['F#', 'F#'], ['B', 'B'], ['C#m'], ['D#7'], ['G#m', 'G#7'], ['C#m'], ['F#', 'D#7'], ['G#m']]
 const STROPHE_2: Takt[] = [['Am'], ['G'], ['F', 'G'], ['C'], ['A#'], ['Am'], ['Dm', 'E7'], ['Am']]
 const REFRAIN_2: Takt[] = [['G', 'G'], ['C', 'C'], ['Dm'], ['E7'], ['Am', 'A7'], ['Dm'], ['G', 'E7'], ['Am']]
 
@@ -33,9 +35,11 @@ const TIPP_STROPHE_KAPO =
 const TIPP_STROPHE_ORIGINAL =
   'Barré-Marathon: G♯m (Em-Form, 4. Bund) → F♯ (E-Form, 2. Bund) – gleiche Handform, bei F♯ kommt nur der Mittelfinger auf der G-Saite dazu, und alles rutscht zwei Bünde tiefer. Bei B und C♯m die tiefe E-Saite abdämpfen.'
 const TIPP_REFRAIN_KAPO =
-  'Doppelte Akkorde (D D, G G) = ein Takt, auf der 3 kräftig neu anschlagen – das gibt dem Refrain Schwung. Takt 7: D (2 Schläge) → B7 (2 Schläge) → Em.'
+  'Doppelte Akkorde (D D, G G) = ein Takt, auf der 3 kräftig neu anschlagen – das gibt dem Refrain Schwung. Takt 5: Em → E7 (Mittelfinger bleibt, Ringfinger weg, Zeigefinger auf die G-Saite im 1. Bund) – E7 zieht nach Am. Takt 7: D → B7 → Em.'
 const TIPP_REFRAIN_ORIGINAL =
-  'F♯ und B liegen beide im 2. Bund (E-Form bzw. A-Form) – der Zeigefinger bleibt als Barré liegen, nur die anderen Finger wechseln.'
+  'F♯ und B liegen beide im 2. Bund (E-Form bzw. A-Form) – der Zeigefinger bleibt als Barré liegen. Takt 5: G♯m → G♯7 (E7-Form im 4. Bund): Barré bleibt, kleiner Finger weg von der D-Saite, Mittelfinger auf die G-Saite im 5. Bund.'
+const UNSICHER_REFRAIN =
+  'Takt 5 (Em → E7 bzw. G♯m → G♯7) ist gegenüber dem Ultimate-Guitar-Blatt ergänzt: Andere Transkriptionen und der höhere Refrain des Blatts selbst haben dort den Wechsel. Eine Transkription hat in Takt 2 G♯m statt B – im Zweifel nach Gehör entscheiden.'
 
 export const SONGBLATT: SongAbschnitt[] = [
   {
@@ -47,7 +51,7 @@ export const SONGBLATT: SongAbschnitt[] = [
     tippOriginal: 'G♯m – F♯ – E – D♯7: gleich zu Beginn zwei Barrés. E ist offen – kurze Erholung für den Zeigefinger.',
   },
   { id: 'strophe-1', name: 'Strophe', teil: 1, takte: STROPHE_1, tippKapo: TIPP_STROPHE_KAPO, tippOriginal: TIPP_STROPHE_ORIGINAL },
-  { id: 'refrain-1', name: 'Refrain', teil: 1, takte: REFRAIN_1, tippKapo: TIPP_REFRAIN_KAPO, tippOriginal: TIPP_REFRAIN_ORIGINAL },
+  { id: 'refrain-1', name: 'Refrain', teil: 1, takte: REFRAIN_1, tippKapo: TIPP_REFRAIN_KAPO, tippOriginal: TIPP_REFRAIN_ORIGINAL, unsicher: UNSICHER_REFRAIN },
   {
     id: 'zwischenspiel',
     name: 'Zwischenspiel',
@@ -89,7 +93,7 @@ export const SONGBLATT: SongAbschnitt[] = [
     name: 'Refrain (einen Halbton höher)',
     teil: 2,
     takte: REFRAIN_2,
-    tippKapo: 'Neu in Takt 5: Em (2 Schläge) → E7 (2 Schläge): Mittelfinger bleibt auf der A-Saite, Ringfinger weg von der D-Saite, Zeigefinger auf die G-Saite (1. Bund). Letzter Akkord Em: ausklingen lassen. 🎸',
+    tippKapo: 'Gleiche Griffe wie der erste Refrain, nur mit Kapo im 5. Bund. Letzter Akkord Em: ausklingen lassen. 🎸',
     tippOriginal: 'Takt 5: Am → A7 – G-Saite wird offen, die H-Saite rutscht in den 2. Bund. Letzter Akkord Am: ausklingen lassen. 🎸',
   },
 ]
@@ -121,7 +125,7 @@ export const anzeigeName = (akkord: string) => akkord.replace('#', '♯')
 
 /** Akkordname → Akkord-ID in data/akkorde.ts (für die Griffbilder). */
 const GRIFF_ID: Record<string, string> = {
-  'G#m': 'Gism', 'F#': 'Fis', 'D#7': 'Dis7', B: 'H', 'C#m': 'Cism', 'A#': 'Ais',
+  'G#m': 'Gism', 'G#7': 'Gis7', 'F#': 'Fis', 'D#7': 'Dis7', B: 'H', 'C#m': 'Cism', 'A#': 'Ais',
   F: 'F', Em: 'Em', D: 'D', C: 'C', B7: 'B7', G: 'G', Am: 'Am', E: 'E', A: 'A', Dm: 'Dm', E7: 'E7', A7: 'A7',
 }
 

@@ -5,7 +5,8 @@
 export const AKKORDBLATT_URL =
   'https://tabs.ultimate-guitar.com/tab/misc-computer-games/animal-crossing-go-kk-rider-chords-1452035'
 
-export const ORIGINAL_BPM = 120
+// Tempo laut Hooktheory-Analyse 152 BPM, Aufnahmen/Cover liegen bei 147–153 BPM.
+export const ORIGINAL_BPM = 150
 export const UEBE_BPM = 70
 
 /** Klingender Akkord (Original) → Griff mit Kapodaster. */
@@ -27,6 +28,7 @@ export const KAPO_4: KapoZeile[] = [
   { original: 'B (H)', griff: 'G', griffId: 'G', originalId: 'H' },
   { original: 'A', griff: 'F', griffId: 'F-klein', originalId: 'A' },
   { original: 'C♯m', griff: 'Am', griffId: 'Am', originalId: 'Cism' },
+  { original: 'G♯7', griff: 'E7', griffId: 'E7', originalId: 'Gis7' },
 ]
 
 /** Teil 2 nach dem Tonartwechsel (A-Moll): Kapo im 5. Bund – dieselben Griffe. */
@@ -52,11 +54,11 @@ export interface Abschnitt {
 export const AUFBAU: Abschnitt[] = [
   { name: 'Intro', takte: 4, griffe: ['Em', 'D', 'C', 'B7'], hinweis: 'Ein Akkord pro Takt. K.K. pfeift dazu.' },
   { name: 'Strophe', takte: 8, griffe: ['Em', 'D', 'C', 'G', 'F', 'Am', 'B7'], hinweis: 'Zwei Takte mit je zwei Akkorden (2 Schläge pro Akkord).' },
-  { name: 'Refrain', takte: 8, griffe: ['D', 'G', 'Am', 'B7', 'Em'], hinweis: 'Ein Takt mit zwei Akkorden (2 Schläge pro Akkord).' },
+  { name: 'Refrain', takte: 8, griffe: ['D', 'G', 'Am', 'B7', 'Em', 'E7'], hinweis: 'Zwei Takte mit je zwei Akkorden (Em–E7 und D–B7).' },
   { name: 'Zwischenspiel', takte: 4, griffe: ['Em', 'D', 'C', 'B7'], hinweis: 'Wie das Intro.' },
   { name: 'Strophe + Refrain', griffe: [], hinweis: 'Wiederholung.' },
   { name: 'Bridge', griffe: ['D', 'Am', 'B7'], hinweis: 'Kurzer Übergang – Länge beim Hören mitzählen.' },
   { name: 'Strophe (mit Pfeifen)', takte: 8, griffe: [], hinweis: 'Wie die Strophe.' },
   { name: 'Tonartwechsel ↑', griffe: [], hinweis: 'Kapo vom 4. in den 5. Bund versetzen – danach dieselben Griffe.' },
-  { name: 'Strophe + Refrain (höher)', griffe: ['Em', 'D', 'C', 'G', 'F', 'Am', 'B7', 'E7'], hinweis: 'Im letzten Refrain kommt einmal E7 dazu.' },
+  { name: 'Strophe + Refrain (höher)', griffe: ['Em', 'D', 'C', 'G', 'F', 'Am', 'B7', 'E7'], hinweis: 'Wie vorher – nur mit Kapo im 5. Bund.' },
 ]

@@ -63,15 +63,17 @@ export const referenzKarten: ReferenzKarte[] = [
   {
     id: 'song',
     titel: 'Go K.K. Rider im Überblick',
-    inhalt: `Tempo ${ORIGINAL_BPM} BPM, 4/4-Takt. Original ohne Kapo in G♯-Moll, gegen Ende einen Halbton höher in A-Moll.
-Mit Kapo im 4. Bund: Em, D, C, B7, G, Am, F (und einmal E7).
+    inhalt: `Tempo ca. ${ORIGINAL_BPM} BPM, 4/4-Takt. Original ohne Kapo in G♯-Moll (manche Aufnahmen F-Moll → Kapo 1), gegen Ende einen Halbton höher in A-Moll.
+Mit Kapo im 4. Bund: Em, D, C, B7, G, Am, F, E7.
 ${AUFBAU.map(a => `${a.name}${a.takte ? ` (${a.takte} Takte)` : ''}: ${a.griffe.join(', ')}`).join('\n')}`,
     inhaltNode: (
       <>
         <p className="ref-absatz">
-          <b>Tempo {ORIGINAL_BPM} BPM</b> im 4/4-Takt – zum Üben mit {UEBE_BPM} BPM starten. Das Original steht in G♯-Moll und
-          wechselt gegen Ende einen Halbton höher nach A-Moll. Mit <b>Kapo im 4. Bund</b> reichen sieben einfache Griffe.
-          Jede Zeile im Akkordblatt ist ein Takt; stehen zwei Akkorde in einer Zeile, bekommt jeder zwei Schläge.
+          <b>Tempo ca. {ORIGINAL_BPM} BPM</b> im 4/4-Takt (je nach Aufnahme 147–153) – zum Üben mit {UEBE_BPM} BPM starten.
+          Laut den meisten Transkriptionen steht der Song in G♯-Moll und wechselt gegen Ende einen Halbton höher nach A-Moll.
+          Mit <b>Kapo im 4. Bund</b> reichen acht einfache Griffe. Manche Aufnahmen stehen in F-Moll – dann Kapo in den 1. Bund,
+          die Griffe bleiben gleich. Jede Zeile im Akkordblatt ist ein Takt; stehen zwei Akkorde in einer Zeile, bekommt jeder
+          zwei Schläge.
         </p>
         <table className="ref-tabelle">
           <thead>

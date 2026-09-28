@@ -25,11 +25,11 @@ export const uebungsblaetter: Uebungsblatt[] = [
     titel: 'Die Song-Akkorde',
     typ: 'Technik',
     dauer: '1–2 Wochen · 15 Min.',
-    beschreibung: 'Mit Kapo im 4. Bund brauchst du für den ganzen Song nur sieben Griffe: Em, D, C, B7, G, Am und F (plus einmal E7 ganz am Schluss).',
+    beschreibung: 'Mit Kapo im 4. Bund brauchst du für den ganzen Song nur acht Griffe: Em, D, C, B7, G, Am, F und E7.',
     aufgaben: [
       { nr: 1, text: 'Lerne die Intro-Akkorde Em, D und C.', aufgabeId: 'akk-intro' },
       { nr: 2, text: 'Lerne B7 – den Schlüsselakkord des Songs.', aufgabeId: 'akk-b7' },
-      { nr: 3, text: 'Lerne G und Am.', aufgabeId: 'akk-g-am' },
+      { nr: 3, text: 'Lerne G, Am und E7.', aufgabeId: 'akk-g-am' },
       { nr: 4, text: 'Lerne das kleine F (oder Fmaj7 als Ersatz).', aufgabeId: 'akk-f' },
     ],
   },
@@ -53,7 +53,7 @@ export const uebungsblaetter: Uebungsblatt[] = [
     titel: 'Rhythmus und Schlagmuster',
     typ: 'Rhythmus',
     dauer: '1 Woche · 15 Min.',
-    beschreibung: 'Der Song läuft im 4/4-Takt mit 120 BPM. Vom einfachen Viertel-Anschlag zum Schlagmuster für den Song.',
+    beschreibung: 'Der Song läuft im 4/4-Takt mit etwa 150 BPM – du startest mit 70. Vom einfachen Viertel-Anschlag zum Schlagmuster für den Song.',
     aufgaben: [
       { nr: 1, text: 'Viertel-Abschläge zum Metronom.', aufgabeId: 'viertel' },
       { nr: 2, text: 'Achtel mit Ab- und Aufschlag.', aufgabeId: 'achtel' },
@@ -72,10 +72,11 @@ export const uebungsblaetter: Uebungsblatt[] = [
     aufgaben: [
       { nr: 1, text: 'Lerne das Songblatt „🎵 Das ganze Lied" kennen.', aufgabeId: 'song-blatt' },
       { nr: 2, text: 'Prüfe den Aufbau und zähl die Takte mit.', aufgabeId: 'song-aufbau' },
-      { nr: 3, text: 'Übe Intro, Strophe und Refrain einzeln.', aufgabeId: 'song-abschnitte' },
-      { nr: 4, text: 'Übe die Übergänge und die Bridge.', aufgabeId: 'song-uebergaenge' },
-      { nr: 5, text: 'Meistere den Tonartwechsel (Kapo 4 → 5).', aufgabeId: 'song-tonartwechsel' },
-      { nr: 6, text: 'Spiel zum Original mit.', aufgabeId: 'song-original' },
+      { nr: 3, text: 'Prüfe, ob die Tonart zu deiner Aufnahme passt.', aufgabeId: 'song-tonart' },
+      { nr: 4, text: 'Übe Intro, Strophe und Refrain einzeln.', aufgabeId: 'song-abschnitte' },
+      { nr: 5, text: 'Übe die Übergänge und die Bridge.', aufgabeId: 'song-uebergaenge' },
+      { nr: 6, text: 'Meistere den Tonartwechsel (Kapo 4 → 5).', aufgabeId: 'song-tonartwechsel' },
+      { nr: 7, text: 'Spiel zum Original mit.', aufgabeId: 'song-original' },
     ],
   },
   {
