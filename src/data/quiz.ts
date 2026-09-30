@@ -169,7 +169,7 @@ export const quizFragen: QuizFrage[] = [
     art: 'reihenfolge',
     frage: 'Bring die Schritte zum Erarbeiten des Songs in eine sinnvolle Reihenfolge.',
     schritte: [
-      'Akkordblatt in Kapo-Griffe übersetzen',
+      'Songblatt mit den Kapo-Griffen kennenlernen',
       'Aufbau beim Hören mitzählen',
       'Intro, Strophe und Refrain einzeln bei 70 BPM üben',
       'Übergänge und Bridge üben',

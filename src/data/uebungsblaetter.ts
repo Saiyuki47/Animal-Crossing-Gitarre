@@ -43,8 +43,8 @@ export const uebungsblaetter: Uebungsblatt[] = [
     aufgaben: [
       { nr: 1, text: 'Spiel die Intro-Kette Em → D → C → B7 in Schleife.', aufgabeId: 'wechsel-intro' },
       { nr: 2, text: 'Wechsle B7 ↔ Em mit Ankerfinger.', aufgabeId: 'wechsel-anker' },
-      { nr: 3, text: 'One-Minute-Changes: C ↔ B7, G ↔ F, F ↔ Em, Am ↔ B7.', aufgabeId: 'wechsel-omc' },
-      { nr: 4, text: 'Zwei Akkorde in einem Takt wechseln.', aufgabeId: 'wechsel-halbtakt' },
+      { nr: 3, text: 'One-Minute-Changes: G ↔ F, F ↔ Em, D ↔ G, Am ↔ D, C ↔ B7.', aufgabeId: 'wechsel-omc' },
+      { nr: 4, text: 'Die vier Takte mit zwei Akkorden.', aufgabeId: 'wechsel-halbtakt' },
     ],
   },
   {
@@ -67,7 +67,7 @@ export const uebungsblaetter: Uebungsblatt[] = [
     titel: 'Go K.K. Rider mit Kapo',
     typ: 'Song',
     dauer: '2–3 Wochen · 20 Min.',
-    beschreibung: 'Jetzt kommt alles zusammen: Akkordblatt in Kapo-Griffe übersetzen, Aufbau mitzählen, abschnittweise üben, Tonartwechsel meistern und zum Original mitspielen.',
+    beschreibung: 'Jetzt kommt alles zusammen: Songblatt „🎵 Das ganze Lied" kennenlernen, Aufbau mitzählen, Tonart prüfen, abschnittweise mit dem Mitspiel-Modus üben, Tonartwechsel meistern und zum Original mitspielen.',
     link: { text: '🎼 Akkordblatt bei Ultimate Guitar öffnen', url: AKKORDBLATT_URL },
     aufgaben: [
       { nr: 1, text: 'Lerne das Songblatt „🎵 Das ganze Lied" kennen.', aufgabeId: 'song-blatt' },
@@ -89,7 +89,7 @@ export const uebungsblaetter: Uebungsblatt[] = [
     link: { text: '🎼 Akkordblatt bei Ultimate Guitar öffnen', url: AKKORDBLATT_URL },
     aufgaben: [
       { nr: 1, text: 'Lerne die Barré-Grundlagen.', aufgabeId: 'barre-grundlagen' },
-      { nr: 2, text: 'E-Form: F♯ und F.', aufgabeId: 'barre-e-form' },
+      { nr: 2, text: 'E-Form: F♯, F und G♯7.', aufgabeId: 'barre-e-form' },
       { nr: 3, text: 'Em-Form: G♯m.', aufgabeId: 'barre-em-form' },
       { nr: 4, text: 'A- und Am-Form: B, C♯m, A♯.', aufgabeId: 'barre-a-formen' },
       { nr: 5, text: 'D♯7 und der Wechsel nach G♯m.', aufgabeId: 'barre-dis7' },
