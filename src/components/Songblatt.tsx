@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { akkordNach } from '../data/akkorde'
-import { AKKORDBLATT_URL, ORIGINAL_BPM, UEBE_BPM } from '../data/song'
-import { KAPO_BUND, SONGBLATT, TAKTE_GESAMT, anzeigeName, gegriffen, griffId, type SongAbschnitt } from '../data/songblatt'
+import { PAUSE, anzeigeName, gegriffen, griffId, taktZahl, type Lied, type SongAbschnitt } from '../data/songblatt'
 import { klick, starteTakt, useAudioContext } from '../lib/takt'
 import Griffbild from './Griffbild'
 
@@ -12,7 +11,6 @@ import Griffbild from './Griffbild'
 // gewählten Musters auf 8 Achtel-Plätzen (1 + 2 + 3 + 4 +); beim Mitspielen leuchtet
 // der aktuelle Platz.
 
-const TEMPI = [UEBE_BPM, 90, 120, ORIGINAL_BPM]
 const SCHLAEGE = 4
 const EINZAEHLEN = 4
 
@@ -25,15 +23,16 @@ const ANSCHLAG: Record<AnschlagId, { name: string; slots: string[] }> = {
 const ZAEHLZEIT = ['1', '+', '2', '+', '3', '+', '4', '+']
 
 /** Startindex (global über alle Abschnitte) je Abschnitt. */
-const OFFSETS = SONGBLATT.reduce<number[]>((acc, _, i) => {
-  acc.push(i === 0 ? 0 : acc[i - 1] + SONGBLATT[i - 1].takte.length)
-  return acc
-}, [])
+const offsetsVon = (lied: Lied) =>
+  lied.abschnitte.reduce<number[]>((acc, _, i) => {
+    acc.push(i === 0 ? 0 : acc[i - 1] + lied.abschnitte[i - 1].takte.length)
+    return acc
+  }, [])
 
 /** Index des Abschnitts, in dem der globale Takt `g` liegt. */
-function abschnittVon(g: number): number {
+function abschnittVon(offsets: number[], g: number): number {
   let i = 0
-  while (i + 1 < OFFSETS.length && OFFSETS[i + 1] <= g) i++
+  while (i + 1 < offsets.length && offsets[i + 1] <= g) i++
   return i
 }
 
@@ -55,6 +54,7 @@ function AnschlagZeile({ anschlag, aktivesAchtel }: { anschlag: AnschlagId; akti
 }
 
 function Abschnitt({
+  lied,
   abschnitt,
   offset,
   mitKapo,
@@ -63,6 +63,7 @@ function Abschnitt({
   anschlag,
   onTaktKlick,
 }: {
+  lied: Lied
   abschnitt: SongAbschnitt
   offset: number
   mitKapo: boolean
@@ -71,48 +72,62 @@ function Abschnitt({
   anschlag: AnschlagId
   onTaktKlick: (i: number) => void
 }) {
+  const greife = (a: string) => gegriffen(lied, a, abschnitt.teil, mitKapo)
   const griffe = useMemo(() => {
     const ids = new Set<string>()
     for (const t of abschnitt.takte)
       for (const a of t) {
-        const id = griffId(gegriffen(a, abschnitt.teil, mitKapo), mitKapo)
+        const id = griffId(gegriffen(lied, a, abschnitt.teil, mitKapo), mitKapo)
         if (id) ids.add(id)
       }
     return [...ids].map(id => akkordNach(id)).filter(a => a !== undefined)
-  }, [abschnitt, mitKapo])
+  }, [lied, abschnitt, mitKapo])
+  const vorher = mitKapo ? abschnitt.vorher : abschnitt.vorherOriginal
 
   return (
     <section className="card sb-abschnitt">
-      {abschnitt.vorher && <p className="sb-vorher">⚠️ {mitKapo ? abschnitt.vorher : 'Tonartwechsel: ab hier einen Halbton höher (A-Moll).'}</p>}
+      {vorher && <p className="sb-vorher">⚠️ {vorher}</p>}
       <div className="sb-kopf">
         <h3 className="sb-titel">{abschnitt.name}</h3>
         <span className="ub-badge">{abschnitt.takte.length} Takte</span>
-        {mitKapo && <span className="ub-badge">Kapo {KAPO_BUND[abschnitt.teil]}. Bund</span>}
+        {mitKapo && <span className="ub-badge">Kapo {lied.kapo[abschnitt.teil]}. Bund</span>}
       </div>
+
+      {abschnitt.tab && (
+        <div className="sb-tab">
+          <p className="sb-label">Melodie{mitKapo ? ` (Zahlen ab dem Kapo im ${lied.kapo[abschnitt.teil]}. Bund)` : ''}</p>
+          <pre>{mitKapo ? abschnitt.tab.kapo : abschnitt.tab.original}</pre>
+        </div>
+      )}
 
       <div className="sb-takte">
         {abschnitt.takte.map((takt, i) => {
           const g = offset + i
           const aktiv = position?.takt === g
+          const pause = takt.every(a => a === PAUSE)
           return (
             <button
               key={i}
               type="button"
-              className={`sb-takt${aktiv ? ' aktiv' : ''}${!position && startTakt === g && g > 0 ? ' start' : ''}`}
+              className={`sb-takt${aktiv ? ' aktiv' : ''}${pause ? ' pause' : ''}${!position && startTakt === g && g > 0 ? ' start' : ''}`}
               onClick={() => onTaktKlick(g)}
-              aria-label={`Takt ${i + 1}: ${takt.map(a => anzeigeName(gegriffen(a, abschnitt.teil, mitKapo))).join(', ')}. Ab hier mitspielen`}
+              aria-label={`Takt ${i + 1}: ${takt.map(a => anzeigeName(greife(a))).join(', ')}. Ab hier mitspielen`}
               data-takt={g}
             >
               <span className="sb-taktnr">{i + 1}</span>
               <span className="sb-akkorde">
                 {takt.map((a, j) => (
                   <span key={j} className="sb-akkord">
-                    {anzeigeName(gegriffen(a, abschnitt.teil, mitKapo))}
+                    {anzeigeName(greife(a))}
                   </span>
                 ))}
               </span>
-              {mitKapo && <span className="sb-original">{takt.map(a => anzeigeName(a)).join(' · ')}</span>}
-              <AnschlagZeile anschlag={anschlag} aktivesAchtel={aktiv ? position.achtel : undefined} />
+              {mitKapo && !pause && <span className="sb-original">{takt.map(a => anzeigeName(a)).join(' · ')}</span>}
+              {pause ? (
+                <span className="sb-original">nicht spielen, mitzählen</span>
+              ) : (
+                <AnschlagZeile anschlag={anschlag} aktivesAchtel={aktiv ? position.achtel : undefined} />
+              )}
             </button>
           )
         })}
@@ -129,11 +144,13 @@ function Abschnitt({
   )
 }
 
-export default function Songblatt() {
+export default function Songblatt({ lied }: { lied: Lied }) {
   const getCtx = useAudioContext()
+  const offsets = useMemo(() => offsetsVon(lied), [lied])
+  const gesamt = taktZahl(lied)
   const [mitKapo, setMitKapo] = useState(true)
   const [anschlag, setAnschlag] = useState<AnschlagId>('viertel')
-  const [bpm, setBpm] = useState(UEBE_BPM)
+  const [bpm, setBpm] = useState(lied.uebeBpm)
   const [laeuft, setLaeuft] = useState(false)
   const [position, setPosition] = useState<Position | null>(null)
   const [startTakt, setStartTakt] = useState(0)
@@ -147,7 +164,7 @@ export default function Songblatt() {
     const ctx = getCtx()
     const dauer = 60 / bpm
     const t0 = ctx.currentTime + 0.15
-    const gesamtSchlaege = EINZAEHLEN + (TAKTE_GESAMT - startTakt) * SCHLAEGE
+    const gesamtSchlaege = EINZAEHLEN + (gesamt - startTakt) * SCHLAEGE
     let geplant = 0
     let letzte = -2
 
@@ -178,7 +195,7 @@ export default function Songblatt() {
       stopp()
       setPosition(null)
     }
-  }, [laeuft, bpm, startTakt, getCtx])
+  }, [laeuft, bpm, startTakt, gesamt, getCtx])
 
   // Aktuellen Takt im Blick behalten
   const aktTakt = position?.takt ?? -1
@@ -200,7 +217,7 @@ export default function Songblatt() {
     <div ref={wurzel}>
       <div className="card sb-steuerung">
         <div className="sb-kopf">
-          <h3 className="ub-title">🎵 Go K.K. Rider – das ganze Lied</h3>
+          <h3 className="ub-title">🎵 {lied.titel} – das ganze Lied</h3>
         </div>
 
         <div className="sb-legende">
@@ -217,7 +234,7 @@ export default function Songblatt() {
               ))}
             </span>
           </div>
-          <p>{TAKTE_GESAMT} Takte insgesamt. Tipp auf einen Takt, um ab dort mitzuspielen.</p>
+          <p>{gesamt} Takte insgesamt. Tipp auf einen Takt, um ab dort mitzuspielen.</p>
         </div>
 
         <p className="sb-label">Anschlag</p>
@@ -241,7 +258,7 @@ export default function Songblatt() {
 
         <p className="sb-label">Tempo</p>
         <div className="filter-row">
-          {TEMPI.map(t => (
+          {lied.tempi.map(t => (
             <button
               key={t}
               type="button"
@@ -249,7 +266,7 @@ export default function Songblatt() {
               onClick={() => setBpm(t)}
               disabled={laeuft}
             >
-              {t} BPM{t === ORIGINAL_BPM ? ' (Original)' : t === UEBE_BPM ? ' (Üben)' : ''}
+              {t} BPM{t === lied.bpm ? ' (Original)' : t === lied.uebeBpm ? ' (Üben)' : ''}
             </button>
           ))}
         </div>
@@ -262,12 +279,12 @@ export default function Songblatt() {
           {position?.takt === -1 && <b>Einzählen: {Math.floor(position.achtel / 2) + 1}</b>}
           {position && position.takt >= 0 && (
             <>
-              <b>{SONGBLATT[abschnittVon(position.takt)].name}</b> · Takt {position.takt + 1} von {TAKTE_GESAMT}
+              <b>{lied.abschnitte[abschnittVon(offsets, position.takt)].name}</b> · Takt {position.takt + 1} von {gesamt}
             </>
           )}
           {!position && startTakt > 0 && (
             <>
-              Start ab Takt {startTakt + 1} ({SONGBLATT[abschnittVon(startTakt)].name}) ·{' '}
+              Start ab Takt {startTakt + 1} ({lied.abschnitte[abschnittVon(offsets, startTakt)].name}) ·{' '}
               <button type="button" className="sb-link" onClick={() => setStartTakt(0)}>
                 von vorn
               </button>
@@ -280,11 +297,12 @@ export default function Songblatt() {
         </button>
       </div>
 
-      {SONGBLATT.map((a, i) => (
+      {lied.abschnitte.map((a, i) => (
         <Abschnitt
           key={a.id}
+          lied={lied}
           abschnitt={a}
-          offset={OFFSETS[i]}
+          offset={offsets[i]}
           mitKapo={mitKapo}
           position={position}
           startTakt={startTakt}
@@ -294,12 +312,11 @@ export default function Songblatt() {
       ))}
 
       <p className="sb-quelle">
-        Song © Nintendo. Akkorde nach der Transkription von „HerNameIsRain" auf{' '}
-        <a href={AKKORDBLATT_URL} target="_blank" rel="noopener noreferrer">
+        Song © Nintendo. Akkorde nach der Transkription von „{lied.quelle.autor}" auf{' '}
+        <a href={lied.quelle.url} target="_blank" rel="noopener noreferrer">
           Ultimate Guitar ↗
         </a>
-        ; Refrain-Takt 5 (G♯m → G♯7) nach Gametabs/Ukulele-Tabs ergänzt. Taktaufteilung, Kapo-Griffe und Tipps von dieser
-        Lernseite.
+        .{lied.quelle.zusatz && ` ${lied.quelle.zusatz}`} Taktaufteilung, Kapo-Griffe und Tipps von dieser Lernseite.
       </p>
     </div>
   )

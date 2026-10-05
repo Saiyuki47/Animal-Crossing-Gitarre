@@ -210,4 +210,38 @@ export const quizFragen: QuizFrage[] = [
     erklaerung: 'Die Form bestimmt Dur/Moll, der Bund des Zeigefingers den Grundton: E + 2 Halbtöne = F♯, E + 4 = G♯, A + 2 = B, A + 4 = C♯.',
     quelle: 'Schritt 6: Barré (Bonus)',
   },
+
+  // ── Schritt 7: K.K. Cruisin' ────────────────────────────────────────────
+  {
+    art: 'zuordnung',
+    frage: "K.K. Cruisin' mit Kapo im 6. Bund: Welchen Griff spielst du für den Akkord im Akkordblatt?",
+    paare: [
+      { begriff: 'B7', ziel: 'F7' },
+      { begriff: 'B♭7', ziel: 'E7' },
+      { begriff: 'E♭7sus2', ziel: 'A7sus2' },
+      { begriff: 'A♭7', ziel: 'D7' },
+      { begriff: 'G♭7', ziel: 'C7' },
+    ],
+    erklaerung: 'Griff = Akkord im Blatt minus 6 Halbtöne. Beispiel: B → B♭ → A → A♭ → G → G♭ → F, also B7 → F7.',
+    quelle: "Schritt 7: K.K. Cruisin'",
+  },
+  {
+    art: 'reihenfolge',
+    frage: "Bring die Cruisin'-Schleife (mit Kapo 6) in die richtige Reihenfolge.",
+    schritte: ['F7', 'E7', 'A7sus2', 'D7'],
+    erklaerung: 'F7 → E7 → A7sus2 → D7 (jedes zweite Mal C7 statt D7). Im Original: B7 → B♭7 → E♭7sus2 → A♭7.',
+    quelle: "Schritt 7: K.K. Cruisin'",
+  },
+  {
+    art: 'wahrfalsch',
+    frage: "Markiere jede Aussage über K.K. Cruisin' als wahr oder falsch.",
+    aussagen: [
+      { text: 'Fast der ganze Song besteht aus einer Schleife von vier Akkorden.', wahr: true },
+      { text: 'Der zweite Refrain beginnt mit einer Pause (N.C.).', wahr: true },
+      { text: 'Vor dem letzten Refrain wandert der Kapo vom 6. in den 7. Bund.', wahr: true },
+      { text: 'Beim Wechsel D7 → F7 muss der Mittelfinger auf eine andere Saite.', wahr: false, warum: 'Der Mittelfinger bleibt auf der G-Saite im 2. Bund – nur der Zeigefinger legt sich als Mini-Barré in den 1. Bund.' },
+    ],
+    erklaerung: 'Die Schleife F7 – E7 – A7sus2 – D7/C7 trägt den Song, Refrain 2 startet mit einer Pause, und der Tonartwechsel funktioniert wie bei Go K.K. Rider: Kapo einen Bund höher, gleiche Griffe.',
+    quelle: "Schritt 7: K.K. Cruisin'",
+  },
 ]

@@ -1,5 +1,6 @@
 import type { Uebungsblatt } from '../types'
 import { AKKORDBLATT_URL } from './song'
+import { KK_CRUISIN } from './lieder/kkCruisin'
 
 // Lernschritte – vom Stimmen bis zu Go K.K. Rider. Schritte 1–5 mit Kapodaster im
 // 4. Bund, Schritt 6 als Bonus mit Barré-Griffen im Original. Jeder Schritt verweist
@@ -94,6 +95,26 @@ export const uebungsblaetter: Uebungsblatt[] = [
       { nr: 4, text: 'A- und Am-Form: B, C♯m, A♯.', aufgabeId: 'barre-a-formen' },
       { nr: 5, text: 'D♯7 und der Wechsel nach G♯m.', aufgabeId: 'barre-dis7' },
       { nr: 6, text: 'Spiel den Song im Original ohne Kapo.', aufgabeId: 'barre-song' },
+    ],
+  },
+  {
+    id: 'kk-cruisin',
+    nr: '7',
+    titel: "Zweites Lied: K.K. Cruisin'",
+    typ: 'Song',
+    dauer: '2–4 Wochen · 20 Min.',
+    beschreibung:
+      "Jazzig, mit Septakkorden – und fast komplett eine einzige Schleife aus vier Akkorden. Mit Kapo im 6. Bund werden daraus einfache Griffe: F7, E7, A7sus2, D7 und C7. Das komplette Songblatt findest du unter „🎵 Das ganze Lied\" → K.K. Cruisin'.",
+    link: { text: '🎼 Akkordblatt bei Ultimate Guitar öffnen', url: KK_CRUISIN.quelle.url },
+    aufgaben: [
+      { nr: 1, text: 'Setz den Kapodaster in den 6. Bund.', aufgabeId: 'kkc-kapo' },
+      { nr: 2, text: 'Lerne die Griffe F7, E7, A7sus2, D7 und C7.', aufgabeId: 'kkc-griffe' },
+      { nr: 3, text: 'Spiel die Cruisin\'-Schleife F7 → E7 → A7sus2 → D7.', aufgabeId: 'kkc-schleife' },
+      { nr: 4, text: 'One-Minute-Changes mit den Song-Wechseln.', aufgabeId: 'kkc-wechsel' },
+      { nr: 5, text: 'Lerne die Intro-Melodie.', aufgabeId: 'kkc-intro' },
+      { nr: 6, text: 'Finde das Tempo deiner Aufnahme.', aufgabeId: 'kkc-tempo' },
+      { nr: 7, text: 'Spiel den ganzen Song mit.', aufgabeId: 'kkc-song' },
+      { nr: 8, text: 'Bonus: K.K. Cruisin\' im Original.', aufgabeId: 'kkc-original' },
     ],
   },
 ]

@@ -1,11 +1,12 @@
 import { useEffect } from 'react'
-import { akkorde, type AkkordGruppe } from '../data/akkorde'
+import { akkordNach, akkorde, type AkkordGruppe } from '../data/akkorde'
 import { KAPO_4, KAPO_5, ORIGINAL_BPM, UEBE_BPM } from '../data/song'
+import { KK_CRUISIN, KK_KAPO_6, KK_KAPO_7 } from '../data/lieder/kkCruisin'
 import Griffbild from './Griffbild'
 
 // Hilfsmittel-Tab: druckbarer Spickzettel (wie die Hilfsmittel-Tabs der anderen
 // Lernseiten). Seite 1: Song mit Kapo (Griffe, Kapo-Tabelle, Aufbau, Schlagmuster).
-// Seite 2: Bonus mit den Barré-Griffen fürs Original.
+// Seite 2: Bonus mit den Barré-Griffen fürs Original. Seite 3: zweites Lied K.K. Cruisin'.
 // „🖨️ Drucken" öffnet den Druckdialog; per @media print werden Header/Tabs
 // ausgeblendet und die Boxen A4-tauglich gesetzt.
 
@@ -50,9 +51,43 @@ const SEITE_KAPO: Box[] = [
     t: 'Üben',
     r: [
       { l: 'Anker', f: 'B7 ↔ Em: Mittelfinger bleibt liegen' },
-      { l: 'Schwer', f: 'C↔B7 · G↔F · F↔Em · Am↔B7' },
+      { l: 'Schwer', f: 'G↔F · F↔Em · D↔G · Am↔D · C↔B7' },
       { l: 'Steigern', f: '3× fehlerfrei → +5 BPM' },
       { l: 'Fehler', f: '−10 BPM, Stelle isolieren' },
+    ],
+  },
+]
+
+const SEITE_KK: Box[] = [
+  {
+    t: "K.K. Cruisin'",
+    r: [
+      { l: 'Kapo', f: '6. Bund – vor dem letzten Refrain 7. Bund' },
+      { l: 'Tempo', f: `ca. ${KK_CRUISIN.bpm} BPM, 4/4 (üben ab ${KK_CRUISIN.uebeBpm})` },
+      { l: 'Schleife', f: 'F7 → E7 → A7sus2 → D7 (jedes 2. Mal C7)' },
+      { l: 'Pause', f: '2. Refrain beginnt mit 2 Takten N.C.' },
+    ],
+  },
+  {
+    t: 'Kapo-Tabelle (Blatt → Griff)',
+    r: [
+      { l: 'Kapo 6', f: KK_KAPO_6.map(z => `${z.original}→${z.griff}`).join('  ') },
+      { l: 'Kapo 7', f: KK_KAPO_7.map(z => `${z.original}→${z.griff}`).join('  ') },
+    ],
+  },
+  {
+    t: 'Mittelfinger-Trick',
+    r: [
+      { f: 'E7 → A7sus2: Mittelfinger A-Saite → D-Saite (2. Bund)' },
+      { f: 'A7sus2 → D7: Mittelfinger D-Saite → G-Saite' },
+      { f: 'D7 → F7: Mittelfinger bleibt, Zeigefinger als Mini-Barré' },
+    ],
+  },
+  {
+    t: 'Intro-Melodie (Kapo 6)',
+    r: [
+      { l: 'Töne', f: 'D2 G2 G0 D2 D0 A3 D0 D2 A3 A0' },
+      { f: 'Saite + Bund ab dem Kapo, Rhythmus nach Gehör' },
     ],
   },
 ]
@@ -62,6 +97,7 @@ const SEITE_BARRE: Box[] = [
     t: 'Barré-Formen',
     r: [
       { l: 'E-Form', f: 'F (1. Bund), F♯ (2. Bund)' },
+      { l: 'E7-Form', f: 'G♯7 (4. Bund)' },
       { l: 'Em-Form', f: 'G♯m (4. Bund)' },
       { l: 'A-Form', f: 'A♯ (1. Bund), B (2. Bund)' },
       { l: 'Am-Form', f: 'C♯m (4. Bund)' },
@@ -84,16 +120,15 @@ const SEITE_BARRE: Box[] = [
   },
 ]
 
-function Griffuebersicht({ gruppe, titel }: { gruppe: AkkordGruppe; titel: string }) {
+function Griffuebersicht({ griffe, titel }: { griffe: AkkordGruppe | string[]; titel: string }) {
+  const liste = Array.isArray(griffe) ? griffe.map(id => akkordNach(id)!) : akkorde.filter(a => a.gruppe === griffe)
   return (
     <section className="hm-box hm-griffe">
       <h4>{titel}</h4>
       <div className="hm-griffe-raster">
-        {akkorde
-          .filter(a => a.gruppe === gruppe)
-          .map(a => (
-            <Griffbild key={a.id} akkord={a} breite={76} />
-          ))}
+        {liste.map(a => (
+          <Griffbild key={a.id} akkord={a} breite={76} />
+        ))}
       </div>
     </section>
   )
@@ -103,17 +138,17 @@ interface SeiteProps {
   boxen: Box[]
   nr: number
   titel: string
-  gruppe: AkkordGruppe
+  griffe: AkkordGruppe | string[]
   griffTitel: string
 }
 
-function SpickzettelSeite({ boxen, nr, titel, gruppe, griffTitel }: SeiteProps) {
+function SpickzettelSeite({ boxen, nr, titel, griffe, griffTitel }: SeiteProps) {
   return (
     <div className="hm-page">
       <p className="hm-page-head">
-        Go K.K. Rider · {titel} · Seite {nr}
+        {titel} · Seite {nr}
       </p>
-      <Griffuebersicht gruppe={gruppe} titel={griffTitel} />
+      <Griffuebersicht griffe={griffe} titel={griffTitel} />
       <div className="hm-grid">
         {boxen.map(box => (
           <section key={box.t} className="hm-box">
@@ -140,7 +175,7 @@ export default function Hilfsmittel() {
       <div className="section-header no-print">
         <h2>Spickzettel</h2>
         <p>
-          Alle Song-Griffe und Kurzregeln auf A4 (Seite 2: Barré-Bonus) – zum Ausdrucken und neben den Notenständer
+          Alle Song-Griffe und Kurzregeln auf A4 (Seite 2: Barré-Bonus, Seite 3: K.K. Cruisin') – zum Ausdrucken und neben den Notenständer
           legen. „🖨️ Drucken" erzeugt ein sauberes Blatt ohne Menü und Tabs.
         </p>
       </div>
@@ -149,8 +184,15 @@ export default function Hilfsmittel() {
           🖨️ Drucken (A4)
         </button>
       </div>
-      <SpickzettelSeite boxen={SEITE_KAPO} nr={1} titel="Mit Kapo" gruppe="Kapo" griffTitel="Song-Griffe (Kapo 4. Bund)" />
-      <SpickzettelSeite boxen={SEITE_BARRE} nr={2} titel="Bonus: Original mit Barré" gruppe="Barré" griffTitel="Original-Griffe ohne Kapo" />
+      <SpickzettelSeite boxen={SEITE_KAPO} nr={1} titel="Go K.K. Rider · Mit Kapo" griffe="Kapo" griffTitel="Song-Griffe (Kapo 4. Bund)" />
+      <SpickzettelSeite boxen={SEITE_BARRE} nr={2} titel="Go K.K. Rider · Bonus: Original mit Barré" griffe="Barré" griffTitel="Original-Griffe ohne Kapo" />
+      <SpickzettelSeite
+        boxen={SEITE_KK}
+        nr={3}
+        titel={`${KK_CRUISIN.titel} · Mit Kapo`}
+        griffe={['F7-klein', 'E7', 'A7sus2', 'D7', 'C7']}
+        griffTitel="Griffe (Kapo 6. Bund)"
+      />
     </div>
   )
 }

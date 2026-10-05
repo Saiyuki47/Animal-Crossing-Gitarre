@@ -2,25 +2,26 @@ import type { ReferenzKarte } from 'lernseiten-ui'
 import Griffbild from '../components/Griffbild'
 import { akkorde, akkordNach, griffKurz, type AkkordGruppe } from './akkorde'
 import { AKKORDBLATT_URL, AUFBAU, KAPO_4, KAPO_5, ORIGINAL_BPM, UEBE_BPM, type KapoZeile } from './song'
+import { KK_CRUISIN, KK_KAPO_6, KK_KAPO_7 } from './lieder/kkCruisin'
 
 // Nachschlagekarten „Griffe & Technik". Jede Karte hat eine stabile `id`
 // (Inhaltsverzeichnis + Deep-Link #referenz/<id>). Karten mit Griffbildern/Tabellen
 // nutzen `inhaltNode`; `inhalt` bleibt trotzdem gesetzt, damit die globale Suche sie findet.
 
-function AkkordRaster({ gruppe }: { gruppe: AkkordGruppe }) {
+/** Griffbilder einer Gruppe oder einer festen Liste von Akkord-IDs. */
+function AkkordRaster({ gruppe, ids }: { gruppe?: AkkordGruppe; ids?: string[] }) {
+  const liste = ids ? ids.map(id => akkordNach(id)!) : akkorde.filter(a => a.gruppe === gruppe)
   return (
     <div className="akkord-raster">
-      {akkorde
-        .filter(a => a.gruppe === gruppe)
-        .map(a => (
-          <figure key={a.id} className="akkord-zelle">
-            <Griffbild akkord={a} />
-            <figcaption>
-              <code>{griffKurz(a)}</code>
-              {a.tipp && <span>{a.tipp}</span>}
-            </figcaption>
-          </figure>
-        ))}
+      {liste.map(a => (
+        <figure key={a.id} className="akkord-zelle">
+          <Griffbild akkord={a} />
+          <figcaption>
+            <code>{griffKurz(a)}</code>
+            {a.tipp && <span>{a.tipp}</span>}
+          </figcaption>
+        </figure>
+      ))}
     </div>
   )
 }
@@ -130,6 +131,36 @@ ${AUFBAU.map(a => `${a.name}${a.takte ? ` (${a.takte} Takte)` : ''}: ${a.griffe.
     titel: 'Die Song-Griffe (mit Kapo)',
     inhalt: akkordText('Kapo'),
     inhaltNode: <AkkordRaster gruppe="Kapo" />,
+  },
+  {
+    id: 'kk-cruisin',
+    titel: "K.K. Cruisin' im Überblick",
+    inhalt: `Zweites Lied. Tonart E♭-Moll, ca. ${KK_CRUISIN.bpm} BPM (Hooktheory), 4/4-Takt.
+Fast der ganze Song ist die Schleife B7 – B♭7 – E♭7sus2 – A♭7/G♭7, am Ende einen Halbton höher.
+Kapo im 6. Bund: ${kapoText(KK_KAPO_6)}
+Nach dem Tonartwechsel Kapo im 7. Bund: ${kapoText(KK_KAPO_7)}`,
+    inhaltNode: (
+      <>
+        <p className="ref-absatz">
+          Tonart <b>E♭-Moll</b>, ca. <b>{KK_CRUISIN.bpm} BPM</b> (laut Hooktheory). Fast der ganze Song ist eine Schleife aus
+          vier Septakkorden: <b>B7 – B♭7 – E♭7sus2 – A♭7</b> (jedes zweite Mal G♭7). Mit <b>Kapo im 6. Bund</b> wird daraus
+          F7 – E7 – A7sus2 – D7/C7. Vor dem letzten Refrain geht es einen Halbton höher: Kapo in den 7. Bund, gleiche Griffe.
+          Das komplette Songblatt steht unter <a href="#uebung/lied/kk-cruisin">Lernschritte → 🎵 Das ganze Lied</a>.
+        </p>
+        <div className="ref-tabellen-reihe">
+          <KapoTabelle zeilen={KK_KAPO_6} bund={6} />
+          <KapoTabelle zeilen={KK_KAPO_7} bund={7} />
+        </div>
+        <p className="ref-absatz" style={{ marginTop: '1rem' }}>
+          <b>Griffe mit Kapo:</b>
+        </p>
+        <AkkordRaster ids={['F7-klein', 'E7', 'A7sus2', 'D7', 'C7']} />
+        <p className="ref-absatz" style={{ marginTop: '1rem' }}>
+          <b>Original ohne Kapo:</b>
+        </p>
+        <AkkordRaster ids={['B7', 'Bes7', 'Es7sus2', 'As7', 'Ges7', 'C7', 'E7sus2', 'A7', 'G7']} />
+      </>
+    ),
   },
   {
     id: 'stimmung',

@@ -326,3 +326,7 @@
 @media (max-width: 520px) {
   .sb-takte { grid-template-columns: repeat(2, 1fr); }
 }
+.sb-tab { margin: 0 0 .75rem; }
+.sb-tab pre { margin: 0; padding: .6rem .8rem; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius); font: 13px/1.45 var(--font-mono); color: var(--text); overflow-x: auto; }
+.sb-takt.pause { background: transparent; border-style: dashed; }
+.sb-takt.pause .sb-akkord { color: var(--text3); font-size: 15px; }

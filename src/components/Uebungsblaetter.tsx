@@ -3,10 +3,11 @@ import { useDoneTracker, useTaskDeepLink, getHashDetail, setHashDetail } from 'l
 import { uebungsblaetter } from '../data/uebungsblaetter'
 import { aufgaben } from '../data/aufgaben'
 import { akkordNach } from '../data/akkorde'
+import { LIEDER, liedNach } from '../data/lieder'
 import Griffbild from './Griffbild'
 
 const Songblatt = lazy(() => import('./Songblatt'))
-/** Pseudo-Blatt-ID für „Das ganze Lied" (Deep-Link #uebung/lied). */
+/** Pseudo-Blatt-ID für „Das ganze Lied" (Deep-Link #uebung/lied/<lied-id>). */
 const LIED = 'lied'
 
 export default function Uebungsblaetter() {
@@ -14,6 +15,7 @@ export default function Uebungsblaetter() {
     const b = getHashDetail().blatt
     return b && (b === LIED || uebungsblaetter.some(x => x.id === b)) ? b : (uebungsblaetter[0]?.id ?? '')
   })
+  const [liedId, setLiedId] = useState(() => liedNach(getHashDetail().aufgabe).id)
   const [openIds, setOpenIds] = useState<Set<string>>(new Set())
   const [openTipps, setOpenTipps] = useState<Set<string>>(new Set())
   const { done, toggle: toggleDone, ratio } = useDoneTracker()
@@ -23,7 +25,12 @@ export default function Uebungsblaetter() {
 
   const waehle = (id: string) => {
     setSelectedId(id)
-    setHashDetail(id)
+    setHashDetail(id, id === LIED ? liedId : undefined)
+  }
+
+  const waehleLied = (id: string) => {
+    setLiedId(id)
+    setHashDetail(LIED, id)
   }
 
   const toggleTipp = (key: string) => {
@@ -52,7 +59,7 @@ export default function Uebungsblaetter() {
     <div>
       <div className="section-header">
         <h2>Lernschritte</h2>
-        <p>In fünf Schritten mit Kapodaster vom Stimmen bis zu Go K.K. Rider – plus ein Bonus-Schritt für die Original-Griffe. Hak ab, was sitzt – dein Fortschritt wird gespeichert.</p>
+        <p>In fünf Schritten mit Kapodaster vom Stimmen bis zu Go K.K. Rider – plus Bonus-Schritte für die Original-Griffe und ein zweites Lied (K.K. Cruisin'). Hak ab, was sitzt – dein Fortschritt wird gespeichert.</p>
       </div>
 
       {uebungsblaetter.length > 1 && (
@@ -75,7 +82,22 @@ export default function Uebungsblaetter() {
 
       {selectedId === LIED && (
         <Suspense fallback={<div className="card"><p className="quiz-hint">Lädt …</p></div>}>
-          <Songblatt />
+          <div className="filter-row" role="tablist" aria-label="Lied wählen">
+            {LIEDER.map(l => (
+              <button
+                key={l.id}
+                type="button"
+                role="tab"
+                aria-selected={l.id === liedId}
+                className={`filter-btn${l.id === liedId ? ' on' : ''}`}
+                onClick={() => waehleLied(l.id)}
+              >
+                {l.titel}
+              </button>
+            ))}
+          </div>
+          {/* key: beim Liedwechsel startet das Songblatt frisch (Tempo, Startpunkt, Wiedergabe) */}
+          <Songblatt key={liedId} lied={liedNach(liedId)} />
         </Suspense>
       )}
 

@@ -7,10 +7,11 @@
 //   barre:     Zeigefinger liegt quer über den Saiten `von`–`bis` (0 = tiefes E … 5 = hohes e)
 //
 // Gruppen:
-//   'Kapo'  – die Griffe, die man MIT Kapodaster im 4. (bzw. 5.) Bund greift
-//   'Barré' – die Original-Griffe ohne Kapodaster (Bonus-Schritt)
+//   'Kapo'     – Go K.K. Rider: die Griffe MIT Kapodaster im 4. (bzw. 5.) Bund
+//   'Barré'    – Go K.K. Rider: die Original-Griffe ohne Kapodaster (Bonus-Schritt)
+//   'Cruisin'  – zusätzliche Griffe für K.K. Cruisin' (Kapo 6 und Original)
 
-export type AkkordGruppe = 'Kapo' | 'Barré'
+export type AkkordGruppe = 'Kapo' | 'Barré' | 'Cruisin'
 
 export interface Akkord {
   id: string
@@ -48,6 +49,20 @@ export const akkorde: Akkord[] = [
   { id: 'Ais', name: 'A♯', gruppe: 'Barré', bund: [null, 1, 3, 3, 3, 1], finger: [null, 1, 2, 3, 4, 1], barre: { bund: 1, von: 1, bis: 5 }, tipp: 'A-Form im 1. Bund (auch B♭ geschrieben).' },
   { id: 'Dm', name: 'Dm', gruppe: 'Barré', bund: [null, null, 0, 2, 3, 1], finger: [null, null, null, 2, 3, 1], tipp: 'Offener Griff aus dem Teil nach dem Tonartwechsel.' },
   { id: 'A7', name: 'A7', gruppe: 'Barré', bund: [null, 0, 2, 0, 2, 0], finger: [null, null, 1, null, 2, null], tipp: 'Offener Griff aus dem letzten Refrain.' },
+
+  // ── K.K. Cruisin' ─────────────────────────────────────────────────────
+  // mit Kapo im 6. (bzw. 7.) Bund
+  { id: 'F7-klein', name: 'F7 (klein)', gruppe: 'Cruisin', bund: [null, null, 1, 2, 1, 1], finger: [null, null, 1, 2, 1, 1], barre: { bund: 1, von: 2, bis: 5 }, tipp: 'Mini-Barré über die vier hohen Saiten, Mittelfinger auf der G-Saite. Nur die vier hohen Saiten anschlagen.' },
+  { id: 'A7sus2', name: 'A7sus2', gruppe: 'Cruisin', bund: [null, 0, 2, 0, 0, 0], finger: [null, null, 2, null, null, null], tipp: 'Der leichteste Griff des Songs: ein Finger auf der D-Saite. Klingt offen und schwebend – der „Heimat"-Akkord von K.K. Cruisin\'.' },
+  { id: 'D7', name: 'D7', gruppe: 'Cruisin', bund: [null, null, 0, 2, 1, 2], finger: [null, null, null, 2, 1, 3], tipp: 'Nur die vier hohen Saiten anschlagen.' },
+  { id: 'C7', name: 'C7', gruppe: 'Cruisin', bund: [null, 3, 2, 3, 1, 0], finger: [null, 3, 2, 4, 1, null], tipp: 'C-Griff plus kleiner Finger auf der G-Saite im 3. Bund.' },
+  // Original ohne Kapo
+  { id: 'Bes7', name: 'B♭7', gruppe: 'Cruisin', bund: [null, 1, 3, 1, 3, 1], finger: [null, 1, 3, 1, 4, 1], barre: { bund: 1, von: 1, bis: 5 }, tipp: 'A7-Form mit Barré im 1. Bund.' },
+  { id: 'Es7sus2', name: 'E♭7sus2', gruppe: 'Cruisin', bund: [null, null, 1, 3, 2, 1], finger: [null, null, 1, 3, 2, 1], barre: { bund: 1, von: 2, bis: 5 }, tipp: 'Mini-Barré im 1. Bund (D- bis e-Saite), Ringfinger G-Saite 3. Bund, Mittelfinger H-Saite 2. Bund.' },
+  { id: 'As7', name: 'A♭7', gruppe: 'Cruisin', bund: [4, 6, 4, 5, 4, 4], finger: [1, 3, 1, 2, 1, 1], startBund: 4, barre: { bund: 4, von: 0, bis: 5 }, tipp: 'E7-Form im 4. Bund – gleicher Griff wie G♯7.' },
+  { id: 'Ges7', name: 'G♭7', gruppe: 'Cruisin', bund: [2, 4, 2, 3, 2, 2], finger: [1, 3, 1, 2, 1, 1], startBund: 2, barre: { bund: 2, von: 0, bis: 5 }, tipp: 'E7-Form im 2. Bund.' },
+  { id: 'E7sus2', name: 'E7sus2', gruppe: 'Cruisin', bund: [0, 2, 0, 4, 0, 2], finger: [null, 1, null, 4, null, 2], tipp: 'Nach dem Tonartwechsel. Zeigefinger A-Saite, kleiner Finger G-Saite 4. Bund, Mittelfinger hohe e-Saite.' },
+  { id: 'G7', name: 'G7', gruppe: 'Cruisin', bund: [3, 2, 0, 0, 0, 1], finger: [3, 2, null, null, null, 1], tipp: 'Führt zurück nach C.' },
 ]
 
 export const akkordNach = (id: string) => akkorde.find(a => a.id === id)
