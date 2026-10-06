@@ -28,6 +28,8 @@ const UNSICHER_REFRAIN =
 export const GO_KK_RIDER: Lied = {
   id: 'go-kk-rider',
   titel: 'Go K.K. Rider',
+  lernIntro:
+    'In fünf Schritten mit Kapodaster im 4. Bund vom Stimmen bis zum ganzen Song – plus ein Bonus-Schritt für die Original-Griffe mit Barré. Fang hier an, wenn du neu bist: Die Grundlagen gelten auch für K.K. Cruisin\'.',
   bpm: ORIGINAL_BPM,
   uebeBpm: UEBE_BPM,
   tempi: [UEBE_BPM, 90, 120, ORIGINAL_BPM],

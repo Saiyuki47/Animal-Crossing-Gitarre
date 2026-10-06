@@ -27,6 +27,8 @@ export interface SongAbschnitt {
 export interface Lied {
   id: string
   titel: string
+  /** Einleitungstext über den Lernschritten dieses Lieds. */
+  lernIntro: string
   bpm: number
   uebeBpm: number
   tempi: number[]

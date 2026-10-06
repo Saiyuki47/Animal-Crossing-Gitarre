@@ -7,30 +7,40 @@ import { LIEDER, liedNach } from '../data/lieder'
 import Griffbild from './Griffbild'
 
 const Songblatt = lazy(() => import('./Songblatt'))
-/** Pseudo-Blatt-ID für „Das ganze Lied" (Deep-Link #uebung/lied/<lied-id>). */
-const LIED = 'lied'
+
+// Lernschritte mit einem Untertab je Lied (Go K.K. Rider, K.K. Cruisin'). Unter
+// jedem Lied: dessen Schritte plus „🎵 Das ganze Lied" (Songblatt).
+// Hash: #uebung/<schritt-id>[/<übung>] bzw. #uebung/lied-<lied-id> fürs Songblatt.
+// Ältere Links #uebung/lied[/<lied-id>] werden weiterhin verstanden.
+
+const LIED_PRAEFIX = 'lied-'
+const songblattId = (liedId: string) => LIED_PRAEFIX + liedId
+const ersterSchritt = (liedId: string) => uebungsblaetter.find(b => b.lied === liedId)?.id ?? songblattId(liedId)
+
+/** Gewählte Ansicht aus dem Hash: Schritt-ID oder Songblatt-ID. */
+function startAuswahl(): string {
+  const { blatt, aufgabe } = getHashDetail()
+  if (blatt === 'lied') return songblattId(liedNach(aufgabe).id)
+  if (blatt?.startsWith(LIED_PRAEFIX) && LIEDER.some(l => songblattId(l.id) === blatt)) return blatt
+  if (blatt && uebungsblaetter.some(b => b.id === blatt)) return blatt
+  return ersterSchritt(LIEDER[0].id)
+}
 
 export default function Uebungsblaetter() {
-  const [selectedId, setSelectedId] = useState(() => {
-    const b = getHashDetail().blatt
-    return b && (b === LIED || uebungsblaetter.some(x => x.id === b)) ? b : (uebungsblaetter[0]?.id ?? '')
-  })
-  const [liedId, setLiedId] = useState(() => liedNach(getHashDetail().aufgabe).id)
+  const [selectedId, setSelectedId] = useState(startAuswahl)
   const [openIds, setOpenIds] = useState<Set<string>>(new Set())
   const [openTipps, setOpenTipps] = useState<Set<string>>(new Set())
   const { done, toggle: toggleDone, ratio } = useDoneTracker()
   const listRef = useTaskDeepLink<HTMLDivElement>(selectedId)
 
   const blatt = uebungsblaetter.find(b => b.id === selectedId)
+  const lied = liedNach(blatt ? blatt.lied : selectedId.slice(LIED_PRAEFIX.length))
+  const schritte = uebungsblaetter.filter(b => b.lied === lied.id)
+  const zeigtSongblatt = selectedId === songblattId(lied.id)
 
   const waehle = (id: string) => {
     setSelectedId(id)
-    setHashDetail(id, id === LIED ? liedId : undefined)
-  }
-
-  const waehleLied = (id: string) => {
-    setLiedId(id)
-    setHashDetail(LIED, id)
+    setHashDetail(id)
   }
 
   const toggleTipp = (key: string) => {
@@ -57,47 +67,50 @@ export default function Uebungsblaetter() {
 
   return (
     <div>
-      <div className="section-header">
-        <h2>Lernschritte</h2>
-        <p>In fünf Schritten mit Kapodaster vom Stimmen bis zu Go K.K. Rider – plus Bonus-Schritte für die Original-Griffe und ein zweites Lied (K.K. Cruisin'). Hak ab, was sitzt – dein Fortschritt wird gespeichert.</p>
+      <div className="ref-switch" role="tablist" aria-label="Lied wählen">
+        {LIEDER.map(l => (
+          <button
+            key={l.id}
+            type="button"
+            role="tab"
+            aria-selected={l.id === lied.id}
+            className={`ref-switch-tab${l.id === lied.id ? ' active' : ''}`}
+            onClick={() => l.id !== lied.id && waehle(ersterSchritt(l.id))}
+          >
+            🎸 {l.titel}
+          </button>
+        ))}
       </div>
 
-      {uebungsblaetter.length > 1 && (
-        <div className="filter-row">
-          {uebungsblaetter.map(b => (
-            <button
-              type="button"
-              key={b.id}
-              className={`filter-btn${selectedId === b.id ? ' on' : ''}`}
-              onClick={() => waehle(b.id)}
-            >
-              {b.nr}. {b.titel}
-            </button>
-          ))}
-          <button type="button" className={`filter-btn sb-lied-btn${selectedId === LIED ? ' on' : ''}`} onClick={() => waehle(LIED)}>
-            🎵 Das ganze Lied
-          </button>
-        </div>
-      )}
+      <div className="section-header">
+        <h2>Lernschritte: {lied.titel}</h2>
+        <p>{lied.lernIntro} Hak ab, was sitzt – dein Fortschritt wird gespeichert.</p>
+      </div>
 
-      {selectedId === LIED && (
+      <div className="filter-row">
+        {schritte.map(b => (
+          <button
+            type="button"
+            key={b.id}
+            className={`filter-btn${selectedId === b.id ? ' on' : ''}`}
+            onClick={() => waehle(b.id)}
+          >
+            {b.nr}. {b.titel}
+          </button>
+        ))}
+        <button
+          type="button"
+          className={`filter-btn sb-lied-btn${zeigtSongblatt ? ' on' : ''}`}
+          onClick={() => waehle(songblattId(lied.id))}
+        >
+          🎵 Das ganze Lied
+        </button>
+      </div>
+
+      {zeigtSongblatt && (
         <Suspense fallback={<div className="card"><p className="quiz-hint">Lädt …</p></div>}>
-          <div className="filter-row" role="tablist" aria-label="Lied wählen">
-            {LIEDER.map(l => (
-              <button
-                key={l.id}
-                type="button"
-                role="tab"
-                aria-selected={l.id === liedId}
-                className={`filter-btn${l.id === liedId ? ' on' : ''}`}
-                onClick={() => waehleLied(l.id)}
-              >
-                {l.titel}
-              </button>
-            ))}
-          </div>
           {/* key: beim Liedwechsel startet das Songblatt frisch (Tempo, Startpunkt, Wiedergabe) */}
-          <Songblatt key={liedId} lied={liedNach(liedId)} />
+          <Songblatt key={lied.id} lied={lied} />
         </Suspense>
       )}
 

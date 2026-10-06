@@ -1,6 +1,6 @@
 # Animal Crossing Gitarre
 
-Interaktive Lernseite, um **„Go K.K. Rider"** und **„K.K. Cruisin'"** aus Animal Crossing auf der Akustikgitarre zu lernen: Go K.K. Rider mit Kapodaster im 4. Bund in fünf Lernschritten vom Stimmen bis zum Mitspielen, plus Bonus-Schritt mit den Barré-Griffen des Originals; K.K. Cruisin' als zweites Lied (Schritt 7, Kapo im 6. Bund). Erstellt aus dem [`lernseite-template`](https://github.com/Saiyuki47/lernseite-template); Aufbau und Styling sind identisch zu den übrigen Lernseiten.
+Interaktive Lernseite, um **„Go K.K. Rider"** und **„K.K. Cruisin'"** aus Animal Crossing auf der Akustikgitarre zu lernen: Go K.K. Rider mit Kapodaster im 4. Bund in fünf Lernschritten vom Stimmen bis zum Mitspielen, plus Bonus-Schritt mit den Barré-Griffen des Originals; K.K. Cruisin' als zweites Lied mit eigenem Untertab (Kapo im 6. Bund). Erstellt aus dem [`lernseite-template`](https://github.com/Saiyuki47/lernseite-template); Aufbau und Styling sind identisch zu den übrigen Lernseiten.
 
 > Song © Nintendo. Die Akkorde im Songblatt („🎵 Das ganze Lied") stammen aus der Transkription von „HerNameIsRain" auf [Ultimate Guitar](https://tabs.ultimate-guitar.com/tab/misc-computer-games/animal-crossing-go-kk-rider-chords-1452035); Taktaufteilung, Kapo-Griffe und Tipps sind von dieser Lernseite. Keine Melodie-Noten, kein Text.
 >
@@ -12,7 +12,7 @@ Interaktive Lernseite, um **„Go K.K. Rider"** und **„K.K. Cruisin'"** aus An
 
 | Tab | Inhalt |
 |-----|--------|
-| **Lernschritte** | 5 Schritte mit Kapo (Vorbereitung → Song-Akkorde → Akkordwechsel aus dem Song → Rhythmus → Song) + Bonus-Schritt Barré + **🎵 Das ganze Lied** (komplettes Songblatt Takt für Takt, Kapo/Original umschaltbar, Tipps je Abschnitt, Mitspiel-Modus mit Einzählen und mitlaufendem Takt), mit Übungen, Tipps, Griffbildern und „Woran merke ich, dass es sitzt?" – Fortschritt wird gespeichert |
+| **Lernschritte** | Ein Untertab je Lied. **Go K.K. Rider:** 5 Schritte mit Kapo 4 (Vorbereitung → Song-Akkorde → Akkordwechsel aus dem Song → Rhythmus → Song) + Bonus-Schritt Barré. **K.K. Cruisin':** 5 Schritte mit Kapo 6 (Vorbereitung → Song-Akkorde → Schleife → Intro und Tempo → Song) + Bonus Original. Je Lied **🎵 Das ganze Lied** (komplettes Songblatt Takt für Takt, Kapo/Original umschaltbar, Tipps je Abschnitt, Mitspiel-Modus mit Einzählen und mitlaufendem Takt), mit Übungen, Tipps, Griffbildern und „Woran merke ich, dass es sitzt?" – Fortschritt wird gespeichert |
 | **Griffe & Technik** | Untertab **🎸 Griffe & Technik** (Songüberblick, Kapo-Tabelle, Song-Griffe, Barré-Griffe, Schlagmuster, Übe-Tipps) und **🧠 Begriffe lernen** (Glossar mit Lernmodus) |
 | **Spickzettel** | Druckbar: Seite 1 Go K.K. Rider mit Kapo, Seite 2 Barré-Bonus, Seite 3 K.K. Cruisin' |
 | **Werkzeuge** | Metronom mit mitlaufender Schlagmuster-Anzeige und Swing, „Tempo tippen" zum BPM-Bestimmen, Stimmgerät über das Mikrofon (erkennt die Saite, zeigt die Abweichung in Cent), Stimmtöne pro Saite |

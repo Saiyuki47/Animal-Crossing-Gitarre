@@ -293,7 +293,7 @@ export const aufgaben: Aufgabe[] = [
     akkorde: ['Dm', 'A7'],
   },
 
-  // ── Schritt 7: Zweites Lied – K.K. Cruisin' (Kapo 6) ────────────────────
+  // ── K.K. Cruisin' (Kapo 6) – eigener Untertab in den Lernschritten ────────
   {
     id: 'kkc-kapo',
     titel: 'Kapodaster in den 6. Bund',
@@ -336,7 +336,7 @@ export const aufgaben: Aufgabe[] = [
   {
     id: 'kkc-intro',
     titel: 'Die Intro-Melodie',
-    aufgabeText: 'Spiel die Intro-Melodie aus dem Songblatt (Lernschritte → 🎵 Das ganze Lied → K.K. Cruisin\'). Mit Kapo liegt sie nur auf A-, D- und G-Saite in den Bünden 0–3 – die Zahlen zählen ab dem Kapo.',
+    aufgabeText: 'Spiel die Intro-Melodie aus dem Songblatt (Lernschritte → K.K. Cruisin\' → 🎵 Das ganze Lied). Mit Kapo liegt sie nur auf A-, D- und G-Saite in den Bünden 0–3 – die Zahlen zählen ab dem Kapo.',
     tipp: 'Die Tabulatur zeigt nur, welche Töne in welcher Reihenfolge kommen – den Rhythmus hörst du dir von der Aufnahme ab. Die Melodie endet auf der leeren A-Saite: dem Grundton E♭.',
     loesung: 'Du spielst die zehn Töne flüssig und im Rhythmus der Aufnahme.',
     schwierigkeit: 'mittel',
@@ -364,7 +364,7 @@ export const aufgaben: Aufgabe[] = [
     id: 'kkc-original',
     titel: 'Bonus: K.K. Cruisin\' im Original',
     aufgabeText: 'Kapo ab und die Original-Akkorde spielen (Songblatt-Ansicht „Original"): B7 (offen), B♭7 (A7-Form, Barré 1. Bund), E♭7sus2 (Mini-Barré 1. Bund), A♭7 und G♭7 (E7-Form im 4. bzw. 2. Bund). Nach dem Tonartwechsel nur offene Griffe: C7, B7, E7sus2, A7, G7.',
-    tipp: 'Die Barré-Formen kennst du aus Schritt 6. Neu ist die E7-Form (E7 mit Barré) – ein Finger weniger als die E-Form.',
+    tipp: 'Die Barré-Formen kennst du aus dem Bonus-Schritt von Go K.K. Rider. Neu ist die E7-Form (E7 mit Barré) – ein Finger weniger als die E-Form.',
     loesung: 'Du spielst die Schleife B7 → B♭7 → E♭7sus2 → A♭7 ohne Kapo sauber im Takt.',
     schwierigkeit: 'schwer',
     kategorie: "K.K. Cruisin'",

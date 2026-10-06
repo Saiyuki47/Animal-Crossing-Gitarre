@@ -27,6 +27,8 @@ export interface UebungsblattAufgabe {
 /** Ein Lernschritt (entspricht strukturell einem Übungsblatt der anderen Lernseiten). */
 export interface Uebungsblatt {
   id: string
+  /** Lied-ID aus data/lieder (Untertab in den Lernschritten). */
+  lied: string
   nr: string
   titel: string
   typ: 'Grundlagen' | 'Technik' | 'Rhythmus' | 'Song' | 'Bonus'

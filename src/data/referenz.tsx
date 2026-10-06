@@ -99,7 +99,7 @@ ${AUFBAU.map(a => `${a.name}${a.takte ? ` (${a.takte} Takte)` : ''}: ${a.griffe.
         </table>
         <p className="ref-absatz" style={{ marginTop: '0.75rem' }}>
           Das komplette Lied Takt für Takt – mit Kapo-Griffen, Tipps und Mitspiel-Modus – steht unter{' '}
-          <a href="#uebung/lied">Lernschritte → 🎵 Das ganze Lied</a>. Quelle der Akkorde:{' '}
+          <a href="#uebung/lied-go-kk-rider">Lernschritte → Go K.K. Rider → 🎵 Das ganze Lied</a>. Quelle der Akkorde:{' '}
           <a href={AKKORDBLATT_URL} target="_blank" rel="noopener noreferrer">
             Akkordblatt bei Ultimate Guitar ↗
           </a>
@@ -145,7 +145,7 @@ Nach dem Tonartwechsel Kapo im 7. Bund: ${kapoText(KK_KAPO_7)}`,
           Tonart <b>E♭-Moll</b>, ca. <b>{KK_CRUISIN.bpm} BPM</b> (laut Hooktheory). Fast der ganze Song ist eine Schleife aus
           vier Septakkorden: <b>B7 – B♭7 – E♭7sus2 – A♭7</b> (jedes zweite Mal G♭7). Mit <b>Kapo im 6. Bund</b> wird daraus
           F7 – E7 – A7sus2 – D7/C7. Vor dem letzten Refrain geht es einen Halbton höher: Kapo in den 7. Bund, gleiche Griffe.
-          Das komplette Songblatt steht unter <a href="#uebung/lied/kk-cruisin">Lernschritte → 🎵 Das ganze Lied</a>.
+          Das komplette Songblatt steht unter <a href="#uebung/lied-kk-cruisin">Lernschritte → K.K. Cruisin' → 🎵 Das ganze Lied</a>.
         </p>
         <div className="ref-tabellen-reihe">
           <KapoTabelle zeilen={KK_KAPO_6} bund={6} />

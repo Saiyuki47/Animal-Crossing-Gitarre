@@ -2,12 +2,14 @@ import type { Uebungsblatt } from '../types'
 import { AKKORDBLATT_URL } from './song'
 import { KK_CRUISIN } from './lieder/kkCruisin'
 
-// Lernschritte – vom Stimmen bis zu Go K.K. Rider. Schritte 1–5 mit Kapodaster im
-// 4. Bund, Schritt 6 als Bonus mit Barré-Griffen im Original. Jeder Schritt verweist
-// per `aufgabeId` auf eine Übung aus data/aufgaben.ts.
+// Lernschritte je Lied (`lied` = Untertab): Go K.K. Rider in 5 Schritten mit Kapo im
+// 4. Bund + Bonus Barré, K.K. Cruisin' in 5 Schritten mit Kapo im 6. Bund + Bonus.
+// Jeder Schritt verweist per `aufgabeId` auf eine Übung aus data/aufgaben.ts.
+// Die Schritt-IDs bleiben stabil – an ihnen hängt der gespeicherte Fortschritt.
 export const uebungsblaetter: Uebungsblatt[] = [
   {
     id: 'vorbereitung',
+    lied: 'go-kk-rider',
     nr: '1',
     titel: 'Vorbereitung',
     typ: 'Grundlagen',
@@ -22,6 +24,7 @@ export const uebungsblaetter: Uebungsblatt[] = [
   },
   {
     id: 'akkorde',
+    lied: 'go-kk-rider',
     nr: '2',
     titel: 'Die Song-Akkorde',
     typ: 'Technik',
@@ -36,6 +39,7 @@ export const uebungsblaetter: Uebungsblatt[] = [
   },
   {
     id: 'wechsel',
+    lied: 'go-kk-rider',
     nr: '3',
     titel: 'Akkordwechsel aus dem Song',
     typ: 'Technik',
@@ -50,6 +54,7 @@ export const uebungsblaetter: Uebungsblatt[] = [
   },
   {
     id: 'rhythmus',
+    lied: 'go-kk-rider',
     nr: '4',
     titel: 'Rhythmus und Schlagmuster',
     typ: 'Rhythmus',
@@ -64,6 +69,7 @@ export const uebungsblaetter: Uebungsblatt[] = [
   },
   {
     id: 'song',
+    lied: 'go-kk-rider',
     nr: '5',
     titel: 'Go K.K. Rider mit Kapo',
     typ: 'Song',
@@ -82,6 +88,7 @@ export const uebungsblaetter: Uebungsblatt[] = [
   },
   {
     id: 'barre',
+    lied: 'go-kk-rider',
     nr: '6',
     titel: 'Bonus: Barré und Original',
     typ: 'Bonus',
@@ -97,24 +104,77 @@ export const uebungsblaetter: Uebungsblatt[] = [
       { nr: 6, text: 'Spiel den Song im Original ohne Kapo.', aufgabeId: 'barre-song' },
     ],
   },
+
+  // ── K.K. Cruisin' (Kapo im 6. Bund) ──────────────────────────────────────
   {
-    id: 'kk-cruisin',
-    nr: '7',
-    titel: "Zweites Lied: K.K. Cruisin'",
-    typ: 'Song',
-    dauer: '2–4 Wochen · 20 Min.',
-    beschreibung:
-      "Jazzig, mit Septakkorden – und fast komplett eine einzige Schleife aus vier Akkorden. Mit Kapo im 6. Bund werden daraus einfache Griffe: F7, E7, A7sus2, D7 und C7. Das komplette Songblatt findest du unter „🎵 Das ganze Lied\" → K.K. Cruisin'.",
-    link: { text: '🎼 Akkordblatt bei Ultimate Guitar öffnen', url: KK_CRUISIN.quelle.url },
+    id: 'kkc-vorbereitung',
+    lied: 'kk-cruisin',
+    nr: '1',
+    titel: 'Vorbereitung',
+    typ: 'Grundlagen',
+    dauer: '1 Tag · 10 Min.',
+    beschreibung: 'Stimmen und Kapodaster in den 6. Bund – damit werden aus den Barré-Akkorden des Originals einfache Griffe.',
     aufgaben: [
-      { nr: 1, text: 'Setz den Kapodaster in den 6. Bund.', aufgabeId: 'kkc-kapo' },
-      { nr: 2, text: 'Lerne die Griffe F7, E7, A7sus2, D7 und C7.', aufgabeId: 'kkc-griffe' },
-      { nr: 3, text: 'Spiel die Cruisin\'-Schleife F7 → E7 → A7sus2 → D7.', aufgabeId: 'kkc-schleife' },
-      { nr: 4, text: 'One-Minute-Changes mit den Song-Wechseln.', aufgabeId: 'kkc-wechsel' },
-      { nr: 5, text: 'Lerne die Intro-Melodie.', aufgabeId: 'kkc-intro' },
-      { nr: 6, text: 'Finde das Tempo deiner Aufnahme.', aufgabeId: 'kkc-tempo' },
-      { nr: 7, text: 'Spiel den ganzen Song mit.', aufgabeId: 'kkc-song' },
-      { nr: 8, text: 'Bonus: K.K. Cruisin\' im Original.', aufgabeId: 'kkc-original' },
+      { nr: 1, text: 'Stimme die Gitarre auf E – A – D – G – H – e.', aufgabeId: 'stimmen' },
+      { nr: 2, text: 'Setz den Kapodaster in den 6. Bund.', aufgabeId: 'kkc-kapo' },
     ],
+  },
+  {
+    id: 'kkc-akkorde',
+    lied: 'kk-cruisin',
+    nr: '2',
+    titel: 'Die Song-Akkorde',
+    typ: 'Technik',
+    dauer: '1 Woche · 15 Min.',
+    beschreibung: 'Mit Kapo im 6. Bund brauchst du nur fünf Griffe: F7, E7, A7sus2, D7 und C7 – E7 kennst du schon aus Go K.K. Rider.',
+    aufgaben: [{ nr: 1, text: 'Lerne die Griffe F7, E7, A7sus2, D7 und C7.', aufgabeId: 'kkc-griffe' }],
+  },
+  {
+    id: 'kkc-wechsel',
+    lied: 'kk-cruisin',
+    nr: '3',
+    titel: 'Die Cruisin\'-Schleife',
+    typ: 'Technik',
+    dauer: '1–2 Wochen · 15 Min.',
+    beschreibung: 'Fast der ganze Song ist eine Schleife aus vier Akkorden. Wenn die sitzt, kannst du K.K. Cruisin\' praktisch schon spielen.',
+    aufgaben: [
+      { nr: 1, text: 'Spiel die Schleife F7 → E7 → A7sus2 → D7.', aufgabeId: 'kkc-schleife' },
+      { nr: 2, text: 'One-Minute-Changes mit den Song-Wechseln.', aufgabeId: 'kkc-wechsel' },
+    ],
+  },
+  {
+    id: 'kkc-intro-tempo',
+    lied: 'kk-cruisin',
+    nr: '4',
+    titel: 'Intro und Tempo',
+    typ: 'Rhythmus',
+    dauer: '1 Woche · 15 Min.',
+    beschreibung: 'Die kurze Intro-Melodie und das Tempo: K.K. Cruisin\' ist schnell (ca. 175 BPM) – du startest mit 90.',
+    aufgaben: [
+      { nr: 1, text: 'Lerne die Intro-Melodie.', aufgabeId: 'kkc-intro' },
+      { nr: 2, text: 'Finde das Tempo deiner Aufnahme.', aufgabeId: 'kkc-tempo' },
+    ],
+  },
+  {
+    id: 'kkc-lied',
+    lied: 'kk-cruisin',
+    nr: '5',
+    titel: "K.K. Cruisin' spielen",
+    typ: 'Song',
+    dauer: '2 Wochen · 20 Min.',
+    beschreibung: 'Alles zusammen: das ganze Lied im Mitspiel-Modus – mit der Pause im zweiten Refrain und dem Tonartwechsel (Kapo 6 → 7).',
+    link: { text: '🎼 Akkordblatt bei Ultimate Guitar öffnen', url: KK_CRUISIN.quelle.url },
+    aufgaben: [{ nr: 1, text: 'Spiel den ganzen Song mit.', aufgabeId: 'kkc-song' }],
+  },
+  {
+    id: 'kkc-barre',
+    lied: 'kk-cruisin',
+    nr: '6',
+    titel: 'Bonus: Original',
+    typ: 'Bonus',
+    dauer: '2+ Wochen · 15 Min.',
+    beschreibung: 'Kapo ab: B7, B♭7, E♭7sus2, A♭7 und G♭7 im Original. Die Barré-Formen kennst du aus dem Bonus-Schritt von Go K.K. Rider.',
+    link: { text: '🎼 Akkordblatt bei Ultimate Guitar öffnen', url: KK_CRUISIN.quelle.url },
+    aufgaben: [{ nr: 1, text: "K.K. Cruisin' im Original.", aufgabeId: 'kkc-original' }],
   },
 ]

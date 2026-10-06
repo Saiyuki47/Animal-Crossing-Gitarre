@@ -5,6 +5,7 @@ import { uebungsblaetter } from './uebungsblaetter'
 import { referenzKarten } from './referenz'
 import { begriffGruppen } from './begriffe'
 import { akkorde, griffKurz } from './akkorde'
+import { liedNach } from './lieder'
 
 // Such-Index aus den Inhalten der Seite. Jeder Treffer kennt seinen Ziel-Tab,
 // damit die globale Suche direkt dorthin springen kann.
@@ -12,7 +13,7 @@ export const searchIndex: SearchItem[] = [
   ...uebungsblaetter.flatMap(b =>
     b.aufgaben.map(t => ({
       label: `Übung ${t.nr}: ${t.text}`,
-      snippet: `Schritt ${b.nr}: ${b.titel}`,
+      snippet: `${liedNach(b.lied).titel} · Schritt ${b.nr}: ${b.titel}`,
       tab: 'uebung',
       keywords: b.typ,
     })),
