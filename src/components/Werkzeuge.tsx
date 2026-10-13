@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { ORIGINAL_BPM, UEBE_BPM } from '../data/song'
+import { UEBE_BPM } from '../data/song'
+import { LIEDER } from '../data/lieder'
 import { klick, starteTakt, useAudioContext } from '../lib/takt'
 import Stimmgeraet from './Stimmgeraet'
 
@@ -26,6 +27,7 @@ const MUSTER: Muster[] = [
   { id: 'achtel', name: 'Achtel', slots: ['D', 'U', 'D', 'U', 'D', 'U', 'D', 'U'] },
   { id: 'standard', name: 'Song-Muster', slots: ['D', '', 'D', 'U', '', 'U', 'D', 'U'] },
   { id: 'boom-chuck', name: 'Boom-Chuck', slots: ['B', '', 'D', '', 'B', '', 'D', 'U'] },
+  { id: 'rock', name: 'Rock-Achtel', slots: ['D', 'D', 'D', 'D', 'D', 'D', 'D', 'D'] },
 ]
 
 const ZAEHLZEIT = ['1', '+', '2', '+', '3', '+', '4', '+']
@@ -132,9 +134,11 @@ function Metronom({ bpm, setBpm }: { bpm: number; setBpm: (n: number) => void })
         <button type="button" className={`filter-btn${bpm === UEBE_BPM ? ' on' : ''}`} onClick={() => setBpm(UEBE_BPM)}>
           Übetempo {UEBE_BPM}
         </button>
-        <button type="button" className={`filter-btn${bpm === ORIGINAL_BPM ? ' on' : ''}`} onClick={() => setBpm(ORIGINAL_BPM)}>
-          Go K.K. Rider {ORIGINAL_BPM}
-        </button>
+        {LIEDER.map(l => (
+          <button key={l.id} type="button" className={`filter-btn${bpm === l.bpm ? ' on' : ''}`} onClick={() => setBpm(l.bpm)}>
+            {l.titel} {l.bpm}
+          </button>
+        ))}
       </div>
 
       <div className="filter-row">

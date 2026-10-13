@@ -3,6 +3,7 @@ import Griffbild from '../components/Griffbild'
 import { akkorde, akkordNach, griffKurz, type AkkordGruppe } from './akkorde'
 import { AKKORDBLATT_URL, AUFBAU, KAPO_4, KAPO_5, ORIGINAL_BPM, UEBE_BPM, type KapoZeile } from './song'
 import { KK_CRUISIN, KK_KAPO_6, KK_KAPO_7 } from './lieder/kkCruisin'
+import { ZOMBIE, ZOMBIE_AUFBAU } from './lieder/zombie'
 
 // Nachschlagekarten „Griffe & Technik". Jede Karte hat eine stabile `id`
 // (Inhaltsverzeichnis + Deep-Link #referenz/<id>). Karten mit Griffbildern/Tabellen
@@ -159,6 +160,62 @@ Nach dem Tonartwechsel Kapo im 7. Bund: ${kapoText(KK_KAPO_7)}`,
           <b>Original ohne Kapo:</b>
         </p>
         <AkkordRaster ids={['B7', 'Bes7', 'Es7sus2', 'As7', 'Ges7', 'C7', 'E7sus2', 'A7', 'G7']} />
+      </>
+    ),
+  },
+  {
+    id: 'zombie',
+    titel: 'Zombie im Überblick',
+    inhalt: `Bonuslied von The Cranberries. Tonart E-Moll, ca. ${ZOMBIE.bpm} BPM, 4/4-Takt, ohne Kapo.
+Der ganze Song ist eine Schleife: Em – C – G – D (im Original D/F♯, oft Cmaj7 statt C), jeder Akkord ein Takt.
+Strophen leise, Refrains laut.
+${ZOMBIE_AUFBAU.map(a => `${a.name}: ${a.runden} Runden (${a.takte} Takte)`).join('\n')}`,
+    inhaltNode: (
+      <>
+        <p className="ref-absatz">
+          Ein Bonuslied außerhalb von Animal Crossing: <b>„Zombie" von The Cranberries</b>. Tonart <b>E-Moll</b>, ca.{' '}
+          <b>{ZOMBIE.bpm} BPM</b> im 4/4-Takt – zum Üben mit {ZOMBIE.uebeBpm} BPM starten. <b>Kein Kapo:</b> Der ganze Song ist
+          eine einzige Schleife aus vier offenen Griffen, <b>Em – C – G – D</b>, jeder Akkord einen Takt lang. Im Original klingt
+          statt D meist <b>D/F♯</b> (der Bass läuft G → F♯ → E), viele Akkordblätter schreiben Cmaj7 statt C. Was den Song
+          ausmacht, ist die <b>Dynamik</b>: leise Strophen, laute Refrains.
+        </p>
+        <table className="ref-tabelle">
+          <thead>
+            <tr>
+              <th>Abschnitt</th>
+              <th>Runden</th>
+              <th>Takte</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ZOMBIE_AUFBAU.map((a, i) => (
+              <tr key={i}>
+                <td>
+                  <b>{a.name}</b>
+                </td>
+                <td>{a.runden}</td>
+                <td>{a.takte}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p className="ref-absatz" style={{ marginTop: '0.75rem' }}>
+          Wie oft die Schleife pro Abschnitt läuft, unterscheidet sich zwischen den Akkordblättern – beim Hören mitzählen. Das
+          komplette Songblatt steht unter <a href="#uebung/lied-zombie">Lernschritte → Zombie → 🎵 Das ganze Lied</a>. Quelle der
+          Akkorde:{' '}
+          <a href={ZOMBIE.quelle.url} target="_blank" rel="noopener noreferrer">
+            Akkordblatt bei Ultimate Guitar ↗
+          </a>
+          .
+        </p>
+        <p className="ref-absatz" style={{ marginTop: '1rem' }}>
+          <b>Die vier Griffe:</b>
+        </p>
+        <AkkordRaster ids={['Em', 'C', 'G', 'D']} />
+        <p className="ref-absatz" style={{ marginTop: '1rem' }}>
+          <b>Wie im Original (Bonus):</b>
+        </p>
+        <AkkordRaster gruppe="Zombie" />
       </>
     ),
   },

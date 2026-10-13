@@ -244,4 +244,38 @@ export const quizFragen: QuizFrage[] = [
     erklaerung: 'Die Schleife F7 – E7 – A7sus2 – D7/C7 trägt den Song, Refrain 2 startet mit einer Pause, und der Tonartwechsel funktioniert wie bei Go K.K. Rider: Kapo einen Bund höher, gleiche Griffe.',
     quelle: "K.K. Cruisin'",
   },
+
+  // ── Zombie ─────────────────────────────────────────────────────────────
+  {
+    art: 'reihenfolge',
+    frage: 'Bring die Zombie-Schleife in die richtige Reihenfolge.',
+    schritte: ['Em', 'C', 'G', 'D'],
+    erklaerung: 'Em → C → G → D, jeder Akkord einen Takt – und das den ganzen Song lang. Im Original klingt statt D meist D/F♯.',
+    quelle: 'Zombie',
+  },
+  {
+    art: 'single',
+    frage: 'In welchen Bund setzt du den Kapodaster für Zombie?',
+    optionen: [
+      { text: 'Gar nicht – der Song steht in E-Moll und klingt mit offenen Griffen wie im Original' },
+      { text: 'In den 4. Bund wie bei Go K.K. Rider', warumFalsch: 'Dann klänge alles 4 Halbtöne zu hoch: Aus Em würde G♯m.' },
+      { text: "In den 6. Bund wie bei K.K. Cruisin'", warumFalsch: 'Dann klänge alles 6 Halbtöne zu hoch: Aus Em würde B♭m.' },
+      { text: 'In den 1. Bund', warumFalsch: 'Dann klänge alles einen Halbton zu hoch: Aus Em würde Fm.' },
+    ],
+    richtige: 0,
+    erklaerung: 'Ein Kapo macht jeden Griff pro Bund einen Halbton höher. Zombie steht schon in E-Moll – Em, C, G und D klingen ohne Kapo genau wie die Aufnahme.',
+    quelle: 'Zombie',
+  },
+  {
+    art: 'wahrfalsch',
+    frage: 'Markiere jede Aussage über Zombie als wahr oder falsch.',
+    aussagen: [
+      { text: 'Bei D/F♯ ist F♯ der tiefste Ton.', wahr: true },
+      { text: 'Am lautesten wird es in den Strophen.', wahr: false, warum: 'Die Strophen sind leise, laut wird es im Refrain (und im Solo).' },
+      { text: 'Zombie ist schneller als Go K.K. Rider.', wahr: false, warum: 'Zombie läuft mit ca. 84 BPM, Go K.K. Rider mit ca. 150 BPM.' },
+      { text: 'Aus C wird Cmaj7, wenn der Zeigefinger die H-Saite freigibt.', wahr: true },
+    ],
+    erklaerung: 'D/F♯ = D mit F♯ im Bass (Basslinie G → F♯ → E), leise Strophen und laute Refrains, ruhiges Tempo um 84 BPM, Cmaj7 = C mit leerer H-Saite.',
+    quelle: 'Zombie',
+  },
 ]

@@ -3,9 +3,12 @@
 // Kapo-Griffe werden daraus berechnet (Akkord − Kapo-Bund des jeweiligen Songteils).
 //
 // Ein Takt = ein Array: ein Akkord (ganzer Takt) oder zwei Akkorde (je 2 Schläge).
-// „N.C." (no chord) = Pause, die Band setzt aus.
+// „N.C." (no chord) = Pause, die Band setzt aus. Slash-Akkorde wie „D/F#" = D mit F♯ im Bass.
 
 export type Takt = [string] | [string, string]
+
+/** Anschlagmuster im Songblatt (Definitionen in components/Songblatt.tsx). */
+export type AnschlagId = 'viertel' | 'song' | 'rock'
 
 export interface SongAbschnitt {
   id: string
@@ -29,11 +32,22 @@ export interface Lied {
   titel: string
   /** Einleitungstext über den Lernschritten dieses Lieds. */
   lernIntro: string
+  /** Rechte-Hinweis unter dem Songblatt, z.B. „Song © Nintendo". */
+  rechte: string
   bpm: number
   uebeBpm: number
   tempi: number[]
-  /** Kapo-Bund je Songteil. */
+  /** Kapo-Bund je Songteil (0 = ohne Kapo). */
   kapo: Record<1 | 2, number>
+  /**
+   * Vereinfachungen für die einfache Ansicht, z.B. { 'D/F#': 'D' } – gilt nach dem
+   * Transponieren. Ohne Kapo ist das der einzige Unterschied zwischen den Ansichten.
+   */
+  einfach?: Record<string, string>
+  /** Beschriftung der zwei Ansichten (Standard: „Mit Kapo …" / „Original (Barré)"). */
+  ansichten?: { einfach: string; original: string }
+  /** Anschlagmuster im Songblatt (Standard: Viertel und Song-Muster). */
+  anschlaege?: AnschlagId[]
   quelle: { autor: string; url: string; zusatz?: string }
   abschnitte: SongAbschnitt[]
 }
@@ -56,16 +70,21 @@ function zerlege(akkord: string): { grund: number; rest: string } {
   return { grund: (grund + 12) % 12, rest: m[3] }
 }
 
-/** Verschiebt einen Akkordnamen um `halbtoene` (negativ = tiefer), z.B. G#m −4 → Em. */
+/** Verschiebt einen Akkordnamen um `halbtoene` (negativ = tiefer), z.B. G#m −4 → Em, D/F# −2 → C/E. */
 export function transponiere(akkord: string, halbtoene: number): string {
   if (akkord === PAUSE) return akkord
-  const { grund, rest } = zerlege(akkord)
-  return TOENE[(grund + halbtoene + 120) % 12] + rest
+  return akkord
+    .split('/')
+    .map(teil => {
+      const { grund, rest } = zerlege(teil)
+      return TOENE[(grund + halbtoene + 120) % 12] + rest
+    })
+    .join('/')
 }
 
 /** Anzeige mit ♯/♭; „B" (englisch) bleibt B wie im Akkordblatt. Pause → „Pause". */
 export const anzeigeName = (akkord: string) =>
-  akkord === PAUSE ? 'Pause' : akkord.replace('#', '♯').replace(/^([A-G])b/, '$1♭')
+  akkord === PAUSE ? 'Pause' : akkord.replace(/#/g, '♯').replace(/([A-G])b/g, '$1♭')
 
 /** Akkordname → Akkord-ID in data/akkorde.ts (für die Griffbilder). */
 const GRIFF_ID: Record<string, string> = {
@@ -75,6 +94,8 @@ const GRIFF_ID: Record<string, string> = {
   // K.K. Cruisin'
   Bb7: 'Bes7', Eb7sus2: 'Es7sus2', Ab7: 'As7', Gb7: 'Ges7', C7: 'C7', E7sus2: 'E7sus2', G7: 'G7',
   A7sus2: 'A7sus2', D7: 'D7',
+  // Zombie
+  'D/F#': 'D-Fis', Cmaj7: 'Cmaj7',
 }
 
 /** Griff-ID für einen Akkord; mit Kapo werden F und F7 als kleine Griffe gespielt. */
@@ -84,10 +105,15 @@ export function griffId(akkord: string, mitKapo: boolean): string | undefined {
   return GRIFF_ID[akkord]
 }
 
-/** Akkord, wie er in der gewählten Ansicht gegriffen wird. */
+/** Akkord, wie er in der gewählten Ansicht gegriffen wird (einfache Ansicht: mit Kapo und vereinfacht). */
 export function gegriffen(lied: Lied, akkord: string, teil: 1 | 2, mitKapo: boolean): string {
-  return mitKapo ? transponiere(akkord, -lied.kapo[teil]) : akkord
+  if (!mitKapo) return akkord
+  const griff = transponiere(akkord, -lied.kapo[teil])
+  return lied.einfach?.[griff] ?? griff
 }
+
+/** Ob das Lied (in irgendeinem Teil) mit Kapodaster gespielt wird. */
+export const hatKapo = (lied: Lied) => lied.kapo[1] > 0 || lied.kapo[2] > 0
 
 export const taktZahl = (lied: Lied) => lied.abschnitte.reduce((n, a) => n + a.takte.length, 0)
 

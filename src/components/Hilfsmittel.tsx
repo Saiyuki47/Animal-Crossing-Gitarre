@@ -2,11 +2,13 @@ import { useEffect } from 'react'
 import { akkordNach, akkorde, type AkkordGruppe } from '../data/akkorde'
 import { KAPO_4, KAPO_5, ORIGINAL_BPM, UEBE_BPM } from '../data/song'
 import { KK_CRUISIN, KK_KAPO_6, KK_KAPO_7 } from '../data/lieder/kkCruisin'
+import { ZOMBIE, ZOMBIE_AUFBAU } from '../data/lieder/zombie'
 import Griffbild from './Griffbild'
 
 // Hilfsmittel-Tab: druckbarer Spickzettel (wie die Hilfsmittel-Tabs der anderen
 // Lernseiten). Seite 1: Song mit Kapo (Griffe, Kapo-Tabelle, Aufbau, Schlagmuster).
 // Seite 2: Bonus mit den Barré-Griffen fürs Original. Seite 3: zweites Lied K.K. Cruisin'.
+// Seite 4: Bonuslied Zombie (ohne Kapo).
 // „🖨️ Drucken" öffnet den Druckdialog; per @media print werden Header/Tabs
 // ausgeblendet und die Boxen A4-tauglich gesetzt.
 
@@ -88,6 +90,43 @@ const SEITE_KK: Box[] = [
     r: [
       { l: 'Töne', f: 'D2 G2 G0 D2 D0 A3 D0 D2 A3 A0' },
       { f: 'Saite + Bund ab dem Kapo, Rhythmus nach Gehör' },
+    ],
+  },
+]
+
+const SEITE_ZOMBIE: Box[] = [
+  {
+    t: 'Zombie',
+    r: [
+      { l: 'Kapo', f: 'keiner – offene Griffe in E-Moll' },
+      { l: 'Tempo', f: `ca. ${ZOMBIE.bpm} BPM, 4/4 (üben ab ${ZOMBIE.uebeBpm})` },
+      { l: 'Schleife', f: 'Em → C → G → D, je 1 Takt – der ganze Song' },
+      { l: 'Original', f: 'D/F♯ statt D, oft Cmaj7 statt C' },
+    ],
+  },
+  {
+    t: 'Aufbau (Runden der Schleife)',
+    r: [
+      { f: ZOMBIE_AUFBAU.slice(0, 5).map(a => `${a.name} ${a.runden}×`).join(' · ') },
+      { f: ZOMBIE_AUFBAU.slice(5).map(a => `${a.name} ${a.runden}×`).join(' · ') },
+    ],
+  },
+  {
+    t: 'Anschlag und Dynamik (1 + 2 + 3 + 4 +)',
+    r: [
+      { l: 'Leise', f: '↓   ↓   ↓   ↓   (Strophe, oder zupfen)' },
+      { l: 'Song', f: '↓ – ↓ ↑ – ↑ ↓ ↑' },
+      { l: 'Laut', f: '↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓   (Refrain, Solo)' },
+      { l: 'Zupfen', f: 'Bass G H e H G H G' },
+    ],
+  },
+  {
+    t: 'Wechsel-Tricks',
+    r: [
+      { f: 'Em → C: Em mit Zeige-/Mittelfinger, Mittelfinger bleibt' },
+      { f: 'G → D: Ringfinger e-Saite → H-Saite (3. Bund)' },
+      { f: 'D/F♯: Bass läuft G → F♯ → E zurück zum Em' },
+      { f: 'Leise heißt nicht langsamer – beim Klick bleiben' },
     ],
   },
 ]
@@ -175,7 +214,7 @@ export default function Hilfsmittel() {
       <div className="section-header no-print">
         <h2>Spickzettel</h2>
         <p>
-          Alle Song-Griffe und Kurzregeln auf A4 (Seite 2: Barré-Bonus, Seite 3: K.K. Cruisin') – zum Ausdrucken und neben den Notenständer
+          Alle Song-Griffe und Kurzregeln auf A4 (Seite 2: Barré-Bonus, Seite 3: K.K. Cruisin', Seite 4: Zombie) – zum Ausdrucken und neben den Notenständer
           legen. „🖨️ Drucken" erzeugt ein sauberes Blatt ohne Menü und Tabs.
         </p>
       </div>
@@ -192,6 +231,13 @@ export default function Hilfsmittel() {
         titel={`${KK_CRUISIN.titel} · Mit Kapo`}
         griffe={['F7-klein', 'E7', 'A7sus2', 'D7', 'C7']}
         griffTitel="Griffe (Kapo 6. Bund)"
+      />
+      <SpickzettelSeite
+        boxen={SEITE_ZOMBIE}
+        nr={4}
+        titel={`${ZOMBIE.titel} · Ohne Kapo`}
+        griffe={['Em', 'C', 'G', 'D', 'D-Fis', 'Cmaj7']}
+        griffTitel="Griffe (ohne Kapo, D/F♯ und Cmaj7 fürs Original)"
       />
     </div>
   )

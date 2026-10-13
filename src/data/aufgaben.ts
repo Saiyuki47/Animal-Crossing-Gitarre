@@ -1,8 +1,9 @@
 import type { Aufgabe } from '../types'
 
-// Übungen der Lernschritte – alle auf die Akkorde von Go K.K. Rider zugeschnitten.
-// Schritte 1–5: Song mit Kapodaster im 4. Bund (einfache offene Griffe).
+// Übungen der Lernschritte, auf die Akkorde des jeweiligen Lieds zugeschnitten.
+// Go K.K. Rider – Schritte 1–5: Song mit Kapodaster im 4. Bund (einfache offene Griffe),
 // Schritt 6 (Bonus): Barré-Griffe und der Song im Original ohne Kapo.
+// Danach K.K. Cruisin' (kkc-…) und Zombie (zb-…); allgemeine Übungen wie „stimmen" teilen sich die Lieder.
 // `loesung` beschreibt das Ziel: woran man merkt, dass die Übung sitzt.
 export const aufgaben: Aufgabe[] = [
   // ── Schritt 1: Vorbereitung ─────────────────────────────────────────────
@@ -369,5 +370,131 @@ export const aufgaben: Aufgabe[] = [
     schwierigkeit: 'schwer',
     kategorie: "K.K. Cruisin'",
     akkorde: ['B7', 'Bes7', 'Es7sus2', 'As7', 'Ges7'],
+  },
+
+  // ── Zombie (ohne Kapo) – eigener Untertab in den Lernschritten ───────────
+  {
+    id: 'zb-ohne-kapo',
+    titel: 'Ohne Kapo: Zombie steht in E-Moll',
+    aufgabeText: 'Nimm den Kapodaster ab – Zombie wird mit offenen Griffen in E-Moll gespielt. Greif Em, schlag einmal kräftig an und hör dir dazu den Anfang der Aufnahme an.',
+    tipp: 'Saß der Kapo von Go K.K. Rider oder K.K. Cruisin\' noch drauf: abnehmen und kurz nachstimmen – ein Kapo zieht die Saiten leicht hoch. Klingt Em zur Aufnahme schief, liegt es fast immer an der Stimmung (Stimmgerät im Tab „Werkzeuge").',
+    loesung: 'Em ohne Kapo passt zur Aufnahme – das ist der Akkord, mit dem jede Runde der Schleife beginnt.',
+    schwierigkeit: 'einfach',
+    kategorie: 'Zombie',
+    akkorde: ['Em'],
+  },
+  {
+    id: 'zb-em-c',
+    titel: 'Em und C',
+    aufgabeText: 'Die erste Hälfte der Schleife. Greif Em und C abwechselnd und schlag jeden langsam Saite für Saite an. Beide kennst du aus Go K.K. Rider – hier ohne Kapo.',
+    tipp: 'Bei C die tiefe E-Saite nicht anschlagen. Trick für den Wechsel: Greif Em hier mit Zeigefinger (A-Saite) und Mittelfinger (D-Saite) – dann bleibt der Mittelfinger beim Wechsel nach C auf der D-Saite im 2. Bund liegen.',
+    loesung: 'Beide Griffe klingen sauber, und du greifst jeden aus dem Stand in unter 3 Sekunden.',
+    schwierigkeit: 'einfach',
+    kategorie: 'Zombie',
+    akkorde: ['Em', 'C'],
+  },
+  {
+    id: 'zb-g-d',
+    titel: 'G und D',
+    aufgabeText: 'Die zweite Hälfte der Schleife. Bei G klingen alle sechs Saiten, bei D nur die vier hohen.',
+    tipp: 'G → D hat einen Gleitfinger: Der Ringfinger liegt bei G auf der hohen e-Saite im 3. Bund und rutscht für D nur eine Saite weiter auf die H-Saite – im 3. Bund bleiben.',
+    loesung: 'G: alle sechs Saiten klingen. D: vier Saiten, und die hohe e-Saite klingt klar (nicht vom Ringfinger abgedämpft).',
+    schwierigkeit: 'einfach',
+    kategorie: 'Zombie',
+    akkorde: ['G', 'D'],
+  },
+  {
+    id: 'zb-schleife-spielen',
+    titel: 'Die Zombie-Schleife Em → C → G → D',
+    aufgabeText: 'Der ganze Song ist eine einzige Schleife: Em → C → G → D, jeder Akkord einen Takt (4 Schläge). Metronom auf 60 BPM, ein Abschlag pro Schlag – und dann Runde um Runde, ohne anzuhalten.',
+    tipp: 'Zählen: „1 2 3 4, 2 2 3 4, 3 2 3 4, 4 2 3 4" – auf jeder neuen 1 ein neuer Akkord. Auf Schlag 4 dürfen schon Leersaiten klingen, während die Finger zum nächsten Griff wandern. Nach D geht es immer zurück zu Em.',
+    loesung: 'Du spielst die Schleife fünfmal hintereinander ohne Stocken bei 60 BPM.',
+    schwierigkeit: 'mittel',
+    kategorie: 'Zombie',
+    akkorde: ['Em', 'C', 'G', 'D'],
+  },
+  {
+    id: 'zb-wechsel',
+    titel: 'One-Minute-Changes für Zombie',
+    aufgabeText: 'Timer auf 60 Sekunden: So oft wie möglich zwischen zwei Akkorden wechseln, pro Wechsel einmal anschlagen, Ergebnis notieren. Die vier Wechsel der Schleife: Em ↔ C, C ↔ G, G ↔ D und D ↔ Em (zurück zum Anfang – meist der schwerste).',
+    tipp: 'Jeden Tag ein Paar, das schwerste zuerst. Anker nutzen: Em → C mit liegendem Mittelfinger (Em mit Zeige- und Mittelfinger greifen), G → D mit gleitendem Ringfinger. Bei D → Em wechseln alle Finger – Em ist aber die einfachste Form, also zügig loslassen und auf der 1 landen.',
+    loesung: 'Jedes Paar klappt mit 30+ sauberen Wechseln pro Minute. Bei 84 BPM dauert ein Akkord knapp 3 Sekunden – mehr als genug, wenn der Wechsel sitzt.',
+    schwierigkeit: 'mittel',
+    kategorie: 'Zombie',
+    akkorde: ['Em', 'C', 'G', 'D'],
+  },
+  {
+    id: 'zb-tempo',
+    titel: 'Tempo: Zombie ist langsam',
+    aufgabeText: 'Zombie läuft mit etwa 84 BPM im 4/4-Takt – viel ruhiger als die Animal-Crossing-Lieder. Starte die Schleife bei 60 BPM und steigere in 5er-Schritten bis 84. Prüfe mit „Tempo tippen" (Werkzeuge), wie schnell deine Aufnahme ist.',
+    tipp: 'Langsame Songs verleiten zum Eilen – bleib beim Klick, besonders an den lauten Stellen. Manche Tempo-Messungen zeigen rund 167 BPM: dasselbe Tempo, nur in halben Schlägen gezählt.',
+    loesung: 'Du spielst die Schleife bei 84 BPM sauber und wirst dabei nicht schneller.',
+    schwierigkeit: 'einfach',
+    kategorie: 'Zombie',
+  },
+  {
+    id: 'zb-muster',
+    titel: 'Das Schlagmuster über die Schleife',
+    aufgabeText: 'Spiel das Song-Muster ↓ – ↓ ↑ – ↑ ↓ ↑ (bekannt aus Go K.K. Rider) über Em → C → G → D. Gezählt „1 + 2 + 3 + 4 +": Anschläge auf 1, 2, 2+, 3+, 4 und 4+. Mitlesen kannst du im Songblatt („Song-Muster") oder im Tab „Werkzeuge".',
+    tipp: 'Bei 84 BPM ist genug Zeit für Achtel. Das Muster ist ein bewährtes Begleitmuster, keine Abschrift der Aufnahme – klingt es dir zu verspielt, bleib bei ↓ ↓ ↓ ↓.',
+    loesung: 'Das Muster läuft über alle vier Akkorde, ohne dass der Rhythmus beim Wechsel stockt.',
+    schwierigkeit: 'mittel',
+    kategorie: 'Zombie',
+  },
+  {
+    id: 'zb-dynamik',
+    titel: 'Leise Strophe, lauter Refrain',
+    aufgabeText: 'Das macht Zombie aus: Die Strophen sind ruhig, im Refrain wird es laut. Spiel die Schleife zweimal leise (sanfte Viertel-Abschläge nur aus dem Handgelenk) und dann zweimal laut mit kräftigen Achtel-Abschlägen ↓↓↓↓↓↓↓↓ („Rock-Achtel" im Songblatt und im Metronom).',
+    tipp: 'Leise heißt nicht langsamer: Das Tempo bleibt gleich, nur der Anschlag wird weicher. Für den Refrain den Unterarm mitschwingen lassen und die tiefen Saiten betonen – so klingt die Akustikgitarre nach Band.',
+    loesung: 'Der Wechsel von leise zu laut (und zurück) klappt ohne Tempoänderung, und man hört deutlich, wo der Refrain beginnt.',
+    schwierigkeit: 'mittel',
+    kategorie: 'Zombie',
+  },
+  {
+    id: 'zb-song-blatt',
+    titel: 'Songblatt und Aufbau',
+    aufgabeText: 'Öffne „🎵 Das ganze Lied" (letzter Knopf in der Schrittleiste). Jeder Abschnitt ist dieselbe Schleife Em – C – G – D, nur unterschiedlich oft: Intro 4 Runden, Strophe 2, Vorrefrain 4, Refrain 2 usw. Hör die Aufnahme und zähl die Runden mit.',
+    tipp: 'Zähl nicht Takte, sondern Runden: Jedes Em ist eine neue Runde. Die Abschnittsnamen sagen dir auch, wo es leise und wo es laut wird. Unter „Wie im Original" steht D/F♯ statt D – dazu mehr im Bonus-Schritt.',
+    loesung: 'Du weißt beim Hören, in welchem Abschnitt du bist, und erkennst, wann der laute Refrain beginnt.',
+    schwierigkeit: 'einfach',
+    kategorie: 'Zombie',
+  },
+  {
+    id: 'zb-song',
+    titel: 'Den ganzen Song mitspielen',
+    aufgabeText: 'Spiel Zombie im Mitspiel-Modus von vorn bis hinten – rund fünf Minuten am Stück. Erst bei 70 BPM, dann im Originaltempo von 84 BPM und schließlich zur Aufnahme.',
+    tipp: 'Die Herausforderung sind hier nicht die Griffe, sondern Ausdauer und Dynamik. Hand locker lassen; wird sie müde, in den Strophen auf leise Viertel zurückschalten. Kleine Fehler einfach überspielen – die Schleife kommt ja gleich wieder.',
+    loesung: 'Du spielst den ganzen Song zur Aufnahme mit – mit leisen Strophen und lauten Refrains. 🎸',
+    schwierigkeit: 'schwer',
+    kategorie: 'Zombie',
+  },
+  {
+    id: 'zb-dfis',
+    titel: 'Bonus: D/F♯ – der Bass wandert',
+    aufgabeText: 'Im Original klingt statt D meist D/F♯: ein D-Akkord mit F♯ als tiefstem Ton. Dadurch läuft der Bass am Ende jeder Runde Schritt für Schritt abwärts: G → F♯ → E (zurück zum Em). Greif D/F♯ und spiel G → D/F♯ → Em.',
+    tipp: 'Zeigefinger auf die tiefe E-Saite im 2. Bund (er dämpft dabei die A-Saite ab), darüber die D-Form mit den übrigen Fingern: Mittelfinger G-Saite (2. Bund), kleiner Finger H-Saite (3. Bund), Ringfinger hohe e-Saite (2. Bund). Alternative: normalen D-Griff behalten und den Daumen über den Hals auf die tiefe E-Saite legen.',
+    loesung: 'Man hört die Basslinie G → F♯ → E deutlich, und die A-Saite klingt nicht mit.',
+    schwierigkeit: 'schwer',
+    kategorie: 'Zombie',
+    akkorde: ['G', 'D-Fis', 'Em'],
+  },
+  {
+    id: 'zb-cmaj7',
+    titel: 'Bonus: Cmaj7 statt C',
+    aufgabeText: 'Viele Akkordblätter schreiben Cmaj7 statt C. Der Griff ist sogar leichter: C greifen und den Zeigefinger von der H-Saite nehmen – die leere H-Saite macht den Akkord weicher und schwebender. Spiel die Schleife einmal mit C und einmal mit Cmaj7.',
+    tipp: 'Welche Variante dir besser gefällt, entscheidet dein Ohr. Eine Möglichkeit: Cmaj7 in den leisen Strophen, C in den lauten Refrains.',
+    loesung: 'Du hörst den Unterschied zwischen C und Cmaj7 und kannst beide in der Schleife einsetzen.',
+    schwierigkeit: 'einfach',
+    kategorie: 'Zombie',
+    akkorde: ['C', 'Cmaj7'],
+  },
+  {
+    id: 'zb-zupfen',
+    titel: 'Bonus: Zupfmuster für die leisen Stellen',
+    aufgabeText: 'Statt zu schlagen kannst du die Akkorde zupfen, als Achtel „1 + 2 + 3 + 4 +": Bass – G – H – e – H – G – H – G. Der Basston ist der tiefste Ton des Akkords: bei Em und G die tiefe E-Saite, bei C die A-Saite, bei D die D-Saite (bei D/F♯ die tiefe E-Saite).',
+    tipp: 'Daumen für den Bass, Zeige-, Mittel- und Ringfinger für G-, H- und e-Saite – oder alles mit dem Plektrum. Die Griffe bleiben die ganzen vier Schläge liegen, damit alles nachklingt. Ein Übungsmuster dieser Lernseite, keine Abschrift der Aufnahme.',
+    loesung: 'Das Zupfmuster läuft bei 70 BPM gleichmäßig über die ganze Schleife, und der Basston kommt klar auf jeder 1.',
+    schwierigkeit: 'mittel',
+    kategorie: 'Zombie',
   },
 ]

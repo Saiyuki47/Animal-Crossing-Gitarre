@@ -27,6 +27,7 @@ export const KK_CRUISIN: Lied = {
   titel: "K.K. Cruisin'",
   lernIntro:
     'Das zweite Lied: jazzig, mit Septakkorden und fast komplett eine einzige Schleife aus vier Akkorden. Mit Kapo im 6. Bund in fünf Schritten zum ganzen Song – plus Bonus für die Original-Griffe. Am besten nach Go K.K. Rider, die Grundlagen (Stimmen, Rhythmus) stehen dort.',
+  rechte: 'Song © Nintendo',
   bpm: 175,
   uebeBpm: 90,
   tempi: [90, 120, 150, 175],

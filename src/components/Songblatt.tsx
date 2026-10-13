@@ -1,12 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { akkordNach } from '../data/akkorde'
-import { PAUSE, anzeigeName, gegriffen, griffId, taktZahl, type Lied, type SongAbschnitt } from '../data/songblatt'
+import { PAUSE, anzeigeName, gegriffen, griffId, hatKapo, taktZahl, type AnschlagId, type Lied, type SongAbschnitt } from '../data/songblatt'
 import { klick, starteTakt, useAudioContext } from '../lib/takt'
 import Griffbild from './Griffbild'
 
 // „Das ganze Lied" in den Lernschritten: komplettes Akkordblatt Takt für Takt,
-// wahlweise als Kapo-Griffe oder Original, mit Tipps je Abschnitt und einem
-// Mitspiel-Modus (Einzählen, Klick, aktueller Takt wird markiert und mitgescrollt).
+// wahlweise als einfache Griffe (mit Kapo bzw. vereinfacht) oder Original, mit Tipps
+// je Abschnitt und einem Mitspiel-Modus (Einzählen, Klick, aktueller Takt wird
+// markiert und mitgescrollt).
 // Ein Klick auf einen Takt setzt den Startpunkt. Jede Kachel zeigt die Anschläge des
 // gewählten Musters auf 8 Achtel-Plätzen (1 + 2 + 3 + 4 +); beim Mitspielen leuchtet
 // der aktuelle Platz.
@@ -14,12 +15,14 @@ import Griffbild from './Griffbild'
 const SCHLAEGE = 4
 const EINZAEHLEN = 4
 
-type AnschlagId = 'viertel' | 'song'
 /** Anschläge je Achtel: ↓ ab, ↑ auf, – Luftschlag, '' = nichts (Hand pendelt nur). */
 const ANSCHLAG: Record<AnschlagId, { name: string; slots: string[] }> = {
   viertel: { name: '↓ ↓ ↓ ↓  Viertel (Einstieg)', slots: ['↓', '', '↓', '', '↓', '', '↓', ''] },
   song: { name: '↓ – ↓↑ – ↑ ↓↑  Song-Muster', slots: ['↓', '–', '↓', '↑', '–', '↑', '↓', '↑'] },
+  rock: { name: '↓↓↓↓↓↓↓↓  Rock-Achtel (laut)', slots: ['↓', '↓', '↓', '↓', '↓', '↓', '↓', '↓'] },
 }
+const STANDARD_ANSCHLAEGE: AnschlagId[] = ['viertel', 'song']
+const STANDARD_ANSICHTEN = { einfach: 'Mit Kapo (einfache Griffe)', original: 'Original (Barré)' }
 const ZAEHLZEIT = ['1', '+', '2', '+', '3', '+', '4', '+']
 
 /** Startindex (global über alle Abschnitte) je Abschnitt. */
@@ -83,6 +86,7 @@ function Abschnitt({
     return [...ids].map(id => akkordNach(id)).filter(a => a !== undefined)
   }, [lied, abschnitt, mitKapo])
   const vorher = mitKapo ? abschnitt.vorher : abschnitt.vorherOriginal
+  const kapo = hatKapo(lied)
 
   return (
     <section className="card sb-abschnitt">
@@ -90,12 +94,12 @@ function Abschnitt({
       <div className="sb-kopf">
         <h3 className="sb-titel">{abschnitt.name}</h3>
         <span className="ub-badge">{abschnitt.takte.length} Takte</span>
-        {mitKapo && <span className="ub-badge">Kapo {lied.kapo[abschnitt.teil]}. Bund</span>}
+        {mitKapo && kapo && <span className="ub-badge">Kapo {lied.kapo[abschnitt.teil]}. Bund</span>}
       </div>
 
       {abschnitt.tab && (
         <div className="sb-tab">
-          <p className="sb-label">Melodie{mitKapo ? ` (Zahlen ab dem Kapo im ${lied.kapo[abschnitt.teil]}. Bund)` : ''}</p>
+          <p className="sb-label">Melodie{mitKapo && kapo ? ` (Zahlen ab dem Kapo im ${lied.kapo[abschnitt.teil]}. Bund)` : ''}</p>
           <pre>{mitKapo ? abschnitt.tab.kapo : abschnitt.tab.original}</pre>
         </div>
       )}
@@ -105,24 +109,27 @@ function Abschnitt({
           const g = offset + i
           const aktiv = position?.takt === g
           const pause = takt.every(a => a === PAUSE)
+          const griffText = takt.map(a => anzeigeName(greife(a)))
+          const originalText = takt.map(a => anzeigeName(a)).join(' · ')
           return (
             <button
               key={i}
               type="button"
               className={`sb-takt${aktiv ? ' aktiv' : ''}${pause ? ' pause' : ''}${!position && startTakt === g && g > 0 ? ' start' : ''}`}
               onClick={() => onTaktKlick(g)}
-              aria-label={`Takt ${i + 1}: ${takt.map(a => anzeigeName(greife(a))).join(', ')}. Ab hier mitspielen`}
+              aria-label={`Takt ${i + 1}: ${griffText.join(', ')}. Ab hier mitspielen`}
               data-takt={g}
             >
               <span className="sb-taktnr">{i + 1}</span>
               <span className="sb-akkorde">
-                {takt.map((a, j) => (
+                {griffText.map((a, j) => (
                   <span key={j} className="sb-akkord">
-                    {anzeigeName(greife(a))}
+                    {a}
                   </span>
                 ))}
               </span>
-              {mitKapo && !pause && <span className="sb-original">{takt.map(a => anzeigeName(a)).join(' · ')}</span>}
+              {/* Original klein darunter, wenn gegriffen etwas anderes steht (Kapo bzw. vereinfacht) */}
+              {mitKapo && !pause && originalText !== griffText.join(' · ') && <span className="sb-original">{originalText}</span>}
               {pause ? (
                 <span className="sb-original">nicht spielen, mitzählen</span>
               ) : (
@@ -149,7 +156,9 @@ export default function Songblatt({ lied }: { lied: Lied }) {
   const offsets = useMemo(() => offsetsVon(lied), [lied])
   const gesamt = taktZahl(lied)
   const [mitKapo, setMitKapo] = useState(true)
-  const [anschlag, setAnschlag] = useState<AnschlagId>('viertel')
+  const anschlaege = lied.anschlaege ?? STANDARD_ANSCHLAEGE
+  const ansichten = lied.ansichten ?? STANDARD_ANSICHTEN
+  const [anschlag, setAnschlag] = useState<AnschlagId>(anschlaege[0])
   const [bpm, setBpm] = useState(lied.uebeBpm)
   const [laeuft, setLaeuft] = useState(false)
   const [position, setPosition] = useState<Position | null>(null)
@@ -239,7 +248,7 @@ export default function Songblatt({ lied }: { lied: Lied }) {
 
         <p className="sb-label">Anschlag</p>
         <div className="filter-row">
-          {(Object.keys(ANSCHLAG) as AnschlagId[]).map(id => (
+          {anschlaege.map(id => (
             <button key={id} type="button" className={`filter-btn${anschlag === id ? ' on' : ''}`} onClick={() => setAnschlag(id)}>
               {ANSCHLAG[id].name}
             </button>
@@ -249,10 +258,10 @@ export default function Songblatt({ lied }: { lied: Lied }) {
         <p className="sb-label">Griffe</p>
         <div className="filter-row">
           <button type="button" className={`filter-btn${mitKapo ? ' on' : ''}`} onClick={() => setMitKapo(true)}>
-            Mit Kapo (einfache Griffe)
+            {ansichten.einfach}
           </button>
           <button type="button" className={`filter-btn${!mitKapo ? ' on' : ''}`} onClick={() => setMitKapo(false)}>
-            Original (Barré)
+            {ansichten.original}
           </button>
         </div>
 
@@ -312,11 +321,11 @@ export default function Songblatt({ lied }: { lied: Lied }) {
       ))}
 
       <p className="sb-quelle">
-        Song © Nintendo. Akkorde nach der Transkription von „{lied.quelle.autor}" auf{' '}
+        {lied.rechte}. Akkorde nach der Transkription von „{lied.quelle.autor}" auf{' '}
         <a href={lied.quelle.url} target="_blank" rel="noopener noreferrer">
           Ultimate Guitar ↗
         </a>
-        .{lied.quelle.zusatz && ` ${lied.quelle.zusatz}`} Taktaufteilung, Kapo-Griffe und Tipps von dieser Lernseite.
+        .{lied.quelle.zusatz && ` ${lied.quelle.zusatz}`} {hatKapo(lied) ? 'Taktaufteilung, Kapo-Griffe und Tipps' : 'Taktaufteilung und Tipps'} von dieser Lernseite.
       </p>
     </div>
   )

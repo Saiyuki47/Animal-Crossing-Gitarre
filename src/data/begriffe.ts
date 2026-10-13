@@ -79,6 +79,11 @@ export const begriffGruppen: BegriffGruppe[] = [
         merke: 'Em-Form im 4. Bund = G♯m.',
       },
       {
+        begriff: 'Slash-Akkord',
+        definition: 'Akkord mit einem anderen Basston als seinem Grundton, geschrieben „Akkord/Basston". D/F♯ ist ein D-Dur-Akkord mit F♯ als tiefstem Ton – so entstehen Basslinien wie G → F♯ → E in Zombie.',
+        merke: 'Links vom Strich der Akkord, rechts der Bass.',
+      },
+      {
         begriff: 'Halbton',
         definition: 'Kleinster Tonschritt auf der Gitarre – genau ein Bund. Zwölf Halbtöne ergeben eine Oktave.',
       },
@@ -121,6 +126,11 @@ export const begriffGruppen: BegriffGruppe[] = [
         definition: 'Betonung der Schläge 2 und 4 im 4/4-Takt – typisch für Pop und Rock.',
       },
       {
+        begriff: 'Dynamik',
+        definition: 'Die Lautstärke und ihre Veränderung im Song. Bei Zombie sind die Strophen leise und die Refrains laut – mit denselben Griffen, nur anders angeschlagen.',
+        merke: 'Leiser heißt nicht langsamer.',
+      },
+      {
         begriff: 'Palm Muting',
         definition: 'Der Handballen der Schlaghand liegt leicht auf den Saiten am Steg und dämpft sie – der Klang wird kurz und gedämpft.',
       },
@@ -140,6 +150,10 @@ export const begriffGruppen: BegriffGruppe[] = [
       {
         begriff: 'Refrain (Chorus)',
         definition: 'Der wiederkehrende, eingängigste Teil eines Songs.',
+      },
+      {
+        begriff: 'Vorrefrain (Pre-Chorus)',
+        definition: 'Überleitung zwischen Strophe und Refrain, die Spannung aufbaut. Wird oft von Runde zu Runde lauter.',
       },
       {
         begriff: 'Bridge',

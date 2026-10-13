@@ -1,4 +1,4 @@
-// Griffbilder aller Akkorde, die man für Go K.K. Rider braucht. Reihenfolge der
+// Griffbilder aller Akkorde, die man für die Lieder braucht. Reihenfolge der
 // Saiten immer von der tiefen E-Saite (6) zur hohen e-Saite (1).
 //
 //   bund:      null = Saite nicht anschlagen (x), 0 = Leersaite (o), n = n-ter Bund
@@ -10,8 +10,9 @@
 //   'Kapo'     – Go K.K. Rider: die Griffe MIT Kapodaster im 4. (bzw. 5.) Bund
 //   'Barré'    – Go K.K. Rider: die Original-Griffe ohne Kapodaster (Bonus-Schritt)
 //   'Cruisin'  – zusätzliche Griffe für K.K. Cruisin' (Kapo 6 und Original)
+//   'Zombie'   – zusätzliche Griffe für Zombie (ohne Kapo; Em, C, G, D stehen unter 'Kapo')
 
-export type AkkordGruppe = 'Kapo' | 'Barré' | 'Cruisin'
+export type AkkordGruppe = 'Kapo' | 'Barré' | 'Cruisin' | 'Zombie'
 
 export interface Akkord {
   id: string
@@ -63,6 +64,10 @@ export const akkorde: Akkord[] = [
   { id: 'Ges7', name: 'G♭7', gruppe: 'Cruisin', bund: [2, 4, 2, 3, 2, 2], finger: [1, 3, 1, 2, 1, 1], startBund: 2, barre: { bund: 2, von: 0, bis: 5 }, tipp: 'E7-Form im 2. Bund.' },
   { id: 'E7sus2', name: 'E7sus2', gruppe: 'Cruisin', bund: [0, 2, 0, 4, 0, 2], finger: [null, 1, null, 4, null, 2], tipp: 'Nach dem Tonartwechsel. Zeigefinger A-Saite, kleiner Finger G-Saite 4. Bund, Mittelfinger hohe e-Saite.' },
   { id: 'G7', name: 'G7', gruppe: 'Cruisin', bund: [3, 2, 0, 0, 0, 1], finger: [3, 2, null, null, null, 1], tipp: 'Führt zurück nach C.' },
+
+  // ── Zombie (ohne Kapo) ────────────────────────────────────────────────
+  { id: 'D-Fis', name: 'D/F♯', gruppe: 'Zombie', bund: [2, null, 0, 2, 3, 2], finger: [1, null, null, 2, 4, 3], tipp: 'D mit F♯ im Bass: Zeigefinger auf der tiefen E-Saite (dämpft die A-Saite mit ab), darüber der D-Griff mit Mittel-, Ring- und kleinem Finger. Alternativ den Daumen über den Hals auf die tiefe E-Saite legen.' },
+  { id: 'Cmaj7', name: 'Cmaj7', gruppe: 'Zombie', bund: [null, 3, 2, 0, 0, 0], finger: [null, 3, 2, null, null, null], tipp: 'C ohne Zeigefinger: Die leere H-Saite macht den Klang weich und schwebend.' },
 ]
 
 export const akkordNach = (id: string) => akkorde.find(a => a.id === id)
