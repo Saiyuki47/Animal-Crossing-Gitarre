@@ -1,4 +1,4 @@
-// Griffbilder aller Akkorde der beiden Lieder – immer die Original-Griffe, ohne
+// Griffbilder aller Akkorde der Lieder – immer die Original-Griffe, ohne
 // Kapodaster. Reihenfolge der Saiten von der tiefen E-Saite (6) zur hohen e-Saite (1).
 //
 //   bund:      null = Saite nicht anschlagen (x), 0 = Leersaite (o), n = n-ter Bund
@@ -30,11 +30,11 @@ export const akkorde: Akkord[] = [
   { id: 'A', name: 'A', gruppe: 'Offen', bund: [null, 0, 2, 2, 2, 0], finger: [null, null, 1, 2, 3, null], tipp: 'Offener Griff aus der Strophe – und die Vorlage der A-Form: mit Barré wird daraus B und A♯.' },
   { id: 'Dis7', name: 'D♯7', gruppe: 'Offen', bund: [null, null, 1, 3, 2, 3], finger: [null, null, 1, 3, 2, 4], tipp: 'Kein Barré, aber vier Finger und keine Leersaite: nur die vier hohen Saiten anschlagen. Führt fast immer nach G♯m.' },
   // Vorlagen für Barré-Formen
-  { id: 'Em', name: 'Em', gruppe: 'Offen', bund: [0, 2, 2, 0, 0, 0], finger: [null, 2, 3, null, null, null], tipp: 'Kommt in den Liedern nicht vor, ist aber die Vorlage der Em-Form: mit Ring- und kleinem Finger gegriffen und Barré im 4. Bund wird daraus G♯m.' },
+  { id: 'Em', name: 'Em', gruppe: 'Offen', bund: [0, 2, 2, 0, 0, 0], finger: [null, 2, 3, null, null, null], tipp: 'Grundakkord von Zombie – und die Vorlage der Em-Form: mit Ring- und kleinem Finger gegriffen und Barré im 4. Bund wird daraus G♯m.' },
   // Go K.K. Rider, Schluss nach dem Tonartwechsel (A-Moll)
   { id: 'Am', name: 'Am', gruppe: 'Offen', bund: [null, 0, 2, 2, 1, 0], finger: [null, null, 2, 3, 1, null], tipp: 'Grundakkord nach dem Tonartwechsel – und die Vorlage der Am-Form (C♯m).' },
-  { id: 'G', name: 'G', gruppe: 'Offen', bund: [3, 2, 0, 0, 0, 3], finger: [2, 1, null, null, null, 3], tipp: 'Nach dem Tonartwechsel. Alle sechs Saiten klingen.' },
-  { id: 'C', name: 'C', gruppe: 'Offen', bund: [null, 3, 2, 0, 1, 0], finger: [null, 3, 2, null, 1, null], tipp: 'Nach dem Tonartwechsel. Tiefe E-Saite nicht anschlagen.' },
+  { id: 'G', name: 'G', gruppe: 'Offen', bund: [3, 2, 0, 0, 0, 3], finger: [2, 1, null, null, null, 3], tipp: 'Go K.K. Rider (nach dem Tonartwechsel) und Zombie. Alle sechs Saiten klingen.' },
+  { id: 'C', name: 'C', gruppe: 'Offen', bund: [null, 3, 2, 0, 1, 0], finger: [null, 3, 2, null, 1, null], tipp: 'Go K.K. Rider (nach dem Tonartwechsel) und Zombie. Tiefe E-Saite nicht anschlagen.' },
   { id: 'Dm', name: 'Dm', gruppe: 'Offen', bund: [null, null, 0, 2, 3, 1], finger: [null, null, null, 2, 3, 1], tipp: 'Nach dem Tonartwechsel. Nur die vier hohen Saiten anschlagen.' },
   { id: 'E7', name: 'E7', gruppe: 'Offen', bund: [0, 2, 0, 1, 0, 0], finger: [null, 2, null, 1, null, null], tipp: 'Nach dem Tonartwechsel, führt nach Am. Vorlage der E7-Form (G♯7, A♭7, G♭7).' },
   { id: 'A7', name: 'A7', gruppe: 'Offen', bund: [null, 0, 2, 0, 2, 0], finger: [null, null, 1, null, 2, null], tipp: 'Kommt in beiden Liedern am Schluss vor. Vorlage der A7-Form (B♭7).' },
@@ -43,6 +43,10 @@ export const akkorde: Akkord[] = [
   { id: 'C7', name: 'C7', gruppe: 'Offen', bund: [null, 3, 2, 3, 1, 0], finger: [null, 3, 2, 4, 1, null], tipp: 'C-Griff plus kleiner Finger auf der G-Saite im 3. Bund.' },
   { id: 'E7sus2', name: 'E7sus2', gruppe: 'Offen', bund: [0, 2, 0, 4, 0, 2], finger: [null, 1, null, 4, null, 2], tipp: 'Nach dem Tonartwechsel. Zeigefinger A-Saite, kleiner Finger G-Saite 4. Bund, Mittelfinger hohe e-Saite.' },
   { id: 'G7', name: 'G7', gruppe: 'Offen', bund: [3, 2, 0, 0, 0, 1], finger: [3, 2, null, null, null, 1], tipp: 'Führt zurück nach C7.' },
+  // Zombie (dazu Em, C und G von oben)
+  { id: 'D', name: 'D', gruppe: 'Offen', bund: [null, null, 0, 2, 3, 2], finger: [null, null, null, 1, 3, 2], tipp: 'Nur die vier hohen Saiten anschlagen. Von G aus rutscht der Ringfinger nur von der e- auf die H-Saite.' },
+  { id: 'D-Fis', name: 'D/F♯', gruppe: 'Offen', bund: [2, null, 0, 2, 3, 2], finger: [1, null, null, 2, 4, 3], tipp: 'D mit F♯ im Bass: Zeigefinger auf der tiefen E-Saite (dämpft die A-Saite mit ab), darüber der D-Griff mit Mittel-, Ring- und kleinem Finger. Alternativ den Daumen über den Hals auf die tiefe E-Saite legen.' },
+  { id: 'Cmaj7', name: 'Cmaj7', gruppe: 'Offen', bund: [null, 3, 2, 0, 0, 0], finger: [null, 3, 2, null, null, null], tipp: 'C ohne Zeigefinger: Die leere H-Saite macht den Klang weich und schwebend.' },
 
   // ── Barré ───────────────────────────────────────────────────────────────
   // Go K.K. Rider

@@ -26,6 +26,7 @@ export const GO_KK_RIDER: Lied = {
   titel: 'Go K.K. Rider',
   lernIntro:
     "In sechs Schritten vom Stimmen bis zum ganzen Song – mit den echten Griffen, ganz ohne Kapodaster: erst die offenen Griffe und der Rhythmus, dann die Barré-Griffe des Originals. Fang hier an, wenn du neu bist: Die Grundlagen gelten auch für K.K. Cruisin'.",
+  rechte: 'Song © Nintendo',
   bpm: ORIGINAL_BPM,
   uebeBpm: UEBE_BPM,
   tempi: [UEBE_BPM, 90, 120, ORIGINAL_BPM],

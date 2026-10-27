@@ -13,7 +13,7 @@ const Flashcards = lazy(() => import('lernseiten-ui').then(m => ({ default: m.Fl
 // Tab-IDs und Icons kommen wie bei allen Lernseiten aus lernseiten-ui (tabDefs),
 // die Reihenfolge folgt STANDARD_TAB_REIHENFOLGE. Weil hier ein Instrument statt einer
 // Vorlesung gelernt wird, bekommen die Tabs eigene Beschriftungen, und statt „Moodle"
-// gibt es den Tab „Werkzeuge" (Metronom, Tempo tippen, Stimmtöne).
+// gibt es den Tab „Werkzeuge" (Metronom, Tempo tippen, Stimmgerät, Stimmtöne).
 const TABS = ['uebung', 'referenz', 'hilfsmittel', 'werkzeuge', 'karten', 'quiz'] as const
 export type TabId = (typeof TABS)[number]
 
@@ -55,7 +55,7 @@ function App() {
 
   return (
     <>
-      <Header logo={<>KK<span>.</span>Gitarre</>} subtitle="Go K.K. Rider & K.K. Cruisin' auf der Akustikgitarre lernen" current="gitarre" theme={theme} onToggleTheme={toggle} />
+      <Header logo={<>Gitarren<span>.</span>Songbuch</>} subtitle="Go K.K. Rider, K.K. Cruisin' & Zombie auf der Akustikgitarre lernen" current="gitarre" theme={theme} onToggleTheme={toggle} />
       <div className="container">
         <Tabs tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
         <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '0.75rem' }}>

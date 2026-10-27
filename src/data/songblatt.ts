@@ -1,11 +1,15 @@
 // Gemeinsame Bausteine für die Songblätter („🎵 Das ganze Lied"). Die Lieder selbst
 // stehen in data/lieder/*.ts – immer in den Original-Akkorden, so wie sie ohne
-// Kapodaster gegriffen werden.
+// Kapodaster gegriffen werden. Ein Lied kann zusätzlich eine vereinfachte Ansicht
+// haben (`einfach`, z.B. bei Zombie D statt D/F♯) – dann zeigt das Songblatt einen Umschalter.
 //
 // Ein Takt = ein Array: ein Akkord (ganzer Takt) oder zwei Akkorde (je 2 Schläge).
-// „N.C." (no chord) = Pause, die Band setzt aus.
+// „N.C." (no chord) = Pause, die Band setzt aus. Slash-Akkorde wie „D/F#" = D mit F♯ im Bass.
 
 export type Takt = [string] | [string, string]
+
+/** Anschlagmuster im Songblatt (Definitionen in components/Songblatt.tsx). */
+export type AnschlagId = 'viertel' | 'song' | 'rock'
 
 export interface SongAbschnitt {
   id: string
@@ -14,6 +18,8 @@ export interface SongAbschnitt {
   teil: 1 | 2
   takte: Takt[]
   tipp: string
+  /** Eigener Tipp für die Ansicht „Original", wenn das Lied eine vereinfachte Ansicht hat. */
+  tippOriginal?: string
   /** Hinweis, der VOR dem Abschnitt hervorgehoben wird. */
   vorher?: string
   unsicher?: string
@@ -26,9 +32,17 @@ export interface Lied {
   titel: string
   /** Einleitungstext über den Lernschritten dieses Lieds. */
   lernIntro: string
+  /** Rechte-Hinweis unter dem Songblatt, z.B. „Song © Nintendo". */
+  rechte: string
   bpm: number
   uebeBpm: number
   tempi: number[]
+  /** Vereinfachungen für die einfache Ansicht, z.B. { 'D/F#': 'D' }. Fehlt = keine Umschaltung. */
+  einfach?: Record<string, string>
+  /** Beschriftung der zwei Ansichten, wenn es `einfach` gibt. */
+  ansichten?: { einfach: string; original: string }
+  /** Anschlagmuster im Songblatt (Standard: Viertel und Song-Muster). */
+  anschlaege?: AnschlagId[]
   quelle: { autor: string; url: string; zusatz?: string }
   abschnitte: SongAbschnitt[]
 }
@@ -40,7 +54,11 @@ export const PAUSE = 'N.C.'
 
 /** Anzeige mit ♯/♭; „B" (englisch) bleibt B wie im Akkordblatt. Pause → „Pause". */
 export const anzeigeName = (akkord: string) =>
-  akkord === PAUSE ? 'Pause' : akkord.replace('#', '♯').replace(/^([A-G])b/, '$1♭')
+  akkord === PAUSE ? 'Pause' : akkord.replace(/#/g, '♯').replace(/([A-G])b/g, '$1♭')
+
+/** Akkord, wie er in der gewählten Ansicht gegriffen wird (vereinfacht oder original). */
+export const gegriffen = (lied: Lied, akkord: string, vereinfacht: boolean) =>
+  (vereinfacht && lied.einfach?.[akkord]) || akkord
 
 /** Akkordname → Akkord-ID in data/akkorde.ts (für die Griffbilder). */
 const GRIFF_ID: Record<string, string> = {
@@ -49,6 +67,8 @@ const GRIFF_ID: Record<string, string> = {
   E: 'E', A: 'A', F: 'F', Am: 'Am', G: 'G', C: 'C', Dm: 'Dm', E7: 'E7', A7: 'A7',
   // K.K. Cruisin'
   B7: 'B7', Bb7: 'Bes7', Eb7sus2: 'Es7sus2', Ab7: 'As7', Gb7: 'Ges7', C7: 'C7', E7sus2: 'E7sus2', G7: 'G7',
+  // Zombie
+  Em: 'Em', D: 'D', 'D/F#': 'D-Fis', Cmaj7: 'Cmaj7',
 }
 
 /** Griff-ID für einen Akkordnamen (undefined bei Pause). */

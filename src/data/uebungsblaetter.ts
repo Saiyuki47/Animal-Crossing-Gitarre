@@ -1,10 +1,11 @@
 import type { Uebungsblatt } from '../types'
 import { AKKORDBLATT_URL } from './song'
 import { KK_CRUISIN } from './lieder/kkCruisin'
+import { ZOMBIE } from './lieder/zombie'
 
-// Lernschritte je Lied (`lied` = Untertab). Beide Lieder werden mit den Original-Griffen
+// Lernschritte je Lied (`lied` = Untertab). Alle Lieder werden mit den Original-Griffen
 // ohne Kapodaster gelernt: Go K.K. Rider in 6 Schritten (offene Griffe und Rhythmus
-// zuerst, dann Barré), K.K. Cruisin' in 5 Schritten.
+// zuerst, dann Barré), K.K. Cruisin' in 5 Schritten, Zombie in 5 Schritten + Bonus.
 // Jeder Schritt verweist per `aufgabeId` auf eine Übung aus data/aufgaben.ts.
 // Die Schritt-IDs bleiben stabil – an ihnen hängt der gespeicherte Fortschritt.
 export const uebungsblaetter: Uebungsblatt[] = [
@@ -169,5 +170,90 @@ export const uebungsblaetter: Uebungsblatt[] = [
     beschreibung: 'Alles zusammen: das ganze Lied im Mitspiel-Modus – mit der Pause im zweiten Refrain und dem Tonartwechsel, nach dem nur noch offene Griffe kommen.',
     link: { text: '🎼 Akkordblatt bei Ultimate Guitar öffnen', url: KK_CRUISIN.quelle.url },
     aufgaben: [{ nr: 1, text: 'Spiel den ganzen Song mit.', aufgabeId: 'kkc-song' }],
+  },
+
+  // ── Zombie ────────────────────────────────────────────────────────────────
+  {
+    id: 'zb-vorbereitung',
+    lied: 'zombie',
+    nr: '1',
+    titel: 'Vorbereitung',
+    typ: 'Grundlagen',
+    dauer: '1–2 Tage · 10 Min.',
+    beschreibung: 'Stimmen, Haltung und der erste Akkord. Zombie steht in E-Moll und klingt mit offenen Griffen genau wie im Original.',
+    aufgaben: [
+      { nr: 1, text: 'Stimme die Gitarre auf E – A – D – G – H – e.', aufgabeId: 'stimmen' },
+      { nr: 2, text: 'Finde eine entspannte Haltung und halte das Plektrum richtig.', aufgabeId: 'haltung' },
+      { nr: 3, text: 'Greif Em sauber und prüfe es zur Aufnahme.', aufgabeId: 'zb-tonart' },
+    ],
+  },
+  {
+    id: 'zb-akkorde',
+    lied: 'zombie',
+    nr: '2',
+    titel: 'Die vier Griffe',
+    typ: 'Technik',
+    dauer: '1 Woche · 15 Min.',
+    beschreibung: 'Für den ganzen Song brauchst du nur Em, C, G und D – alles offene Griffe. G und C kennst du schon aus dem Schluss von Go K.K. Rider.',
+    aufgaben: [
+      { nr: 1, text: 'Lerne Em und C.', aufgabeId: 'zb-em-c' },
+      { nr: 2, text: 'Lerne G und D.', aufgabeId: 'zb-g-d' },
+    ],
+  },
+  {
+    id: 'zb-schleife',
+    lied: 'zombie',
+    nr: '3',
+    titel: 'Die Zombie-Schleife',
+    typ: 'Technik',
+    dauer: '1–2 Wochen · 15 Min.',
+    beschreibung: 'Der ganze Song ist eine einzige Schleife: Em → C → G → D. Wenn die rund läuft, kannst du Zombie praktisch schon spielen.',
+    aufgaben: [
+      { nr: 1, text: 'Spiel die Schleife Em → C → G → D.', aufgabeId: 'zb-schleife-spielen' },
+      { nr: 2, text: 'One-Minute-Changes mit den vier Wechseln.', aufgabeId: 'zb-wechsel' },
+    ],
+  },
+  {
+    id: 'zb-rhythmus',
+    lied: 'zombie',
+    nr: '4',
+    titel: 'Tempo, Rhythmus und Dynamik',
+    typ: 'Rhythmus',
+    dauer: '1 Woche · 15 Min.',
+    beschreibung: 'Zombie ist langsam (ca. 84 BPM) – du startest mit 60. Neu ist die Dynamik: leise Strophen, laute Refrains.',
+    aufgaben: [
+      { nr: 1, text: 'Finde das Tempo und bleib beim Klick.', aufgabeId: 'zb-tempo' },
+      { nr: 2, text: 'Das Schlagmuster ↓ – ↓ ↑ – ↑ ↓ ↑ über die Schleife.', aufgabeId: 'zb-muster' },
+      { nr: 3, text: 'Leise Strophe, lauter Refrain.', aufgabeId: 'zb-dynamik' },
+    ],
+  },
+  {
+    id: 'zb-lied',
+    lied: 'zombie',
+    nr: '5',
+    titel: 'Zombie spielen',
+    typ: 'Song',
+    dauer: '2 Wochen · 20 Min.',
+    beschreibung: 'Alles zusammen: Songblatt „🎵 Das ganze Lied" kennenlernen, die Runden mitzählen und den ganzen Song mit leisen Strophen und lauten Refrains mitspielen.',
+    link: { text: '🎼 Akkordblatt bei Ultimate Guitar öffnen', url: ZOMBIE.quelle.url },
+    aufgaben: [
+      { nr: 1, text: 'Lerne das Songblatt kennen und zähl die Runden mit.', aufgabeId: 'zb-song-blatt' },
+      { nr: 2, text: 'Spiel den ganzen Song mit.', aufgabeId: 'zb-song' },
+    ],
+  },
+  {
+    id: 'zb-bonus',
+    lied: 'zombie',
+    nr: '6',
+    titel: 'Bonus: Klang des Originals',
+    typ: 'Bonus',
+    dauer: '2+ Wochen · 15 Min.',
+    beschreibung: 'Freiwillig: D/F♯ statt D für die wandernde Basslinie, Cmaj7 als weichere Farbe und ein Zupfmuster für die leisen Stellen.',
+    link: { text: '🎼 Akkordblatt bei Ultimate Guitar öffnen', url: ZOMBIE.quelle.url },
+    aufgaben: [
+      { nr: 1, text: 'D/F♯: der Bass wandert G → F♯ → E.', aufgabeId: 'zb-dfis' },
+      { nr: 2, text: 'Cmaj7 statt C.', aufgabeId: 'zb-cmaj7' },
+      { nr: 3, text: 'Zupfmuster für Intro und Strophe.', aufgabeId: 'zb-zupfen' },
+    ],
   },
 ]

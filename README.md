@@ -1,23 +1,25 @@
-# Animal Crossing Gitarre
+# Gitarren-Songbuch
 
-Interaktive Lernseite, um **„Go K.K. Rider"** und **„K.K. Cruisin'"** aus Animal Crossing auf der Akustikgitarre zu lernen – mit den Original-Griffen, ohne Kapodaster: Go K.K. Rider in sechs Lernschritten vom Stimmen über offene Griffe, Rhythmus und Barré bis zum Mitspielen; K.K. Cruisin' als zweites Lied mit eigenem Untertab. Erstellt aus dem [`lernseite-template`](https://github.com/Saiyuki47/lernseite-template); Aufbau und Styling sind identisch zu den übrigen Lernseiten.
+Interaktive Lernseite, um Lieder auf der Akustikgitarre zu lernen – immer mit den Original-Griffen, ohne Kapodaster: **„Go K.K. Rider"** aus Animal Crossing in sechs Lernschritten vom Stimmen über offene Griffe, Rhythmus und Barré bis zum Mitspielen, **„K.K. Cruisin'"** als zweites Animal-Crossing-Lied und **„Zombie"** von The Cranberries – jedes Lied mit eigenem Untertab. Bis Oktober 2026 hieß das Repository `Animal-Crossing-Gitarre`. Erstellt aus dem [`lernseite-template`](https://github.com/Saiyuki47/lernseite-template); Aufbau und Styling sind identisch zu den übrigen Lernseiten.
 
 > Song © Nintendo. Die Akkorde im Songblatt („🎵 Das ganze Lied") stammen aus der Transkription von „HerNameIsRain" auf [Ultimate Guitar](https://tabs.ultimate-guitar.com/tab/misc-computer-games/animal-crossing-go-kk-rider-chords-1452035); Taktaufteilung und Tipps sind von dieser Lernseite. Keine Melodie-Noten, kein Text.
 >
 > Abgleich mit weiteren Quellen: Die Akkordfolge der Strophe bestätigt [Hooktheory](https://www.hooktheory.com/theorytab/view/kazumi-totaka/go-kk-rider) (i–VII–VI–VII–III). Refrain-Takt 5 (G♯m → G♯7) ist nach [Gametabs](https://gametabs.net/tabs/animal-crossing/go-kk-rider) und [Ukulele-Tabs](https://www.ukulele-tabs.com/uke-songs/animal-crossing/go-kk-rider-uke-tab-34542.html) ergänzt. Tempo ca. 150 BPM (Hooktheory: 152). Die Tonart ist je nach Aufnahme G♯-Moll (meiste Transkriptionen, diese Seite) oder F-Moll.
 >
 > K.K. Cruisin': Akkorde und Intro-Melodie nach der Transkription von „translucenttomato" auf [Ultimate Guitar](https://tabs.ultimate-guitar.com/tab/misc-computer-games/animal-crossing-kk-cruisin-chords-3940478) (laut Autor leicht vereinfacht), Liedtext bewusst weggelassen. Tonart E♭-Moll und 175 BPM laut [Hooktheory](https://www.hooktheory.com/theorytab/view/kazumi-totaka/kk-cruisin); die ersten drei Akkorde der Strophenschleife stimmen mit der Analyse überein. Ein Akkord pro Takt ist eine Annahme (plausible Songlänge ~2:10 Min.).
+>
+> Zombie („Zombie" von The Cranberries, Text und Musik: Dolores O'Riordan): Akkorde Em – C – G – D/F♯ und Intro (4 Runden) nach der Transkription von „Mikael Thunborg" auf [Ultimate Guitar](https://tabs.ultimate-guitar.com/tab/the-cranberries/zombie-chords-844902), Liedtext bewusst weggelassen. Zwischenspiel (2 Runden) und Solo (3 Runden) nach einer weiteren Transkription; die Varianten Cmaj7 und D/F♯ nennen mehrere Akkordblätter. Tempo ca. 84 BPM (Tempo-Analysen 82–84). Ein Akkord pro Takt ist eine Annahme: Mit dem Aufbau im Songblatt ergibt das 108 Takte ≈ 5:09 Min., passend zur Albumversion (5:06). Leise Strophen und laute Refrains nach einer Songanalyse; Zupfmuster und Schlagmuster sind Übungsmuster dieser Lernseite.
 
 ## Tabs
 
 | Tab | Inhalt |
 |-----|--------|
-| **Lernschritte** | Ein Untertab je Lied, alles mit Original-Griffen ohne Kapodaster. **Go K.K. Rider:** 6 Schritte (Vorbereitung → Griffe ohne Barré → Rhythmus → Barré-Griffe → Akkordwechsel aus dem Song → Song). **K.K. Cruisin':** 5 Schritte (Vorbereitung → Song-Akkorde → Schleife → Intro und Tempo → Song). Je Lied **🎵 Das ganze Lied** (komplettes Songblatt Takt für Takt mit Griffbildern, Tipps je Abschnitt, Mitspiel-Modus mit Einzählen und mitlaufendem Takt), mit Übungen, Tipps, Griffbildern und „Woran merke ich, dass es sitzt?" – Fortschritt wird gespeichert |
+| **Lernschritte** | Ein Untertab je Lied, alles mit Original-Griffen ohne Kapodaster. **Go K.K. Rider:** 6 Schritte (Vorbereitung → Griffe ohne Barré → Rhythmus → Barré-Griffe → Akkordwechsel aus dem Song → Song). **K.K. Cruisin':** 5 Schritte (Vorbereitung → Song-Akkorde → Schleife → Intro und Tempo → Song). **Zombie:** 5 Schritte (Vorbereitung → die vier Griffe → Schleife → Tempo, Rhythmus und Dynamik → Song) + Bonus Klang des Originals (D/F♯, Cmaj7, Zupfmuster). Je Lied **🎵 Das ganze Lied** (komplettes Songblatt Takt für Takt mit Griffbildern, Tipps je Abschnitt, bei Zombie einfache Griffe/Original umschaltbar, Mitspiel-Modus mit Einzählen und mitlaufendem Takt), mit Übungen, Tipps, Griffbildern und „Woran merke ich, dass es sitzt?" – Fortschritt wird gespeichert |
 | **Griffe & Technik** | Untertab **🎸 Griffe & Technik** (Songüberblicke, Song-Griffe, Barré-Formen, Halbtöne/♯/♭, Schlagmuster, Übe-Tipps) und **🧠 Begriffe lernen** (Glossar mit Lernmodus) |
-| **Spickzettel** | Druckbar: Seite 1 Go K.K. Rider (Griffe + Akkordfolge), Seite 2 Barré-Formen mit ihren offenen Vorlagen, Seite 3 K.K. Cruisin' |
-| **Werkzeuge** | Metronom mit mitlaufender Schlagmuster-Anzeige und Swing, „Tempo tippen" zum BPM-Bestimmen, Stimmgerät über das Mikrofon (erkennt die Saite, zeigt die Abweichung in Cent), Stimmtöne pro Saite |
+| **Spickzettel** | Druckbar: Seite 1 Go K.K. Rider (Griffe + Akkordfolge), Seite 2 Barré-Formen mit ihren offenen Vorlagen, Seite 3 K.K. Cruisin', Seite 4 Zombie |
+| **Werkzeuge** | Metronom mit mitlaufender Schlagmuster-Anzeige (inkl. Rock-Achtel), Swing und Tempo-Knöpfen je Lied, „Tempo tippen" zum BPM-Bestimmen, Stimmgerät über das Mikrofon (erkennt die Saite, zeigt die Abweichung in Cent), Stimmtöne pro Saite |
 | **Karteikarten** | Spaced Repetition (SM-2), automatisch aus Übungen + Quiz abgeleitet |
-| **Quiz** | 20 Fragen in 7 Fragetypen, filterbar nach Lernschritt |
+| **Quiz** | 23 Fragen in 7 Fragetypen, filterbar nach Lernschritt bzw. Lied |
 
 Die Tab-IDs (`#uebung`, `#referenz`, `#hilfsmittel`, `#karten`, `#quiz`) entsprechen denen der anderen Lernseiten; nur die Beschriftungen sind angepasst, und statt `#moodle` gibt es `#werkzeuge` (alte Links werden umgeleitet).
 
@@ -33,7 +35,7 @@ npm run dev
 | Datei | Inhalt |
 |-------|--------|
 | `src/data/akkorde.ts` | Griffe (Bund + Finger pro Saite, tiefes E → hohes e, optional `startBund` und `barre`; Gruppe „Offen" oder „Barré") – daraus entstehen alle Griffbilder |
-| `src/data/lieder/*.ts` | Ein Lied pro Datei (Abschnitte mit Takten in Original-Akkorden, Tipps, Quelle); neue Lieder in `lieder/index.ts` eintragen |
+| `src/data/lieder/*.ts` | Ein Lied pro Datei (Abschnitte mit Takten in Original-Akkorden, Tipps, Rechte-Hinweis, Quelle; optional Vereinfachungen wie `D/F#` → `D` mit Umschalter und eigene Anschlagmuster); neue Lieder in `lieder/index.ts` eintragen |
 | `src/data/songblatt.ts` | Gemeinsame Songblatt-Logik: Griffbild-Zuordnung (Akkordname → Griff), Song-Griffe je Teil, Tabulatur |
 | `src/data/song.ts` | Eckdaten Go K.K. Rider: Tempo, Aufbau, Link zum Akkordblatt |
 | `src/data/uebungsblaetter.ts` | Die Lernschritte; verweisen per `aufgabeId` auf Übungen |

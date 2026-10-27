@@ -4,12 +4,13 @@ import { ORIGINAL_BPM, UEBE_BPM } from '../data/song'
 import { songGriffe, taktText, type Lied } from '../data/songblatt'
 import { GO_KK_RIDER } from '../data/lieder/goKkRider'
 import { KK_CRUISIN } from '../data/lieder/kkCruisin'
+import { ZOMBIE, ZOMBIE_AUFBAU } from '../data/lieder/zombie'
 import Griffbild from './Griffbild'
 
 // Hilfsmittel-Tab: druckbarer Spickzettel (wie die Hilfsmittel-Tabs der anderen
 // Lernseiten), alles mit den Original-Griffen ohne Kapodaster. Seite 1: Go K.K. Rider
 // (Griffe, Akkordfolge, Schlagmuster). Seite 2: die Barré-Formen mit ihren offenen
-// Vorlagen. Seite 3: K.K. Cruisin'.
+// Vorlagen. Seite 3: K.K. Cruisin'. Seite 4: Zombie.
 // „🖨️ Drucken" öffnet den Druckdialog; per @media print werden Header/Tabs
 // ausgeblendet und die Boxen A4-tauglich gesetzt.
 
@@ -135,6 +136,43 @@ const SEITE_KK: Box[] = [
   },
 ]
 
+const SEITE_ZOMBIE: Box[] = [
+  {
+    t: 'Zombie',
+    r: [
+      { l: 'Tonart', f: 'E-Moll, nur offene Griffe' },
+      { l: 'Tempo', f: `ca. ${ZOMBIE.bpm} BPM, 4/4 (üben ab ${ZOMBIE.uebeBpm})` },
+      { l: 'Schleife', f: 'Em → C → G → D, je 1 Takt – der ganze Song' },
+      { l: 'Original', f: 'D/F♯ statt D, oft Cmaj7 statt C' },
+    ],
+  },
+  {
+    t: 'Aufbau (Runden der Schleife)',
+    r: [
+      { f: ZOMBIE_AUFBAU.slice(0, 5).map(a => `${a.name} ${a.runden}×`).join(' · ') },
+      { f: ZOMBIE_AUFBAU.slice(5).map(a => `${a.name} ${a.runden}×`).join(' · ') },
+    ],
+  },
+  {
+    t: 'Anschlag und Dynamik (1 + 2 + 3 + 4 +)',
+    r: [
+      { l: 'Leise', f: '↓   ↓   ↓   ↓   (Strophe, oder zupfen)' },
+      { l: 'Song', f: '↓ – ↓ ↑ – ↑ ↓ ↑' },
+      { l: 'Laut', f: '↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓   (Refrain, Solo)' },
+      { l: 'Zupfen', f: 'Bass G H e H G H G' },
+    ],
+  },
+  {
+    t: 'Wechsel-Tricks',
+    r: [
+      { f: 'Em → C: Em mit Zeige-/Mittelfinger, Mittelfinger bleibt' },
+      { f: 'G → D: Ringfinger e-Saite → H-Saite (3. Bund)' },
+      { f: 'D/F♯: Bass läuft G → F♯ → E zurück zum Em' },
+      { f: 'Leise heißt nicht langsamer – beim Klick bleiben' },
+    ],
+  },
+]
+
 function Griffuebersicht({ griffe, titel }: { griffe: string[]; titel: string }) {
   const liste = griffe.map(id => akkordNach(id)!)
   return (
@@ -190,8 +228,8 @@ export default function Hilfsmittel() {
       <div className="section-header no-print">
         <h2>Spickzettel</h2>
         <p>
-          Alle Song-Griffe und Kurzregeln auf A4 (Seite 1: Go K.K. Rider, Seite 2: Barré-Formen, Seite 3: K.K. Cruisin') – zum
-          Ausdrucken und neben den Notenständer legen. „🖨️ Drucken" erzeugt ein sauberes Blatt ohne Menü und Tabs.
+          Alle Song-Griffe und Kurzregeln auf A4 (Seite 1: Go K.K. Rider, Seite 2: Barré-Formen, Seite 3: K.K. Cruisin',
+          Seite 4: Zombie) – zum Ausdrucken und neben den Notenständer legen. „🖨️ Drucken" erzeugt ein sauberes Blatt ohne Menü und Tabs.
         </p>
       </div>
       <div className="filter-row no-print" style={{ marginBottom: '0.9rem' }}>
@@ -219,6 +257,13 @@ export default function Hilfsmittel() {
         titel={KK_CRUISIN.titel}
         griffe={songGriffe(KK_CRUISIN)}
         griffTitel="Song-Griffe (Schleife, dann Schluss)"
+      />
+      <SpickzettelSeite
+        boxen={SEITE_ZOMBIE}
+        nr={4}
+        titel={ZOMBIE.titel}
+        griffe={['Em', 'C', 'G', 'D', 'D-Fis', 'Cmaj7']}
+        griffTitel="Griffe (D/F♯ und Cmaj7 fürs Original)"
       />
     </div>
   )

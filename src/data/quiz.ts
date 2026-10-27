@@ -262,4 +262,38 @@ export const quizFragen: QuizFrage[] = [
     erklaerung: 'Die Schleife B7 – B♭7 – E♭7sus2 – A♭7/G♭7 trägt den Song, Refrain 2 startet mit einer Pause, und nach dem Tonartwechsel wird es leichter: nur offene Griffe.',
     quelle: "K.K. Cruisin'",
   },
+
+  // ── Zombie ─────────────────────────────────────────────────────────────
+  {
+    art: 'reihenfolge',
+    frage: 'Bring die Zombie-Schleife in die richtige Reihenfolge.',
+    schritte: ['Em', 'C', 'G', 'D'],
+    erklaerung: 'Em → C → G → D, jeder Akkord einen Takt – und das den ganzen Song lang. Im Original klingt statt D meist D/F♯.',
+    quelle: 'Zombie',
+  },
+  {
+    art: 'single',
+    frage: 'Was ändert sich bei Zombie zwischen leiser Strophe und lautem Refrain?',
+    optionen: [
+      { text: 'Nur der Anschlag – Griffe und Tempo bleiben gleich' },
+      { text: 'Das Tempo wird schneller', warumFalsch: 'Leiser oder lauter heißt nicht langsamer oder schneller – beim Klick bleiben.' },
+      { text: 'Es kommen andere Griffe dazu', warumFalsch: 'Der ganze Song bleibt die Schleife Em – C – G – D.' },
+      { text: 'Die Gitarre wird anders gestimmt', warumFalsch: 'Die Stimmung bleibt E – A – D – G – H – e.' },
+    ],
+    richtige: 0,
+    erklaerung: 'Zombie lebt von der Dynamik: Strophen mit sanften Viertel-Abschlägen oder Zupfen, Refrains mit kräftigen Rock-Achteln – über dieselben vier Griffe im selben Tempo.',
+    quelle: 'Zombie',
+  },
+  {
+    art: 'wahrfalsch',
+    frage: 'Markiere jede Aussage über Zombie als wahr oder falsch.',
+    aussagen: [
+      { text: 'Bei D/F♯ ist F♯ der tiefste Ton.', wahr: true },
+      { text: 'Am lautesten wird es in den Strophen.', wahr: false, warum: 'Die Strophen sind leise, laut wird es im Refrain (und im Solo).' },
+      { text: 'Zombie ist schneller als Go K.K. Rider.', wahr: false, warum: 'Zombie läuft mit ca. 84 BPM, Go K.K. Rider mit ca. 150 BPM.' },
+      { text: 'Aus C wird Cmaj7, wenn der Zeigefinger die H-Saite freigibt.', wahr: true },
+    ],
+    erklaerung: 'D/F♯ = D mit F♯ im Bass (Basslinie G → F♯ → E), leise Strophen und laute Refrains, ruhiges Tempo um 84 BPM, Cmaj7 = C mit leerer H-Saite.',
+    quelle: 'Zombie',
+  },
 ]
