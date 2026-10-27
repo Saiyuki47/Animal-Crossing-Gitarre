@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react'
-import { Header, GlobalSearch, Tabs, tabDefs, useTheme, useHashTab, type TabDef } from 'lernseiten-ui'
+import { Header, GlobalSearch, Tabs, tabDefs, useTheme, useHashTab, Uebersicht, type TabDef } from 'lernseiten-ui'
+import uebersicht from '../Übersicht.md?raw'
 import { quizFragen } from './data/quiz'
 import { karteikarten } from './data/karteikarten'
 
@@ -14,7 +15,7 @@ const Flashcards = lazy(() => import('lernseiten-ui').then(m => ({ default: m.Fl
 // die Reihenfolge folgt STANDARD_TAB_REIHENFOLGE. Weil hier ein Instrument statt einer
 // Vorlesung gelernt wird, bekommen die Tabs eigene Beschriftungen, und statt „Moodle"
 // gibt es den Tab „Werkzeuge" (Metronom, Tempo tippen, Stimmgerät, Stimmtöne).
-const TABS = ['uebung', 'referenz', 'hilfsmittel', 'werkzeuge', 'karten', 'quiz'] as const
+const TABS = ['uebersicht', 'uebung', 'referenz', 'hilfsmittel', 'werkzeuge', 'karten', 'quiz'] as const
 export type TabId = (typeof TABS)[number]
 
 const LABELS: Partial<Record<TabId, string>> = {
@@ -50,7 +51,7 @@ if (typeof window !== 'undefined') {
 }
 
 function App() {
-  const [activeTab, setActiveTab] = useHashTab(TABS, 'uebung')
+  const [activeTab, setActiveTab] = useHashTab(TABS, 'uebersicht')
   const { theme, toggle } = useTheme()
 
   return (
@@ -62,6 +63,7 @@ function App() {
           <GlobalSearch loadIndex={() => import('./data/searchIndex').then(m => m.searchIndex)} onNavigate={t => setActiveTab(t as TabId)} />
         </div>
         <Suspense fallback={<div className="card"><p className="quiz-hint">Lädt …</p></div>}>
+          {activeTab === 'uebersicht' && <Uebersicht markdown={uebersicht} />}
           {activeTab === 'referenz' && <Cheatsheet />}
           {activeTab === 'hilfsmittel' && <Hilfsmittel />}
           {activeTab === 'quiz' && <Quiz fragen={quizFragen} />}

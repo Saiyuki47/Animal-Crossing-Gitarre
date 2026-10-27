@@ -14,6 +14,7 @@ Interaktive Lernseite, um Lieder auf der Akustikgitarre zu lernen – immer mit 
 
 | Tab | Inhalt |
 |-----|--------|
+| **Übersicht** | Standard-Tab: zeigt die selbst geschriebene [`Übersicht.md`](Übersicht.md) – wie die Seite funktioniert und woher die Inhalte kommen |
 | **Lernschritte** | Ein Untertab je Lied, alles mit Original-Griffen ohne Kapodaster. **Go K.K. Rider:** 6 Schritte (Vorbereitung → Griffe ohne Barré → Rhythmus → Barré-Griffe → Akkordwechsel aus dem Song → Song). **K.K. Cruisin':** 5 Schritte (Vorbereitung → Song-Akkorde → Schleife → Intro und Tempo → Song). **Zombie:** 5 Schritte (Vorbereitung → die vier Griffe → Schleife → Tempo, Rhythmus und Dynamik → Song) + Bonus Klang des Originals (D/F♯, Cmaj7, Zupfmuster). Je Lied **🎵 Das ganze Lied** (komplettes Songblatt Takt für Takt mit Griffbildern, Tipps je Abschnitt, bei Zombie einfache Griffe/Original umschaltbar, Mitspiel-Modus mit Einzählen und mitlaufendem Takt), mit Übungen, Tipps, Griffbildern und „Woran merke ich, dass es sitzt?" – Fortschritt wird gespeichert |
 | **Griffe & Technik** | Untertab **🎸 Griffe & Technik** (Songüberblicke, Song-Griffe, Barré-Formen, Halbtöne/♯/♭, Schlagmuster, Übe-Tipps) und **🧠 Begriffe lernen** (Glossar mit Lernmodus) |
 | **Spickzettel** | Druckbar: Seite 1 Go K.K. Rider (Griffe + Akkordfolge), Seite 2 Barré-Formen mit ihren offenen Vorlagen, Seite 3 K.K. Cruisin', Seite 4 Zombie |
