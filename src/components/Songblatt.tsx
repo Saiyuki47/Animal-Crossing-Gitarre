@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { akkordNach } from '../data/akkorde'
-import { PAUSE, anzeigeName, gegriffen, griffId, taktZahl, type Lied, type SongAbschnitt } from '../data/songblatt'
+import { PAUSE, anzeigeName, griffId, taktZahl, type Lied, type SongAbschnitt } from '../data/songblatt'
 import { klick, starteTakt, useAudioContext } from '../lib/takt'
 import Griffbild from './Griffbild'
 
-// „Das ganze Lied" in den Lernschritten: komplettes Akkordblatt Takt für Takt,
-// wahlweise als Kapo-Griffe oder Original, mit Tipps je Abschnitt und einem
+// „Das ganze Lied" in den Lernschritten: komplettes Akkordblatt Takt für Takt in
+// den Original-Griffen (ohne Kapodaster), mit Griffbildern und Tipps je Abschnitt und einem
 // Mitspiel-Modus (Einzählen, Klick, aktueller Takt wird markiert und mitgescrollt).
 // Ein Klick auf einen Takt setzt den Startpunkt. Jede Kachel zeigt die Anschläge des
 // gewählten Musters auf 8 Achtel-Plätzen (1 + 2 + 3 + 4 +); beim Mitspielen leuchtet
@@ -54,49 +54,37 @@ function AnschlagZeile({ anschlag, aktivesAchtel }: { anschlag: AnschlagId; akti
 }
 
 function Abschnitt({
-  lied,
   abschnitt,
   offset,
-  mitKapo,
   position,
   startTakt,
   anschlag,
   onTaktKlick,
 }: {
-  lied: Lied
   abschnitt: SongAbschnitt
   offset: number
-  mitKapo: boolean
   position: Position | null
   startTakt: number
   anschlag: AnschlagId
   onTaktKlick: (i: number) => void
 }) {
-  const greife = (a: string) => gegriffen(lied, a, abschnitt.teil, mitKapo)
   const griffe = useMemo(() => {
-    const ids = new Set<string>()
-    for (const t of abschnitt.takte)
-      for (const a of t) {
-        const id = griffId(gegriffen(lied, a, abschnitt.teil, mitKapo), mitKapo)
-        if (id) ids.add(id)
-      }
-    return [...ids].map(id => akkordNach(id)).filter(a => a !== undefined)
-  }, [lied, abschnitt, mitKapo])
-  const vorher = mitKapo ? abschnitt.vorher : abschnitt.vorherOriginal
+    const ids = new Set(abschnitt.takte.flat().map(griffId))
+    return [...ids].map(id => (id ? akkordNach(id) : undefined)).filter(a => a !== undefined)
+  }, [abschnitt])
 
   return (
     <section className="card sb-abschnitt">
-      {vorher && <p className="sb-vorher">⚠️ {vorher}</p>}
+      {abschnitt.vorher && <p className="sb-vorher">⚠️ {abschnitt.vorher}</p>}
       <div className="sb-kopf">
         <h3 className="sb-titel">{abschnitt.name}</h3>
         <span className="ub-badge">{abschnitt.takte.length} Takte</span>
-        {mitKapo && <span className="ub-badge">Kapo {lied.kapo[abschnitt.teil]}. Bund</span>}
       </div>
 
       {abschnitt.tab && (
         <div className="sb-tab">
-          <p className="sb-label">Melodie{mitKapo ? ` (Zahlen ab dem Kapo im ${lied.kapo[abschnitt.teil]}. Bund)` : ''}</p>
-          <pre>{mitKapo ? abschnitt.tab.kapo : abschnitt.tab.original}</pre>
+          <p className="sb-label">Melodie</p>
+          <pre>{abschnitt.tab}</pre>
         </div>
       )}
 
@@ -111,18 +99,17 @@ function Abschnitt({
               type="button"
               className={`sb-takt${aktiv ? ' aktiv' : ''}${pause ? ' pause' : ''}${!position && startTakt === g && g > 0 ? ' start' : ''}`}
               onClick={() => onTaktKlick(g)}
-              aria-label={`Takt ${i + 1}: ${takt.map(a => anzeigeName(greife(a))).join(', ')}. Ab hier mitspielen`}
+              aria-label={`Takt ${i + 1}: ${takt.map(anzeigeName).join(', ')}. Ab hier mitspielen`}
               data-takt={g}
             >
               <span className="sb-taktnr">{i + 1}</span>
               <span className="sb-akkorde">
                 {takt.map((a, j) => (
                   <span key={j} className="sb-akkord">
-                    {anzeigeName(greife(a))}
+                    {anzeigeName(a)}
                   </span>
                 ))}
               </span>
-              {mitKapo && !pause && <span className="sb-original">{takt.map(a => anzeigeName(a)).join(' · ')}</span>}
               {pause ? (
                 <span className="sb-original">nicht spielen, mitzählen</span>
               ) : (
@@ -138,7 +125,7 @@ function Abschnitt({
           <Griffbild key={a.id} akkord={a} breite={72} />
         ))}
       </div>
-      <p className="tipp-block">💡 {mitKapo ? abschnitt.tippKapo : abschnitt.tippOriginal}</p>
+      <p className="tipp-block">💡 {abschnitt.tipp}</p>
       {abschnitt.unsicher && <p className="sb-unsicher">❓ {abschnitt.unsicher}</p>}
     </section>
   )
@@ -148,7 +135,6 @@ export default function Songblatt({ lied }: { lied: Lied }) {
   const getCtx = useAudioContext()
   const offsets = useMemo(() => offsetsVon(lied), [lied])
   const gesamt = taktZahl(lied)
-  const [mitKapo, setMitKapo] = useState(true)
   const [anschlag, setAnschlag] = useState<AnschlagId>('viertel')
   const [bpm, setBpm] = useState(lied.uebeBpm)
   const [laeuft, setLaeuft] = useState(false)
@@ -246,16 +232,6 @@ export default function Songblatt({ lied }: { lied: Lied }) {
           ))}
         </div>
 
-        <p className="sb-label">Griffe</p>
-        <div className="filter-row">
-          <button type="button" className={`filter-btn${mitKapo ? ' on' : ''}`} onClick={() => setMitKapo(true)}>
-            Mit Kapo (einfache Griffe)
-          </button>
-          <button type="button" className={`filter-btn${!mitKapo ? ' on' : ''}`} onClick={() => setMitKapo(false)}>
-            Original (Barré)
-          </button>
-        </div>
-
         <p className="sb-label">Tempo</p>
         <div className="filter-row">
           {lied.tempi.map(t => (
@@ -300,10 +276,8 @@ export default function Songblatt({ lied }: { lied: Lied }) {
       {lied.abschnitte.map((a, i) => (
         <Abschnitt
           key={a.id}
-          lied={lied}
           abschnitt={a}
           offset={offsets[i]}
-          mitKapo={mitKapo}
           position={position}
           startTakt={startTakt}
           anschlag={anschlag}
@@ -316,7 +290,7 @@ export default function Songblatt({ lied }: { lied: Lied }) {
         <a href={lied.quelle.url} target="_blank" rel="noopener noreferrer">
           Ultimate Guitar ↗
         </a>
-        .{lied.quelle.zusatz && ` ${lied.quelle.zusatz}`} Taktaufteilung, Kapo-Griffe und Tipps von dieser Lernseite.
+        .{lied.quelle.zusatz && ` ${lied.quelle.zusatz}`} Taktaufteilung und Tipps von dieser Lernseite.
       </p>
     </div>
   )

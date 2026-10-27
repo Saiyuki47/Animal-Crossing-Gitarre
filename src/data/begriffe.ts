@@ -35,11 +35,6 @@ export const begriffGruppen: BegriffGruppe[] = [
         definition: 'Eine Saite, die angeschlagen wird, ohne dass ein Finger sie greift. Im Griffbild mit ○ markiert.',
       },
       {
-        begriff: 'Kapodaster',
-        definition: 'Klemme, die alle Saiten in einem Bund herunterdrückt. Jeder gegriffene Akkord klingt dadurch pro Bund einen Halbton höher.',
-        merke: 'Klingender Akkord = Griff + Kapo-Bund.',
-      },
-      {
         begriff: 'Plektrum',
         definition: 'Kleines Plättchen zum Anschlagen der Saiten. Dünne Plektren (ca. 0,5–0,7 mm) sind für Akkordbegleitung angenehm.',
       },
@@ -77,6 +72,15 @@ export const begriffGruppen: BegriffGruppe[] = [
         begriff: 'Barré-Form',
         definition: 'Ein offener Griff (E, Em, A, Am), den man mit dem Zeigefinger als Barré den Hals hinaufschiebt. Die Form bestimmt Dur/Moll, der Bund den Grundton.',
         merke: 'Em-Form im 4. Bund = G♯m.',
+      },
+      {
+        begriff: 'Mini-Barré',
+        definition: 'Barré über nur zwei bis vier Saiten statt über alle sechs – z.B. bei E♭7sus2 im 1. Bund.',
+      },
+      {
+        begriff: 'Enharmonische Verwechslung',
+        definition: 'Ein Ton mit zwei Namen, z.B. G♯ = A♭. Auf der Gitarre ist es derselbe Bund – G♯7 und A♭7 sind derselbe Griff.',
+        merke: '♯ = einen Halbton höher, ♭ = einen Halbton tiefer.',
       },
       {
         begriff: 'Halbton',
@@ -152,11 +156,11 @@ export const begriffGruppen: BegriffGruppe[] = [
       {
         begriff: 'Tonartwechsel (Modulation)',
         definition: 'Der Song wechselt mitten drin in eine andere Tonart. Bei Go K.K. Rider geht es gegen Ende einen Halbton höher (G♯-Moll → A-Moll).',
-        merke: 'Mit Kapo: einen Bund höher setzen, gleiche Griffe.',
+        merke: 'Bei Go K.K. Rider wird es danach leichter: fast nur offene Griffe.',
       },
       {
         begriff: 'Andalusische Kadenz',
-        definition: 'Absteigende Akkordfolge Moll – eine Stufe tiefer – noch eine tiefer – Dur/Sept, z.B. Em – D – C – B7. Bildet das Intro von Go K.K. Rider.',
+        definition: 'Absteigende Akkordfolge Moll – eine Stufe tiefer – noch eine tiefer – Dur/Sept, z.B. G♯m – F♯ – E – D♯7. Bildet das Intro von Go K.K. Rider.',
       },
     ],
   },

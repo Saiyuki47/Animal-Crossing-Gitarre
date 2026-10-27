@@ -31,7 +31,7 @@ export interface Uebungsblatt {
   lied: string
   nr: string
   titel: string
-  typ: 'Grundlagen' | 'Technik' | 'Rhythmus' | 'Song' | 'Bonus'
+  typ: 'Grundlagen' | 'Technik' | 'Rhythmus' | 'Song'
   /** Grobe Übezeit pro Tag, z.B. „10–15 Min.". */
   dauer?: string
   beschreibung?: string

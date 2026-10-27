@@ -150,7 +150,7 @@ export default function Stimmgeraet() {
       <h3 className="wz-titel">🎙️ Stimmgerät</h3>
       <p className="ub-desc">
         Nutzt das Mikrofon deines Geräts – der Ton wird nur hier im Browser ausgewertet und nirgendwohin
-        gesendet. Stimme <b>ohne Kapodaster</b>, in ruhiger Umgebung und nah am Mikrofon.
+        gesendet. Stimme in ruhiger Umgebung und nah am Mikrofon.
       </p>
 
       <div className="filter-row">

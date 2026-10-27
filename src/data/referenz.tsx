@@ -1,8 +1,10 @@
 import type { ReferenzKarte } from 'lernseiten-ui'
 import Griffbild from '../components/Griffbild'
 import { akkorde, akkordNach, griffKurz, type AkkordGruppe } from './akkorde'
-import { AKKORDBLATT_URL, AUFBAU, KAPO_4, KAPO_5, ORIGINAL_BPM, UEBE_BPM, type KapoZeile } from './song'
-import { KK_CRUISIN, KK_KAPO_6, KK_KAPO_7 } from './lieder/kkCruisin'
+import { AKKORDBLATT_URL, AUFBAU, ORIGINAL_BPM, UEBE_BPM } from './song'
+import { songGriffe, type Lied } from './songblatt'
+import { GO_KK_RIDER } from './lieder/goKkRider'
+import { KK_CRUISIN } from './lieder/kkCruisin'
 
 // Nachschlagekarten „Griffe & Technik". Jede Karte hat eine stabile `id`
 // (Inhaltsverzeichnis + Deep-Link #referenz/<id>). Karten mit Griffbildern/Tabellen
@@ -26,36 +28,27 @@ function AkkordRaster({ gruppe, ids }: { gruppe?: AkkordGruppe; ids?: string[] }
   )
 }
 
-function KapoTabelle({ zeilen, bund }: { zeilen: KapoZeile[]; bund: number }) {
-  return (
-    <table className="ref-tabelle">
-      <thead>
-        <tr>
-          <th>Im Akkordblatt steht</th>
-          <th>Du greifst (Kapo {bund}. Bund)</th>
-        </tr>
-      </thead>
-      <tbody>
-        {zeilen.map(z => (
-          <tr key={z.original}>
-            <td>{z.original}</td>
-            <td>
-              <b>{z.griff}</b>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  )
-}
-
-const akkordText = (gruppe: AkkordGruppe) =>
-  akkorde
-    .filter(a => a.gruppe === gruppe)
+const griffText = (ids: string[]) =>
+  ids
+    .map(id => akkordNach(id)!)
     .map(a => `${a.name}: ${griffKurz(a)}`)
     .join('\n')
 
-const kapoText = (zeilen: KapoZeile[]) => zeilen.map(z => `${z.original} → ${z.griff}`).join('\n')
+/** Song-Griffe eines Lieds, getrennt nach Teil 1 und Schluss (nach dem Tonartwechsel). */
+function SongGriffe({ lied, teil1, teil2 }: { lied: Lied; teil1: string; teil2: string }) {
+  return (
+    <>
+      <p className="ref-absatz">
+        <b>{teil1}</b>
+      </p>
+      <AkkordRaster ids={songGriffe(lied, 1)} />
+      <p className="ref-absatz" style={{ marginTop: '1rem' }}>
+        <b>{teil2}</b>
+      </p>
+      <AkkordRaster ids={songGriffe(lied, 2)} />
+    </>
+  )
+}
 
 const C = akkordNach('C')!
 const GISM = akkordNach('Gism')!
@@ -64,24 +57,24 @@ export const referenzKarten: ReferenzKarte[] = [
   {
     id: 'song',
     titel: 'Go K.K. Rider im Überblick',
-    inhalt: `Tempo ca. ${ORIGINAL_BPM} BPM, 4/4-Takt. Original ohne Kapo in G♯-Moll (manche Aufnahmen F-Moll → Kapo 1), gegen Ende einen Halbton höher in A-Moll.
-Mit Kapo im 4. Bund: Em, D, C, B7, G, Am, F, E7.
+    inhalt: `Tempo ca. ${ORIGINAL_BPM} BPM, 4/4-Takt. Tonart G♯-Moll (manche Aufnahmen F-Moll), gegen Ende einen Halbton höher in A-Moll.
+Gespielt ohne Kapodaster: im ersten Teil viel Barré, nach dem Tonartwechsel fast nur offene Griffe.
 ${AUFBAU.map(a => `${a.name}${a.takte ? ` (${a.takte} Takte)` : ''}: ${a.griffe.join(', ')}`).join('\n')}`,
     inhaltNode: (
       <>
         <p className="ref-absatz">
           <b>Tempo ca. {ORIGINAL_BPM} BPM</b> im 4/4-Takt (je nach Aufnahme 147–153) – zum Üben mit {UEBE_BPM} BPM starten.
-          Laut den meisten Transkriptionen steht der Song in G♯-Moll und wechselt gegen Ende einen Halbton höher nach A-Moll.
-          Mit <b>Kapo im 4. Bund</b> reichen acht einfache Griffe. Manche Aufnahmen stehen in F-Moll – dann Kapo in den 1. Bund,
-          die Griffe bleiben gleich. Jede Zeile im Akkordblatt ist ein Takt; stehen zwei Akkorde in einer Zeile, bekommt jeder
-          zwei Schläge.
+          Laut den meisten Transkriptionen steht der Song in <b>G♯-Moll</b> und wechselt gegen Ende einen Halbton höher nach
+          A-Moll. Gespielt wird ohne Kapodaster: Der erste Teil braucht viel Barré (G♯m, F♯, B, C♯m, G♯7), nach dem
+          Tonartwechsel sind fast alle Griffe offen. Manche Aufnahmen stehen in F-Moll (drei Halbtöne tiefer) – dazu passen die
+          Griffe nicht. Jede Zeile im Akkordblatt ist ein Takt; stehen zwei Akkorde in einer Zeile, bekommt jeder zwei Schläge.
         </p>
         <table className="ref-tabelle">
           <thead>
             <tr>
               <th>Abschnitt</th>
               <th>Takte</th>
-              <th>Griffe (mit Kapo)</th>
+              <th>Akkorde</th>
             </tr>
           </thead>
           <tbody>
@@ -98,7 +91,7 @@ ${AUFBAU.map(a => `${a.name}${a.takte ? ` (${a.takte} Takte)` : ''}: ${a.griffe.
           </tbody>
         </table>
         <p className="ref-absatz" style={{ marginTop: '0.75rem' }}>
-          Das komplette Lied Takt für Takt – mit Kapo-Griffen, Tipps und Mitspiel-Modus – steht unter{' '}
+          Das komplette Lied Takt für Takt – mit Griffbildern, Tipps und Mitspiel-Modus – steht unter{' '}
           <a href="#uebung/lied-go-kk-rider">Lernschritte → Go K.K. Rider → 🎵 Das ganze Lied</a>. Quelle der Akkorde:{' '}
           <a href={AKKORDBLATT_URL} target="_blank" rel="noopener noreferrer">
             Akkordblatt bei Ultimate Guitar ↗
@@ -109,56 +102,29 @@ ${AUFBAU.map(a => `${a.name}${a.takte ? ` (${a.takte} Takte)` : ''}: ${a.griffe.
     ),
   },
   {
-    id: 'kapo-tabelle',
-    titel: 'Kapo-Tabelle: Original → Griff',
-    inhalt: `Kapo im 4. Bund (Teil 1):\n${kapoText(KAPO_4)}\n\nKapo im 5. Bund (nach dem Tonartwechsel):\n${kapoText(KAPO_5)}`,
-    inhaltNode: (
-      <>
-        <p className="ref-absatz">
-          Der Kapodaster macht jeden Griff um so viele Halbtöne höher, wie er Bünde vom Sattel entfernt sitzt. Um das Akkordblatt
-          zu spielen, übersetzt du jeden Akkord in den Griff, der 4 Halbtöne tiefer liegt. Nach „UP HALF A STEP" setzt du den Kapo in
-          den 5. Bund – und greifst wieder genau dieselben Formen.
-        </p>
-        <div className="ref-tabellen-reihe">
-          <KapoTabelle zeilen={KAPO_4} bund={4} />
-          <KapoTabelle zeilen={KAPO_5} bund={5} />
-        </div>
-      </>
-    ),
-  },
-  {
     id: 'song-griffe',
-    titel: 'Die Song-Griffe (mit Kapo)',
-    inhalt: akkordText('Kapo'),
-    inhaltNode: <AkkordRaster gruppe="Kapo" />,
+    titel: 'Die Song-Griffe von Go K.K. Rider',
+    inhalt: `Erster Teil (G♯-Moll):\n${griffText(songGriffe(GO_KK_RIDER, 1))}\n\nSchluss nach dem Tonartwechsel (A-Moll):\n${griffText(songGriffe(GO_KK_RIDER, 2))}`,
+    inhaltNode: (
+      <SongGriffe lied={GO_KK_RIDER} teil1="Erster Teil (G♯-Moll):" teil2="Schluss nach dem Tonartwechsel (A-Moll) – fast alles offen:" />
+    ),
   },
   {
     id: 'kk-cruisin',
     titel: "K.K. Cruisin' im Überblick",
     inhalt: `Zweites Lied. Tonart E♭-Moll, ca. ${KK_CRUISIN.bpm} BPM (Hooktheory), 4/4-Takt.
-Fast der ganze Song ist die Schleife B7 – B♭7 – E♭7sus2 – A♭7/G♭7, am Ende einen Halbton höher.
-Kapo im 6. Bund: ${kapoText(KK_KAPO_6)}
-Nach dem Tonartwechsel Kapo im 7. Bund: ${kapoText(KK_KAPO_7)}`,
+Fast der ganze Song ist die Schleife B7 – B♭7 – E♭7sus2 – A♭7/G♭7, am Ende einen Halbton höher mit offenen Griffen.
+${griffText(songGriffe(KK_CRUISIN))}`,
     inhaltNode: (
       <>
         <p className="ref-absatz">
           Tonart <b>E♭-Moll</b>, ca. <b>{KK_CRUISIN.bpm} BPM</b> (laut Hooktheory). Fast der ganze Song ist eine Schleife aus
-          vier Septakkorden: <b>B7 – B♭7 – E♭7sus2 – A♭7</b> (jedes zweite Mal G♭7). Mit <b>Kapo im 6. Bund</b> wird daraus
-          F7 – E7 – A7sus2 – D7/C7. Vor dem letzten Refrain geht es einen Halbton höher: Kapo in den 7. Bund, gleiche Griffe.
-          Das komplette Songblatt steht unter <a href="#uebung/lied-kk-cruisin">Lernschritte → K.K. Cruisin' → 🎵 Das ganze Lied</a>.
+          vier Septakkorden: <b>B7 – B♭7 – E♭7sus2 – A♭7</b> (jedes zweite Mal G♭7). Gespielt wird ohne Kapodaster: B7 ist
+          offen, die anderen vier sind Barrés im 1., 2. und 4. Bund – A♭7 ist derselbe Griff wie G♯7 aus Go K.K. Rider. Vor
+          dem letzten Refrain geht es einen Halbton höher, ab dort nur offene Griffe. Das komplette Songblatt steht unter{' '}
+          <a href="#uebung/lied-kk-cruisin">Lernschritte → K.K. Cruisin' → 🎵 Das ganze Lied</a>.
         </p>
-        <div className="ref-tabellen-reihe">
-          <KapoTabelle zeilen={KK_KAPO_6} bund={6} />
-          <KapoTabelle zeilen={KK_KAPO_7} bund={7} />
-        </div>
-        <p className="ref-absatz" style={{ marginTop: '1rem' }}>
-          <b>Griffe mit Kapo:</b>
-        </p>
-        <AkkordRaster ids={['F7-klein', 'E7', 'A7sus2', 'D7', 'C7']} />
-        <p className="ref-absatz" style={{ marginTop: '1rem' }}>
-          <b>Original ohne Kapo:</b>
-        </p>
-        <AkkordRaster ids={['B7', 'Bes7', 'Es7sus2', 'As7', 'Ges7', 'C7', 'E7sus2', 'A7', 'G7']} />
+        <SongGriffe lied={KK_CRUISIN} teil1="Die Schleife:" teil2="Schluss nach dem Tonartwechsel – nur offene Griffe:" />
       </>
     ),
   },
@@ -173,7 +139,6 @@ Saite 2            H   (international: B)
 Saite 1 (dünnste)  e   hoch
 
 Merksatz: „Eine Alte Dame Geht Heute Einkaufen"
-Immer OHNE Kapodaster stimmen, danach mit Kapo kurz nachprüfen.
 
 Stimmen nach Gehör (Bundmethode):
 Tiefe E-Saite im 5. Bund = Ton der A-Saite
@@ -227,7 +192,7 @@ Zwei Akkorde pro Takt: Wechsel auf die 3 – fällt genau in die Lücke des Must
         beispiele: [
           'Erst ohne Gitarre: Muster laut sprechen („Ab – Ab Auf – Auf Ab Auf") und dazu klatschen.',
           'Dann mit abgedämpften Saiten (linke Hand liegt locker auf) – nur Rhythmus, kein Klang.',
-          'Dann mit Em, dann mit der Intro-Kette Em – D – C – B7.',
+          'Dann mit E, dann im Wechsel E – A, später mit der Intro-Kette G♯m – F♯ – E – D♯7.',
           'Metronom im Tab „Werkzeuge" bei 70 BPM starten und das Muster mitlesen.',
         ],
       },
@@ -244,53 +209,58 @@ Die Hand pendelt in beiden Fällen weiter – nur das Timing der Aufschläge ver
   },
   {
     id: 'barre-griffe',
-    titel: 'Bonus: Barré-Griffe für das Original',
+    titel: 'Barré-Formen',
     inhalt: `Barré-Formen (Zeigefinger ersetzt den Sattel):
 E-Form: F (1. Bund), F♯ (2. Bund)
+E7-Form: G♯7 = A♭7 (4. Bund), G♭7 (2. Bund)
 Em-Form: G♯m (4. Bund)
 A-Form: A♯ (1. Bund), B (2. Bund)
+A7-Form: B♭7 (1. Bund)
 Am-Form: C♯m (4. Bund)
-${akkordText('Barré')}`,
+Mini-Barré: E♭7sus2 (1. Bund)
+${akkorde
+  .filter(a => a.gruppe === 'Barré')
+  .map(a => `${a.name}: ${griffKurz(a)}`)
+  .join('\n')}`,
     inhaltNode: (
       <>
         <p className="ref-absatz">
-          Beim Barré liegt der Zeigefinger quer über den Saiten und übernimmt die Rolle des Sattels – wie ein Kapodaster, den du
-          mitbewegen kannst. Jede offene Form (E, Em, A, Am) wird so verschiebbar: <b>E-Form</b> → F, F♯ · <b>Em-Form</b> → G♯m ·{' '}
-          <b>A-Form</b> → A♯, B · <b>Am-Form</b> → C♯m.
+          Beim Barré liegt der Zeigefinger quer über den Saiten und übernimmt die Rolle des Sattels. Jede offene Form wird so
+          verschiebbar – die Form bestimmt Dur, Moll oder Sept, der Bund des Zeigefingers den Grundton: <b>E-Form</b> → F, F♯ ·{' '}
+          <b>E7-Form</b> → G♯7/A♭7, G♭7 · <b>Em-Form</b> → G♯m · <b>A-Form</b> → A♯, B · <b>A7-Form</b> → B♭7 ·{' '}
+          <b>Am-Form</b> → C♯m.
+        </p>
+        <p className="ref-absatz">
+          <b>Zwischenschritt:</b> Solange ein volles Barré noch nicht klingt, nur die vier hohen Saiten anschlagen – z.B. G♯m
+          als <code>xx6444</code>, F♯ als <code>xx4322</code>.
         </p>
         <AkkordRaster gruppe="Barré" />
       </>
     ),
   },
   {
-    id: 'kapodaster',
-    titel: 'Kapodaster und Transponieren',
-    inhalt: `Der Kapodaster verkürzt alle Saiten → jeder Griff klingt pro Bund einen Halbton höher.
+    id: 'halbtoene',
+    titel: 'Halbtöne, ♯ und ♭',
+    inhalt: `Ein Bund = ein Halbton. Zwölf Halbtöne = eine Oktave.
 
-Halbtonschritte:  C – C♯ – D – D♯ – E – F – F♯ – G – G♯ – A – A♯ – H – C
+C – C♯ – D – D♯ – E – F – F♯ – G – G♯ – A – A♯ – H – C
 
-Formel: klingender Akkord = gegriffener Akkord + Bund des Kapodasters
-Umgekehrt: Griff = Akkord im Blatt − Bund des Kapodasters
+♯ (Kreuz) = einen Halbton höher: G♯ = Gis
+♭ (be) = einen Halbton tiefer: E♭ = D♯, A♭ = G♯, G♭ = F♯, B♭ = A♯
+Derselbe Ton kann zwei Namen haben – G♯7 (Go K.K. Rider) und A♭7 (K.K. Cruisin') sind derselbe Griff.
 
-Beispiel Go K.K. Rider (Kapo 4):
-G♯m − 4 Halbtöne = G♯ → G → F♯ → F → E  → also Em greifen.`,
-    beispiele: [
-      {
-        szenario: 'Wann ist ein Kapodaster sinnvoll?',
-        beispiele: [
-          'Der Song enthält viele Barré-Akkorde – mit Kapo werden daraus offene Griffe (genau der Fall bei Go K.K. Rider).',
-          'Du willst mitsingen und die Tonart liegt dir zu tief oder zu hoch.',
-          'Du willst zur Originalaufnahme spielen, die in einer „gitarrenunfreundlichen" Tonart steht.',
-        ],
-      },
-    ],
+Englisch B = deutsch H. Im Akkordblatt steht „B" für H-Dur und „B♭" für das deutsche B.
+
+So findest du den Bund eines Barré-Griffs:
+E-Formen → Grundton auf der tiefen E-Saite: E (0) – F (1) – F♯ (2) – G (3) – G♯ (4)
+A-Formen → Grundton auf der A-Saite:        A (0) – A♯/B♭ (1) – B/H (2) – C (3) – C♯ (4)`,
   },
   {
     id: 'ueben',
     titel: 'Effizient üben',
     inhalt: `Lieber 15 Minuten jeden Tag als 2 Stunden am Wochenende.
-Aufwärmen (2 Min.): Em und Am greifen, Finger lockern.
-Technik (5 Min.): One-Minute-Changes des schwierigsten Paars (z.B. C ↔ B7).
+Aufwärmen (2 Min.): E und A greifen, Barré im 5. Bund halten, Finger lockern.
+Technik (5 Min.): One-Minute-Changes des schwierigsten Paars (z.B. D♯7 ↔ G♯m).
 Rhythmus (3 Min.): Schlagmuster zum Metronom.
 Song (5+ Min.): ein Abschnitt in Schleife.
 
@@ -302,7 +272,7 @@ Schwierigste Stelle zuerst üben, nicht immer von vorne beginnen.`,
     titel: 'Häufige Probleme und Lösungen',
     inhalt: `Saite schnarrt → näher ans Bundstäbchen, fester drücken.
 Saite klingt dumpf → ein anderer Finger berührt sie; Finger steiler aufsetzen.
-Mit Kapo klingt alles leicht schief → Kapo gerade und dicht am Bundstäbchen setzen, nachstimmen.
+Barré schnarrt nur auf einer Saite → Zeigefinger ein Stück verschieben, damit keine Saite in einer Hautfalte liegt.
 Fingerkuppen schmerzen → normal in den ersten 2–3 Wochen; kürzer, dafür öfter üben.
 Akkordwechsel zu langsam → Ankerfinger nutzen, Wechsel auf Schlag 4 vorbereiten.
 Rhythmus stockt beim Wechsel → Schlaghand NIE anhalten, notfalls Leersaiten anschlagen.
