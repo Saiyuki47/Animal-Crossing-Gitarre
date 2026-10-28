@@ -2,10 +2,12 @@ import type { Uebungsblatt } from '../types'
 import { AKKORDBLATT_URL } from './song'
 import { KK_CRUISIN } from './lieder/kkCruisin'
 import { ZOMBIE } from './lieder/zombie'
+import { BLUE_HAIR } from './lieder/blueHair'
 
 // Lernschritte je Lied (`lied` = Untertab). Alle Lieder werden mit den Original-Griffen
 // ohne Kapodaster gelernt: Go K.K. Rider in 6 Schritten (offene Griffe und Rhythmus
-// zuerst, dann Barré), K.K. Cruisin' in 5 Schritten, Zombie in 5 Schritten + Bonus.
+// zuerst, dann Barré), K.K. Cruisin' in 5 Schritten, Zombie in 5 Schritten + Bonus,
+// Blue Hair in 5 Schritten.
 // Jeder Schritt verweist per `aufgabeId` auf eine Übung aus data/aufgaben.ts.
 // Die Schritt-IDs bleiben stabil – an ihnen hängt der gespeicherte Fortschritt.
 export const uebungsblaetter: Uebungsblatt[] = [
@@ -254,6 +256,76 @@ export const uebungsblaetter: Uebungsblatt[] = [
       { nr: 1, text: 'D/F♯: der Bass wandert G → F♯ → E.', aufgabeId: 'zb-dfis' },
       { nr: 2, text: 'Cmaj7 statt C.', aufgabeId: 'zb-cmaj7' },
       { nr: 3, text: 'Zupfmuster für Intro und Strophe.', aufgabeId: 'zb-zupfen' },
+    ],
+  },
+
+  // ── Blue Hair ─────────────────────────────────────────────────────────────
+  {
+    id: 'bh-vorbereitung',
+    lied: 'blue-hair',
+    nr: '1',
+    titel: 'Vorbereitung',
+    typ: 'Grundlagen',
+    dauer: '1–2 Tage · 10 Min.',
+    beschreibung: 'Stimmen, Haltung und der erste Akkord. Blue Hair steht in E-Dur und beginnt mit Emaj7 – einem offenen Griff, der genau wie im Original klingt.',
+    aufgaben: [
+      { nr: 1, text: 'Stimme die Gitarre auf E – A – D – G – H – e.', aufgabeId: 'stimmen' },
+      { nr: 2, text: 'Finde eine entspannte Haltung und halte das Plektrum richtig.', aufgabeId: 'haltung' },
+      { nr: 3, text: 'Greif Emaj7 sauber und prüfe es zur Aufnahme.', aufgabeId: 'bh-tonart' },
+    ],
+  },
+  {
+    id: 'bh-strophe',
+    lied: 'blue-hair',
+    nr: '2',
+    titel: 'Emaj7 und Amaj7',
+    typ: 'Technik',
+    dauer: '1 Woche · 15 Min.',
+    beschreibung: 'Intro, Strophen, Zwischenspiele und Solo bestehen nur aus diesen zwei offenen Griffen – das sind vier Fünftel des Songs.',
+    aufgaben: [
+      { nr: 1, text: 'Lerne Emaj7 und Amaj7.', aufgabeId: 'bh-maj7' },
+      { nr: 2, text: 'Wechsle zwischen Emaj7 und Amaj7.', aufgabeId: 'bh-wechsel-strophe' },
+    ],
+  },
+  {
+    id: 'bh-refrain',
+    lied: 'blue-hair',
+    nr: '3',
+    titel: 'F♯m und B7sus2',
+    typ: 'Technik',
+    dauer: '1–2 Wochen · 15 Min.',
+    beschreibung: 'Der Refrain braucht zwei Barré-Griffe im 2. Bund. F♯m ist die Em-Form – dieselbe Handform wie G♯m aus Go K.K. Rider. Beim Wechsel zu B7sus2 bleibt der Zeigefinger liegen.',
+    aufgaben: [
+      { nr: 1, text: 'Lerne F♯m (Em-Form im 2. Bund).', aufgabeId: 'bh-fism' },
+      { nr: 2, text: 'Lerne B7sus2 und wechsle mit F♯m.', aufgabeId: 'bh-b7sus2' },
+    ],
+  },
+  {
+    id: 'bh-rhythmus',
+    lied: 'blue-hair',
+    nr: '4',
+    titel: 'Tempo, Schlagmuster und Übergänge',
+    typ: 'Rhythmus',
+    dauer: '1 Woche · 15 Min.',
+    beschreibung: 'Blue Hair läuft mit 136 BPM – du startest mit 80. Dazu das Schlagmuster aus dem Akkordblatt und die zwei Sprünge zwischen offener Lage und Barré.',
+    aufgaben: [
+      { nr: 1, text: 'Finde das Tempo und bleib beim Klick.', aufgabeId: 'bh-tempo' },
+      { nr: 2, text: 'Das Schlagmuster ↓ – ↓ ↑ – ↑ – ↑.', aufgabeId: 'bh-muster' },
+      { nr: 3, text: 'Die Übergänge Amaj7 → F♯m und B7sus2 → Emaj7.', aufgabeId: 'bh-uebergaenge' },
+    ],
+  },
+  {
+    id: 'bh-lied',
+    lied: 'blue-hair',
+    nr: '5',
+    titel: 'Blue Hair spielen',
+    typ: 'Song',
+    dauer: '2 Wochen · 20 Min.',
+    beschreibung: 'Alles zusammen: Songblatt „🎵 Das ganze Lied" kennenlernen, den Aufbau beim Hören mitverfolgen und den ganzen Song mitspielen.',
+    link: { text: '🎼 Akkordblatt bei Ultimate Guitar öffnen', url: BLUE_HAIR.quelle.url },
+    aufgaben: [
+      { nr: 1, text: 'Lerne das Songblatt kennen und verfolge den Aufbau.', aufgabeId: 'bh-song-blatt' },
+      { nr: 2, text: 'Spiel den ganzen Song mit.', aufgabeId: 'bh-song' },
     ],
   },
 ]

@@ -6,6 +6,7 @@ import { songGriffe, type Lied } from './songblatt'
 import { GO_KK_RIDER } from './lieder/goKkRider'
 import { KK_CRUISIN } from './lieder/kkCruisin'
 import { ZOMBIE, ZOMBIE_AUFBAU } from './lieder/zombie'
+import { BLUE_HAIR, BLUE_HAIR_AUFBAU } from './lieder/blueHair'
 
 // Nachschlagekarten „Griffe & Technik". Jede Karte hat eine stabile `id`
 // (Inhaltsverzeichnis + Deep-Link #referenz/<id>). Karten mit Griffbildern/Tabellen
@@ -186,6 +187,58 @@ ${ZOMBIE_AUFBAU.map(a => `${a.name}: ${a.runden} Runden (${a.takte} Takte)`).joi
     ),
   },
   {
+    id: 'blue-hair',
+    titel: 'Blue Hair im Überblick',
+    inhalt: `„Blue Hair" von TV Girl. Tonart E-Dur, ca. ${BLUE_HAIR.bpm} BPM, 4/4-Takt, ohne Kapodaster.
+Strophe, Zwischenspiel und Solo: Emaj7 – Amaj7 (offen), Refrain: F♯m – B7sus2 (Barré im 2. Bund), jeder Akkord ein Takt.
+Schlagmuster laut Akkordblatt: ↓ – ↓ ↑ – ↑ – ↑
+${BLUE_HAIR_AUFBAU.map(a => `${a.name}: ${a.akkorde} (${a.takte} Takte)`).join('\n')}`,
+    inhaltNode: (
+      <>
+        <p className="ref-absatz">
+          <b>„Blue Hair" von TV Girl</b>. Tonart <b>E-Dur</b>, ca. <b>{BLUE_HAIR.bpm} BPM</b> im 4/4-Takt (Hooktheory, Spotify) – zum
+          Üben mit {BLUE_HAIR.uebeBpm} BPM starten. Fast der ganze Song pendelt zwischen zwei offenen Griffen, <b>Emaj7 – Amaj7</b>,
+          jeder einen Takt lang. Nur der Refrain wechselt zu <b>F♯m – B7sus2</b>, beide mit Barré im 2. Bund – der Zeigefinger
+          bleibt dabei liegen. F♯m ist die Em-Form, also der G♯m-Griff aus Go K.K. Rider zwei Bünde tiefer. Schlagmuster laut
+          Akkordblatt: <b>↓ – ↓ ↑ – ↑ – ↑</b> (auf der 4 ein Luftschlag).
+        </p>
+        <table className="ref-tabelle">
+          <thead>
+            <tr>
+              <th>Abschnitt</th>
+              <th>Akkorde</th>
+              <th>Takte</th>
+            </tr>
+          </thead>
+          <tbody>
+            {BLUE_HAIR_AUFBAU.map((a, i) => (
+              <tr key={i}>
+                <td>
+                  <b>{a.name}</b>
+                </td>
+                <td>{a.akkorde}</td>
+                <td>{a.takte}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p className="ref-absatz" style={{ marginTop: '0.75rem' }}>
+          Das Akkordblatt ordnet die Akkorde dem Text zu, nicht Takten – ein Akkord pro Takt ergibt 3:32 Min., passend zur
+          Albumversion (3:37). Das komplette Songblatt steht unter{' '}
+          <a href="#uebung/lied-blue-hair">Lernschritte → Blue Hair → 🎵 Das ganze Lied</a>. Quelle der Akkorde:{' '}
+          <a href={BLUE_HAIR.quelle.url} target="_blank" rel="noopener noreferrer">
+            Akkordblatt bei Ultimate Guitar ↗
+          </a>
+          .
+        </p>
+        <p className="ref-absatz" style={{ marginTop: '1rem' }}>
+          <b>Die vier Griffe:</b>
+        </p>
+        <AkkordRaster ids={songGriffe(BLUE_HAIR)} />
+      </>
+    ),
+  },
+  {
     id: 'stimmung',
     titel: 'Saiten und Standardstimmung',
     inhalt: `Saite 6 (dickste)  E   tief
@@ -270,7 +323,7 @@ Die Hand pendelt in beiden Fällen weiter – nur das Timing der Aufschläge ver
     inhalt: `Barré-Formen (Zeigefinger ersetzt den Sattel):
 E-Form: F (1. Bund), F♯ (2. Bund)
 E7-Form: G♯7 = A♭7 (4. Bund), G♭7 (2. Bund)
-Em-Form: G♯m (4. Bund)
+Em-Form: G♯m (4. Bund), F♯m (2. Bund)
 A-Form: A♯ (1. Bund), B (2. Bund)
 A7-Form: B♭7 (1. Bund)
 Am-Form: C♯m (4. Bund)
@@ -284,7 +337,7 @@ ${akkorde
         <p className="ref-absatz">
           Beim Barré liegt der Zeigefinger quer über den Saiten und übernimmt die Rolle des Sattels. Jede offene Form wird so
           verschiebbar – die Form bestimmt Dur, Moll oder Sept, der Bund des Zeigefingers den Grundton: <b>E-Form</b> → F, F♯ ·{' '}
-          <b>E7-Form</b> → G♯7/A♭7, G♭7 · <b>Em-Form</b> → G♯m · <b>A-Form</b> → A♯, B · <b>A7-Form</b> → B♭7 ·{' '}
+          <b>E7-Form</b> → G♯7/A♭7, G♭7 · <b>Em-Form</b> → G♯m, F♯m · <b>A-Form</b> → A♯, B · <b>A7-Form</b> → B♭7 ·{' '}
           <b>Am-Form</b> → C♯m.
         </p>
         <p className="ref-absatz">

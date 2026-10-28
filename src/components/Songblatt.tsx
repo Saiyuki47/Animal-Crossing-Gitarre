@@ -21,6 +21,7 @@ const ANSCHLAG: Record<AnschlagId, { name: string; slots: string[] }> = {
   viertel: { name: '↓ ↓ ↓ ↓  Viertel (Einstieg)', slots: ['↓', '', '↓', '', '↓', '', '↓', ''] },
   song: { name: '↓ – ↓↑ – ↑ ↓↑  Song-Muster', slots: ['↓', '–', '↓', '↑', '–', '↑', '↓', '↑'] },
   rock: { name: '↓↓↓↓↓↓↓↓  Rock-Achtel (laut)', slots: ['↓', '↓', '↓', '↓', '↓', '↓', '↓', '↓'] },
+  offbeat: { name: '↓ – ↓↑ – ↑ – ↑  Blue-Hair-Muster', slots: ['↓', '–', '↓', '↑', '–', '↑', '–', '↑'] },
 }
 const STANDARD_ANSCHLAEGE: AnschlagId[] = ['viertel', 'song']
 const STANDARD_ANSICHTEN = { einfach: 'Einfache Griffe', original: 'Wie im Original' }

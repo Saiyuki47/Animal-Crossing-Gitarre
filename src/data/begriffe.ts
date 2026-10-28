@@ -57,6 +57,16 @@ export const begriffGruppen: BegriffGruppe[] = [
         definition: 'Dreiklang plus kleine Septime (z.B. G7). Klingt spannungsreich und löst sich gern in den Akkord eine Quinte tiefer auf (G7 → C).',
       },
       {
+        begriff: 'Major-Septakkord (maj7)',
+        definition: 'Dur-Dreiklang plus große Septime – ein Halbton unter dem Grundton, z.B. Emaj7 = E – G♯ – H – D♯. Klingt weich und verträumt statt spannungsreich, wie in Blue Hair.',
+        merke: 'maj7 = große Septime (½ Ton unter dem Grundton), 7 = kleine Septime (1 Ton darunter).',
+      },
+      {
+        begriff: 'sus-Akkord (sus2, sus4)',
+        definition: 'Akkord, bei dem die Terz durch die Sekunde (sus2) oder die Quarte (sus4) ersetzt ist. Er ist weder Dur noch Moll und klingt offen und schwebend – z.B. B7sus2 in Blue Hair oder E♭7sus2 in K.K. Cruisin\'.',
+        merke: 'sus = „suspended": Die Terz ist ausgesetzt.',
+      },
+      {
         begriff: 'Offener Akkord',
         definition: 'Akkord in den ersten Bünden, der Leersaiten enthält – z.B. C, G, D, Am, Em.',
       },

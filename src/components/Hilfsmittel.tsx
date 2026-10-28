@@ -5,12 +5,13 @@ import { songGriffe, taktText, type Lied } from '../data/songblatt'
 import { GO_KK_RIDER } from '../data/lieder/goKkRider'
 import { KK_CRUISIN } from '../data/lieder/kkCruisin'
 import { ZOMBIE, ZOMBIE_AUFBAU } from '../data/lieder/zombie'
+import { BLUE_HAIR } from '../data/lieder/blueHair'
 import Griffbild from './Griffbild'
 
 // Hilfsmittel-Tab: druckbarer Spickzettel (wie die Hilfsmittel-Tabs der anderen
 // Lernseiten), alles mit den Original-Griffen ohne Kapodaster. Seite 1: Go K.K. Rider
 // (Griffe, Akkordfolge, Schlagmuster). Seite 2: die Barré-Formen mit ihren offenen
-// Vorlagen. Seite 3: K.K. Cruisin'. Seite 4: Zombie.
+// Vorlagen. Seite 3: K.K. Cruisin'. Seite 4: Zombie. Seite 5: Blue Hair.
 // „🖨️ Drucken" öffnet den Druckdialog; per @media print werden Header/Tabs
 // ausgeblendet und die Boxen A4-tauglich gesetzt.
 
@@ -76,7 +77,7 @@ const SEITE_BARRE: Box[] = [
     r: [
       { l: 'E-Form', f: 'F (1. Bund), F♯ (2. Bund)' },
       { l: 'E7-Form', f: 'G♯7 = A♭7 (4. Bund), G♭7 (2. Bund)' },
-      { l: 'Em-Form', f: 'G♯m (4. Bund)' },
+      { l: 'Em-Form', f: 'G♯m (4. Bund), F♯m (2. Bund)' },
       { l: 'A-Form', f: 'A♯ (1. Bund), B (2. Bund)' },
       { l: 'A7-Form', f: 'B♭7 (1. Bund)' },
       { l: 'Am-Form', f: 'C♯m (4. Bund)' },
@@ -173,6 +174,43 @@ const SEITE_ZOMBIE: Box[] = [
   },
 ]
 
+const SEITE_BLUE_HAIR: Box[] = [
+  {
+    t: 'Blue Hair',
+    r: [
+      { l: 'Tonart', f: 'E-Dur, ohne Kapo' },
+      { l: 'Tempo', f: `ca. ${BLUE_HAIR.bpm} BPM, 4/4 (üben ab ${BLUE_HAIR.uebeBpm})` },
+      { l: 'Strophe', f: 'Emaj7 ↔ Amaj7, je 1 Takt' },
+      { l: 'Refrain', f: 'F♯m ↔ B7sus2, je 1 Takt (Barré 2. Bund)' },
+    ],
+  },
+  {
+    t: 'Aufbau (Takte)',
+    r: [
+      { f: 'Intro 8 · Strophe 16 · Refrain 8 · Zwischenspiel 8' },
+      { f: 'Strophe → Refrain → Zwischenspiel 3×, dann Solo 16' },
+      { f: 'Zwischenspiel und Solo wie die Strophe (Emaj7 ↔ Amaj7)' },
+    ],
+  },
+  {
+    t: 'Schlagmuster (1 + 2 + 3 + 4 +)',
+    r: [
+      { l: 'Einstieg', f: '↓   ↓   ↓   ↓' },
+      { l: 'Song', f: '↓ – ↓ ↑ – ↑ – ↑' },
+      { f: 'Auf der 4 nur Luftschlag – Hand pendelt weiter' },
+    ],
+  },
+  {
+    t: 'Wechsel-Tricks',
+    r: [
+      { f: 'Emaj7 → Amaj7: Zeigefinger bleibt auf G-Saite, 1. Bund' },
+      { f: 'F♯m → B7sus2: Barré + kleiner Finger bleiben, Ringfinger weg' },
+      { f: 'Amaj7 → F♯m: Griff auf der 4 lösen, Barré zuerst' },
+      { f: 'F♯m-Zwischenschritt: nur 4 hohe Saiten (xx4222)' },
+    ],
+  },
+]
+
 function Griffuebersicht({ griffe, titel }: { griffe: string[]; titel: string }) {
   const liste = griffe.map(id => akkordNach(id)!)
   return (
@@ -229,7 +267,7 @@ export default function Hilfsmittel() {
         <h2>Spickzettel</h2>
         <p>
           Alle Song-Griffe und Kurzregeln auf A4 (Seite 1: Go K.K. Rider, Seite 2: Barré-Formen, Seite 3: K.K. Cruisin',
-          Seite 4: Zombie) – zum Ausdrucken und neben den Notenständer legen. „🖨️ Drucken" erzeugt ein sauberes Blatt ohne Menü und Tabs.
+          Seite 4: Zombie, Seite 5: Blue Hair) – zum Ausdrucken und neben den Notenständer legen. „🖨️ Drucken" erzeugt ein sauberes Blatt ohne Menü und Tabs.
         </p>
       </div>
       <div className="filter-row no-print" style={{ marginBottom: '0.9rem' }}>
@@ -248,7 +286,7 @@ export default function Hilfsmittel() {
         boxen={SEITE_BARRE}
         nr={2}
         titel="Barré-Formen"
-        griffe={['E', 'Fis', 'E7', 'Gis7', 'Em', 'Gism', 'A', 'H', 'A7', 'Bes7', 'Am', 'Cism']}
+        griffe={['E', 'Fis', 'E7', 'Gis7', 'Em', 'Gism', 'Fism', 'A', 'H', 'A7', 'Bes7', 'Am', 'Cism']}
         griffTitel="Offene Vorlage → Barré-Griff"
       />
       <SpickzettelSeite
@@ -264,6 +302,13 @@ export default function Hilfsmittel() {
         titel={ZOMBIE.titel}
         griffe={['Em', 'C', 'G', 'D', 'D-Fis', 'Cmaj7']}
         griffTitel="Griffe (D/F♯ und Cmaj7 fürs Original)"
+      />
+      <SpickzettelSeite
+        boxen={SEITE_BLUE_HAIR}
+        nr={5}
+        titel={BLUE_HAIR.titel}
+        griffe={songGriffe(BLUE_HAIR)}
+        griffTitel="Song-Griffe (Strophe offen, Refrain mit Barré)"
       />
     </div>
   )

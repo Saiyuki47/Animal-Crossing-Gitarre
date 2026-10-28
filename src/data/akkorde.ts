@@ -30,7 +30,7 @@ export const akkorde: Akkord[] = [
   { id: 'A', name: 'A', gruppe: 'Offen', bund: [null, 0, 2, 2, 2, 0], finger: [null, null, 1, 2, 3, null], tipp: 'Offener Griff aus der Strophe – und die Vorlage der A-Form: mit Barré wird daraus B und A♯.' },
   { id: 'Dis7', name: 'D♯7', gruppe: 'Offen', bund: [null, null, 1, 3, 2, 3], finger: [null, null, 1, 3, 2, 4], tipp: 'Kein Barré, aber vier Finger und keine Leersaite: nur die vier hohen Saiten anschlagen. Führt fast immer nach G♯m.' },
   // Vorlagen für Barré-Formen
-  { id: 'Em', name: 'Em', gruppe: 'Offen', bund: [0, 2, 2, 0, 0, 0], finger: [null, 2, 3, null, null, null], tipp: 'Grundakkord von Zombie – und die Vorlage der Em-Form: mit Ring- und kleinem Finger gegriffen und Barré im 4. Bund wird daraus G♯m.' },
+  { id: 'Em', name: 'Em', gruppe: 'Offen', bund: [0, 2, 2, 0, 0, 0], finger: [null, 2, 3, null, null, null], tipp: 'Grundakkord von Zombie – und die Vorlage der Em-Form: mit Ring- und kleinem Finger gegriffen und Barré im 4. Bund wird daraus G♯m, im 2. Bund F♯m.' },
   // Go K.K. Rider, Schluss nach dem Tonartwechsel (A-Moll)
   { id: 'Am', name: 'Am', gruppe: 'Offen', bund: [null, 0, 2, 2, 1, 0], finger: [null, null, 2, 3, 1, null], tipp: 'Grundakkord nach dem Tonartwechsel – und die Vorlage der Am-Form (C♯m).' },
   { id: 'G', name: 'G', gruppe: 'Offen', bund: [3, 2, 0, 0, 0, 3], finger: [2, 1, null, null, null, 3], tipp: 'Go K.K. Rider (nach dem Tonartwechsel) und Zombie. Alle sechs Saiten klingen.' },
@@ -47,6 +47,9 @@ export const akkorde: Akkord[] = [
   { id: 'D', name: 'D', gruppe: 'Offen', bund: [null, null, 0, 2, 3, 2], finger: [null, null, null, 1, 3, 2], tipp: 'Nur die vier hohen Saiten anschlagen. Von G aus rutscht der Ringfinger nur von der e- auf die H-Saite.' },
   { id: 'D-Fis', name: 'D/F♯', gruppe: 'Offen', bund: [2, null, 0, 2, 3, 2], finger: [1, null, null, 2, 4, 3], tipp: 'D mit F♯ im Bass: Zeigefinger auf der tiefen E-Saite (dämpft die A-Saite mit ab), darüber der D-Griff mit Mittel-, Ring- und kleinem Finger. Alternativ den Daumen über den Hals auf die tiefe E-Saite legen.' },
   { id: 'Cmaj7', name: 'Cmaj7', gruppe: 'Offen', bund: [null, 3, 2, 0, 0, 0], finger: [null, 3, 2, null, null, null], tipp: 'C ohne Zeigefinger: Die leere H-Saite macht den Klang weich und schwebend.' },
+  // Blue Hair
+  { id: 'Emaj7', name: 'Emaj7', gruppe: 'Offen', bund: [0, 2, 1, 1, 0, 0], finger: [null, 3, 1, 2, null, null], tipp: 'Grundakkord von Blue Hair: E-Dur, nur liegt der Ton auf der D-Saite einen Bund tiefer (D♯ statt E). Alle sechs Saiten klingen.' },
+  { id: 'Amaj7', name: 'Amaj7', gruppe: 'Offen', bund: [null, 0, 2, 1, 2, 0], finger: [null, null, 2, 1, 3, null], tipp: 'Blue Hair, im Wechsel mit Emaj7. Tiefe E-Saite nicht anschlagen, Ringfinger steil aufsetzen, damit die hohe e-Saite frei klingt.' },
 
   // ── Barré ───────────────────────────────────────────────────────────────
   // Go K.K. Rider
@@ -62,6 +65,9 @@ export const akkorde: Akkord[] = [
   { id: 'Es7sus2', name: 'E♭7sus2', gruppe: 'Barré', bund: [null, null, 1, 3, 2, 1], finger: [null, null, 1, 3, 2, 1], barre: { bund: 1, von: 2, bis: 5 }, tipp: 'Mini-Barré im 1. Bund (D- bis e-Saite), Ringfinger G-Saite 3. Bund, Mittelfinger H-Saite 2. Bund.' },
   { id: 'As7', name: 'A♭7', gruppe: 'Barré', bund: [4, 6, 4, 5, 4, 4], finger: [1, 3, 1, 2, 1, 1], startBund: 4, barre: { bund: 4, von: 0, bis: 5 }, tipp: 'E7-Form im 4. Bund – derselbe Griff wie G♯7 aus Go K.K. Rider.' },
   { id: 'Ges7', name: 'G♭7', gruppe: 'Barré', bund: [2, 4, 2, 3, 2, 2], finger: [1, 3, 1, 2, 1, 1], startBund: 2, barre: { bund: 2, von: 0, bis: 5 }, tipp: 'E7-Form im 2. Bund – A♭7, nur zwei Bünde tiefer.' },
+  // Blue Hair
+  { id: 'Fism', name: 'F♯m', gruppe: 'Barré', bund: [2, 4, 4, 2, 2, 2], finger: [1, 3, 4, 1, 1, 1], startBund: 2, barre: { bund: 2, von: 0, bis: 5 }, tipp: 'Em-Form im 2. Bund – derselbe Griff wie G♯m, nur zwei Bünde tiefer. Zwischenschritt: nur die vier hohen Saiten (xx4222).' },
+  { id: 'B7sus2', name: 'B7sus2', gruppe: 'Barré', bund: [null, 2, 4, 2, 2, 2], finger: [null, 1, 3, 1, 1, 1], startBund: 2, barre: { bund: 2, von: 1, bis: 5 }, tipp: 'Barré im 2. Bund ab der A-Saite, dazu die D-Saite im 4. Bund. Von F♯m aus bleibt das Barré liegen: Finger von der A-Saite nehmen, tiefe E-Saite nicht anschlagen.' },
 ]
 
 export const akkordNach = (id: string) => akkorde.find(a => a.id === id)

@@ -9,7 +9,7 @@
 export type Takt = [string] | [string, string]
 
 /** Anschlagmuster im Songblatt (Definitionen in components/Songblatt.tsx). */
-export type AnschlagId = 'viertel' | 'song' | 'rock'
+export type AnschlagId = 'viertel' | 'song' | 'rock' | 'offbeat'
 
 export interface SongAbschnitt {
   id: string
@@ -69,6 +69,8 @@ const GRIFF_ID: Record<string, string> = {
   B7: 'B7', Bb7: 'Bes7', Eb7sus2: 'Es7sus2', Ab7: 'As7', Gb7: 'Ges7', C7: 'C7', E7sus2: 'E7sus2', G7: 'G7',
   // Zombie
   Em: 'Em', D: 'D', 'D/F#': 'D-Fis', Cmaj7: 'Cmaj7',
+  // Blue Hair
+  Emaj7: 'Emaj7', Amaj7: 'Amaj7', 'F#m': 'Fism', B7sus2: 'B7sus2',
 }
 
 /** Griff-ID für einen Akkordnamen (undefined bei Pause). */

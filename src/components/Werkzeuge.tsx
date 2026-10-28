@@ -28,6 +28,7 @@ const MUSTER: Muster[] = [
   { id: 'standard', name: 'Song-Muster', slots: ['D', '', 'D', 'U', '', 'U', 'D', 'U'] },
   { id: 'boom-chuck', name: 'Boom-Chuck', slots: ['B', '', 'D', '', 'B', '', 'D', 'U'] },
   { id: 'rock', name: 'Rock-Achtel', slots: ['D', 'D', 'D', 'D', 'D', 'D', 'D', 'D'] },
+  { id: 'offbeat', name: 'Blue-Hair-Muster', slots: ['D', '', 'D', 'U', '', 'U', '', 'U'] },
 ]
 
 const ZAEHLZEIT = ['1', '+', '2', '+', '3', '+', '4', '+']

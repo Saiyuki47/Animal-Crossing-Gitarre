@@ -2,7 +2,7 @@ import type { Aufgabe } from '../types'
 
 // Übungen der Lernschritte – zugeschnitten auf die Akkorde der Lieder, immer in den
 // Original-Griffen ohne Kapodaster. Go K.K. Rider: erst Griffe ohne Barré und Rhythmus,
-// dann Barré, Wechsel und Song. Danach K.K. Cruisin' (kkc-…) und Zombie (zb-…);
+// dann Barré, Wechsel und Song. Danach K.K. Cruisin' (kkc-…), Zombie (zb-…) und Blue Hair (bh-…);
 // allgemeine Übungen wie „stimmen" teilen sich die Lieder.
 // `loesung` beschreibt das Ziel: woran man merkt, dass die Übung sitzt.
 export const aufgaben: Aufgabe[] = [
@@ -498,5 +498,103 @@ export const aufgaben: Aufgabe[] = [
     loesung: 'Das Zupfmuster läuft bei 70 BPM gleichmäßig über die ganze Schleife, und der Basston kommt klar auf jeder 1.',
     schwierigkeit: 'mittel',
     kategorie: 'Zombie',
+  },
+
+  // ── Blue Hair – eigener Untertab in den Lernschritten ──────────────────────
+  {
+    id: 'bh-tonart',
+    titel: 'Emaj7 sauber greifen und zur Aufnahme prüfen',
+    aufgabeText: 'Blue Hair steht in E-Dur und beginnt mit Emaj7 (021100). Greif Emaj7 und schlag jede Saite einzeln von tief nach hoch an – alle sechs sollen klar klingen. Dann einmal anschlagen und den Anfang der Aufnahme dazu hören.',
+    tipp: 'Vergleich mit E-Dur (022100) aus Go K.K. Rider: Nur der Ton auf der D-Saite rutscht einen Bund tiefer, aus E wird D♯. Diese „große Septime" macht den weichen, verträumten Klang des Songs. Klingt es zur Aufnahme schief, liegt es fast immer an der Stimmung – kurz mit dem Stimmgerät im Tab „Werkzeuge" nachstimmen.',
+    loesung: 'Alle sechs Saiten klingen klar, und Emaj7 passt zur Aufnahme – mit diesem Akkord beginnt jede Runde der Strophe.',
+    schwierigkeit: 'einfach',
+    kategorie: 'Blue Hair',
+    akkorde: ['E', 'Emaj7'],
+  },
+  {
+    id: 'bh-maj7',
+    titel: 'Emaj7 und Amaj7',
+    aufgabeText: 'Die zwei Griffe für fast den ganzen Song. Greif Emaj7 und Amaj7 abwechselnd und schlag jeden langsam Saite für Saite an. Bei Emaj7 klingen alle sechs Saiten, bei Amaj7 nur fünf – die tiefe E-Saite bleibt still.',
+    tipp: 'Beide sind maj7-Akkorde: der Dur-Akkord plus große Septime, ein Halbton unter dem Grundton. Bei Amaj7 liegt der Ringfinger auf der H-Saite direkt neben der leeren e-Saite – steil aufsetzen, damit er sie nicht berührt.',
+    loesung: 'Beide Griffe klingen sauber, und du greifst jeden aus dem Stand in unter 3 Sekunden.',
+    schwierigkeit: 'einfach',
+    kategorie: 'Blue Hair',
+    akkorde: ['Emaj7', 'Amaj7'],
+  },
+  {
+    id: 'bh-wechsel-strophe',
+    titel: 'Wechsel Emaj7 ↔ Amaj7',
+    aufgabeText: 'One-Minute-Changes: Timer auf 60 Sekunden, so oft wie möglich zwischen Emaj7 und Amaj7 wechseln, pro Wechsel einmal anschlagen, Ergebnis notieren. Danach mit Metronom bei 80 BPM: jeder Akkord einen Takt (vier Abschläge), Runde um Runde.',
+    tipp: 'Trick mit Ankerfinger: Greif Emaj7 mit dem Zeigefinger flach über D- und G-Saite im 1. Bund (Mini-Barré) und dem Mittelfinger auf der A-Saite. Für Amaj7 bleibt der Zeigefinger auf der G-Saite liegen, der Mittelfinger rutscht im 2. Bund eine Saite weiter auf die D-Saite, und der Ringfinger kommt auf die H-Saite.',
+    loesung: 'Du schaffst 30+ saubere Wechsel pro Minute und spielst Emaj7 – Amaj7 fünf Runden ohne Stocken bei 80 BPM.',
+    schwierigkeit: 'mittel',
+    kategorie: 'Blue Hair',
+    akkorde: ['Emaj7', 'Amaj7'],
+  },
+  {
+    id: 'bh-fism',
+    titel: 'F♯m – die Em-Form im 2. Bund',
+    aufgabeText: 'F♯m ist der erste Refrain-Akkord: die Em-Form mit Barré im 2. Bund. Greif Em mit Ring- und kleinem Finger, schieb die Form zwei Bünde hoch und leg den Zeigefinger quer über alle sechs Saiten im 2. Bund. Dann Saite für Saite anschlagen.',
+    tipp: 'Dieselbe Handform wie G♯m aus Go K.K. Rider, nur zwei Bünde tiefer. Zwischenschritt: erst nur die vier hohen Saiten anschlagen (xx4222) – kleiner Finger auf der D-Saite, Zeigefinger nur über G-, H- und e-Saite. Beim vollen Barré den Zeigefinger leicht auf die Außenkante drehen, Daumen tief hinter dem Hals.',
+    loesung: 'Alle sechs Saiten klingen, auch die H-Saite unter dem Barré. Bis das volle Barré sitzt, darfst du im Song den Zwischenschritt xx4222 nehmen.',
+    schwierigkeit: 'mittel',
+    kategorie: 'Blue Hair',
+    akkorde: ['Em', 'Fism'],
+  },
+  {
+    id: 'bh-b7sus2',
+    titel: 'B7sus2 und der Wechsel mit F♯m',
+    aufgabeText: 'B7sus2 ist der zweite Refrain-Akkord: Barré im 2. Bund von der A- bis zur hohen e-Saite, dazu die D-Saite im 4. Bund (x24222). Spiel dann F♯m → B7sus2 → F♯m … – jeder Akkord einen Takt.',
+    tipp: 'Der Zeigefinger bleibt beim Wechsel im 2. Bund liegen. Am leichtesten geht es, wenn du bei B7sus2 die D-Saite mit dem kleinen Finger greifst statt mit dem Ringfinger wie im Griffbild: Dann bleibt auch der kleine Finger von F♯m liegen, und du hebst nur den Ringfinger von der A-Saite. Die tiefe E-Saite bei B7sus2 nicht anschlagen.',
+    loesung: 'Der Wechsel F♯m ↔ B7sus2 klappt 30-mal pro Minute, und bei B7sus2 klingt die tiefe E-Saite nicht mit.',
+    schwierigkeit: 'mittel',
+    kategorie: 'Blue Hair',
+    akkorde: ['Fism', 'B7sus2'],
+  },
+  {
+    id: 'bh-tempo',
+    titel: 'Tempo: 136 BPM',
+    aufgabeText: 'Blue Hair läuft mit etwa 136 BPM im 4/4-Takt (laut Hooktheory und Spotify). Starte Emaj7 – Amaj7 bei 80 BPM und steigere in 5er- oder 10er-Schritten. Prüfe mit „Tempo tippen" (Werkzeuge), wie schnell deine Aufnahme ist.',
+    tipp: 'Der Song wirkt ruhig, weil jeder Akkord einen ganzen Takt liegt – bei 136 BPM knapp 1,8 Sekunden. Manche Tempo-Messungen zeigen 68 BPM: dasselbe Tempo, nur in halben Schlägen gezählt.',
+    loesung: 'Du spielst Emaj7 – Amaj7 bei 136 BPM sauber und bleibst dabei beim Klick.',
+    schwierigkeit: 'einfach',
+    kategorie: 'Blue Hair',
+  },
+  {
+    id: 'bh-muster',
+    titel: 'Das Schlagmuster aus dem Akkordblatt',
+    aufgabeText: 'Das Akkordblatt gibt für den ganzen Song ein Muster an: ↓ – ↓ ↑ – ↑ – ↑. Gezählt „1 + 2 + 3 + 4 +": Abschläge auf 1 und 2, Aufschläge auf 2+, 3+ und 4+. Die Hand pendelt immer weiter – auf 1+, 3 und 4 verfehlt sie die Saiten nur (Luftschlag). Mitlesen kannst du im Songblatt („Blue-Hair-Muster") oder im Tab „Werkzeuge".',
+    tipp: 'Erst ohne Gitarre sprechen: „Ab – Ab Auf – Auf – Auf". Die drei Aufschläge am Ende geben dem Song sein lockeres, schwebendes Gefühl. Fällt es schwer: das Song-Muster aus Go K.K. Rider (↓ – ↓ ↑ – ↑ ↓ ↑) spielen und dann den Abschlag auf der 4 weglassen – das ist schon das Blue-Hair-Muster.',
+    loesung: 'Das Muster läuft über Emaj7 – Amaj7 und über F♯m – B7sus2, ohne dass der Rhythmus beim Wechsel stockt.',
+    schwierigkeit: 'mittel',
+    kategorie: 'Blue Hair',
+  },
+  {
+    id: 'bh-uebergaenge',
+    titel: 'Die zwei Sprünge: Amaj7 → F♯m und B7sus2 → Emaj7',
+    aufgabeText: 'Zweimal pro Durchgang wechselt der Song die Lage: von der Strophe (offen) in den Refrain (Barré im 2. Bund) und zurück ins Zwischenspiel. Übe beide Sprünge in einer Schleife: Emaj7 – Amaj7 – F♯m – B7sus2, jeder Akkord einen Takt. Erst bei 80 BPM, dann schneller.',
+    tipp: 'Das Schlagmuster hilft: Auf der 4 ist ein Luftschlag – genau dann lösen die Finger den alten Griff. Auf 4+ dürfen Leersaiten klingen, während die Hand schon wandert. Für F♯m zuerst den Zeigefinger als Barré ablegen, dann die übrigen Finger.',
+    loesung: 'Die Schleife Emaj7 – Amaj7 – F♯m – B7sus2 läuft fünfmal ohne Stocken bei 100 BPM.',
+    schwierigkeit: 'mittel',
+    kategorie: 'Blue Hair',
+    akkorde: ['Emaj7', 'Amaj7', 'Fism', 'B7sus2'],
+  },
+  {
+    id: 'bh-song-blatt',
+    titel: 'Songblatt und Aufbau',
+    aufgabeText: 'Öffne „🎵 Das ganze Lied" (letzter Knopf in der Schrittleiste). Nach dem Intro kommt dreimal derselbe Block: Strophe (16 Takte Emaj7 – Amaj7), Refrain (8 Takte F♯m – B7sus2) und Zwischenspiel (8 Takte Emaj7 – Amaj7). Am Ende begleitest du das Trompetensolo. Hör die Aufnahme und verfolge den Aufbau mit.',
+    tipp: 'Den Refrain erkennst du sofort: Nur dort wechseln die Akkorde, der Klang wird dunkler und gespannter. Zähl in der Strophe die Runden Emaj7 – Amaj7 mit (acht pro Strophe) – dann bist du auf den Sprung ins Barré vorbereitet.',
+    loesung: 'Du weißt beim Hören, in welchem Abschnitt du bist, und erkennst rechtzeitig, wann der Refrain beginnt.',
+    schwierigkeit: 'einfach',
+    kategorie: 'Blue Hair',
+  },
+  {
+    id: 'bh-song',
+    titel: 'Den ganzen Song mitspielen',
+    aufgabeText: 'Spiel Blue Hair im Mitspiel-Modus von vorn bis hinten – gut dreieinhalb Minuten. Erst bei 100 BPM, dann im Originaltempo von 136 BPM und schließlich zur Aufnahme.',
+    tipp: 'Die Strophen sind lang und gleichförmig – bleib locker und spar die Kraft der Greifhand für die Refrains. Klingt das volle F♯m-Barré noch nicht zuverlässig, nimm den Zwischenschritt xx4222. Kleine Fehler einfach überspielen, der nächste Takt kommt sofort.',
+    loesung: 'Du spielst den ganzen Song zur Aufnahme mit – mit allen drei Refrains und dem Trompetensolo. 🎸',
+    schwierigkeit: 'schwer',
+    kategorie: 'Blue Hair',
   },
 ]

@@ -296,4 +296,37 @@ export const quizFragen: QuizFrage[] = [
     erklaerung: 'D/F♯ = D mit F♯ im Bass (Basslinie G → F♯ → E), leise Strophen und laute Refrains, ruhiges Tempo um 84 BPM, Cmaj7 = C mit leerer H-Saite.',
     quelle: 'Zombie',
   },
+
+  // ── Blue Hair ──────────────────────────────────────────────────────────
+  {
+    art: 'reihenfolge',
+    frage: 'Bring den ersten Durchgang von Blue Hair in die richtige Reihenfolge.',
+    schritte: ['Intro', 'Strophe', 'Refrain', 'Zwischenspiel'],
+    erklaerung: 'Intro, Strophe und Zwischenspiel sind Emaj7 – Amaj7, nur der Refrain ist F♯m – B7sus2. Der Block Strophe – Refrain – Zwischenspiel kommt dreimal, danach das Trompetensolo.',
+    quelle: 'Blue Hair',
+  },
+  {
+    art: 'zuordnung',
+    frage: 'Blue Hair: Welcher Griff gehört zu welchem Akkord?',
+    paare: [
+      { begriff: 'Emaj7', ziel: '021100 – offen, alle sechs Saiten' },
+      { begriff: 'Amaj7', ziel: 'x02120 – offen, tiefe E-Saite still' },
+      { begriff: 'F♯m', ziel: '244222 – Em-Form, Barré im 2. Bund' },
+      { begriff: 'B7sus2', ziel: 'x24222 – Barré im 2. Bund ab der A-Saite' },
+    ],
+    erklaerung: 'Strophe offen, Refrain mit Barré im 2. Bund. F♯m und B7sus2 unterscheiden sich nur auf den zwei tiefen Saiten – der Zeigefinger bleibt liegen.',
+    quelle: 'Blue Hair',
+  },
+  {
+    art: 'wahrfalsch',
+    frage: 'Markiere jede Aussage über Blue Hair als wahr oder falsch.',
+    aussagen: [
+      { text: 'Emaj7 ist E-Dur, bei dem der Ton auf der D-Saite einen Bund tiefer liegt.', wahr: true },
+      { text: 'Beim Wechsel F♯m → B7sus2 muss der Zeigefinger den Bund wechseln.', wahr: false, warum: 'Beide haben ihr Barré im 2. Bund – der Zeigefinger bleibt liegen.' },
+      { text: 'Im Schlagmuster aus dem Akkordblatt ist die 4 ein Luftschlag.', wahr: true },
+      { text: 'Blue Hair ist langsamer als Zombie.', wahr: false, warum: 'Blue Hair läuft mit ca. 136 BPM, Zombie mit ca. 84 BPM.' },
+    ],
+    erklaerung: 'Emaj7 = E-Dur mit D♯ statt E auf der D-Saite, der Refrain bleibt mit beiden Barrés im 2. Bund, und das Muster ↓ – ↓ ↑ – ↑ – ↑ lässt den Abschlag auf der 4 aus.',
+    quelle: 'Blue Hair',
+  },
 ]
