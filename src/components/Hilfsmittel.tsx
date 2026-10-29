@@ -6,12 +6,14 @@ import { GO_KK_RIDER } from '../data/lieder/goKkRider'
 import { KK_CRUISIN } from '../data/lieder/kkCruisin'
 import { ZOMBIE, ZOMBIE_AUFBAU } from '../data/lieder/zombie'
 import { BLUE_HAIR } from '../data/lieder/blueHair'
+import { JUST_THE_TWO_OF_US, JUST_THE_TWO_OF_US_MUSTER } from '../data/lieder/justTheTwoOfUs'
 import Griffbild from './Griffbild'
 
 // Hilfsmittel-Tab: druckbarer Spickzettel (wie die Hilfsmittel-Tabs der anderen
 // Lernseiten), alles mit den Original-Griffen ohne Kapodaster. Seite 1: Go K.K. Rider
 // (Griffe, Akkordfolge, Schlagmuster). Seite 2: die Barré-Formen mit ihren offenen
 // Vorlagen. Seite 3: K.K. Cruisin'. Seite 4: Zombie. Seite 5: Blue Hair.
+// Seite 6: Just the Two of Us.
 // „🖨️ Drucken" öffnet den Druckdialog; per @media print werden Header/Tabs
 // ausgeblendet und die Boxen A4-tauglich gesetzt.
 
@@ -78,6 +80,7 @@ const SEITE_BARRE: Box[] = [
       { l: 'E-Form', f: 'F (1. Bund), F♯ (2. Bund)' },
       { l: 'E7-Form', f: 'G♯7 = A♭7 (4. Bund), G♭7 (2. Bund)' },
       { l: 'Em-Form', f: 'G♯m (4. Bund), F♯m (2. Bund)' },
+      { l: 'Em7-Form', f: 'Fm7 (1. Bund)' },
       { l: 'A-Form', f: 'A♯ (1. Bund), B (2. Bund)' },
       { l: 'A7-Form', f: 'B♭7 (1. Bund)' },
       { l: 'Am-Form', f: 'C♯m (4. Bund)' },
@@ -211,6 +214,42 @@ const SEITE_BLUE_HAIR: Box[] = [
   },
 ]
 
+const SEITE_JUST_THE_TWO_OF_US: Box[] = [
+  {
+    t: 'Just the Two of Us',
+    r: [
+      { l: 'Tonart', f: 'F-Moll, ohne Kapo, Bünde 1–4' },
+      { l: 'Tempo', f: `ca. ${JUST_THE_TWO_OF_US.bpm} BPM, 4/4 (üben ab ${JUST_THE_TWO_OF_US.uebeBpm})` },
+      { l: 'Schläge', f: '2 Akk. = 2+2 · 3 Akk. = 2+1+1 · 4 Akk. = je 1' },
+    ],
+  },
+  {
+    t: 'Muster (· = Akkorde teilen sich den Takt)',
+    r: [
+      { l: 'Schleife', f: taktText(JUST_THE_TWO_OF_US_MUSTER.schleife) },
+      { l: 'Phrase', f: taktText(JUST_THE_TWO_OF_US_MUSTER.phrase) },
+      { l: 'Refrain', f: taktText(JUST_THE_TWO_OF_US_MUSTER.refrain) },
+    ],
+  },
+  {
+    t: 'Aufbau (Takte)',
+    r: [
+      { f: 'Intro 8 · Strophe 12 · Refrain 8 · Zwischenspiel 4' },
+      { f: 'Strophe 12 · Refrain 8 · Saxofonsolo 12' },
+      { f: 'Strophe 12 · Refrain 8 · Schluss (Refrain) 8' },
+    ],
+  },
+  {
+    t: 'Wechsel-Tricks',
+    r: [
+      { f: 'D♭maj7 → C7: Ring- + Mittelfinger 1 Bund zurück' },
+      { f: 'C7 → Fm7: Ringfinger bleibt (A-Saite, 3. Bund)' },
+      { f: 'E♭m7 → A♭7: Zeige- + kleiner Finger bleiben' },
+      { f: 'Em7 im Refrain: Barré lösen, nur Mittelfinger' },
+    ],
+  },
+]
+
 function Griffuebersicht({ griffe, titel }: { griffe: string[]; titel: string }) {
   const liste = griffe.map(id => akkordNach(id)!)
   return (
@@ -267,7 +306,7 @@ export default function Hilfsmittel() {
         <h2>Spickzettel</h2>
         <p>
           Alle Song-Griffe und Kurzregeln auf A4 (Seite 1: Go K.K. Rider, Seite 2: Barré-Formen, Seite 3: K.K. Cruisin',
-          Seite 4: Zombie, Seite 5: Blue Hair) – zum Ausdrucken und neben den Notenständer legen. „🖨️ Drucken" erzeugt ein sauberes Blatt ohne Menü und Tabs.
+          Seite 4: Zombie, Seite 5: Blue Hair, Seite 6: Just the Two of Us) – zum Ausdrucken und neben den Notenständer legen. „🖨️ Drucken" erzeugt ein sauberes Blatt ohne Menü und Tabs.
         </p>
       </div>
       <div className="filter-row no-print" style={{ marginBottom: '0.9rem' }}>
@@ -286,7 +325,7 @@ export default function Hilfsmittel() {
         boxen={SEITE_BARRE}
         nr={2}
         titel="Barré-Formen"
-        griffe={['E', 'Fis', 'E7', 'Gis7', 'Em', 'Gism', 'Fism', 'A', 'H', 'A7', 'Bes7', 'Am', 'Cism']}
+        griffe={['E', 'Fis', 'E7', 'Gis7', 'Em', 'Gism', 'Fism', 'Em7', 'Fm7', 'A', 'H', 'A7', 'Bes7', 'Am', 'Cism']}
         griffTitel="Offene Vorlage → Barré-Griff"
       />
       <SpickzettelSeite
@@ -309,6 +348,13 @@ export default function Hilfsmittel() {
         titel={BLUE_HAIR.titel}
         griffe={songGriffe(BLUE_HAIR)}
         griffTitel="Song-Griffe (Strophe offen, Refrain mit Barré)"
+      />
+      <SpickzettelSeite
+        boxen={SEITE_JUST_THE_TWO_OF_US}
+        nr={6}
+        titel={JUST_THE_TWO_OF_US.titel}
+        griffe={songGriffe(JUST_THE_TWO_OF_US)}
+        griffTitel="Song-Griffe (alle in den Bünden 1–4, Em7 nur im Refrain)"
       />
     </div>
   )

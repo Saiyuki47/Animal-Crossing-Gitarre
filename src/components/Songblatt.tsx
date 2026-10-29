@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { akkordNach } from '../data/akkorde'
-import { PAUSE, anzeigeName, gegriffen, griffId, taktZahl, type AnschlagId, type Lied, type SongAbschnitt } from '../data/songblatt'
+import { PAUSE, anzeigeName, gegriffen, griffId, schlaegeJeAkkord, taktZahl, type AnschlagId, type Lied, type SongAbschnitt } from '../data/songblatt'
 import { klick, starteTakt, useAudioContext } from '../lib/takt'
 import Griffbild from './Griffbild'
 
@@ -9,6 +9,7 @@ import Griffbild from './Griffbild'
 // Mitspiel-Modus (Einzählen, Klick, aktueller Takt wird markiert und mitgescrollt).
 // Hat ein Lied Vereinfachungen (`einfach`, z.B. Zombie: D statt D/F♯), gibt es einen
 // Umschalter zwischen einfacher Ansicht und Original.
+// Takte mit drei oder vier Akkorden stellen jeden Akkord über die Schläge, auf denen er klingt.
 // Ein Klick auf einen Takt setzt den Startpunkt. Jede Kachel zeigt die Anschläge des
 // gewählten Musters auf 8 Achtel-Plätzen (1 + 2 + 3 + 4 +); beim Mitspielen leuchtet
 // der aktuelle Platz.
@@ -78,7 +79,7 @@ function Abschnitt({
   onTaktKlick: (i: number) => void
 }) {
   const griffe = useMemo(() => {
-    const ids = new Set(abschnitt.takte.flat().map(a => griffId(gegriffen(lied, a, vereinfacht))))
+    const ids = new Set(abschnitt.takte.flat().map(a => griffId(gegriffen(lied, a, vereinfacht), lied)))
     return [...ids].map(id => (id ? akkordNach(id) : undefined)).filter(a => a !== undefined)
   }, [lied, abschnitt, vereinfacht])
 
@@ -104,6 +105,8 @@ function Abschnitt({
           const pause = takt.every(a => a === PAUSE)
           const griffText = takt.map(a => anzeigeName(gegriffen(lied, a, vereinfacht)))
           const originalText = takt.map(anzeigeName).join(' · ')
+          const schlaege = schlaegeJeAkkord(takt)
+          const schlagweise = takt.length > 2
           return (
             <button
               key={i}
@@ -114,9 +117,9 @@ function Abschnitt({
               data-takt={g}
             >
               <span className="sb-taktnr">{i + 1}</span>
-              <span className="sb-akkorde">
+              <span className={`sb-akkorde${schlagweise ? ' schlagweise' : ''}`}>
                 {griffText.map((a, j) => (
-                  <span key={j} className="sb-akkord">
+                  <span key={j} className="sb-akkord" style={schlagweise ? { gridColumn: `span ${schlaege[j]}` } : undefined}>
                     {a}
                   </span>
                 ))}
@@ -141,6 +144,21 @@ function Abschnitt({
       <p className="tipp-block">💡 {!vereinfacht && abschnitt.tippOriginal ? abschnitt.tippOriginal : abschnitt.tipp}</p>
       {abschnitt.unsicher && <p className="sb-unsicher">❓ {abschnitt.unsicher}</p>}
     </section>
+  )
+}
+
+/** Herkunft der Akkorde für die Fußzeile – ohne bekannten Autor nur „einem Akkordblatt". */
+const quelleText = (lied: Lied) => (lied.quelle.autor ? `der Transkription von „${lied.quelle.autor}"` : 'einem Akkordblatt')
+
+/** Zusatz zur Legende, wenn das Lied Takte mit drei oder vier Akkorden hat. */
+function MehrAkkordeHinweis({ lied }: { lied: Lied }) {
+  if (!lied.abschnitte.some(a => a.takte.some(t => t.length > 2))) return null
+  return (
+    <>
+      {' '}
+      Bei <b>drei oder vier Akkorden</b> steht jeder Akkord über seinen Schlägen: drei = 2 + 1 + 1 Schläge (Wechsel auf 3 und
+      4), vier = ein Schlag je Akkord.
+    </>
   )
 }
 
@@ -227,6 +245,7 @@ export default function Songblatt({ lied }: { lied: Lied }) {
             <b>So liest du das Blatt:</b> Eine Kachel = <b>ein Takt</b> = <b>4 Schläge</b>. Zähl dabei „1 + 2 + 3 + 4 +". Die
             Pfeile unten in jeder Kachel zeigen, wann du anschlägst: ↓ abwärts, ↑ aufwärts, – Luftschlag (die Hand bewegt
             sich, trifft aber nicht). Stehen <b>zwei Akkorde</b> in einer Kachel, wechselst du auf Schlag 3.
+            <MehrAkkordeHinweis lied={lied} />
           </p>
           <div className="sb-legende-beispiel" aria-hidden="true">
             <AnschlagZeile anschlag={anschlag} />
@@ -318,7 +337,7 @@ export default function Songblatt({ lied }: { lied: Lied }) {
       ))}
 
       <p className="sb-quelle">
-        {lied.rechte}. Akkorde nach der Transkription von „{lied.quelle.autor}" auf{' '}
+        {lied.rechte}. Akkorde nach {quelleText(lied)} auf{' '}
         <a href={lied.quelle.url} target="_blank" rel="noopener noreferrer">
           Ultimate Guitar ↗
         </a>

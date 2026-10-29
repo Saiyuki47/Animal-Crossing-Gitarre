@@ -62,6 +62,11 @@ export const begriffGruppen: BegriffGruppe[] = [
         merke: 'maj7 = große Septime (½ Ton unter dem Grundton), 7 = kleine Septime (1 Ton darunter).',
       },
       {
+        begriff: 'Moll-Septakkord (m7)',
+        definition: 'Moll-Dreiklang plus kleine Septime, z.B. Fm7 = F – A♭ – C – E♭. Klingt weicher als ein reiner Moll-Akkord – typisch für Soul und Jazz, wie in Just the Two of Us (Fm7, Em7, E♭m7).',
+        merke: 'm7 = Moll + kleine Septime, maj7 = Dur + große Septime.',
+      },
+      {
         begriff: 'sus-Akkord (sus2, sus4)',
         definition: 'Akkord, bei dem die Terz durch die Sekunde (sus2) oder die Quarte (sus4) ersetzt ist. Er ist weder Dur noch Moll und klingt offen und schwebend – z.B. B7sus2 in Blue Hair oder E♭7sus2 in K.K. Cruisin\'.',
         merke: 'sus = „suspended": Die Terz ist ausgesetzt.',
@@ -185,6 +190,11 @@ export const begriffGruppen: BegriffGruppe[] = [
       {
         begriff: 'Andalusische Kadenz',
         definition: 'Absteigende Akkordfolge Moll – eine Stufe tiefer – noch eine tiefer – Dur/Sept, z.B. G♯m – F♯ – E – D♯7. Bildet das Intro von Go K.K. Rider.',
+      },
+      {
+        begriff: 'Chromatisch',
+        definition: 'In Halbtonschritten, also Bund für Bund. Im Refrain von Just the Two of Us rutschen die Akkorde chromatisch abwärts: Fm7 → Em7 → E♭m7.',
+        merke: 'Chromatisch = jeder Schritt ein Bund.',
       },
     ],
   },

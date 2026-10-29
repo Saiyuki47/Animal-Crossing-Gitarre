@@ -7,6 +7,7 @@ import { GO_KK_RIDER } from './lieder/goKkRider'
 import { KK_CRUISIN } from './lieder/kkCruisin'
 import { ZOMBIE, ZOMBIE_AUFBAU } from './lieder/zombie'
 import { BLUE_HAIR, BLUE_HAIR_AUFBAU } from './lieder/blueHair'
+import { JUST_THE_TWO_OF_US, JUST_THE_TWO_OF_US_AUFBAU } from './lieder/justTheTwoOfUs'
 
 // Nachschlagekarten „Griffe & Technik". Jede Karte hat eine stabile `id`
 // (Inhaltsverzeichnis + Deep-Link #referenz/<id>). Karten mit Griffbildern/Tabellen
@@ -239,6 +240,64 @@ ${BLUE_HAIR_AUFBAU.map(a => `${a.name}: ${a.akkorde} (${a.takte} Takte)`).join('
     ),
   },
   {
+    id: 'just-the-two-of-us',
+    titel: 'Just the Two of Us im Überblick',
+    inhalt: `„Just the Two of Us" von Grover Washington Jr. feat. Bill Withers. Tonart F-Moll, ca. ${JUST_THE_TWO_OF_US.bpm} BPM, 4/4-Takt, ohne Kapodaster.
+Schleife (Strophe, Solo): D♭maj7 – C7 | Fm7 – E♭m7 – A♭7 (2 + 2 | 2 + 1 + 1 Schläge)
+Phrase (Intro, Zwischenspiel): D♭maj7 – C7 | Fm7 – E♭m7 – A♭7 | D♭maj7 – C7 | Fm7
+Refrain-Phrase: D♭maj7 – C7 | Fm7 – Em7 – E♭m7 – A♭7 (je 1 Schlag) | D♭maj7 – C7 | Fm7
+${JUST_THE_TWO_OF_US_AUFBAU.map(a => `${a.name}: ${a.muster} ${a.runden}× (${a.takte} Takte)`).join('\n')}`,
+    inhaltNode: (
+      <>
+        <p className="ref-absatz">
+          <b>„Just the Two of Us" von Grover Washington Jr. feat. Bill Withers</b>. Tonart <b>F-Moll</b>, ca.{' '}
+          <b>{JUST_THE_TWO_OF_US.bpm} BPM</b> im 4/4-Takt (Hooktheory) – zum Üben mit {JUST_THE_TWO_OF_US.uebeBpm} BPM starten. Fast
+          der ganze Song ist eine Zwei-Takt-Schleife: <b>D♭maj7 – C7 | Fm7 – E♭m7 – A♭7</b>, die ersten drei Akkorde je zwei
+          Schläge, E♭m7 und A♭7 nur je einen. Intro und Zwischenspiel spielen sie als Vier-Takt-Phrase, die auf einem ganzen Takt
+          Fm7 endet. Im Refrain rutscht <b>Em7</b> dazwischen: Fm7 – Em7 – E♭m7 – A♭7, ein Akkord pro Schlag, chromatisch
+          abwärts.
+        </p>
+        <table className="ref-tabelle">
+          <thead>
+            <tr>
+              <th>Abschnitt</th>
+              <th>Muster</th>
+              <th>Takte</th>
+            </tr>
+          </thead>
+          <tbody>
+            {JUST_THE_TWO_OF_US_AUFBAU.map(a => (
+              <tr key={a.id}>
+                <td>
+                  <b>{a.name}</b>
+                </td>
+                <td>
+                  {a.muster} {a.runden}×
+                </td>
+                <td>{a.takte}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p className="ref-absatz" style={{ marginTop: '0.75rem' }}>
+          Der Aufbau folgt der Single-Version (3:58): 92 Takte ≈ 3:50 Min. plus Ausblenden. Die Albumversion (7:23) hat längere
+          Saxofon-Teile über derselben Schleife. Ohne Kapo liegen alle Griffe in den ersten vier Bünden; A♭7 wird in der 1. Lage
+          gegriffen (<code>xx1112</code>), damit der Wechsel in einem Schlag klappt. Das komplette Songblatt steht unter{' '}
+          <a href="#uebung/lied-just-the-two-of-us">Lernschritte → Just the Two of Us → 🎵 Das ganze Lied</a>. Quelle der
+          Akkorde:{' '}
+          <a href={JUST_THE_TWO_OF_US.quelle.url} target="_blank" rel="noopener noreferrer">
+            Akkordblatt bei Ultimate Guitar ↗
+          </a>
+          .
+        </p>
+        <p className="ref-absatz" style={{ marginTop: '1rem' }}>
+          <b>Die sechs Griffe:</b>
+        </p>
+        <AkkordRaster ids={songGriffe(JUST_THE_TWO_OF_US)} />
+      </>
+    ),
+  },
+  {
     id: 'stimmung',
     titel: 'Saiten und Standardstimmung',
     inhalt: `Saite 6 (dickste)  E   tief
@@ -324,10 +383,11 @@ Die Hand pendelt in beiden Fällen weiter – nur das Timing der Aufschläge ver
 E-Form: F (1. Bund), F♯ (2. Bund)
 E7-Form: G♯7 = A♭7 (4. Bund), G♭7 (2. Bund)
 Em-Form: G♯m (4. Bund), F♯m (2. Bund)
+Em7-Form: Fm7 (1. Bund)
 A-Form: A♯ (1. Bund), B (2. Bund)
 A7-Form: B♭7 (1. Bund)
 Am-Form: C♯m (4. Bund)
-Mini-Barré: E♭7sus2 (1. Bund)
+Mini-Barré: E♭7sus2, D♭maj7, A♭7 (1. Bund)
 ${akkorde
   .filter(a => a.gruppe === 'Barré')
   .map(a => `${a.name}: ${griffKurz(a)}`)
@@ -337,7 +397,7 @@ ${akkorde
         <p className="ref-absatz">
           Beim Barré liegt der Zeigefinger quer über den Saiten und übernimmt die Rolle des Sattels. Jede offene Form wird so
           verschiebbar – die Form bestimmt Dur, Moll oder Sept, der Bund des Zeigefingers den Grundton: <b>E-Form</b> → F, F♯ ·{' '}
-          <b>E7-Form</b> → G♯7/A♭7, G♭7 · <b>Em-Form</b> → G♯m, F♯m · <b>A-Form</b> → A♯, B · <b>A7-Form</b> → B♭7 ·{' '}
+          <b>E7-Form</b> → G♯7/A♭7, G♭7 · <b>Em-Form</b> → G♯m, F♯m · <b>Em7-Form</b> → Fm7 · <b>A-Form</b> → A♯, B · <b>A7-Form</b> → B♭7 ·{' '}
           <b>Am-Form</b> → C♯m.
         </p>
         <p className="ref-absatz">
@@ -356,7 +416,7 @@ ${akkorde
 C – C♯ – D – D♯ – E – F – F♯ – G – G♯ – A – A♯ – H – C
 
 ♯ (Kreuz) = einen Halbton höher: G♯ = Gis
-♭ (be) = einen Halbton tiefer: E♭ = D♯, A♭ = G♯, G♭ = F♯, B♭ = A♯
+♭ (be) = einen Halbton tiefer: E♭ = D♯, A♭ = G♯, G♭ = F♯, B♭ = A♯, D♭ = C♯
 Derselbe Ton kann zwei Namen haben – G♯7 (Go K.K. Rider) und A♭7 (K.K. Cruisin') sind derselbe Griff.
 
 Englisch B = deutsch H. Im Akkordblatt steht „B" für H-Dur und „B♭" für das deutsche B.

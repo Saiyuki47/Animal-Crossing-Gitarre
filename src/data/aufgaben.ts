@@ -2,7 +2,8 @@ import type { Aufgabe } from '../types'
 
 // Übungen der Lernschritte – zugeschnitten auf die Akkorde der Lieder, immer in den
 // Original-Griffen ohne Kapodaster. Go K.K. Rider: erst Griffe ohne Barré und Rhythmus,
-// dann Barré, Wechsel und Song. Danach K.K. Cruisin' (kkc-…), Zombie (zb-…) und Blue Hair (bh-…);
+// dann Barré, Wechsel und Song. Danach K.K. Cruisin' (kkc-…), Zombie (zb-…),
+// Blue Hair (bh-…) und Just the Two of Us (jt-…);
 // allgemeine Übungen wie „stimmen" teilen sich die Lieder.
 // `loesung` beschreibt das Ziel: woran man merkt, dass die Übung sitzt.
 export const aufgaben: Aufgabe[] = [
@@ -596,5 +597,103 @@ export const aufgaben: Aufgabe[] = [
     loesung: 'Du spielst den ganzen Song zur Aufnahme mit – mit allen drei Refrains und dem Trompetensolo. 🎸',
     schwierigkeit: 'schwer',
     kategorie: 'Blue Hair',
+  },
+
+  // ── Just the Two of Us – eigener Untertab in den Lernschritten ─────────────
+  {
+    id: 'jt-klang',
+    titel: 'D♭maj7 – der erste Akkord',
+    aufgabeText: 'Just the Two of Us steht in F-Moll, beginnt aber mit D♭maj7 (x43111). Greif zuerst Cmaj7 aus Zombie (x32000), rutsch mit Ring- und Mittelfinger einen Bund höher und leg den Zeigefinger flach über G-, H- und e-Saite im 1. Bund. Schlag jede der fünf Saiten einzeln an, dann einmal alle zusammen zum Anfang der Aufnahme.',
+    tipp: 'Der Zeigefinger übernimmt die Rolle der Leersaiten von Cmaj7 – so wird aus dem offenen Griff ein verschiebbarer. Die tiefe E-Saite bleibt still. Klingt es zur Aufnahme schief, liegt es fast immer an der Stimmung – kurz mit dem Stimmgerät im Tab „Werkzeuge" nachstimmen.',
+    loesung: 'Alle fünf Saiten klingen klar, auch die drei unter dem Mini-Barré, und D♭maj7 passt zum ersten Akkord der Aufnahme.',
+    schwierigkeit: 'einfach',
+    kategorie: 'Just the Two of Us',
+    akkorde: ['Cmaj7', 'Desmaj7'],
+  },
+  {
+    id: 'jt-desmaj7-c7',
+    titel: 'Wechsel D♭maj7 ↔ C7',
+    aufgabeText: 'Der erste Takt jeder Runde: D♭maj7 und C7, je zwei Schläge. C7 (x32310) kennst du aus K.K. Cruisin\'. One-Minute-Changes: Timer auf 60 Sekunden, so oft wie möglich wechseln, pro Wechsel einmal anschlagen, Ergebnis notieren. Danach mit Metronom bei 60 BPM: D♭maj7 auf 1 und 2, C7 auf 3 und 4.',
+    tipp: 'Fast derselbe Griff, nur verschoben: Ring- und Mittelfinger rutschen je einen Bund zurück (A-Saite 4 → 3, D-Saite 3 → 2), der Zeigefinger bleibt auf der H-Saite im 1. Bund und hebt nur von G- und e-Saite ab, der kleine Finger kommt auf die G-Saite im 3. Bund. Beim Rutschen die Finger auf den Saiten lassen.',
+    loesung: 'Du schaffst 30+ saubere Wechsel pro Minute, und D♭maj7 – C7 läuft bei 60 BPM zehn Takte ohne Stocken.',
+    schwierigkeit: 'mittel',
+    kategorie: 'Just the Two of Us',
+    akkorde: ['Desmaj7', 'C7'],
+  },
+  {
+    id: 'jt-fm7',
+    titel: 'Fm7 – die Em7-Form im 1. Bund',
+    aufgabeText: 'Fm7 ist der Grundakkord des Songs (F-Moll): Barré über alle sechs Saiten im 1. Bund, Ringfinger auf der A-Saite im 3. Bund (131111). Das ist das offene Em7 (020000) einen Bund höher, mit dem Zeigefinger als Sattel. Saite für Saite anschlagen, dann C7 → Fm7 im Wechsel, je zwei Schläge.',
+    tipp: 'Fm7 ist leichter als F: nur Zeige- und Ringfinger. Von C7 aus bleibt der Ringfinger auf der A-Saite im 3. Bund liegen – dein Ankerfinger. Zwischenschritt, solange das volle Barré noch schnarrt: nur die vier hohen Saiten (xx1111). Beim vollen Barré den Zeigefinger leicht auf die Außenkante drehen, Daumen tief hinter dem Hals.',
+    loesung: 'Alle sechs Saiten klingen, auch G- und H-Saite unter dem Barré, und der Wechsel C7 → Fm7 klappt mit liegendem Ringfinger.',
+    schwierigkeit: 'mittel',
+    kategorie: 'Just the Two of Us',
+    akkorde: ['Em7', 'Fm7'],
+  },
+  {
+    id: 'jt-esm7-as7',
+    titel: 'E♭m7 und A♭7 – die schnelle Überleitung',
+    aufgabeText: 'Am Ende jeder Runde kommen E♭m7 und A♭7, je nur einen Schlag. Beide bleiben in den ersten Bünden: E♭m7 (xx1322) ist D♯7 aus Go K.K. Rider mit dem kleinen Finger einen Bund tiefer, A♭7 (xx1112) ein Mini-Barré im 1. Bund plus kleiner Finger. Bei beiden nur die vier hohen Saiten anschlagen. Übe Fm7 → E♭m7 → A♭7 → D♭maj7 in Schleife, jeder Akkord einen Schlag.',
+    tipp: 'Von Fm7 zu E♭m7 bleibt der Zeigefinger auf der D-Saite im 1. Bund, der Ringfinger wandert von der A- auf die G-Saite. Von E♭m7 zu A♭7 bleiben Zeigefinger und kleiner Finger liegen: Der Zeigefinger legt sich flach über D-, G- und H-Saite, Mittel- und Ringfinger gehen weg. Im Original spielt der Bass den Grundton A♭ – wer mag, nimmt später die E7-Form im 4. Bund (464544) aus K.K. Cruisin\', im Tempo ist der Sprung aber weit.',
+    loesung: 'Fm7 → E♭m7 → A♭7 → D♭maj7 läuft fünfmal ohne Stocken bei 60 BPM, ein Schlag pro Akkord.',
+    schwierigkeit: 'mittel',
+    kategorie: 'Just the Two of Us',
+    akkorde: ['Dis7', 'Esm7', 'As7-klein'],
+  },
+  {
+    id: 'jt-schleife',
+    titel: 'Die ganze Schleife',
+    aufgabeText: 'Jetzt alles zusammen – die Schleife, auf der fast der ganze Song steht: D♭maj7 (2 Schläge) – C7 (2) | Fm7 (2) – E♭m7 (1) – A♭7 (1). Metronom auf 60 BPM, ein Abschlag pro Schlag, Runde um Runde, ohne anzuhalten.',
+    tipp: 'Laut mitzählen hilft: „1 2 3 4, 1 2 3 4" – im ersten Takt wechselst du auf der 3, im zweiten auf der 3 und der 4. Lieber ein Wechsel mit Leersaiten als ein Stocken: Die Schlaghand läuft immer weiter. Hakt eine Stelle, nur diese zwei Akkorde in Schleife üben.',
+    loesung: 'Die Schleife läuft zehn Runden ohne Stocken bei 60 BPM – damit kannst du schon die Strophen und das Saxofonsolo begleiten.',
+    schwierigkeit: 'mittel',
+    kategorie: 'Just the Two of Us',
+    akkorde: ['Desmaj7', 'C7', 'Fm7', 'Esm7', 'As7-klein'],
+  },
+  {
+    id: 'jt-tempo',
+    titel: 'Tempo: 96 BPM',
+    aufgabeText: 'Just the Two of Us läuft mit etwa 96 BPM im 4/4-Takt (laut Hooktheory). Starte die Schleife bei 60 BPM und steigere in 5er-Schritten. Prüfe mit „Tempo tippen" (Werkzeuge), wie schnell deine Aufnahme ist.',
+    tipp: 'Der Song fühlt sich entspannt an, die Wechsel sind aber schnell: Bei 96 BPM dauert ein Schlag gut 0,6 Sekunden – und E♭m7 und A♭7 bekommen nur je einen. Manche Tempo-Messungen zeigen 48 BPM: dasselbe Tempo, nur in halben Schlägen gezählt.',
+    loesung: 'Du spielst die Schleife bei 96 BPM sauber und bleibst dabei beim Klick.',
+    schwierigkeit: 'mittel',
+    kategorie: 'Just the Two of Us',
+  },
+  {
+    id: 'jt-muster',
+    titel: 'Song-Muster mit Wechseln auf 3 und 4',
+    aufgabeText: 'Wenn die Viertel sitzen: das Song-Muster ↓ – ↓ ↑ – ↑ ↓ ↑ (gezählt „1 + 2 + 3 + 4 +"). Im ersten Takt der Schleife wechselst du auf der 3 – genau in der Lücke des Musters. Im zweiten Takt kommt E♭m7 auf der 3 (nur der Aufschlag auf 3+ klingt) und A♭7 auf der 4 (↓ ↑). Mitlesen kannst du im Songblatt oder im Tab „Werkzeuge".',
+    tipp: 'Die Lücke auf der 3 ist dein Freund: Dort lösen die Finger den alten Griff. Klingt der zweite Takt noch hektisch, spiel ihn in Vierteln und nur den ersten Takt mit Muster. Der Song hat einen weichen Soul-Groove – locker und eher leise anschlagen.',
+    loesung: 'Das Muster läuft über die ganze Schleife, ohne dass die Hand beim Wechsel auf 3 und 4 anhält.',
+    schwierigkeit: 'mittel',
+    kategorie: 'Just the Two of Us',
+  },
+  {
+    id: 'jt-refrain',
+    titel: 'Der Refrain: Fm7 – Em7 – E♭m7 – A♭7',
+    aufgabeText: 'Im Refrain rutscht zwischen Fm7 und E♭m7 noch Em7 hinein: Fm7 → Em7 → E♭m7 → A♭7, jeder Akkord einen Schlag – die Akkorde wandern chromatisch, Bund für Bund, abwärts. Em7 (020000) ist der leichteste Griff der Seite: nur der Mittelfinger auf der A-Saite im 2. Bund. Übe diesen Takt bei 60 BPM mit Viertel-Abschlägen, dann die ganze Refrain-Phrase (4 Takte).',
+    tipp: 'Von Fm7 zu Em7: Barré lösen und den Mittelfinger auf die A-Saite im 2. Bund setzen – alles andere klingt leer. Fürs Erste reicht es sogar, nur die Hand zu lösen: Die vier hohen Leersaiten (D G H e) sind schon ein Em7. Hör auf den tiefsten Ton: F → E → E♭ – genau dieses Abwärtsrutschen macht den Klang des Refrains.',
+    loesung: 'Fm7 – Em7 – E♭m7 – A♭7 klappt bei 60 BPM fünfmal hintereinander, jeder Akkord auf seinem Schlag.',
+    schwierigkeit: 'schwer',
+    kategorie: 'Just the Two of Us',
+    akkorde: ['Fm7', 'Em7', 'Esm7', 'As7-klein'],
+  },
+  {
+    id: 'jt-song-blatt',
+    titel: 'Songblatt und Aufbau',
+    aufgabeText: 'Öffne „🎵 Das ganze Lied" (letzter Knopf in der Schrittleiste). Der Song kennt drei Muster: die Phrase aus Intro und Zwischenspiel (4 Takte, endet auf einem ganzen Takt Fm7), die Zwei-Takt-Schleife der Strophen und des Saxofonsolos und die Refrain-Phrase mit Em7. Hör die Aufnahme und verfolge den Aufbau mit: Intro, dreimal Strophe und Refrain (nach dem ersten Refrain ein kurzes Zwischenspiel, nach dem zweiten das Saxofonsolo), zum Schluss der Refrain bis zum Ausblenden.',
+    tipp: 'Den Refrain erkennst du sofort: Dort wird der Titel gesungen, und im 2. Takt rutschen die Akkorde abwärts. In den Strophen dauert eine Runde der Schleife ungefähr eine Textzeile.',
+    loesung: 'Du weißt beim Hören, in welchem Abschnitt du bist, und erkennst rechtzeitig, wann der Refrain mit Em7 beginnt.',
+    schwierigkeit: 'einfach',
+    kategorie: 'Just the Two of Us',
+  },
+  {
+    id: 'jt-song',
+    titel: 'Den ganzen Song mitspielen',
+    aufgabeText: 'Spiel Just the Two of Us im Mitspiel-Modus von vorn bis hinten – knapp vier Minuten. Erst bei 70 BPM, dann bei 80, im Originaltempo von 96 BPM und schließlich zur Aufnahme.',
+    tipp: 'Der Song lebt vom lockeren Groove – lieber ein Akkord etwas leiser oder mit Leersaiten als ein Stocken. Wird es in den Refrains zu schnell, spiel dort Viertel-Abschläge und in den Strophen das Song-Muster. Zur Albumversion (7:23) läuft die Schleife im Saxofonsolo einfach länger weiter.',
+    loesung: 'Du spielst den ganzen Song zur Aufnahme mit – mit allen drei Refrains und dem Saxofonsolo. 🎸',
+    schwierigkeit: 'schwer',
+    kategorie: 'Just the Two of Us',
   },
 ]

@@ -309,6 +309,10 @@
 .sb-akkorde { display: flex; gap: .6rem; justify-content: center; }
 .sb-akkord { font: 700 18px var(--font-sans); }
 .sb-akkorde .sb-akkord + .sb-akkord { padding-left: .6rem; border-left: 1px solid var(--border2); }
+/* 3–4 Akkorde im Takt: Spalten = Schläge, bündig über der Anschlagzeile */
+.sb-akkorde.schlagweise { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; width: 100%; max-width: 150px; }
+.sb-akkorde.schlagweise .sb-akkord { font-size: 13px; text-align: center; white-space: nowrap; }
+.sb-akkorde.schlagweise .sb-akkord + .sb-akkord { padding-left: 0; }
 .sb-original { font: 500 10px var(--font-mono); color: var(--text3); }
 .sb-anschlag { display: grid; grid-template-columns: repeat(8, 1fr); width: 100%; max-width: 150px; margin-top: 3px; }
 .sb-anschlag i { font-style: normal; font: 600 12px var(--font-sans); color: var(--text3); text-align: center; line-height: 1.5; border-radius: 4px; min-height: 1.5em; }

@@ -3,10 +3,16 @@
 // Kapodaster gegriffen werden. Ein Lied kann zusätzlich eine vereinfachte Ansicht
 // haben (`einfach`, z.B. bei Zombie D statt D/F♯) – dann zeigt das Songblatt einen Umschalter.
 //
-// Ein Takt = ein Array: ein Akkord (ganzer Takt) oder zwei Akkorde (je 2 Schläge).
+// Ein Takt = ein Array: ein Akkord (ganzer Takt) oder zwei Akkorde (je 2 Schläge),
+// selten drei (2 + 1 + 1 Schläge) oder vier (je 1 Schlag, z.B. Just the Two of Us).
 // „N.C." (no chord) = Pause, die Band setzt aus. Slash-Akkorde wie „D/F#" = D mit F♯ im Bass.
 
-export type Takt = [string] | [string, string]
+export type Takt = [string] | [string, string] | [string, string, string] | [string, string, string, string]
+
+/** Schläge je Akkord, abhängig von der Zahl der Akkorde im Takt. */
+const SCHLAEGE_JE_AKKORD: Record<Takt['length'], number[]> = { 1: [4], 2: [2, 2], 3: [2, 1, 1], 4: [1, 1, 1, 1] }
+
+export const schlaegeJeAkkord = (takt: Takt) => SCHLAEGE_JE_AKKORD[takt.length]
 
 /** Anschlagmuster im Songblatt (Definitionen in components/Songblatt.tsx). */
 export type AnschlagId = 'viertel' | 'song' | 'rock' | 'offbeat'
@@ -43,7 +49,10 @@ export interface Lied {
   ansichten?: { einfach: string; original: string }
   /** Anschlagmuster im Songblatt (Standard: Viertel und Song-Muster). */
   anschlaege?: AnschlagId[]
-  quelle: { autor: string; url: string; zusatz?: string }
+  /** Eigene Griffe für einzelne Akkordnamen, wenn das Lied einen anderen Griff braucht als GRIFF_ID. */
+  griffe?: Record<string, string>
+  /** Akkordblatt auf Ultimate Guitar; ohne `autor` heißt es im Songblatt „nach einem Akkordblatt". */
+  quelle: { autor?: string; url: string; zusatz?: string }
   abschnitte: SongAbschnitt[]
 }
 
@@ -71,22 +80,24 @@ const GRIFF_ID: Record<string, string> = {
   Em: 'Em', D: 'D', 'D/F#': 'D-Fis', Cmaj7: 'Cmaj7',
   // Blue Hair
   Emaj7: 'Emaj7', Amaj7: 'Amaj7', 'F#m': 'Fism', B7sus2: 'B7sus2',
+  // Just the Two of Us (A♭7 dort mit eigenem Griff, siehe lieder/justTheTwoOfUs.ts)
+  Dbmaj7: 'Desmaj7', Fm7: 'Fm7', Em7: 'Em7', Ebm7: 'Esm7',
 }
 
-/** Griff-ID für einen Akkordnamen (undefined bei Pause). */
-export const griffId = (akkord: string): string | undefined => GRIFF_ID[akkord]
+/** Griff-ID für einen Akkordnamen (undefined bei Pause); `lied.griffe` hat Vorrang. */
+export const griffId = (akkord: string, lied?: Lied): string | undefined => lied?.griffe?.[akkord] ?? GRIFF_ID[akkord]
 
 /** Griff-IDs eines Lieds (optional nur eines Teils) in der Reihenfolge ihres ersten Auftretens. */
 export function songGriffe(lied: Lied, teil?: 1 | 2): string[] {
   const ids = lied.abschnitte
     .filter(a => teil === undefined || a.teil === teil)
     .flatMap(a => a.takte.flat())
-    .map(griffId)
+    .map(a => griffId(a, lied))
     .filter((id): id is string => id !== undefined)
   return [...new Set(ids)]
 }
 
-/** Akkordfolge als Kurztext, z.B. „G♯m F♯ E·F♯ B" (Punkt = zwei Akkorde in einem Takt). */
+/** Akkordfolge als Kurztext, z.B. „G♯m F♯ E·F♯ B" (Punkt = mehrere Akkorde in einem Takt). */
 export const taktText = (takte: Takt[]) => takte.map(t => t.map(anzeigeName).join('·')).join('  ')
 
 export const taktZahl = (lied: Lied) => lied.abschnitte.reduce((n, a) => n + a.takte.length, 0)

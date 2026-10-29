@@ -50,6 +50,9 @@ export const akkorde: Akkord[] = [
   // Blue Hair
   { id: 'Emaj7', name: 'Emaj7', gruppe: 'Offen', bund: [0, 2, 1, 1, 0, 0], finger: [null, 3, 1, 2, null, null], tipp: 'Grundakkord von Blue Hair: E-Dur, nur liegt der Ton auf der D-Saite einen Bund tiefer (D♯ statt E). Alle sechs Saiten klingen.' },
   { id: 'Amaj7', name: 'Amaj7', gruppe: 'Offen', bund: [null, 0, 2, 1, 2, 0], finger: [null, null, 2, 1, 3, null], tipp: 'Blue Hair, im Wechsel mit Emaj7. Tiefe E-Saite nicht anschlagen, Ringfinger steil aufsetzen, damit die hohe e-Saite frei klingt.' },
+  // Just the Two of Us (dazu C7 von oben)
+  { id: 'Em7', name: 'Em7', gruppe: 'Offen', bund: [0, 2, 0, 0, 0, 0], finger: [null, 2, null, null, null, null], tipp: 'Em ohne Ringfinger – nur ein Finger. In Just the Two of Us nur im Refrain, einen Schlag lang. Zugleich die Vorlage der Em7-Form: mit Barré im 1. Bund wird daraus Fm7.' },
+  { id: 'Esm7', name: 'E♭m7', gruppe: 'Offen', bund: [null, null, 1, 3, 2, 2], finger: [null, null, 1, 3, 2, 4], tipp: 'D♯7 aus Go K.K. Rider (E♭ = D♯), nur der kleine Finger rutscht auf der e-Saite einen Bund zurück – aus Dur wird Moll. Nur die vier hohen Saiten anschlagen.' },
 
   // ── Barré ───────────────────────────────────────────────────────────────
   // Go K.K. Rider
@@ -68,6 +71,10 @@ export const akkorde: Akkord[] = [
   // Blue Hair
   { id: 'Fism', name: 'F♯m', gruppe: 'Barré', bund: [2, 4, 4, 2, 2, 2], finger: [1, 3, 4, 1, 1, 1], startBund: 2, barre: { bund: 2, von: 0, bis: 5 }, tipp: 'Em-Form im 2. Bund – derselbe Griff wie G♯m, nur zwei Bünde tiefer. Zwischenschritt: nur die vier hohen Saiten (xx4222).' },
   { id: 'B7sus2', name: 'B7sus2', gruppe: 'Barré', bund: [null, 2, 4, 2, 2, 2], finger: [null, 1, 3, 1, 1, 1], startBund: 2, barre: { bund: 2, von: 1, bis: 5 }, tipp: 'Barré im 2. Bund ab der A-Saite, dazu die D-Saite im 4. Bund. Von F♯m aus bleibt das Barré liegen: Finger von der A-Saite nehmen, tiefe E-Saite nicht anschlagen.' },
+  // Just the Two of Us
+  { id: 'Desmaj7', name: 'D♭maj7', gruppe: 'Barré', bund: [null, 4, 3, 1, 1, 1], finger: [null, 3, 2, 1, 1, 1], barre: { bund: 1, von: 3, bis: 5 }, tipp: 'Cmaj7 aus Zombie, einen Bund höher: Ring- und Mittelfinger wie bei Cmaj7, der Zeigefinger liegt als Mini-Barré über G-, H- und e-Saite und ersetzt die Leersaiten. Tiefe E-Saite nicht anschlagen.' },
+  { id: 'Fm7', name: 'Fm7', gruppe: 'Barré', bund: [1, 3, 1, 1, 1, 1], finger: [1, 3, 1, 1, 1, 1], barre: { bund: 1, von: 0, bis: 5 }, tipp: 'Em7-Form im 1. Bund – F ohne Mittel- und kleinen Finger. Von C7 aus bleibt der Ringfinger auf der A-Saite im 3. Bund liegen. Zwischenschritt: nur die vier hohen Saiten (xx1111).' },
+  { id: 'As7-klein', name: 'A♭7', gruppe: 'Barré', bund: [null, null, 1, 1, 1, 2], finger: [null, null, 1, 1, 1, 4], barre: { bund: 1, von: 2, bis: 4 }, tipp: 'A♭7 in der 1. Lage: Mini-Barré über D-, G- und H-Saite, kleiner Finger auf der e-Saite im 2. Bund, nur die vier hohen Saiten anschlagen. Von E♭m7 aus bleiben Zeige- und kleiner Finger liegen. Den Grundton A♭ spielt im Original der Bass.' },
 ]
 
 export const akkordNach = (id: string) => akkorde.find(a => a.id === id)

@@ -329,4 +329,37 @@ export const quizFragen: QuizFrage[] = [
     erklaerung: 'Emaj7 = E-Dur mit D♯ statt E auf der D-Saite, der Refrain bleibt mit beiden Barrés im 2. Bund, und das Muster ↓ – ↓ ↑ – ↑ – ↑ lässt den Abschlag auf der 4 aus.',
     quelle: 'Blue Hair',
   },
+
+  // ── Just the Two of Us ─────────────────────────────────────────────────
+  {
+    art: 'reihenfolge',
+    frage: 'Bring die Akkorde der Strophen-Schleife von Just the Two of Us in die richtige Reihenfolge.',
+    schritte: ['D♭maj7', 'C7', 'Fm7', 'E♭m7', 'A♭7'],
+    erklaerung: 'D♭maj7 und C7 je zwei Schläge, dann Fm7 zwei Schläge, E♭m7 und A♭7 je einen. A♭7 führt zurück zu D♭maj7 – die Schleife beginnt von vorn.',
+    quelle: 'Just the Two of Us',
+  },
+  {
+    art: 'zuordnung',
+    frage: 'Just the Two of Us: Welcher Griff gehört zu welchem Akkord?',
+    paare: [
+      { begriff: 'D♭maj7', ziel: 'x43111 – Cmaj7 einen Bund höher, Mini-Barré' },
+      { begriff: 'Fm7', ziel: '131111 – Em7-Form, Barré im 1. Bund' },
+      { begriff: 'E♭m7', ziel: 'xx1322 – D♯7 mit kleinem Finger einen Bund tiefer' },
+      { begriff: 'Em7', ziel: '020000 – ein Finger, nur im Refrain' },
+    ],
+    erklaerung: 'Alle Griffe liegen ohne Kapo in den ersten vier Bünden, und die Formen kennst du schon: Cmaj7 aus Zombie, Em7 als Vorlage für Fm7, D♯7 aus Go K.K. Rider.',
+    quelle: 'Just the Two of Us',
+  },
+  {
+    art: 'wahrfalsch',
+    frage: 'Markiere jede Aussage über Just the Two of Us als wahr oder falsch.',
+    aussagen: [
+      { text: 'Im Refrain kommt zwischen Fm7 und E♭m7 noch Em7 dazu.', wahr: true },
+      { text: 'In der Strophen-Schleife dauert jeder Akkord einen ganzen Takt.', wahr: false, warum: 'Die Schleife ist zwei Takte lang: D♭maj7 und C7 je 2 Schläge, Fm7 2, E♭m7 und A♭7 je 1.' },
+      { text: 'Für die Original-Akkorde brauchst du einen Kapodaster.', wahr: false, warum: 'Viele Akkordblätter setzen den Kapo in den 1. Bund und greifen Cmaj7 – B7 – Em7 – Dm7 – G7. Hier wird ohne Kapo in den Original-Akkorden gespielt.' },
+      { text: 'Just the Two of Us ist schneller als Zombie.', wahr: true },
+    ],
+    erklaerung: 'Der Refrain rutscht mit Em7 chromatisch abwärts (Fm7 → Em7 → E♭m7), die Schleife ist zwei Takte lang, gespielt wird ohne Kapo, und mit ca. 96 BPM ist der Song etwas schneller als Zombie (ca. 84).',
+    quelle: 'Just the Two of Us',
+  },
 ]

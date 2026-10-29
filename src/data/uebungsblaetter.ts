@@ -3,11 +3,12 @@ import { AKKORDBLATT_URL } from './song'
 import { KK_CRUISIN } from './lieder/kkCruisin'
 import { ZOMBIE } from './lieder/zombie'
 import { BLUE_HAIR } from './lieder/blueHair'
+import { JUST_THE_TWO_OF_US } from './lieder/justTheTwoOfUs'
 
 // Lernschritte je Lied (`lied` = Untertab). Alle Lieder werden mit den Original-Griffen
 // ohne Kapodaster gelernt: Go K.K. Rider in 6 Schritten (offene Griffe und Rhythmus
 // zuerst, dann Barré), K.K. Cruisin' in 5 Schritten, Zombie in 5 Schritten + Bonus,
-// Blue Hair in 5 Schritten.
+// Blue Hair und Just the Two of Us in je 5 Schritten.
 // Jeder Schritt verweist per `aufgabeId` auf eine Übung aus data/aufgaben.ts.
 // Die Schritt-IDs bleiben stabil – an ihnen hängt der gespeicherte Fortschritt.
 export const uebungsblaetter: Uebungsblatt[] = [
@@ -326,6 +327,76 @@ export const uebungsblaetter: Uebungsblatt[] = [
     aufgaben: [
       { nr: 1, text: 'Lerne das Songblatt kennen und verfolge den Aufbau.', aufgabeId: 'bh-song-blatt' },
       { nr: 2, text: 'Spiel den ganzen Song mit.', aufgabeId: 'bh-song' },
+    ],
+  },
+
+  // ── Just the Two of Us ────────────────────────────────────────────────────
+  {
+    id: 'jt-vorbereitung',
+    lied: 'just-the-two-of-us',
+    nr: '1',
+    titel: 'Vorbereitung',
+    typ: 'Grundlagen',
+    dauer: '1–2 Tage · 10 Min.',
+    beschreibung: 'Stimmen, Haltung und der erste Akkord. Just the Two of Us steht in F-Moll und beginnt mit D♭maj7 – dem Cmaj7-Griff aus Zombie, einen Bund höher.',
+    aufgaben: [
+      { nr: 1, text: 'Stimme die Gitarre auf E – A – D – G – H – e.', aufgabeId: 'stimmen' },
+      { nr: 2, text: 'Finde eine entspannte Haltung und halte das Plektrum richtig.', aufgabeId: 'haltung' },
+      { nr: 3, text: 'Greif D♭maj7 und prüfe es zur Aufnahme.', aufgabeId: 'jt-klang' },
+    ],
+  },
+  {
+    id: 'jt-erster-takt',
+    lied: 'just-the-two-of-us',
+    nr: '2',
+    titel: 'D♭maj7, C7 und Fm7',
+    typ: 'Technik',
+    dauer: '1 Woche · 15 Min.',
+    beschreibung: 'Die drei Akkorde, die in jeder Runde zwei Schläge lang klingen. D♭maj7 und C7 sind fast derselbe Griff, Fm7 ist das einzige volle Barré des Songs.',
+    aufgaben: [
+      { nr: 1, text: 'Wechsle zwischen D♭maj7 und C7.', aufgabeId: 'jt-desmaj7-c7' },
+      { nr: 2, text: 'Lerne Fm7 (Em7-Form im 1. Bund).', aufgabeId: 'jt-fm7' },
+    ],
+  },
+  {
+    id: 'jt-ueberleitung',
+    lied: 'just-the-two-of-us',
+    nr: '3',
+    titel: 'E♭m7, A♭7 und die Schleife',
+    typ: 'Technik',
+    dauer: '1–2 Wochen · 15 Min.',
+    beschreibung: 'Die zwei schnellen Akkorde am Ende jeder Runde – je ein Schlag, beide ohne Sprung in höhere Bünde. Danach die ganze Zwei-Takt-Schleife, auf der fast der ganze Song steht.',
+    aufgaben: [
+      { nr: 1, text: 'Lerne E♭m7 und A♭7 in der 1. Lage.', aufgabeId: 'jt-esm7-as7' },
+      { nr: 2, text: 'Spiel die ganze Schleife.', aufgabeId: 'jt-schleife' },
+    ],
+  },
+  {
+    id: 'jt-rhythmus',
+    lied: 'just-the-two-of-us',
+    nr: '4',
+    titel: 'Tempo, Schlagmuster und Refrain',
+    typ: 'Rhythmus',
+    dauer: '1–2 Wochen · 15 Min.',
+    beschreibung: 'Just the Two of Us läuft mit 96 BPM – du startest mit 60. Dazu das Song-Muster mit Wechseln auf 3 und 4 und der Refrain-Takt mit Em7, in dem jeder Schlag einen neuen Akkord bringt.',
+    aufgaben: [
+      { nr: 1, text: 'Finde das Tempo und bleib beim Klick.', aufgabeId: 'jt-tempo' },
+      { nr: 2, text: 'Das Song-Muster ↓ – ↓ ↑ – ↑ ↓ ↑.', aufgabeId: 'jt-muster' },
+      { nr: 3, text: 'Der Refrain mit Em7: ein Akkord pro Schlag.', aufgabeId: 'jt-refrain' },
+    ],
+  },
+  {
+    id: 'jt-lied',
+    lied: 'just-the-two-of-us',
+    nr: '5',
+    titel: 'Just the Two of Us spielen',
+    typ: 'Song',
+    dauer: '2 Wochen · 20 Min.',
+    beschreibung: 'Alles zusammen: Songblatt „🎵 Das ganze Lied" kennenlernen, den Aufbau beim Hören mitverfolgen und den ganzen Song mitspielen.',
+    link: { text: '🎼 Akkordblatt bei Ultimate Guitar öffnen', url: JUST_THE_TWO_OF_US.quelle.url },
+    aufgaben: [
+      { nr: 1, text: 'Lerne das Songblatt kennen und verfolge den Aufbau.', aufgabeId: 'jt-song-blatt' },
+      { nr: 2, text: 'Spiel den ganzen Song mit.', aufgabeId: 'jt-song' },
     ],
   },
 ]
