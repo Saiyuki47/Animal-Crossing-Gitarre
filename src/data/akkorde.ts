@@ -30,12 +30,12 @@ export const akkorde: Akkord[] = [
   { id: 'A', name: 'A', gruppe: 'Offen', bund: [null, 0, 2, 2, 2, 0], finger: [null, null, 1, 2, 3, null], tipp: 'Offener Griff aus der Strophe – und die Vorlage der A-Form: mit Barré wird daraus B und A♯.' },
   { id: 'Dis7', name: 'D♯7', gruppe: 'Offen', bund: [null, null, 1, 3, 2, 3], finger: [null, null, 1, 3, 2, 4], tipp: 'Kein Barré, aber vier Finger und keine Leersaite: nur die vier hohen Saiten anschlagen. Führt fast immer nach G♯m.' },
   // Vorlagen für Barré-Formen
-  { id: 'Em', name: 'Em', gruppe: 'Offen', bund: [0, 2, 2, 0, 0, 0], finger: [null, 2, 3, null, null, null], tipp: 'Grundakkord von Zombie – und die Vorlage der Em-Form: mit Ring- und kleinem Finger gegriffen und Barré im 4. Bund wird daraus G♯m, im 2. Bund F♯m.' },
+  { id: 'Em', name: 'Em', gruppe: 'Offen', bund: [0, 2, 2, 0, 0, 0], finger: [null, 2, 3, null, null, null], tipp: 'Grundakkord von Zombie, in 505 im Wechsel mit Dm – und die Vorlage der Em-Form: mit Ring- und kleinem Finger gegriffen und Barré im 4. Bund wird daraus G♯m, im 2. Bund F♯m.' },
   // Go K.K. Rider, Schluss nach dem Tonartwechsel (A-Moll)
-  { id: 'Am', name: 'Am', gruppe: 'Offen', bund: [null, 0, 2, 2, 1, 0], finger: [null, null, 2, 3, 1, null], tipp: 'Grundakkord nach dem Tonartwechsel – und die Vorlage der Am-Form (C♯m).' },
+  { id: 'Am', name: 'Am', gruppe: 'Offen', bund: [null, 0, 2, 2, 1, 0], finger: [null, null, 2, 3, 1, null], tipp: 'Grundakkord nach dem Tonartwechsel – und die Vorlage der Am-Form (C♯m, in 505 auch Dm und Em).' },
   { id: 'G', name: 'G', gruppe: 'Offen', bund: [3, 2, 0, 0, 0, 3], finger: [2, 1, null, null, null, 3], tipp: 'Go K.K. Rider (nach dem Tonartwechsel) und Zombie. Alle sechs Saiten klingen.' },
   { id: 'C', name: 'C', gruppe: 'Offen', bund: [null, 3, 2, 0, 1, 0], finger: [null, 3, 2, null, 1, null], tipp: 'Go K.K. Rider (nach dem Tonartwechsel) und Zombie. Tiefe E-Saite nicht anschlagen.' },
-  { id: 'Dm', name: 'Dm', gruppe: 'Offen', bund: [null, null, 0, 2, 3, 1], finger: [null, null, null, 2, 3, 1], tipp: 'Nach dem Tonartwechsel. Nur die vier hohen Saiten anschlagen.' },
+  { id: 'Dm', name: 'Dm', gruppe: 'Offen', bund: [null, null, 0, 2, 3, 1], finger: [null, null, null, 2, 3, 1], tipp: 'Nach dem Tonartwechsel und Grundakkord von 505. Nur die vier hohen Saiten anschlagen – die leere A-Saite darf mitklingen, ihr Ton A gehört zum Akkord.' },
   { id: 'E7', name: 'E7', gruppe: 'Offen', bund: [0, 2, 0, 1, 0, 0], finger: [null, 2, null, 1, null, null], tipp: 'Nach dem Tonartwechsel, führt nach Am. Vorlage der E7-Form (G♯7, A♭7, G♭7).' },
   { id: 'A7', name: 'A7', gruppe: 'Offen', bund: [null, 0, 2, 0, 2, 0], finger: [null, null, 1, null, 2, null], tipp: 'Kommt in beiden Liedern am Schluss vor. Vorlage der A7-Form (B♭7).' },
   // K.K. Cruisin'
@@ -68,6 +68,9 @@ export const akkorde: Akkord[] = [
   // Blue Hair
   { id: 'Fism', name: 'F♯m', gruppe: 'Barré', bund: [2, 4, 4, 2, 2, 2], finger: [1, 3, 4, 1, 1, 1], startBund: 2, barre: { bund: 2, von: 0, bis: 5 }, tipp: 'Em-Form im 2. Bund – derselbe Griff wie G♯m, nur zwei Bünde tiefer. Zwischenschritt: nur die vier hohen Saiten (xx4222).' },
   { id: 'B7sus2', name: 'B7sus2', gruppe: 'Barré', bund: [null, 2, 4, 2, 2, 2], finger: [null, 1, 3, 1, 1, 1], startBund: 2, barre: { bund: 2, von: 1, bis: 5 }, tipp: 'Barré im 2. Bund ab der A-Saite, dazu die D-Saite im 4. Bund. Von F♯m aus bleibt das Barré liegen: Finger von der A-Saite nehmen, tiefe E-Saite nicht anschlagen.' },
+  // 505 (Bonus: dieselbe Runde als Barré)
+  { id: 'Dm-Barre', name: 'Dm', gruppe: 'Barré', bund: [null, 5, 7, 7, 6, 5], finger: [null, 1, 3, 4, 2, 1], startBund: 5, barre: { bund: 5, von: 1, bis: 5 }, tipp: 'Am-Form im 5. Bund – dieselbe Handform wie C♯m, einen Bund höher. Tiefe E-Saite nicht anschlagen. Zwei Bünde höher geschoben wird daraus Em.' },
+  { id: 'Em-Barre', name: 'Em', gruppe: 'Barré', bund: [null, 7, 9, 9, 8, 7], finger: [null, 1, 3, 4, 2, 1], startBund: 7, barre: { bund: 7, von: 1, bis: 5 }, tipp: 'Am-Form im 7. Bund – Dm aus 505, nur zwei Bünde höher. Der Wechsel Dm ↔ Em wird so zum Rutschen.' },
 ]
 
 export const akkordNach = (id: string) => akkorde.find(a => a.id === id)

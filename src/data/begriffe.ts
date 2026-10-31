@@ -141,7 +141,7 @@ export const begriffGruppen: BegriffGruppe[] = [
       },
       {
         begriff: 'Dynamik',
-        definition: 'Die Lautstärke und ihre Veränderung im Song. Bei Zombie sind die Strophen leise und die Refrains laut – mit denselben Griffen, nur anders angeschlagen.',
+        definition: 'Die Lautstärke und ihre Veränderung im Song. Bei Zombie sind die Strophen leise und die Refrains laut, 505 steigert sich von der leisen Orgel bis zur lauten Bridge – mit denselben Griffen, nur anders angeschlagen.',
         merke: 'Leiser heißt nicht langsamer.',
       },
       {
@@ -185,6 +185,11 @@ export const begriffGruppen: BegriffGruppe[] = [
       {
         begriff: 'Andalusische Kadenz',
         definition: 'Absteigende Akkordfolge Moll – eine Stufe tiefer – noch eine tiefer – Dur/Sept, z.B. G♯m – F♯ – E – D♯7. Bildet das Intro von Go K.K. Rider.',
+      },
+      {
+        begriff: 'Dorisch',
+        definition: 'Kirchentonart, die nach Moll klingt, aber eine große Sexte hat. D-Dorisch = D – E – F – G – A – H – C: dieselben Töne wie C-Dur, nur mit D als Grundton. Typisch ist der Wechsel vom Moll-Grundakkord zum Moll-Akkord einen Ganzton höher – wie Dm – Em in 505 (das H in Em ist die große Sexte von D).',
+        merke: 'Dorisch = Moll mit einem hellen Farbtupfer (große Sexte).',
       },
     ],
   },

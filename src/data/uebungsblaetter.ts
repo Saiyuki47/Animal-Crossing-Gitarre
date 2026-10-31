@@ -3,11 +3,12 @@ import { AKKORDBLATT_URL } from './song'
 import { KK_CRUISIN } from './lieder/kkCruisin'
 import { ZOMBIE } from './lieder/zombie'
 import { BLUE_HAIR } from './lieder/blueHair'
+import { LIED_505 } from './lieder/lied505'
 
 // Lernschritte je Lied (`lied` = Untertab). Alle Lieder werden mit den Original-Griffen
 // ohne Kapodaster gelernt: Go K.K. Rider in 6 Schritten (offene Griffe und Rhythmus
 // zuerst, dann Barré), K.K. Cruisin' in 5 Schritten, Zombie in 5 Schritten + Bonus,
-// Blue Hair in 5 Schritten.
+// Blue Hair in 5 Schritten, 505 in 5 Schritten + Bonus.
 // Jeder Schritt verweist per `aufgabeId` auf eine Übung aus data/aufgaben.ts.
 // Die Schritt-IDs bleiben stabil – an ihnen hängt der gespeicherte Fortschritt.
 export const uebungsblaetter: Uebungsblatt[] = [
@@ -327,5 +328,84 @@ export const uebungsblaetter: Uebungsblatt[] = [
       { nr: 1, text: 'Lerne das Songblatt kennen und verfolge den Aufbau.', aufgabeId: 'bh-song-blatt' },
       { nr: 2, text: 'Spiel den ganzen Song mit.', aufgabeId: 'bh-song' },
     ],
+  },
+
+  // ── 505 ───────────────────────────────────────────────────────────────────
+  {
+    id: 'am505-vorbereitung',
+    lied: '505',
+    nr: '1',
+    titel: 'Vorbereitung',
+    typ: 'Grundlagen',
+    dauer: '1–2 Tage · 10 Min.',
+    beschreibung: 'Stimmen, Haltung und der erste Akkord. 505 kreist um D-Moll und beginnt mit Dm – einem offenen Griff, der genau wie im Original klingt.',
+    aufgaben: [
+      { nr: 1, text: 'Stimme die Gitarre auf E – A – D – G – H – e.', aufgabeId: 'stimmen' },
+      { nr: 2, text: 'Finde eine entspannte Haltung und halte das Plektrum richtig.', aufgabeId: 'haltung' },
+      { nr: 3, text: 'Greif Dm sauber und prüfe es zur Aufnahme.', aufgabeId: 'am505-tonart' },
+    ],
+  },
+  {
+    id: 'am505-griffe',
+    lied: '505',
+    nr: '2',
+    titel: 'Dm und Em',
+    typ: 'Technik',
+    dauer: '1 Woche · 15 Min.',
+    beschreibung: 'Für den ganzen Song brauchst du nur zwei offene Griffe: Dm (vom Schluss von Go K.K. Rider) und Em (aus Zombie). Entscheidend ist der schnelle Wechsel.',
+    aufgaben: [
+      { nr: 1, text: 'Lerne Dm und Em.', aufgabeId: 'am505-dm-em' },
+      { nr: 2, text: 'Wechsle zwischen Dm und Em.', aufgabeId: 'am505-wechsel' },
+    ],
+  },
+  {
+    id: 'am505-rhythmus',
+    lied: '505',
+    nr: '3',
+    titel: 'Tempo und Zählen',
+    typ: 'Rhythmus',
+    dauer: '1 Woche · 15 Min.',
+    beschreibung: '505 läuft mit ca. 140 BPM – du startest mit 80. Jeder Akkord liegt zwei Takte: Wer mitzählt, wechselt immer pünktlich.',
+    aufgaben: [
+      { nr: 1, text: 'Finde das Tempo und bleib beim Klick.', aufgabeId: 'am505-tempo' },
+      { nr: 2, text: 'Zähl zwei Takte pro Akkord.', aufgabeId: 'am505-zaehlen' },
+    ],
+  },
+  {
+    id: 'am505-dynamik',
+    lied: '505',
+    nr: '4',
+    titel: 'Von leise bis laut',
+    typ: 'Rhythmus',
+    dauer: '1 Woche · 15 Min.',
+    beschreibung: 'Weil die Akkorde gleich bleiben, lebt 505 von der Dynamik: leise Orgel-Strophen, eine lange Steigerung und eine laute Bridge. Dafür brauchst du drei Anschläge.',
+    aufgaben: [
+      { nr: 1, text: 'Ganze, Viertel und Rock-Achtel über Dm – Em.', aufgabeId: 'am505-anschlag' },
+      { nr: 2, text: 'Acht Runden von leise bis laut.', aufgabeId: 'am505-steigerung' },
+    ],
+  },
+  {
+    id: 'am505-lied',
+    lied: '505',
+    nr: '5',
+    titel: '505 spielen',
+    typ: 'Song',
+    dauer: '2 Wochen · 20 Min.',
+    beschreibung: 'Alles zusammen: Songblatt „🎵 Das ganze Lied" kennenlernen, den Aufbau beim Hören mitverfolgen und den ganzen Song mit der großen Steigerung mitspielen.',
+    link: { text: '🎼 Tabulatur bei Ultimate Guitar öffnen', url: LIED_505.quelle.url },
+    aufgaben: [
+      { nr: 1, text: 'Lerne das Songblatt kennen und verfolge den Aufbau.', aufgabeId: 'am505-song-blatt' },
+      { nr: 2, text: 'Spiel den ganzen Song mit.', aufgabeId: 'am505-song' },
+    ],
+  },
+  {
+    id: 'am505-bonus',
+    lied: '505',
+    nr: '6',
+    titel: 'Bonus: Barré-Variante',
+    typ: 'Bonus',
+    dauer: '2+ Wochen · 15 Min.',
+    beschreibung: 'Freiwillig: Dm und Em als Am-Form im 5. und 7. Bund. Dieselbe Handform für beide Akkorde – der Wechsel wird zum Rutschen, und die lauten Teile klingen kräftiger.',
+    aufgaben: [{ nr: 1, text: 'Dm und Em als Barré: verschieben statt umgreifen.', aufgabeId: 'am505-barre' }],
   },
 ]

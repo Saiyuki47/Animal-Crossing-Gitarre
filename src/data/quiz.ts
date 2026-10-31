@@ -329,4 +329,43 @@ export const quizFragen: QuizFrage[] = [
     erklaerung: 'Emaj7 = E-Dur mit D♯ statt E auf der D-Saite, der Refrain bleibt mit beiden Barrés im 2. Bund, und das Muster ↓ – ↓ ↑ – ↑ – ↑ lässt den Abschlag auf der 4 aus.',
     quelle: 'Blue Hair',
   },
+
+  // ── 505 ────────────────────────────────────────────────────────────────
+  {
+    art: 'zuordnung',
+    frage: '505: Welcher Griff gehört zu welchem Akkord?',
+    paare: [
+      { begriff: 'Dm', ziel: 'xx0231 – offen, nur die hohen Saiten' },
+      { begriff: 'Em', ziel: '022000 – offen, alle sechs Saiten' },
+      { begriff: 'Dm (Barré)', ziel: 'x57765 – Am-Form im 5. Bund' },
+      { begriff: 'Em (Barré)', ziel: 'x79987 – Am-Form im 7. Bund' },
+    ],
+    erklaerung: 'Der ganze Song ist Dm – Em. Offen gegriffen ändern sich alle Finger, als Barré (Am-Form) rutscht dieselbe Handform nur zwei Bünde weiter.',
+    quelle: '505',
+  },
+  {
+    art: 'single',
+    frage: 'Was ändert sich bei 505 zwischen den ruhigen Strophen und der lauten Bridge?',
+    optionen: [
+      { text: 'Nur Lautstärke und Anschlag – die Akkorde bleiben Dm und Em' },
+      { text: 'Die Bridge hat eigene Barré-Akkorde', warumFalsch: 'Auch die Bridge ist Dm – Em. Die Barré-Griffe sind nur eine freiwillige Variante derselben Akkorde.' },
+      { text: 'Das Tempo verdoppelt sich', warumFalsch: 'Das Tempo bleibt bei ca. 140 BPM – es wird nur lauter.' },
+      { text: 'Es kommt ein Kapodaster dazu', warumFalsch: 'Diese Seite spielt alle Lieder ohne Kapodaster, und 505 braucht keinen.' },
+    ],
+    richtige: 0,
+    erklaerung: 'Die Akkorde ändern sich nie – 505 lebt von der Dynamik: leise Orgel-Strophen, eine lange Steigerung, eine laute Bridge.',
+    quelle: '505',
+  },
+  {
+    art: 'wahrfalsch',
+    frage: 'Markiere jede Aussage über 505 als wahr oder falsch.',
+    aussagen: [
+      { text: 'Der ganze Song besteht aus den Akkorden Dm und Em.', wahr: true },
+      { text: 'Greifst du Em mit Zeige- und Mittelfinger, bleibt der Mittelfinger beim Wechsel von Dm im 2. Bund.', wahr: true },
+      { text: 'Wenn der Song lauter wird, wird er auch schneller.', wahr: false, warum: 'Das Tempo bleibt bei ca. 140 BPM – nur der Anschlag wird kräftiger.' },
+      { text: '505 ist langsamer als Zombie.', wahr: false, warum: '505 läuft mit ca. 140 BPM, Zombie mit ca. 84 BPM – auch wenn sich 505 wegen der langen Akkorde ruhig anfühlt.' },
+    ],
+    erklaerung: 'Zwei Akkorde, ein Tempo: Dm – Em bei ca. 140 BPM, vom leisen Intro bis zum lauten Schluss. Beim Wechsel hilft der Mittelfinger, der im 2. Bund nur eine Saite weiterrutscht.',
+    quelle: '505',
+  },
 ]

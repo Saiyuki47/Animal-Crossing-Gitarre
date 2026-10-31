@@ -2,7 +2,7 @@ import type { Aufgabe } from '../types'
 
 // Übungen der Lernschritte – zugeschnitten auf die Akkorde der Lieder, immer in den
 // Original-Griffen ohne Kapodaster. Go K.K. Rider: erst Griffe ohne Barré und Rhythmus,
-// dann Barré, Wechsel und Song. Danach K.K. Cruisin' (kkc-…), Zombie (zb-…) und Blue Hair (bh-…);
+// dann Barré, Wechsel und Song. Danach K.K. Cruisin' (kkc-…), Zombie (zb-…), Blue Hair (bh-…) und 505 (am505-…);
 // allgemeine Übungen wie „stimmen" teilen sich die Lieder.
 // `loesung` beschreibt das Ziel: woran man merkt, dass die Übung sitzt.
 export const aufgaben: Aufgabe[] = [
@@ -596,5 +596,101 @@ export const aufgaben: Aufgabe[] = [
     loesung: 'Du spielst den ganzen Song zur Aufnahme mit – mit allen drei Refrains und dem Trompetensolo. 🎸',
     schwierigkeit: 'schwer',
     kategorie: 'Blue Hair',
+  },
+
+  // ── 505 – eigener Untertab in den Lernschritten ────────────────────────────
+  {
+    id: 'am505-tonart',
+    titel: 'Dm sauber greifen und zur Aufnahme prüfen',
+    aufgabeText: '505 kreist um D-Moll und beginnt mit Dm (xx0231). Greif Dm und schlag die vier hohen Saiten einzeln an – D-, G-, H- und e-Saite sollen klar klingen. Dann einmal anschlagen und den Anfang der Aufnahme dazu hören.',
+    tipp: 'Die hohe e-Saite liegt im 1. Bund unter dem Zeigefinger – Fingerkuppe steil aufsetzen, damit die H-Saite daneben frei klingt. Die tiefe E-Saite nicht anschlagen; die leere A-Saite darf mitklingen, ihr Ton A gehört zum Akkord. Klingt es zur Aufnahme schief, kurz mit dem Stimmgerät im Tab „Werkzeuge" nachstimmen.',
+    loesung: 'Die vier hohen Saiten klingen klar, und Dm passt zur Aufnahme – mit diesem Akkord beginnt jede Runde.',
+    schwierigkeit: 'einfach',
+    kategorie: '505',
+    akkorde: ['Dm'],
+  },
+  {
+    id: 'am505-dm-em',
+    titel: 'Dm und Em',
+    aufgabeText: 'Die zwei Griffe für den ganzen Song. Greif Dm und Em abwechselnd und schlag jeden langsam Saite für Saite an. Bei Dm klingen die vier hohen Saiten (mit der leeren A-Saite fünf), bei Em alle sechs.',
+    tipp: 'Greif Em mit Zeige- und Mittelfinger statt wie im Griffbild mit Mittel- und Ringfinger: Zeigefinger auf die A-Saite, Mittelfinger auf die D-Saite, beide im 2. Bund. Dann rutscht der Mittelfinger beim Wechsel von Dm nur eine Saite weiter, von der G- auf die D-Saite, und bleibt im 2. Bund.',
+    loesung: 'Beide Griffe klingen sauber, und du greifst jeden aus dem Stand in unter 3 Sekunden.',
+    schwierigkeit: 'einfach',
+    kategorie: '505',
+    akkorde: ['Dm', 'Em'],
+  },
+  {
+    id: 'am505-wechsel',
+    titel: 'Wechsel Dm ↔ Em',
+    aufgabeText: 'One-Minute-Changes: Timer auf 60 Sekunden, so oft wie möglich zwischen Dm und Em wechseln, pro Wechsel einmal anschlagen, Ergebnis notieren. Danach mit Metronom bei 80 BPM: jeder Akkord zwei Takte (acht Abschläge), Runde um Runde.',
+    tipp: 'Der Mittelfinger führt (G-Saite → D-Saite im 2. Bund), die anderen Finger folgen – alle gleichzeitig aufsetzen, nicht nacheinander. Auch die Schlaghand zielt bei jedem Wechsel neu: Em ab der tiefen E-Saite, Dm ab der A- oder D-Saite.',
+    loesung: 'Du schaffst 30+ saubere Wechsel pro Minute und spielst Dm – Em fünf Runden ohne Stocken bei 80 BPM.',
+    schwierigkeit: 'mittel',
+    kategorie: '505',
+    akkorde: ['Dm', 'Em'],
+  },
+  {
+    id: 'am505-tempo',
+    titel: 'Tempo: 140 BPM',
+    aufgabeText: '505 läuft mit etwa 140 BPM im 4/4-Takt (laut Spotify-Daten). Starte Dm – Em bei 80 BPM mit Viertel-Abschlägen und steigere in 5er- oder 10er-Schritten. Prüfe mit „Tempo tippen" (Werkzeuge), wie schnell deine Aufnahme ist.',
+    tipp: 'Der Song fühlt sich ruhiger an, als die Zahl sagt: Jeder Akkord liegt zwei Takte, gut 3 Sekunden. Manche Tempo-Messungen zeigen 70 BPM – dasselbe Tempo, nur in halben Schlägen gezählt. Tippst du beim Hören 70, zählst du einfach doppelt so langsam.',
+    loesung: 'Du spielst Dm – Em bei 140 BPM sauber und bleibst dabei beim Klick.',
+    schwierigkeit: 'einfach',
+    kategorie: '505',
+  },
+  {
+    id: 'am505-zaehlen',
+    titel: 'Zwei Takte pro Akkord zählen',
+    aufgabeText: 'Im Songblatt dauert jeder Akkord zwei Takte. Zähl laut mit: „1 2 3 4, 2 2 3 4" auf Dm, dann „1 2 3 4, 2 2 3 4" auf Em – das ist eine Runde (vier Takte). Spiel dazu Viertel-Abschläge bei 100 BPM und wechsle genau auf der nächsten 1.',
+    tipp: 'Die „2" am Anfang des zweiten Takts sagt dir: Der Wechsel naht. Auf der 4 des zweiten Takts die Finger schon lösen. Im Songblatt siehst du jede Runde als vier Kacheln: Dm, Dm, Em, Em.',
+    loesung: 'Du wechselst immer pünktlich nach zwei Takten, auch wenn du nicht mehr laut mitzählst.',
+    schwierigkeit: 'einfach',
+    kategorie: '505',
+  },
+  {
+    id: 'am505-anschlag',
+    titel: 'Drei Anschläge: Ganze, Viertel, Rock-Achtel',
+    aufgabeText: '505 wächst von ganz leise bis ganz laut, deshalb brauchst du drei Anschläge (alle im Songblatt wählbar): Ganze – ein Abschlag pro Takt, dann ausklingen lassen. Viertel – vier ruhige Abschläge pro Takt. Rock-Achtel – acht kräftige Abschläge ↓↓↓↓↓↓↓↓. Spiel jede Variante zwei Runden über Dm – Em bei 100 BPM.',
+    tipp: 'Bei den Ganzen die Hand trotzdem im Takt mitbewegen – so verlierst du das Tempo nicht. Rock-Achtel aus dem Unterarm, nicht nur aus dem Handgelenk, und locker bleiben: Bei 140 BPM verkrampft ein fester Arm schnell.',
+    loesung: 'Alle drei Anschläge laufen sauber über Dm – Em, und du wechselst ohne Pause von einem zum nächsten.',
+    schwierigkeit: 'mittel',
+    kategorie: '505',
+  },
+  {
+    id: 'am505-steigerung',
+    titel: 'Die große Steigerung',
+    aufgabeText: 'Das Besondere an 505: Der Song wird ganz allmählich lauter, bis er in der Bridge ausbricht. Spiel acht Runden Dm – Em am Stück: zwei Runden Ganze (leise), zwei Runden sanfte Viertel, zwei Runden kräftige Viertel und zwei Runden Rock-Achtel (laut). Erst bei 100 BPM, dann bei 140.',
+    tipp: 'Lauter heißt nicht schneller – genau hier laufen die meisten davon. Lass das Metronom mitlaufen. Für den lauten Teil die tiefen Saiten betonen; bei Dm darf jetzt die leere A-Saite mitklingen.',
+    loesung: 'Die acht Runden werden hörbar Stufe für Stufe lauter, und das Tempo bleibt die ganze Zeit beim Klick.',
+    schwierigkeit: 'mittel',
+    kategorie: '505',
+  },
+  {
+    id: 'am505-song-blatt',
+    titel: 'Songblatt und Aufbau',
+    aufgabeText: 'Öffne „🎵 Das ganze Lied" (letzter Knopf in der Schrittleiste). Nach dem Orgel-Intro kommen vier ruhige Strophen, dann die Steigerung, die laute Bridge, der laute Schlussteil und das Outro – immer dieselbe Runde Dm – Em. Hör die Aufnahme und verfolge den Aufbau mit.',
+    tipp: 'Weil die Akkorde sich nie ändern, orientierst du dich an Lautstärke und Gesang: Wann setzt das Schlagzeug ein, wann wird es laut? Zähl die Runden mit – die Zahlen im Songblatt sind geschätzt, deine Ohren entscheiden.',
+    loesung: 'Du weißt beim Hören, in welchem Abschnitt du bist, und merkst rechtzeitig, wann die Steigerung beginnt.',
+    schwierigkeit: 'einfach',
+    kategorie: '505',
+  },
+  {
+    id: 'am505-song',
+    titel: 'Den ganzen Song mitspielen',
+    aufgabeText: 'Spiel 505 im Mitspiel-Modus von vorn bis hinten – gut vier Minuten. Erst bei 100 BPM, dann im Originaltempo von 140 BPM und schließlich zur Aufnahme, mit leisen Strophen und lauter Bridge.',
+    tipp: 'Die ruhigen Strophen sind lang – bleib locker und spar die Kraft für die Bridge. Wenn du dich verzählst, hör auf den Bass: Er wechselt mit den Akkorden zwischen D und E – steig beim nächsten D wieder mit Dm ein.',
+    loesung: 'Du spielst den ganzen Song zur Aufnahme mit – von der leisen Orgel bis zur lauten Bridge. 🎸',
+    schwierigkeit: 'schwer',
+    kategorie: '505',
+  },
+  {
+    id: 'am505-barre',
+    titel: 'Dm und Em als Barré: verschieben statt umgreifen',
+    aufgabeText: 'Dm und Em sind beide Moll-Akkorde – mit der Am-Form (wie C♯m aus Go K.K. Rider) greifst du sie mit derselben Handform: Dm mit Barré im 5. Bund (x57765), Em zwei Bünde höher im 7. Bund (x79987). Der Wechsel wird zum Rutschen: Handform halten, zwei Bünde verschieben. Spiel so zwei Runden Dm – Em, erst bei 80, dann bei 140 BPM.',
+    tipp: 'Tiefe E-Saite nicht anschlagen. Beim Verschieben den Druck kurz lösen, die Finger aber auf den Saiten lassen – die Form bleibt in der Hand. Höher am Hals liegen die Bünde enger, das Barré fällt dort leichter als im 1. oder 2. Bund. Die Barré-Variante klingt kräftiger und gleichmäßiger – ideal für Bridge und Schlussteil.',
+    loesung: 'Dm und Em klingen mit Barré auf allen fünf Saiten, und der Wechsel ist nur noch ein Rutschen um zwei Bünde – ohne dass der Rhythmus stockt.',
+    schwierigkeit: 'schwer',
+    kategorie: '505',
+    akkorde: ['Am', 'Dm-Barre', 'Em-Barre'],
   },
 ]

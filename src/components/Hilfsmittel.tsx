@@ -6,12 +6,13 @@ import { GO_KK_RIDER } from '../data/lieder/goKkRider'
 import { KK_CRUISIN } from '../data/lieder/kkCruisin'
 import { ZOMBIE, ZOMBIE_AUFBAU } from '../data/lieder/zombie'
 import { BLUE_HAIR } from '../data/lieder/blueHair'
+import { LIED_505, LIED_505_AUFBAU } from '../data/lieder/lied505'
 import Griffbild from './Griffbild'
 
 // Hilfsmittel-Tab: druckbarer Spickzettel (wie die Hilfsmittel-Tabs der anderen
 // Lernseiten), alles mit den Original-Griffen ohne Kapodaster. Seite 1: Go K.K. Rider
 // (Griffe, Akkordfolge, Schlagmuster). Seite 2: die Barré-Formen mit ihren offenen
-// Vorlagen. Seite 3: K.K. Cruisin'. Seite 4: Zombie. Seite 5: Blue Hair.
+// Vorlagen. Seite 3: K.K. Cruisin'. Seite 4: Zombie. Seite 5: Blue Hair. Seite 6: 505.
 // „🖨️ Drucken" öffnet den Druckdialog; per @media print werden Header/Tabs
 // ausgeblendet und die Boxen A4-tauglich gesetzt.
 
@@ -80,7 +81,7 @@ const SEITE_BARRE: Box[] = [
       { l: 'Em-Form', f: 'G♯m (4. Bund), F♯m (2. Bund)' },
       { l: 'A-Form', f: 'A♯ (1. Bund), B (2. Bund)' },
       { l: 'A7-Form', f: 'B♭7 (1. Bund)' },
-      { l: 'Am-Form', f: 'C♯m (4. Bund)' },
+      { l: 'Am-Form', f: 'C♯m (4. Bund), Dm (5. Bund), Em (7. Bund)' },
     ],
   },
   {
@@ -211,6 +212,43 @@ const SEITE_BLUE_HAIR: Box[] = [
   },
 ]
 
+const SEITE_505: Box[] = [
+  {
+    t: '505',
+    r: [
+      { l: 'Tonart', f: 'D-Moll (Dorisch), ohne Kapo' },
+      { l: 'Tempo', f: `ca. ${LIED_505.bpm} BPM, 4/4 (üben ab ${LIED_505.uebeBpm})` },
+      { l: 'Runde', f: 'Dm Dm Em Em – je Akkord 2 Takte' },
+      { l: 'Song', f: 'Dieselbe Runde von Anfang bis Ende' },
+    ],
+  },
+  {
+    t: 'Aufbau (Runden à 4 Takte)',
+    r: [
+      { f: LIED_505_AUFBAU.slice(0, 5).map(a => `${a.name.replace(/ \(.*\)/, '')} ${a.runden}×`).join(' · ') },
+      { f: LIED_505_AUFBAU.slice(5).map(a => `${a.name.replace(/ \(.*\)/, '')} ${a.runden}×`).join(' · ') },
+    ],
+  },
+  {
+    t: 'Anschlag und Dynamik (1 + 2 + 3 + 4 +)',
+    r: [
+      { l: 'Leise', f: '↓   (1× pro Takt, ausklingen)' },
+      { l: 'Mittel', f: '↓   ↓   ↓   ↓' },
+      { l: 'Laut', f: '↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓   (Bridge, Schluss)' },
+      { f: 'Lauter heißt nicht schneller – beim Klick bleiben' },
+    ],
+  },
+  {
+    t: 'Wechsel-Tricks',
+    r: [
+      { f: 'Em mit Zeige-/Mittelfinger: Mittelfinger bleibt im 2. Bund' },
+      { f: 'Dm: tiefe E-Saite still, leere A-Saite darf klingen' },
+      { f: 'Wechsel auf der 4 des zweiten Takts vorbereiten' },
+      { f: 'Barré-Variante: Am-Form 5. Bund → 7. Bund rutschen' },
+    ],
+  },
+]
+
 function Griffuebersicht({ griffe, titel }: { griffe: string[]; titel: string }) {
   const liste = griffe.map(id => akkordNach(id)!)
   return (
@@ -267,7 +305,7 @@ export default function Hilfsmittel() {
         <h2>Spickzettel</h2>
         <p>
           Alle Song-Griffe und Kurzregeln auf A4 (Seite 1: Go K.K. Rider, Seite 2: Barré-Formen, Seite 3: K.K. Cruisin',
-          Seite 4: Zombie, Seite 5: Blue Hair) – zum Ausdrucken und neben den Notenständer legen. „🖨️ Drucken" erzeugt ein sauberes Blatt ohne Menü und Tabs.
+          Seite 4: Zombie, Seite 5: Blue Hair, Seite 6: 505) – zum Ausdrucken und neben den Notenständer legen. „🖨️ Drucken" erzeugt ein sauberes Blatt ohne Menü und Tabs.
         </p>
       </div>
       <div className="filter-row no-print" style={{ marginBottom: '0.9rem' }}>
@@ -309,6 +347,13 @@ export default function Hilfsmittel() {
         titel={BLUE_HAIR.titel}
         griffe={songGriffe(BLUE_HAIR)}
         griffTitel="Song-Griffe (Strophe offen, Refrain mit Barré)"
+      />
+      <SpickzettelSeite
+        boxen={SEITE_505}
+        nr={6}
+        titel={LIED_505.titel}
+        griffe={[...songGriffe(LIED_505), 'Dm-Barre', 'Em-Barre']}
+        griffTitel="Song-Griffe (offen, dazu die Barré-Variante)"
       />
     </div>
   )

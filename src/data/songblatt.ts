@@ -9,7 +9,7 @@
 export type Takt = [string] | [string, string]
 
 /** Anschlagmuster im Songblatt (Definitionen in components/Songblatt.tsx). */
-export type AnschlagId = 'viertel' | 'song' | 'rock' | 'offbeat'
+export type AnschlagId = 'ganze' | 'viertel' | 'song' | 'rock' | 'offbeat'
 
 export interface SongAbschnitt {
   id: string
@@ -43,7 +43,8 @@ export interface Lied {
   ansichten?: { einfach: string; original: string }
   /** Anschlagmuster im Songblatt (Standard: Viertel und Song-Muster). */
   anschlaege?: AnschlagId[]
-  quelle: { autor: string; url: string; zusatz?: string }
+  /** Quelle der Akkorde auf Ultimate Guitar; ohne `autor` = offizielle Tabulatur („Official"). */
+  quelle: { autor?: string; url: string; zusatz?: string }
   abschnitte: SongAbschnitt[]
 }
 
@@ -71,6 +72,7 @@ const GRIFF_ID: Record<string, string> = {
   Em: 'Em', D: 'D', 'D/F#': 'D-Fis', Cmaj7: 'Cmaj7',
   // Blue Hair
   Emaj7: 'Emaj7', Amaj7: 'Amaj7', 'F#m': 'Fism', B7sus2: 'B7sus2',
+  // 505: Dm und Em (siehe oben)
 }
 
 /** Griff-ID für einen Akkordnamen (undefined bei Pause). */

@@ -7,6 +7,7 @@ import { GO_KK_RIDER } from './lieder/goKkRider'
 import { KK_CRUISIN } from './lieder/kkCruisin'
 import { ZOMBIE, ZOMBIE_AUFBAU } from './lieder/zombie'
 import { BLUE_HAIR, BLUE_HAIR_AUFBAU } from './lieder/blueHair'
+import { LIED_505, LIED_505_AUFBAU } from './lieder/lied505'
 
 // Nachschlagekarten „Griffe & Technik". Jede Karte hat eine stabile `id`
 // (Inhaltsverzeichnis + Deep-Link #referenz/<id>). Karten mit Griffbildern/Tabellen
@@ -239,6 +240,62 @@ ${BLUE_HAIR_AUFBAU.map(a => `${a.name}: ${a.akkorde} (${a.takte} Takte)`).join('
     ),
   },
   {
+    id: '505',
+    titel: '505 im Überblick',
+    inhalt: `„505" von Arctic Monkeys. Tonart D-Moll (genauer D-Dorisch), ca. ${LIED_505.bpm} BPM, 4/4-Takt, ohne Kapodaster.
+Der ganze Song ist eine Runde aus zwei offenen Griffen: Dm – Em, jeder Akkord zwei Takte.
+Leise Strophen, lange Steigerung, laute Bridge. Bonus: Dm und Em als Am-Form im 5. und 7. Bund.
+${LIED_505_AUFBAU.map(a => `${a.name}: ${a.runden} Runden (${a.takte} Takte)`).join('\n')}`,
+    inhaltNode: (
+      <>
+        <p className="ref-absatz">
+          <b>„505" von Arctic Monkeys</b> (2007, „Favourite Worst Nightmare"). Tonart <b>D-Moll</b>, genauer D-Dorisch, ca.{' '}
+          <b>{LIED_505.bpm} BPM</b> im 4/4-Takt – zum Üben mit {LIED_505.uebeBpm} BPM starten. Der ganze Song ist eine einzige
+          Runde aus zwei offenen Griffen, <b>Dm – Em</b>, jeder Akkord zwei Takte lang. Was den Song ausmacht, ist die{' '}
+          <b>Steigerung</b>: leise Strophen über der Orgel, dann wird es Runde für Runde lauter bis zur Bridge. Wer mag, greift
+          beide Akkorde als <b>Am-Form</b> im 5. und 7. Bund – dann rutscht dieselbe Handform nur zwei Bünde weiter.
+        </p>
+        <table className="ref-tabelle">
+          <thead>
+            <tr>
+              <th>Abschnitt</th>
+              <th>Runden</th>
+              <th>Takte</th>
+            </tr>
+          </thead>
+          <tbody>
+            {LIED_505_AUFBAU.map((a, i) => (
+              <tr key={i}>
+                <td>
+                  <b>{a.name}</b>
+                </td>
+                <td>{a.runden}</td>
+                <td>{a.takte}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p className="ref-absatz" style={{ marginTop: '0.75rem' }}>
+          Die Akkordblätter ordnen Dm und Em dem Text zu, nicht Takten – die Runden je Abschnitt sind geschätzt (zusammen 4:14
+          Min. wie die Albumversion), also beim Hören mitzählen. Das komplette Songblatt steht unter{' '}
+          <a href="#uebung/lied-505">Lernschritte → 505 → 🎵 Das ganze Lied</a>. Quelle der Akkorde:{' '}
+          <a href={LIED_505.quelle.url} target="_blank" rel="noopener noreferrer">
+            Tabulatur bei Ultimate Guitar ↗
+          </a>
+          .
+        </p>
+        <p className="ref-absatz" style={{ marginTop: '1rem' }}>
+          <b>Die zwei Griffe:</b>
+        </p>
+        <AkkordRaster ids={songGriffe(LIED_505)} />
+        <p className="ref-absatz" style={{ marginTop: '1rem' }}>
+          <b>Barré-Variante (Bonus):</b>
+        </p>
+        <AkkordRaster ids={['Dm-Barre', 'Em-Barre']} />
+      </>
+    ),
+  },
+  {
     id: 'stimmung',
     titel: 'Saiten und Standardstimmung',
     inhalt: `Saite 6 (dickste)  E   tief
@@ -326,7 +383,7 @@ E7-Form: G♯7 = A♭7 (4. Bund), G♭7 (2. Bund)
 Em-Form: G♯m (4. Bund), F♯m (2. Bund)
 A-Form: A♯ (1. Bund), B (2. Bund)
 A7-Form: B♭7 (1. Bund)
-Am-Form: C♯m (4. Bund)
+Am-Form: C♯m (4. Bund), Dm (5. Bund), Em (7. Bund)
 Mini-Barré: E♭7sus2 (1. Bund)
 ${akkorde
   .filter(a => a.gruppe === 'Barré')
@@ -338,7 +395,7 @@ ${akkorde
           Beim Barré liegt der Zeigefinger quer über den Saiten und übernimmt die Rolle des Sattels. Jede offene Form wird so
           verschiebbar – die Form bestimmt Dur, Moll oder Sept, der Bund des Zeigefingers den Grundton: <b>E-Form</b> → F, F♯ ·{' '}
           <b>E7-Form</b> → G♯7/A♭7, G♭7 · <b>Em-Form</b> → G♯m, F♯m · <b>A-Form</b> → A♯, B · <b>A7-Form</b> → B♭7 ·{' '}
-          <b>Am-Form</b> → C♯m.
+          <b>Am-Form</b> → C♯m, Dm, Em.
         </p>
         <p className="ref-absatz">
           <b>Zwischenschritt:</b> Solange ein volles Barré noch nicht klingt, nur die vier hohen Saiten anschlagen – z.B. G♯m

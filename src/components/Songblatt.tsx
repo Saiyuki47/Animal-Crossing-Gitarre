@@ -18,6 +18,7 @@ const EINZAEHLEN = 4
 
 /** Anschläge je Achtel: ↓ ab, ↑ auf, – Luftschlag, '' = nichts (Hand pendelt nur). */
 const ANSCHLAG: Record<AnschlagId, { name: string; slots: string[] }> = {
+  ganze: { name: '↓  Ein Schlag pro Takt (ausklingen)', slots: ['↓', '', '', '', '', '', '', ''] },
   viertel: { name: '↓ ↓ ↓ ↓  Viertel (Einstieg)', slots: ['↓', '', '↓', '', '↓', '', '↓', ''] },
   song: { name: '↓ – ↓↑ – ↑ ↓↑  Song-Muster', slots: ['↓', '–', '↓', '↑', '–', '↑', '↓', '↑'] },
   rock: { name: '↓↓↓↓↓↓↓↓  Rock-Achtel (laut)', slots: ['↓', '↓', '↓', '↓', '↓', '↓', '↓', '↓'] },
@@ -318,7 +319,8 @@ export default function Songblatt({ lied }: { lied: Lied }) {
       ))}
 
       <p className="sb-quelle">
-        {lied.rechte}. Akkorde nach der Transkription von „{lied.quelle.autor}" auf{' '}
+        {lied.rechte}. Akkorde nach{' '}
+        {lied.quelle.autor ? `der Transkription von „${lied.quelle.autor}" auf` : 'der offiziellen Tabulatur auf'}{' '}
         <a href={lied.quelle.url} target="_blank" rel="noopener noreferrer">
           Ultimate Guitar ↗
         </a>
